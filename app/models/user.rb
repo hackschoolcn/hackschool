@@ -23,7 +23,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :orders
-  has_many :services
+  has_many :orders, dependent: :destroy
+  has_many :services, dependent: :destroy
   
 end

@@ -27,8 +27,19 @@ class User::OrdersController < ApplicationController
 
 
   def pay_with_wechat
+
     if @order.may_make_payment?
       @order.pay("wechat")
+
+      @service.status = "已激活"
+      @service.order_date = Time.current
+      if @service.price > 2000
+        @service.due_date = @service.order_date.advance(years: 1)
+      else
+        @service.due_date = @service.order_date.advance(months: 3)
+      end
+      @service.save
+
       redirect_to :back
     else
       flash[:warning] = "该订单已付款"
@@ -40,6 +51,16 @@ class User::OrdersController < ApplicationController
   def pay_with_alipay
     if @order.may_make_payment?
       @order.pay("alipay")
+
+      @service.status = "已激活"
+      @service.order_date = Time.current
+      if @service.price > 2000
+        @service.due_date = @service.order_date.advance(years: 1)
+      else
+        @service.due_date = @service.order_date.advance(months: 3)
+      end
+      @service.save
+
       redirect_to :back
     else
       flash[:warning] = "该订单已付款"
@@ -62,6 +83,7 @@ class User::OrdersController < ApplicationController
 
   def get_order_params
     @order = Order.find_by_token(params[:id])
+    @service = @order.service
   end
 
   def create_order_with_service(service_info = {})

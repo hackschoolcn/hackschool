@@ -1,37 +1,37 @@
 <table class="table table-boldered">
   <tr>
     <th>
-      订单收件人
+      服务
     </th>
     <th>
-      商品总价
+      状态
     </th>
     <th>
-      订单状态
+      开始时间
+    </th>
+    <th>
+      截止日期
     </th>
     <th>
       操作
-    </th>
-    <th>
-      订单创建时间
     </th>
   </tr>
   <% @services.each do |service| %>
       <tr>
         <td>
-          1
+          <%= service.title %>
         </td>
         <td>
-          <%= service.price %> RMB
+          <%= service.status %>
         </td>
         <td>
-          3
+          <%= render_formatted_time(service.order_date) %>
         </td>
         <td>
-          hello
+          <%= render_formatted_time(service.due_date) %>
         </td>
         <td>
-          <%= service.created_at %>
+          <%= link_to("续费", "#", class: "btn btn-sm btn-success") %>
         </td>
       </tr>
   <% end %>
