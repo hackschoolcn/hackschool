@@ -6,10 +6,10 @@
 #  title       :string
 #  description :text
 #  price       :integer
-#  hide        :boolean
-#  publish     :boolean
+#  is_hidden   :boolean
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  image       :string
 #
 
 require 'test_helper'

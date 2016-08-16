@@ -18,7 +18,7 @@ class Admin::CoursesController < ApplicationController
   def create
     @course = Course.new(course_params)
     if @course.save
-      redirect_to root_path, notice: "Success"
+      redirect_to admin_courses_path, notice: "Success"
     else
       render :new
     end
@@ -27,7 +27,7 @@ class Admin::CoursesController < ApplicationController
   def update
     @course = Course.find(params[:id])
     if @course.update(course_params)
-      redirect_to root_path, notice: "Update Success"
+      redirect_to admin_courses_path, notice: "Update Success"
     else
       render :edit
     end
@@ -36,7 +36,7 @@ class Admin::CoursesController < ApplicationController
   def destroy
     @course = Course.find(params[:id])
     @course.destroy
-    redirect_to root_path, alert: "Course Deleted"
+    redirect_to admin_courses_path alert: "Course Deleted"
   end
 
 
@@ -56,6 +56,6 @@ class Admin::CoursesController < ApplicationController
 
   private
   def course_params
-    params.require(:course).permit(:title, :description, :price, :is_hidden)
+    params.require(:course).permit(:title, :description, :price, :is_hidden, :image)
   end
 end
