@@ -19,7 +19,7 @@
       <td> <%= course.id %>
       <td>
         <%= render_course_status(course) %>
-        <%= link_to(course.title, "#") %>
+        <%= link_to(course.title, course_path(course)) %>
       </td>
       <td><%= course.description %></td>
       <td><%= course.price %></td>

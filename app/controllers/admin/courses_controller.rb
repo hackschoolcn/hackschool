@@ -1,4 +1,6 @@
 class Admin::CoursesController < ApplicationController
+before_action :authenticate_user!
+
   def index
     @courses = Course.all
   end
@@ -42,15 +44,13 @@ class Admin::CoursesController < ApplicationController
 
   def publish
     @course = Course.find(params[:id])
-    @course.is_hidden = false
-    @course.save
+    @course.publish!
     redirect_to :back
   end
 
   def hide
     @course = Course.find(params[:id])
-    @course.is_hidden = true
-    @course.save
+    @course.hide!
     redirect_to :back
   end
 
