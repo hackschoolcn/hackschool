@@ -16,8 +16,7 @@ ActiveRecord::Schema.define(version: 20160816023021) do
     t.string   "title"
     t.text     "description"
     t.integer  "price"
-    t.boolean  "hide"
-    t.boolean  "publish"
+    t.boolean  "is_hidden"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end

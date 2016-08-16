@@ -4,9 +4,8 @@ class CreateCourses < ActiveRecord::Migration[5.0]
       t.string :title
       t.text :description
       t.integer :price
-      t.boolean :hide
-      t.boolean :publish
-
+      t.boolean :is_hidden
+      
       t.timestamps
     end
   end

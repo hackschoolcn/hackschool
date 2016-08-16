@@ -42,20 +42,20 @@ class Admin::CoursesController < ApplicationController
 
   def publish
     @course = Course.find(params[:id])
-    @course.hide = false
+    @course.is_hidden = false
     @course.save
     redirect_to :back
   end
 
   def hide
     @course = Course.find(params[:id])
-    @course.hide = true
+    @course.is_hidden = true
     @course.save
     redirect_to :back
   end
 
   private
   def course_params
-    params.require(:course).permit(:title, :description, :price, :hide,)
+    params.require(:course).permit(:title, :description, :price, :is_hidden)
   end
 end
