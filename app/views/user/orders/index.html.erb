@@ -1,0 +1,40 @@
+<table class="table table-boldered">
+  <tr>
+    <th>
+      订单收件人
+    </th>
+    <th>
+      商品总价
+    </th>
+    <th>
+      订单状态
+    </th>
+    <th>
+      操作
+    </th>
+    <th>
+      订单创建时间
+    </th>
+  </tr>
+  <% @orders.each do |order| %>
+      <tr>
+        <td>
+          <%= order.user.email %>
+        </td>
+        <td>
+          <%= order.amount %> RMB
+        </td>
+        <td>
+          <%= order.aasm_state %>
+        </td>
+        <td>
+          <%= link_to("微信付款", pay_with_wechat_user_order_path(order.token), method: :post, class: "btn btn-sm btn-success") %>
+          <%= link_to("支付宝付款", pay_with_alipay_user_order_path(order.token), method: :post, class: "btn btn-sm btn-info") %>
+          <%= link_to("取消订单", cancel_order_user_order_path(order.token), method: :post, class: "btn btn-default btn-sm") %>
+        </td>
+        <td>
+          <%= order.created_at %>
+        </td>
+      </tr>
+  <% end %>
+</table>

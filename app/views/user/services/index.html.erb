@@ -1,0 +1,38 @@
+<table class="table table-boldered">
+  <tr>
+    <th>
+      订单收件人
+    </th>
+    <th>
+      商品总价
+    </th>
+    <th>
+      订单状态
+    </th>
+    <th>
+      操作
+    </th>
+    <th>
+      订单创建时间
+    </th>
+  </tr>
+  <% @services.each do |service| %>
+      <tr>
+        <td>
+          1
+        </td>
+        <td>
+          <%= service.price %> RMB
+        </td>
+        <td>
+          3
+        </td>
+        <td>
+          hello
+        </td>
+        <td>
+          <%= service.created_at %>
+        </td>
+      </tr>
+  <% end %>
+</table>
