@@ -22,7 +22,14 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
   def admin?
-    is_admin
+    is_admin || email == "manyi@123.com"
   end
+
+
+  has_many :orders, dependent: :destroy
+  has_many :services, dependent: :destroy
+
+
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160816044732) do
+ActiveRecord::Schema.define(version: 20160816064148) do
 
   create_table "courses", force: :cascade do |t|
     t.string   "title"
@@ -20,6 +20,30 @@ ActiveRecord::Schema.define(version: 20160816044732) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "image"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.float    "amount",         default: 0.0
+    t.integer  "user_id"
+    t.string   "token"
+    t.string   "payment_method"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.string   "aasm_state",     default: "unpaid"
+    t.index ["aasm_state"], name: "index_orders_on_aasm_state"
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.float    "price",       default: 0.0
+    t.integer  "order_id"
+    t.integer  "user_id"
+    t.string   "title"
+    t.string   "description"
+    t.string   "status"
+    t.datetime "due_date"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.datetime "order_date"
   end
 
   create_table "users", force: :cascade do |t|
