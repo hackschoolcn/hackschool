@@ -9,7 +9,7 @@
         <td>叙述</td>
         <td>价格</td>
         <td>选项</td>
-
+        <td>上传</td>
         <td>创建日期</td>
       </tr>
     </thead>
@@ -25,15 +25,18 @@
       <td><%= course.price %></td>
 
       <td>
-        <%= link_to("编辑", edit_admin_course_path(course), class: "btn btn-xs btn-success") %> |
+        <%= link_to("编辑", edit_admin_course_path(course), class: "btn btn-xs btn-primary") %> |
         <%= link_to("删除", admin_course_path(course), method: :delete, class: "btn btn-xs btn-danger",
         data: { confirm:  "Are you sure?" } ) %>
 
         <% if course.is_hidden %>
         <%= link_to("上架课程", publish_admin_course_path(course), method: :post, class: "btn btn-xs btn-primary") %>
         <% else %>
-        <%= link_to("下架课程", hide_admin_course_path(course), method: :post, class: "btn btn-xs btn-danger") %>
+        <%= link_to("下架课程", hide_admin_course_path(course), method: :post, class: "btn btn-xs btn-warning") %>
         <% end %>
+      </td>
+      <td>
+        <%= link_to("上传课程", admin_chapters_path, class: "btn btn-xs btn-success") %>
       </td>
       <td>
         <%= course.created_at %>

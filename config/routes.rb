@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   end
 
   resources :courses
+  
   namespace :admin do
+    resources :chapters
+    resources :sections
     resources :courses do
       member do
         post :hide
@@ -40,5 +43,10 @@ Rails.application.routes.draw do
 
   end
 
+  resources :groups
+
+  resources :questions do
+    resources :answers
+  end
 
 end
