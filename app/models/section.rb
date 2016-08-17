@@ -6,8 +6,9 @@
 #  section    :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  chapter_id :integer
 #
 
 class Section < ApplicationRecord
-  belongs_to :chapter, dependent: :destroy
+  belongs_to :chapter
 end

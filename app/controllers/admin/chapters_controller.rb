@@ -27,7 +27,7 @@ class Admin::ChaptersController < ApplicationController
   def update
     @chapter = Chapter.find(params[:id])
     if @chapter.update(chapter_params)
-      redirect_to root_path, notice: "hahaha"
+      redirect_to admin_chapters_path, notice: "升级成功"
     else
       render :edit
     end

@@ -1,5 +1,6 @@
 <h1> New Section </h1>
 <%= simple_form_for [:admin, @section] do |f| %>
+<%= f.input :chapter_id, :as => :hidden, :input_html => { :value => @section.chapter_id } %>
 <%= f.input :section %>
 <%= f.submit "Create Section" %>
 <% end %>
