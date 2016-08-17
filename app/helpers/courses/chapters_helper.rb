@@ -1,0 +1,2 @@
+module Courses::ChaptersHelper
+end

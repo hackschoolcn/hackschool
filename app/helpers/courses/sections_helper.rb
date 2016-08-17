@@ -1,0 +1,2 @@
+module Courses::SectionsHelper
+end

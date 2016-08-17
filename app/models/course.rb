@@ -26,4 +26,7 @@ def hide!
   self.save
 end
 
+has_many :sections
+has_many :chapters, through: :sections
+
 end

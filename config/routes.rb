@@ -5,7 +5,13 @@ Rails.application.routes.draw do
     resources :answers
   end
 
-  resources :courses
+  resources :courses do
+    resources :sections do
+      resources :chapters
+    end
+  end
+
+
   namespace :admin do
     resources :courses do
       member do
