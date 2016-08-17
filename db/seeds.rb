@@ -13,7 +13,7 @@ create_user_accounts = for i in 1..10 do
 end
     puts "10 user_accounts created."
 
-create_groups = for i in 1..10 do
-  Group.create!([title: "Group no.#{i}", description: "这是用seed建立的第 #{i} 个产品"])
+create_questions = for i in 1..21 do
+  Question.create!([title: "Question no.#{i}", description: "这是用seed建立的第 #{i} 个问题", user_id: "#{i}"])
 end
-  puts "10 Groups created."
+  puts "21 Questions created by admins & users."
