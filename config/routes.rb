@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :courses
   namespace :admin do
     resources :chapters
+    resources :sections
     resources :courses do
       member do
         post :hide

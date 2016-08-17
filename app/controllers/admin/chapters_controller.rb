@@ -44,7 +44,4 @@ class Admin::ChaptersController < ApplicationController
   def chapter_params
     params.require(:chapter).permit(:chapter)
   end
-  # def course_params
-  #   params.require(:course).permit(:title, :description, :price, :is_hidden, :image, :teacher_name)
-  # end
 end

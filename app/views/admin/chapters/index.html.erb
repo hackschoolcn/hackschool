@@ -5,13 +5,7 @@
 
 <div style="margin-top:10px">
   <table class="table table-bordered">
-    <thead>
-      <tr>
 
-
-
-      </tr>
-    </thead>
     <tbody>
     <% @chapters.each do |chapter| %>
     <tr>
@@ -20,10 +14,13 @@
 
       <td>
         <h1><%= chapter.chapter %></h1>
+        <% chapter.sections.each do |chapter| %>
+         <%= chapter.section %>
+         <% end %>
         <div class="pull-right">
         <%= link_to("Edit", edit_admin_chapter_path(chapter), :class => "btn btn-xs btn-primary") %>
         <%= link_to("Delete", admin_chapter_path(chapter), method: :delete, class: "btn btn-xs btn-danger", data: { confirm: "Are you sure?"}) %>
-        <%= link_to("upload_Section","#", :class => "btn btn-xs btn-primary") %>
+        <%= link_to("upload_Section",admin_sections_path,:class => "btn btn-xs btn-primary") %>
       </div>
     </td>
     </tr>
