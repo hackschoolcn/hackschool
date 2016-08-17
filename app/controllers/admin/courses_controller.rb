@@ -56,6 +56,6 @@ before_action :authenticate_user!
 
   private
   def course_params
-    params.require(:course).permit(:title, :description, :price, :is_hidden, :image)
+    params.require(:course).permit(:title, :description, :price, :is_hidden, :image, :teacher_name)
   end
 end

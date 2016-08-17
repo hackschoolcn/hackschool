@@ -12,6 +12,7 @@
 #  due_date    :datetime
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  order_date  :datetime
 #
 
 require 'test_helper'
