@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :groups
+  resources :questions do
+    resources :answers
+  end
   root 'welcome#index'
 end
