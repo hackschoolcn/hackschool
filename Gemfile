@@ -41,8 +41,10 @@ gem 'mini_magick'
 gem 'font-awesome-sass'
 gem 'fog'
 gem 'carrierwave-aws'
-gem "figaro"
+gem 'figaro'
 gem 'aasm'
+gem 'simditor'
+gem 'pagedown-bootstrap-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
