@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20160817071723) do
+
 
   create_table "chapters", force: :cascade do |t|
     t.string   "chapter"
@@ -40,6 +42,7 @@ ActiveRecord::Schema.define(version: 20160817071723) do
     t.string   "aasm_state",     default: "unpaid"
     t.index ["aasm_state"], name: "index_orders_on_aasm_state"
   end
+
 
   create_table "sections", force: :cascade do |t|
     t.string   "section"

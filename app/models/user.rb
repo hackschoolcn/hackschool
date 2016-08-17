@@ -31,7 +31,7 @@ class User < ApplicationRecord
 
   has_many :orders, dependent: :destroy
   has_many :services, dependent: :destroy
-  has_many :questions, dependent: :destroy
-  has_many :answers, dependent: :destroy
+  has_many :questions
+  has_many :answers
 
 end
