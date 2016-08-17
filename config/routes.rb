@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :courses
   namespace :admin do
+    resources :chapters
     resources :courses do
       member do
         post :hide
