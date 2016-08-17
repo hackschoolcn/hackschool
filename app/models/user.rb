@@ -15,6 +15,7 @@
 #  last_sign_in_ip        :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  is_admin               :boolean          default(FALSE)
 #
 
 class User < ApplicationRecord
@@ -22,4 +23,19 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  def admin?
+    is_admin || email == "manyi@123.com"
+  end
+
+
+  has_many :questions
+  has_many :answers
+
+
+  has_many :orders, dependent: :destroy
+  has_many :services, dependent: :destroy
+
+
+
 end

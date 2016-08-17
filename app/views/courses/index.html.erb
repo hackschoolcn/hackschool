@@ -1,0 +1,21 @@
+<% @courses.each do |course| %>
+<% if !course.is_hidden? %>
+  <%= link_to course_path(course) do %>
+<div class="col-xs-12 col-sm-6 col-md-4">
+  <div style="width:360px ; height:390px; overflow:hidden; " class="img-thumbnail">
+    <div>
+      <%= image_tag course.image.thumb %> <br />
+      <h1 style="color:black"><%= course.title %></h1>
+      <em><%= course.description %></em>
+      <div style="margin-bottom:0px; color:black">
+        <%= course.teacher_name %>
+      </div>
+  </div>
+</div>
+  <% end %>
+    <div class="text-left" style="padding: 5px">
+  </div>
+</div>
+<% end %>
+<% end %>
+<!-- border:1px solid -->
