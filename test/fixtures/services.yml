@@ -1,0 +1,28 @@
+# == Schema Information
+#
+# Table name: services
+#
+#  id          :integer          not null, primary key
+#  price       :float            default(0.0)
+#  order_id    :integer
+#  user_id     :integer
+#  title       :string
+#  description :string
+#  status      :string
+#  due_date    :datetime
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  order_date  :datetime
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one: {}
+# column: value
+#
+two: {}
+# column: value

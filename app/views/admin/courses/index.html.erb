@@ -1,0 +1,45 @@
+<div class="pull-right">
+  <%= link_to("Add a course", new_admin_course_path, :class => "btn btn-default") %>
+</div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <td>#</td>
+        <td>课程名</td>
+        <td>叙述</td>
+        <td>价格</td>
+        <td>选项</td>
+
+        <td>创建日期</td>
+      </tr>
+    </thead>
+    <tbody>
+    <% @courses.each do |course| %>
+    <tr>
+      <td> <%= course.id %>
+      <td>
+        <%= render_course_status(course) %>
+        <%= link_to(course.title, course_path(course)) %>
+      </td>
+      <td><%= course.description %></td>
+      <td><%= course.price %></td>
+
+      <td>
+        <%= link_to("编辑", edit_admin_course_path(course), class: "btn btn-xs btn-success") %> |
+        <%= link_to("删除", admin_course_path(course), method: :delete, class: "btn btn-xs btn-danger",
+        data: { confirm:  "Are you sure?" } ) %>
+
+        <% if course.is_hidden %>
+        <%= link_to("上架课程", publish_admin_course_path(course), method: :post, class: "btn btn-xs btn-primary") %>
+        <% else %>
+        <%= link_to("下架课程", hide_admin_course_path(course), method: :post, class: "btn btn-xs btn-danger") %>
+        <% end %>
+      </td>
+      <td>
+        <%= course.created_at %>
+      </td>
+
+    </tr>
+    <% end %>
+  </tbody>
+  </table>
