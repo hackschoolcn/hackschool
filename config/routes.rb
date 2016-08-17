@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
-<<<<<<< HEAD
+
   resources :questions do
     resources :answers
   end
-  root 'welcome#index'
-=======
+
   resources :courses
   namespace :admin do
     resources :courses do
@@ -42,5 +41,4 @@ Rails.application.routes.draw do
   end
 
 
->>>>>>> origin/pre_master
 end

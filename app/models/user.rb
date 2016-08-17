@@ -28,14 +28,14 @@ class User < ApplicationRecord
     is_admin || email == "manyi@123.com"
   end
 
-<<<<<<< HEAD
+
   has_many :questions
   has_many :answers
-=======
+
 
   has_many :orders, dependent: :destroy
   has_many :services, dependent: :destroy
 
 
->>>>>>> origin/pre_master
+
 end
