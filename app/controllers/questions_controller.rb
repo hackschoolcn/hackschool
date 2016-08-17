@@ -48,10 +48,7 @@ class QuestionsController < ApplicationController
 
   def find_question_and_check_permission
     @question = Question.find(params[:id])
-@question.save
-    #if current_user != @question.user
-      redirect_to :back #, alert: "You have no permission"
-    #end
+    @question.save
   end
 
   def question_params
