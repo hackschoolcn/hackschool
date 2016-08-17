@@ -10,9 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20160817071723) do
 
+  create_table "answers", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "question_id"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "chapters", force: :cascade do |t|
     t.string   "chapter"
@@ -43,6 +49,14 @@ ActiveRecord::Schema.define(version: 20160817071723) do
     t.index ["aasm_state"], name: "index_orders_on_aasm_state"
   end
 
+  create_table "questions", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "user_id"
+    t.text     "content"
+  end
 
   create_table "sections", force: :cascade do |t|
     t.string   "section"
@@ -62,30 +76,6 @@ ActiveRecord::Schema.define(version: 20160817071723) do
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.datetime "order_date"
-  end
-
-  create_table "upload_courses", force: :cascade do |t|
-    t.string   "chapter"
-    t.text     "article"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "answers", force: :cascade do |t|
-    t.text     "content"
-    t.integer  "question_id"
-    t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  create_table "questions", force: :cascade do |t|
-    t.string   "title"
-    t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "user_id"
-    t.text     "content"
   end
 
   create_table "users", force: :cascade do |t|
