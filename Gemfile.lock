@@ -358,11 +358,8 @@ GEM
     websocket-driver (0.6.4)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
-<<<<<<< HEAD
     will_paginate (3.1.0)
-=======
     xml-simple (1.1.5)
->>>>>>> origin/pre_master
 
 PLATFORMS
   ruby
