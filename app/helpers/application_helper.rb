@@ -19,7 +19,8 @@ module ApplicationHelper
       lax_spacing:        true,
       no_intra_emphasis:  true,
       strikethrough:      true,
-      superscript:        true
+      superscript:        true,
+      tables:             true
     }
 
     renderer = Redcarpet::Render::HTML.new(html_render_options)
