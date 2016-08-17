@@ -27,7 +27,7 @@
 
   <table class="table">
     <tr>
-      <th><%= @question.user.email %> asks at <%= @question.created_at %></th>
+      <th><%= @question.user.email %> asks at <%= render_formatted_time(@question.created_at) %></th>
     </tr>
     <tr>
       <td><%= @question.description %></td>

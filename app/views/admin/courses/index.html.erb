@@ -39,7 +39,7 @@
         <%= link_to("上传课程", admin_chapters_path, class: "btn btn-xs btn-success") %>
       </td>
       <td>
-        <%= course.created_at %>
+        <%= render_formatted_time(course.created_at) %>
       </td>
 
     </tr>
