@@ -43,7 +43,6 @@ gem 'fog'
 gem 'carrierwave-aws'
 gem 'figaro'
 gem 'aasm'
-gem 'simditor'
 gem 'pagedown-bootstrap-rails'
 gem 'redcarpet'
 
