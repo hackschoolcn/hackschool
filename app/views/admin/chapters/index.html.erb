@@ -1,0 +1,32 @@
+<div class="pull-right">
+  <%= link_to("上传章节", new_admin_chapter_path, :class => "btn btn-default") %>
+</div>
+
+
+<div style="margin-top:10px">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+
+
+
+      </tr>
+    </thead>
+    <tbody>
+    <% @chapters.each do |chapter| %>
+    <tr>
+
+
+
+      <td>
+        <h1><%= chapter.chapter %></h1>
+        <div class="pull-right">
+        <%= link_to("Edit", edit_admin_chapter_path(chapter), :class => "btn btn-xs btn-primary") %>
+        <%= link_to("Delete", admin_chapter_path(chapter), method: :delete, class: "btn btn-xs btn-danger", data: { confirm: "Are you sure?"}) %>
+        <%= link_to("upload_Section","#", :class => "btn btn-xs btn-primary") %>
+      </div>
+    </td>
+    </tr>
+    <% end %>
+  </tbody>
+  </table>

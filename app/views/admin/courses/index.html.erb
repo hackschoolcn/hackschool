@@ -9,7 +9,7 @@
         <td>叙述</td>
         <td>价格</td>
         <td>选项</td>
-
+        <td>上传</td>
         <td>创建日期</td>
       </tr>
     </thead>
@@ -34,6 +34,9 @@
         <% else %>
         <%= link_to("下架课程", hide_admin_course_path(course), method: :post, class: "btn btn-xs btn-danger") %>
         <% end %>
+      </td>
+      <td>
+        <%= link_to("上传课程", admin_chapters_path, class: "btn btn-xs btn-danger") %>
       </td>
       <td>
         <%= course.created_at %>

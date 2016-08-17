@@ -13,11 +13,12 @@ class Admin::ChaptersController < ApplicationController
 
   def show
     @chapter = Chapter.find(params[:id])
+  end
 
   def create
     @chapter = Chapter.new(chapter_params)
     if @chapter.save
-      redirect_to root_path, notice: "hahaha"
+      redirect_to admin_chapters_path, notice: "hahaha"
     else
       render :new
     end
@@ -35,7 +36,7 @@ class Admin::ChaptersController < ApplicationController
   def destroy
     @chapter = Chapter.find(params[:id])
     @chapter.destroy
-    redirect_to root_path, alert: "Deleted"
+    redirect_to  admin_chapters_path, alert: "Deleted"
   end
 
   private
@@ -43,4 +44,7 @@ class Admin::ChaptersController < ApplicationController
   def chapter_params
     params.require(:chapter).permit(:chapter)
   end
+  # def course_params
+  #   params.require(:course).permit(:title, :description, :price, :is_hidden, :image, :teacher_name)
+  # end
 end
