@@ -25,7 +25,7 @@ Rails.application.routes.draw do
 
   resources :welcome
 
-  namespace :user do
+  namespace :account do
     resources :services
 
     resources :orders do

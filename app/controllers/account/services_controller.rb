@@ -1,5 +1,4 @@
-class User::ServicesController < ApplicationController
-
+class Account::ServicesController < ApplicationController
   before_action :authenticate_user!
   layout 'user'
 
