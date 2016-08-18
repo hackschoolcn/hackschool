@@ -1,0 +1,26 @@
+<div class="pull-right">
+  <%= link_to("返回", admin_chapters_path, class: "btn btn-default") %>
+  <%= link_to("上传 Post", new_admin_post_path, :class => "btn btn-default") %>
+</div>
+
+
+<div style="margin-top:10px">
+  <table class="table table-bordered">
+
+    <tbody>
+    <% @posts.each do |post| %>
+    <tr>
+
+
+
+      <td>
+        <h1><%= post.title %></h1>
+        <div class="pull-right">
+        <%= link_to("Edit", edit_admin_post_path(post), :class => "btn btn-xs btn-primary") %>
+        <%= link_to("Delete", admin_post_path(post), method: :delete, class: "btn btn-xs btn-danger", data: { confirm: "Are you sure?"}) %>
+      </div>
+    </td>
+    </tr>
+    <% end %>
+  </tbody>
+  </table>

@@ -1,14 +1,15 @@
 # == Schema Information
 #
-# Table name: sections
+# Table name: posts
 #
 #  id         :integer          not null, primary key
-#  section    :string
+#  title      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  chapter_id :integer
+#  article    :text
 #
 
-class Section < ApplicationRecord
+class Post < ApplicationRecord
   belongs_to :chapter
 end

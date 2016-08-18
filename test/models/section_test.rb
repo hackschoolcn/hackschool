@@ -7,6 +7,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  chapter_id :integer
+#  article    :text
 #
 
 require 'test_helper'

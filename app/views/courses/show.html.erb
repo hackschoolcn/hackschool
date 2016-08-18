@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-6">
-    <%= render_course_image(@course, :medium) %> 
+    <%= render_course_image(@course, :medium) %>
   </div>
 
   <div class="col-md-6">
@@ -8,7 +8,7 @@
     <div class="course-info">
       <h2><%= @course.title%></h2>
 
-      <%= render_course_description(@course) %>
+      <%= render_markdown_text(@course.description) %>
 
       <%= render_course_price(@course) %>
     </div>

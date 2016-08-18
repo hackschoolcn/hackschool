@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :chapters
-    resources :sections
+    resources :posts
     resources :courses do
       member do
         post :hide
