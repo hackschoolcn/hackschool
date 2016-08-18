@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   def index
-    @courses = Course.all
+    @courses = Course.published
   end
 
   def show

@@ -14,16 +14,17 @@
 #
 
 class Course < ApplicationRecord
-mount_uploader :image, ImageUploader
+  mount_uploader :image, ImageUploader
 
-def publish!
-  self.is_hidden = false
-  self.save
-end
+  scope :published, -> { where(is_hidden: false) }
 
-def hide!
-  self.is_hidden = true
-  self.save
-end
+  def publish!
+    self.is_hidden = false
+    save
+  end
 
+  def hide!
+    self.is_hidden = true
+    save
+  end
 end
