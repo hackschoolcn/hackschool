@@ -90,7 +90,7 @@ class Account::OrdersController < ApplicationController
     @order.service = @service
 
     if @order.save && @service.save
-      redirect_to user_orders_path, notice: '订单已创建'
+      redirect_to account_orders_path, notice: '订单已创建'
     else
       redirect_to root_path, alert: '订单创建失败，请刷新再试'
     end
