@@ -1,0 +1,14 @@
+<%= simple_form_for [:admin, @course] do |f| %>
+<%= f.input :title %>
+<%= f.input :description %>
+<%= f.input :price %>
+<%= f.input :teacher_name %>
+<%= f.input :image %>
+<%= f.submit %>
+<% end %>
+
+
+<script>
+var simplemde = new SimpleMDE({ element: document.getElementById("course_description") });
+simplemde.value();
+</script>

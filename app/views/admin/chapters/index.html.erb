@@ -21,7 +21,7 @@
           <% chapter.sections.each do |section| %>
           <tr>
           <td>
-            <%= link_to(section.section, "#") %>
+            <%= link_to(section.section, admin_section_path(section)) %>
             <%= link_to("Delete", admin_section_path(section), method: :delete, class: "btn btn-xs btn-default pull-right", data: { confirm: "Are you sure?"}) %>
             <%= link_to("Edit", edit_admin_section_path(section), class: "btn btn-xs btn-default pull-right") %>
           </td>

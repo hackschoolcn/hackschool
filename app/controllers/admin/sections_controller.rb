@@ -43,6 +43,6 @@ class Admin::SectionsController < ApplicationController
   private
 
   def section_params
-    params.require(:section).permit(:section, :chapter_id)
+    params.require(:section).permit(:section, :chapter_id, :article)
   end
 end
