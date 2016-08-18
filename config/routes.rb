@@ -7,6 +7,9 @@ Rails.application.routes.draw do
 
   resources :courses do
     resources :plans, only: [:index]
+    resources :chapters do
+      resources :posts
+    end
   end
 
   namespace :admin do

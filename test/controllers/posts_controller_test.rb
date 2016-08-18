@@ -1,11 +1,3 @@
-require 'test_helper'
-
-class PostTest < ActiveSupport::TestCase
-  belongs_to :chapter_id
-  #   assert true
-  # end
-end
-
 # == Schema Information
 #
 # Table name: posts
@@ -17,3 +9,11 @@ end
 #  title       :string
 #  description :text
 #
+
+require 'test_helper'
+
+class PostsControllerTest < ActionDispatch::IntegrationTest
+  # test "the truth" do
+  #   assert true
+  # end
+end

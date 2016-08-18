@@ -10,9 +10,10 @@
 #  course_id  :integer
 #
 
-class Chapter < ApplicationRecord
-  has_many :sections,  dependent: :destroy
+require 'test_helper'
 
-  has_many :posts
-  belongs_to :course
+class ChaptersControllerTest < ActionDispatch::IntegrationTest
+  # test "the truth" do
+  #   assert true
+  # end
 end

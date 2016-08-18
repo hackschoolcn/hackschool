@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160818042437) do
+ActiveRecord::Schema.define(version: 20160818113902) do
 
   create_table "answers", force: :cascade do |t|
     t.text     "content"
@@ -21,10 +21,11 @@ ActiveRecord::Schema.define(version: 20160818042437) do
   end
 
   create_table "chapters", force: :cascade do |t|
-    t.string   "chapter"
+    t.string   "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "section_id"
+    t.integer  "course_id"
   end
 
   create_table "courses", force: :cascade do |t|
@@ -48,6 +49,14 @@ ActiveRecord::Schema.define(version: 20160818042437) do
     t.string   "aasm_state",     default: "unpaid"
     t.integer  "price"
     t.index ["aasm_state"], name: "index_orders_on_aasm_state"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "chapter_id"
+    t.string   "title"
+    t.text     "description"
   end
 
   create_table "questions", force: :cascade do |t|
