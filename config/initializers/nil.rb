@@ -1,5 +1,5 @@
 class NilClass
-	def to_markdown
-		return ""
-	end
+  def to_markdown
+    ''
+  end
 end

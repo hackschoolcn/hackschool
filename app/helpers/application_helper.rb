@@ -3,7 +3,7 @@ module ApplicationHelper
     time.to_formatted_s(:db) if time
   end
 
-  def markdown_to_html(text)
-    text.to_markdown
+  def render_course_description(course)
+    course.description.to_markdown
   end
 end
