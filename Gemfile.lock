@@ -51,12 +51,12 @@ GEM
       awesome_print
       pry-rails
       railties
-    aws-sdk (2.5.3)
-      aws-sdk-resources (= 2.5.3)
-    aws-sdk-core (2.5.3)
+    aws-sdk (2.5.4)
+      aws-sdk-resources (= 2.5.4)
+    aws-sdk-core (2.5.4)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.5.3)
-      aws-sdk-core (= 2.5.3)
+    aws-sdk-resources (2.5.4)
+      aws-sdk-core (= 2.5.4)
     bcrypt (3.1.11)
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
