@@ -26,8 +26,6 @@ Rails.application.routes.draw do
   resources :welcome
 
   namespace :account do
-    resources :services
-
     resources :orders do
       collection do
         post :quarterly_subscription
