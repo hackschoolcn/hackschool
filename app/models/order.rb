@@ -21,7 +21,6 @@ class Order < ApplicationRecord
   include AASM
 
   belongs_to :user
-  has_one :service, dependent: :destroy
 
   aasm do
     state :unpaid, initial: true
