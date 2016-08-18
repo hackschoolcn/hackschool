@@ -13,6 +13,8 @@ class Account::OrdersController < ApplicationController
     @order.user = current_user
     @order.save
 
+    current_user.add_subscript_date!(12)
+
     flash[:notice] = '订单已创建'
 
     redirect_to account_orders_path
@@ -23,6 +25,7 @@ class Account::OrdersController < ApplicationController
     @order.price = 6000
     @order.user = current_user
     @order.save
+    current_user.add_subscript_date!(12)
 
     flash[:notice] = '订单已创建'
 
