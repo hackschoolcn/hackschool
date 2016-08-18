@@ -10,4 +10,8 @@ module CoursesHelper
   def render_course_image(course)
     image_tag course.image.thumb
   end
+
+  def render_course_price(_course)
+    "$ #{@course.price}"
+  end
 end
