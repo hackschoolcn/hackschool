@@ -16,6 +16,7 @@
 class Course < ApplicationRecord
   mount_uploader :image, ImageUploader
 
+
   scope :published, -> { where(is_hidden: false) }
 
   def publish!
