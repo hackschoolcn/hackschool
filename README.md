@@ -6,3 +6,6 @@
 * 随时随地保持公德心，才是好队友
 
 # 开发用帐号
+
+* Admin : admin@gmail.com / 12345678
+* user : user1@gmail.com / 12345678

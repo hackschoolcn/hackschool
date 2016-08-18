@@ -10,6 +10,11 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  aasm_state     :string           default("unpaid")
+#  price          :integer
+#
+# Indexes
+#
+#  index_orders_on_aasm_state  (aasm_state)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
