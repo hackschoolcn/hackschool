@@ -1,0 +1,10 @@
+<%= simple_form_for [:admin, @post] do |f| %>
+<%= f.input :chapter_id, :as => :hidden, :input_html => { :value => @post.chapter_id } %>
+<%= f.input :title %>
+<%= f.input :article %>
+<%= f.submit "Submit" %>
+<% end %>
+<script>
+var simplemde = new SimpleMDE({ element: document.getElementById("post_article") });
+simplemde.value();
+</script>
