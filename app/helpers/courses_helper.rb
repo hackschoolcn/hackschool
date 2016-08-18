@@ -7,8 +7,15 @@ module CoursesHelper
     course.description.to_markdown
   end
 
-  def render_course_image(course)
-    image_tag course.image.thumb
+  def render_course_image(course, size = :thumb)
+    case size
+    when :thumb
+      image_tag(course.image.thumb)
+    when :medium
+      image_tag(course.image.medium)
+    else
+      image_tag(course.image)
+    end
   end
 
   def render_course_price(_course)
