@@ -11,6 +11,10 @@
 #  updated_at     :datetime         not null
 #  aasm_state     :string           default("unpaid")
 #
+# Indexes
+#
+#  index_orders_on_aasm_state  (aasm_state)
+#
 
 class Order < ApplicationRecord
   after_create :generate_token
