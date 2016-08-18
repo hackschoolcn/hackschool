@@ -5,8 +5,10 @@ Rails.application.routes.draw do
     resources :answers
   end
 
-  resources :courses
-  
+  resources :courses do
+    resources :plans, only: [:index]
+  end
+
   namespace :admin do
     resources :chapters
     resources :sections
@@ -24,7 +26,6 @@ Rails.application.routes.draw do
   resources :welcome
 
   namespace :user do
-
     resources :services
 
     resources :orders do
@@ -38,11 +39,8 @@ Rails.application.routes.draw do
         post :pay_with_alipay
         post :cancel_order
       end
-
     end
-
   end
 
   resources :groups
-
 end
