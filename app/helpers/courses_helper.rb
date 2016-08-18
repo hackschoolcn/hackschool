@@ -6,4 +6,8 @@ module CoursesHelper
   def render_course_description(course)
     course.description.to_markdown
   end
+
+  def render_course_image(course)
+    image_tag course.image.thumb
+  end
 end
