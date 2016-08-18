@@ -8,15 +8,25 @@ class Account::OrdersController < ApplicationController
   end
 
   def quarterly_subscription
-    service_info = { price: 2000, title: '季票', description: '三个月套餐' }
+    @order = Order.new
+    @order.price = 2000
+    @order.user = current_user
+    @order.save
 
-    create_order_with_service(service_info)
+    flash[:notice] = '订单已创建'
+
+    redirect_to account_orders_path
   end
 
   def yearly_subscription
-    service_info = { price: 6000, title: '年票', description: '全年套餐' }
+    @order = Order.new
+    @order.price = 6000
+    @order.user = current_user
+    @order.save
 
-    create_order_with_service(service_info)
+    flash[:notice] = '订单已创建'
+
+    redirect_to account_orders_path
   end
 
   def pay_with_wechat
@@ -55,16 +65,5 @@ class Account::OrdersController < ApplicationController
 
   def get_order_params
     @order = Order.find_by_token(params[:id])
-  end
-
-  def create_order_with_service(_service_info = {})
-    @order = Order.new
-    @order.user = current_user
-
-    if @order.save
-      redirect_to account_orders_path, notice: '订单已创建'
-    else
-      redirect_to root_path, alert: '订单创建失败，请刷新再试'
-    end
   end
 end

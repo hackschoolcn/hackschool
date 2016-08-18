@@ -10,6 +10,7 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  aasm_state     :string           default("unpaid")
+#  price          :integer
 #
 # Indexes
 #
@@ -34,21 +35,19 @@ class Order < ApplicationRecord
     event :cancel_order do
       transitions from: :unpaid, to: :order_cancelled
     end
-
   end
 
   def pay(pay_way)
     self.payment_method = pay_way
-    self.make_payment!
+    make_payment!
 
-    self.save
+    save
   end
 
   private
 
   def generate_token
     self.token = SecureRandom.uuid
-    self.save
+    save
   end
-
 end

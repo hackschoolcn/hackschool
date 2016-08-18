@@ -10,6 +10,7 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  aasm_state     :string           default("unpaid")
+#  price          :integer
 #
 # Indexes
 #
