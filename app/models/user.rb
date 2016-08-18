@@ -15,6 +15,13 @@
 #  last_sign_in_ip        :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  is_admin               :boolean          default(FALSE)
+#  member_expire_date     :datetime
+#
+# Indexes
+#
+#  index_users_on_email                 (email) UNIQUE
+#  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 
 class User < ApplicationRecord
@@ -22,4 +29,22 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  def admin?
+    is_admin || email == 'manyi@123.com'
+  end
+
+  has_many :questions
+  has_many :answers
+
+  has_many :orders, dependent: :destroy
+  has_many :services, dependent: :destroy
+  has_many :questions
+  has_many :answers
+
+  def add_subscription_date!(amount)
+    begin_date = member_expire_date || Time.now
+    self.member_expire_date = begin_date + amount.month
+    save
+  end
 end

@@ -16,6 +16,15 @@
               <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
+
+              <% if current_user.admin? %>
+                  <li><%= link_to("Admin_Panel", admin_courses_path) %> </li>
+              <% end %>
+
+              <li> <%= link_to("User Panel", account_orders_path) %> </li>
+              <li> <%= link_to("问题讨论区", questions_path) %> </li>
+
+              <li class="divider"></li>
               <!-- <li><%#= link_to("Admin_Panel", admin_products_path) %> -->
               <li><%= link_to("登出", destroy_user_session_path, method: :delete) %></li>
             </ul>

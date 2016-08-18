@@ -6,12 +6,18 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+    <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
   </head>
 
   <body>
-    <%= render "common/navbar" %>
-    <%= render 'common/flashes' %>
-    <%= yield %>
+
+      <%= render "common/navbar" %>
+      <div class="container">
+      <%= render "common/flashes" %>
+      <%= yield %>
+    </div>
+
     <%= render "common/footer" %>
   </body>
 </html>

@@ -1,0 +1,35 @@
+<div class="col-md-12">
+
+  <h1>讨论区</h1>
+  <br>
+  <div class="group">
+    <%= link_to("提问", new_question_path, class: "btn btn-default pull-right") %>
+  </div>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Creator</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @questions.each do |question| %>
+        <tr>
+          <td>#</td>
+          <td><%= link_to(question.title, question_path(question)) %></td>
+          <td><%= question.description %></td>
+          <td><%= question.user.email %></td>
+          <td>
+            <% if current_user && current_user == question.user %>
+              <%= link_to("Edit", edit_question_path(question), class: "btn btn-sm btn-default") %>
+              <%= link_to("Delete", question_path(question), class: "btn btn-sm btn-default", method: :delete, data: {confirm: "你确认要删除此讨论组吗?"}) %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
