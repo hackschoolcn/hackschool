@@ -17,7 +17,7 @@ class Admin::PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(Post_params)
+    @post = Post.new(post_params)
     if @post.save
       redirect_to admin_chapters_path, notice: "hahaha"
     else
@@ -42,7 +42,7 @@ class Admin::PostsController < ApplicationController
 
   private
 
-  def Post_params
-    params.require(:Post).permit(:Post, :chapter_id, :article)
+  def post_params
+    params.require(:post).permit(:title, :chapter_id, :article)
   end
 end
