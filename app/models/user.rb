@@ -16,7 +16,7 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  is_admin               :boolean          default(FALSE)
-#  member_expire_date     :date             default(Fri, 19 Aug 2016)
+#  member_expire_date     :date             default(Thu, 15 Feb 1990)
 #
 # Indexes
 #

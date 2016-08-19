@@ -1,6 +1,7 @@
 class Admin::ChaptersController < ApplicationController
 
   before_action :authenticate_user!
+  before_action :require_is_admin
   before_action :get_course_params, only: [:index, :new, :edit, :create, :update, :destroy]
 
   def index

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160819062702) do
+ActiveRecord::Schema.define(version: 20160819162036) do
 
   create_table "answers", force: :cascade do |t|
     t.text     "content"
@@ -55,14 +55,14 @@ ActiveRecord::Schema.define(version: 20160819062702) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.float    "amount",         default: 0.0
+    t.float    "price",               default: 0.0
     t.integer  "user_id"
     t.string   "token"
     t.string   "payment_method"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
-    t.string   "aasm_state",     default: "unpaid"
-    t.integer  "price"
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.string   "aasm_state",          default: "unpaid"
+    t.integer  "subscription_months"
     t.index ["aasm_state"], name: "index_orders_on_aasm_state"
   end
 
@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(version: 20160819062702) do
     t.datetime "created_at",                                    null: false
     t.datetime "updated_at",                                    null: false
     t.boolean  "is_admin",               default: false
-    t.date     "member_expire_date",     default: '2016-08-19'
+    t.date     "member_expire_date",     default: '1990-02-15'
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
