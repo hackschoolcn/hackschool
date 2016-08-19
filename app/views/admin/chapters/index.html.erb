@@ -1,36 +1,36 @@
 <div class="row">
-  <div class="col-md-12">
+<div class="col-md-12">
 <div class="pull-right">
   <%= link_to("上传章节", new_admin_course_chapter_path(@course), :class => "btn btn-default") %>
 </div>
-<% @chapters.each do |chapter| %>
-<table class="table table-bordered">
-      <thead>
-        <tr>
-          <h1><%= chapter.chapter %></h1>
-          <div class="pull-right">
-          <%= link_to("Edit", edit_admin_course_chapter_path(@course, chapter), class: "btn btn-xs btn-primary") %>
-          <%= link_to("Delete", admin_course_chapter_path(@course, chapter), method: :delete, class: "btn btn-xs btn-danger", data: { confirm: "Are you sure?"}) %>
-          <%= link_to("Add a post", new_admin_chapter_post_path(chapter), class: "btn btn-xs btn-primary") %>
-        </div>
-        </tr>
-      </thead>
+<h1><%= @course.title %></h1>
 
-      <tbody>
+  <% @chapters.each do |chapter| %>
+  
+    <div class="panel panel-default">
+     <!-- Default panel contents -->
+     <div class="panel-heading">
+     <%= chapter.chapter %>
+      <div class="pull-right">
+        <%= link_to("Edit", edit_admin_course_chapter_path(@course, chapter), class: "btn btn-xs btn-primary") %>
+        <%= link_to("Delete", admin_course_chapter_path(@course, chapter), method: :delete, class: "btn btn-xs btn-danger", data: { confirm: "Are you sure?"}) %>
+        <%= link_to("Add a post", new_admin_chapter_post_path(chapter), class: "btn btn-xs btn-primary") %>
+      </div>
+     </div>
+     <!-- List group -->
+     <ul class="list-group">
+       <% chapter.posts.each do |post| %>
+       <li class="list-group-item">
+        <%= link_to(post.title, admin_chapter_post_path(chapter, post)) %>
+        <%= link_to("Delete", admin_chapter_post_path(chapter, post), method: :delete, class: "btn btn-xs btn-default pull-right", data: { confirm: "Are you sure?"}) %>
+        <%= link_to("Edit", edit_admin_chapter_post_path(chapter, post), class: "btn btn-xs btn-default pull-right") %>
+       </li>
+       <% end %>
+     </ul>
+    </div>
 
-          <% chapter.posts.each do |post| %>
-          <tr>
-          <td>
-            <%= link_to(post.title, admin_chapter_post_path(chapter, post)) %>
-            <%= link_to("Delete", admin_chapter_post_path(chapter, post), method: :delete, class: "btn btn-xs btn-default pull-right", data: { confirm: "Are you sure?"}) %>
-            <%= link_to("Edit", edit_admin_chapter_post_path(chapter, post), class: "btn btn-xs btn-default pull-right") %>
-          </td>
-          <% end %>
+  <% end %>
 
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
 
 </div>
 </div>
