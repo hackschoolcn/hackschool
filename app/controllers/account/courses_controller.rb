@@ -3,7 +3,7 @@ class Account::CoursesController < ApplicationController
   
   def index
 
-    if current_user.orders.last.paid?
+    if current_user.member_expire_date
       @courses = Course.all
       else
         flash[:warning] = "您还没购买任何课程"

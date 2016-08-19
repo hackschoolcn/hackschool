@@ -3,8 +3,12 @@ class Account::ChaptersController < ApplicationController
   
   def index
 
-      @course = Course.find(params[:course_id])
-      @chapters = @course.chapters
+      if current_user.member_expire_date
+        @course = Course.find(params[:course_id])
+        @chapters = @course.chapters
+      else
+        flash[:warning] = "您还没购买任何课程"
+    end
 
   end
 

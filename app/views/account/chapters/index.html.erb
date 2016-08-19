@@ -3,11 +3,11 @@
  <% @chapters.each do |chapter| %>
    <div class="panel panel-default">
      <!-- Default panel contents -->
-         <div class="panel-heading"><%= chapter.title %></div>
+         <div class="panel-heading"><%= chapter.chapter %></div>
          <!-- List group -->
          <ul class="list-group">
            <% chapter.posts.each do |post| %>
-           <li class="list-group-item"><%= link_to(post.title, account_course_chapter_post_path(@course, chapter, post)) %></li>
+           <li class="list-group-item"><%= link_to(post.title, account_chapter_post_path(chapter, post)) %></li>
            <% end %>
          </ul>
    </div>
