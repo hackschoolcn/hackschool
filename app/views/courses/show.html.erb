@@ -8,14 +8,23 @@
     <div class="course-info">
       <h2><%= @course.title%></h2>
 
+<<<<<<< HEAD
       <%= render_course_description(@course) %>
+=======
+      <%= render_markdown_text(@course.description) %>
+>>>>>>> origin/develop
 
       <%= render_course_price(@course) %>
     </div>
 
     <div class="clearfix">
+<<<<<<< HEAD
       <% if @order && @order.paid? %>
         <%= link_to("立即观看", course_chapters_path(@course), class: "btn btn-info pull-right") %>
+=======
+        <% if current_user && current_user.orders && current_user.orders.last.paid? %>
+        <%= link_to("前往学习", account_course_chapters_path(@course), class: "btn btn-primary pull-right") %>
+>>>>>>> origin/develop
       <% else %>
         <%= link_to("立即购买", course_plans_path(@course), class: "btn btn-danger pull-right")%>
       <% end %>

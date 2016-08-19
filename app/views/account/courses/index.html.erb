@@ -1,0 +1,9 @@
+<h1>我的课程</h1>
+
+<% if @courses %>
+  <% @courses.each do |course| %>
+          
+   <%= link_to(course.title, account_course_chapters_path(course)) %>
+
+  <% end %>
+<% end %>

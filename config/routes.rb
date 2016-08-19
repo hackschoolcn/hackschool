@@ -7,14 +7,21 @@ Rails.application.routes.draw do
 
   resources :courses do
     resources :plans, only: [:index]
+<<<<<<< HEAD
     resources :chapters do
       resources :posts
     end
+=======
+>>>>>>> origin/develop
   end
 
   namespace :admin do
     resources :chapters
+<<<<<<< HEAD
     resources :sections
+=======
+    resources :posts
+>>>>>>> origin/develop
     resources :courses do
       member do
         post :hide
@@ -29,18 +36,35 @@ Rails.application.routes.draw do
   resources :welcome
 
   namespace :account do
+<<<<<<< HEAD
+=======
+
+    resources :courses do
+      resources :chapters do
+        resources :posts
+      end
+    end
+
+>>>>>>> origin/develop
     resources :orders do
       collection do
         post :quarterly_subscription
         post :yearly_subscription
       end
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/develop
       member do
         post :pay_with_wechat
         post :pay_with_alipay
         post :cancel_order
       end
     end
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/develop
   end
 
   resources :groups

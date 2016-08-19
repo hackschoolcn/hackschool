@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20160818113902) do
+=======
+ActiveRecord::Schema.define(version: 20160819013259) do
+>>>>>>> origin/develop
 
   create_table "answers", force: :cascade do |t|
     t.text     "content"
@@ -20,11 +24,25 @@ ActiveRecord::Schema.define(version: 20160818113902) do
     t.datetime "updated_at",  null: false
   end
 
+<<<<<<< HEAD
   create_table "chapters", force: :cascade do |t|
     t.string   "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "section_id"
+=======
+  create_table "assignments", force: :cascade do |t|
+    t.string   "description"
+    t.datetime "due_time"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "chapters", force: :cascade do |t|
+    t.string   "chapter"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+>>>>>>> origin/develop
     t.integer  "course_id"
   end
 
@@ -39,6 +57,18 @@ ActiveRecord::Schema.define(version: 20160818113902) do
     t.string   "teacher_name"
   end
 
+<<<<<<< HEAD
+=======
+  create_table "homeworks", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "assignment_id"
+    t.integer  "user_id"
+    t.string   "image"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+>>>>>>> origin/develop
   create_table "orders", force: :cascade do |t|
     t.float    "amount",         default: 0.0
     t.integer  "user_id"
@@ -52,11 +82,19 @@ ActiveRecord::Schema.define(version: 20160818113902) do
   end
 
   create_table "posts", force: :cascade do |t|
+<<<<<<< HEAD
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "chapter_id"
     t.string   "title"
     t.text     "description"
+=======
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "chapter_id"
+    t.text     "article"
+>>>>>>> origin/develop
   end
 
   create_table "questions", force: :cascade do |t|
@@ -68,11 +106,19 @@ ActiveRecord::Schema.define(version: 20160818113902) do
     t.text     "content"
   end
 
+<<<<<<< HEAD
   create_table "sections", force: :cascade do |t|
     t.string   "section"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "chapter_id"
+=======
+  create_table "upload_courses", force: :cascade do |t|
+    t.string   "chapter"
+    t.text     "article"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+>>>>>>> origin/develop
   end
 
   create_table "users", force: :cascade do |t|

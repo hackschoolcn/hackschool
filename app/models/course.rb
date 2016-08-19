@@ -16,6 +16,12 @@
 class Course < ApplicationRecord
   mount_uploader :image, ImageUploader
 
+<<<<<<< HEAD
+=======
+  has_many :chapters
+
+
+>>>>>>> origin/develop
   scope :published, -> { where(is_hidden: false) }
 
   def publish!
@@ -27,7 +33,10 @@ class Course < ApplicationRecord
     self.is_hidden = true
     save
   end
+<<<<<<< HEAD
 
   has_many :chapters
 
+=======
+>>>>>>> origin/develop
 end

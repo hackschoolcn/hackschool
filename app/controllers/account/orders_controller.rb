@@ -8,6 +8,7 @@ class Account::OrdersController < ApplicationController
   end
 
   def quarterly_subscription
+<<<<<<< HEAD
     @order = Order.new
     @order.price = 2000
     @order.user = current_user
@@ -30,6 +31,46 @@ class Account::OrdersController < ApplicationController
     flash[:notice] = '订单已创建'
 
     redirect_to account_orders_path
+=======
+    if current_user.orders.count > 0 && !current_user.orders.last.paid?
+
+      flash[:warning] = '您已下单，还未付款'
+
+      redirect_to account_orders_path
+
+    else
+      @order = Order.new
+      @order.price = 2000
+      @order.user = current_user
+      @order.save
+
+      current_user.add_subscription_date!(12)
+
+      flash[:notice] = '订单已创建'
+
+      redirect_to account_orders_path
+    end
+  end
+
+  def yearly_subscription
+    if current_user.orders.count > 0 && !current_user.orders.last.paid?
+
+      flash[:warning] = '您已下单，还未付款'
+
+      redirect_to account_orders_path
+
+    else
+      @order = Order.new
+      @order.price = 6000
+      @order.user = current_user
+      @order.save
+      current_user.add_subscription_date!(12)
+
+      flash[:notice] = '订单已创建'
+
+      redirect_to account_orders_path
+    end
+>>>>>>> origin/develop
   end
 
   def pay_with_wechat

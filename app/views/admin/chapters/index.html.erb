@@ -11,19 +11,32 @@
           <div class="pull-right">
           <%= link_to("Edit", edit_admin_chapter_path(chapter), class: "btn btn-xs btn-primary") %>
           <%= link_to("Delete", admin_chapter_path(chapter), method: :delete, class: "btn btn-xs btn-danger", data: { confirm: "Are you sure?"}) %>
+<<<<<<< HEAD
           <%= link_to("Add a section",new_admin_section_path(chapter_id: chapter), class: "btn btn-xs btn-primary") %>
+=======
+          <%= link_to("Add a post",new_admin_post_path(chapter_id: chapter), class: "btn btn-xs btn-primary") %>
+>>>>>>> origin/develop
         </div>
         </tr>
       </thead>
 
       <tbody>
 
+<<<<<<< HEAD
           <% chapter.sections.each do |section| %>
           <tr>
           <td>
             <%= link_to(section.section, "#") %>
             <%= link_to("Delete", admin_section_path(section), method: :delete, class: "btn btn-xs btn-default pull-right", data: { confirm: "Are you sure?"}) %>
             <%= link_to("Edit", edit_admin_section_path(section), class: "btn btn-xs btn-default pull-right") %>
+=======
+          <% chapter.posts.each do |post| %>
+          <tr>
+          <td>
+            <%= link_to(post.title, admin_post_path(post)) %>
+            <%= link_to("Delete", admin_post_path(post), method: :delete, class: "btn btn-xs btn-default pull-right", data: { confirm: "Are you sure?"}) %>
+            <%= link_to("Edit", edit_admin_post_path(post), class: "btn btn-xs btn-default pull-right") %>
+>>>>>>> origin/develop
           </td>
           <% end %>
 

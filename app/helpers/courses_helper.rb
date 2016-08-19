@@ -3,9 +3,13 @@ module CoursesHelper
     course.teacher_name
   end
 
+<<<<<<< HEAD
   def render_course_description(course)
     course.description.to_markdown
   end
+=======
+
+>>>>>>> origin/develop
 
   def render_course_image(course, size = :thumb)
     case size

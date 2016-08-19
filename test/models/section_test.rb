@@ -7,6 +7,10 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  chapter_id :integer
+<<<<<<< HEAD
+=======
+#  article    :text
+>>>>>>> origin/develop
 #
 
 require 'test_helper'
