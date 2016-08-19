@@ -8,7 +8,7 @@ class Account::OrdersController < ApplicationController
   end
 
   def quarterly_subscription
-    if current_user.orders.count > 0 && !current_user.orders.last.paid?
+    if current_user.orders.count > 0 && !current_user.orders.last.paid? && !current_user.orders.last.order_cancelled?
 
       flash[:warning] = '您已下单，还未付款'
 
@@ -29,7 +29,7 @@ class Account::OrdersController < ApplicationController
   end
 
   def yearly_subscription
-    if current_user.orders.count > 0 && !current_user.orders.last.paid?
+    if current_user.orders.count > 0 && !current_user.orders.last.paid? && !current_user.orders.last.order_cancelled?
 
       flash[:warning] = '您已下单，还未付款'
 
@@ -40,7 +40,6 @@ class Account::OrdersController < ApplicationController
       @order.price = 6000
       @order.user = current_user
       @order.save
-      current_user.add_subscription_date!(12)
 
       flash[:notice] = '订单已创建'
 
@@ -51,6 +50,7 @@ class Account::OrdersController < ApplicationController
   def pay_with_wechat
     if @order.may_make_payment?
       @order.pay('wechat')
+      current_user.add_subscription_date!(12)
 
       redirect_to :back
     else
@@ -62,6 +62,7 @@ class Account::OrdersController < ApplicationController
   def pay_with_alipay
     if @order.may_make_payment?
       @order.pay('alipay')
+      current_user.add_subscription_date!(12)
 
       redirect_to :back
     else

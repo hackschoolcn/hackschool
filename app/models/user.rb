@@ -43,7 +43,11 @@ class User < ApplicationRecord
   has_many :answers
 
   def add_subscription_date!(amount)
-    begin_date = member_expire_date || Time.now
+    if member_expire_date > Time.now
+      begin_date = member_expire_date
+    else
+      begin_date = Time.now
+    end
     self.member_expire_date = begin_date + amount.month
     save
   end

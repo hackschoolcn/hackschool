@@ -33,9 +33,11 @@ Rails.application.routes.draw do
   namespace :account do
 
     resources :courses do
-      resources :chapters do
-        resources :posts
-      end
+      resources :chapters
+    end
+
+    resources :chapters do
+      resources :posts
     end
 
     resources :orders do
