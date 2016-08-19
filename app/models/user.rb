@@ -30,17 +30,14 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :questions
+  has_many :answers
+  has_many :orders
+
   def admin?
     is_admin || email == 'manyi@123.com'
   end
 
-  has_many :questions
-  has_many :answers
-
-  has_many :orders, dependent: :destroy
-  has_many :services, dependent: :destroy
-  has_many :questions
-  has_many :answers
 
   def add_subscription_date!(amount)
     if member_expire_date > Time.now
