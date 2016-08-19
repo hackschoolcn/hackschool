@@ -6,9 +6,11 @@
 #  chapter    :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  section_id :integer
+#  course_id  :integer
 #
 
 class Chapter < ApplicationRecord
+    belongs_to :course
     has_many :posts, dependent: :destroy
+
 end

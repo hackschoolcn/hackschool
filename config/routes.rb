@@ -26,18 +26,25 @@ Rails.application.routes.draw do
   resources :welcome
 
   namespace :account do
+
+    resources :courses do
+      resources :chapters do
+        resources :posts
+      end
+    end
+
     resources :orders do
       collection do
         post :quarterly_subscription
         post :yearly_subscription
       end
-
       member do
         post :pay_with_wechat
         post :pay_with_alipay
         post :cancel_order
       end
     end
+
   end
 
   resources :groups

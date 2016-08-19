@@ -6,7 +6,7 @@
 #  chapter    :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  section_id :integer
+#  course_id  :integer
 #
 
 require 'test_helper'
