@@ -16,6 +16,8 @@
 class Course < ApplicationRecord
   mount_uploader :image, ImageUploader
 
+  has_many :chapters
+
 
   scope :published, -> { where(is_hidden: false) }
 
