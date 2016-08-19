@@ -1,4 +1,4 @@
-<%= simple_form_for [:admin, @chapter] do |f| %>
-<%= f.input :chapter %>
-<%= f.submit "Submit" %>
+<%= simple_form_for [:admin, @course, @chapter] do |f| %>
+  <%= f.input :chapter %>
+  <%= f.submit "Submit" %>
 <% end %>

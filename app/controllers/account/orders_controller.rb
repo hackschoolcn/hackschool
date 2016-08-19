@@ -20,7 +20,7 @@ class Account::OrdersController < ApplicationController
       @order.user = current_user
       @order.save
 
-      current_user.add_subscription_date!(12)
+      current_user.add_subscription_date!(3)
 
       flash[:notice] = '订单已创建'
 

@@ -1,11 +1,14 @@
 class Admin::PostsController < ApplicationController
+
+  before_action :authenticate_user!
+  before_action :get_chapter_params, only: [:index, :new, :edit, :create, :update, :destroy]
+
   def index
-    @posts = Post.all
+    @posts = @chapter.posts
   end
 
   def new
-    chapter_id = params[:chapter_id]
-    @post = Post.new(chapter_id: chapter_id)
+    @post = Post.new
   end
 
   def edit
@@ -18,17 +21,20 @@ class Admin::PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @post.chapter = @chapter
+    @course = @chapter.course
     if @post.save
-      redirect_to admin_chapters_path, notice: "hahaha"
+      redirect_to admin_course_chapters_path(@course), notice: "创建成功"
     else
       render :new
     end
   end
 
   def update
+    @course = @chapter.course
     @post = Post.find(params[:id])
-    if @post.update(Post_params)
-      redirect_to admin_chapters_path, notice: "hahaha"
+    if @post.update(post_params)
+      redirect_to admin_course_chapters_path(@course), notice: "更新成功"
     else
       render :edit
     end
@@ -36,13 +42,18 @@ class Admin::PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
+    @course = @chapter.course
     @post.destroy
-    redirect_to  admin_chapters_path, alert: "Deleted"
+    redirect_to  admin_course_chapters_path(@course), alert: "Deleted"
   end
 
   private
 
+  def get_chapter_params
+    @chapter = Chapter.find(params[:chapter_id])
+  end
+
   def post_params
-    params.require(:post).permit(:title, :chapter_id, :article)
+    params.require(:post).permit(:title, :article)
   end
 end

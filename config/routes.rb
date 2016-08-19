@@ -10,14 +10,19 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :chapters
-    resources :posts
+
     resources :courses do
+      resources :chapters
       member do
         post :hide
         post :publish
       end
     end
+
+    resources :chapters do
+      resources :posts
+    end
+
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -48,4 +53,5 @@ Rails.application.routes.draw do
   end
 
   resources :groups
+
 end
