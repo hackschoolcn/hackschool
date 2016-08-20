@@ -14,10 +14,10 @@
 #
 
 class Course < ApplicationRecord
+
   mount_uploader :image, ImageUploader
 
   has_many :chapters, dependent: :destroy
-
 
   scope :published, -> { where(is_hidden: false) }
 
@@ -30,4 +30,5 @@ class Course < ApplicationRecord
     self.is_hidden = true
     save
   end
+
 end

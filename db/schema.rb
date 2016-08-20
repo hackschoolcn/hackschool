@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160819162036) do
+ActiveRecord::Schema.define(version: 20160820213003) do
 
   create_table "answers", force: :cascade do |t|
     t.text     "content"
@@ -29,9 +29,10 @@ ActiveRecord::Schema.define(version: 20160819162036) do
 
   create_table "chapters", force: :cascade do |t|
     t.string   "chapter"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.integer  "course_id"
+    t.boolean  "is_hidden",  default: true
   end
 
   create_table "courses", force: :cascade do |t|
@@ -68,10 +69,11 @@ ActiveRecord::Schema.define(version: 20160819162036) do
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.integer  "chapter_id"
     t.text     "article"
+    t.boolean  "is_hidden",  default: true
   end
 
   create_table "questions", force: :cascade do |t|
