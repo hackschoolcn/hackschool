@@ -28,13 +28,13 @@
         data: { confirm:  "Are you sure?" } ) %>
 
         <% if course.is_hidden %>
-        <%= link_to("上架课程", publish_admin_course_path(course), method: :post, class: "btn btn-xs btn-primary") %>
+          <%= link_to("上架课程", publish_admin_course_path(course), method: :post, class: "btn btn-xs btn-primary") %>
         <% else %>
-        <%= link_to("下架课程", hide_admin_course_path(course), method: :post, class: "btn btn-xs btn-warning") %>
+          <%= link_to("下架课程", hide_admin_course_path(course), method: :post, class: "btn btn-xs btn-warning") %>
         <% end %>
       </td>
       <td>
-        <%= link_to("上传课程内容", admin_course_chapters_path(course), class: "btn btn-xs btn-success") %>
+        <%= link_to("编辑课程内容", admin_course_chapters_path(course), class: "btn btn-xs btn-success") %>
       </td>
       <td>
         <%= render_formatted_time(course.created_at) %>

@@ -4,6 +4,11 @@ class Account::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+
+    if @post.is_hidden
+      flash[:warning] = "This Post is archived"
+      redirect_to root_path
+    end
   end
 
 end

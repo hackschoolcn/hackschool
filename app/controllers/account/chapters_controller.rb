@@ -4,7 +4,13 @@ class Account::ChaptersController < ApplicationController
   
   def index
       @course = Course.find(params[:course_id])
-      @chapters = @course.chapters
+
+      if @course.is_hidden
+        flash[:warning] = "This Post is archived"
+        redirect_to root_path
+      end
+      
+      @chapters = @course.chapters.where(is_hidden: false)
   end
 
 end

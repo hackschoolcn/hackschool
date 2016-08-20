@@ -14,8 +14,6 @@
 class Post < ApplicationRecord
   belongs_to :chapter
 
-  scope :published, -> { where(is_hidden: false) }
-
   def publish!
     self.is_hidden = false
     save
