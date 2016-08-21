@@ -42,7 +42,6 @@ Rails.application.routes.draw do
 
   root 'courses#index'
 
-  resources :welcome
 
   namespace :account do
 
@@ -51,7 +50,12 @@ Rails.application.routes.draw do
     end
 
     resources :chapters do
-      resources :posts
+      resources :posts do
+        member do
+          post :prev
+          post :next
+        end
+      end
     end
 
     resources :orders do

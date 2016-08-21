@@ -22,8 +22,9 @@ class Admin::PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.chapter = @chapter
     @course = @chapter.course
+    @post.chapter = @chapter
+    @post.course = @course
     if @post.save
       redirect_to admin_course_chapters_path(@course), notice: "创建成功"
     else

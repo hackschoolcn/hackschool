@@ -9,10 +9,12 @@
 #  chapter_id :integer
 #  article    :text
 #  is_hidden  :boolean          default(TRUE)
+#  course_id  :integer
 #
 
 class Post < ApplicationRecord
   belongs_to :chapter
+  belongs_to :course
 
   def publish!
     self.is_hidden = false
