@@ -16,7 +16,15 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  is_admin               :boolean          default(FALSE)
-#  member_expire_date     :date
+
+#  member_expire_date     :date             default(Thu, 15 Feb 1990)
+#  username               :string
+#  nickname               :string
+#  hobbies                :string
+#  sex                    :string
+#  selfintroduction       :string
+#  address                :string
+#  birthday               :string
 #
 # Indexes
 #
@@ -33,6 +41,7 @@ class User < ApplicationRecord
   has_many :questions
   has_many :answers
   has_many :orders
+  has_one :setting
 
   def admin?
     is_admin || email == 'manyi@123.com'

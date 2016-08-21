@@ -35,6 +35,7 @@ gem 'awesome_rails_console'
 gem 'font-awesome-rails'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'pry'
 
 
 # add by chpwang

@@ -1,0 +1,36 @@
+<div class="col-md-4 col-md-offset-4">
+  <h1>个人中心</h1>
+  <hr>
+  <h4>
+    <table class="table table-bordered">
+      <tr>
+        <th> 用户名 </th>
+        <td><%= @setting.username %></td>
+      </tr>
+      <tr>
+        <th> 昵称 </th>
+        <td><%= @setting.nickname %></td>
+      </tr>
+      <tr>
+        <th> 爱好 </th>
+        <td><%= @setting.hobbies %></td>
+      </tr>
+      <tr>
+        <th> 生日 </th>
+        <td><%= @setting.birthday %></td>
+      </tr>
+      <tr>
+        <th> 性别 </th>
+        <td><%= @setting.sex %></td>
+      </tr>
+      <tr>
+        <th> 自我介绍 </th>
+        <td><%= @setting.selfintroduction %></td>
+      </tr>
+      <tr>
+        <th> 地址 </th>
+        <td><%= @setting.address %></td>
+      </tr>
+    </table>
+    <li> <%= link_to("编辑资料", edit_account_setting_path(current_user), class: "btn btn-info") %></li>
+  </h4>

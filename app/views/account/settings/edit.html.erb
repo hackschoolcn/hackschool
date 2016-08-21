@@ -1,0 +1,14 @@
+<div class="col-md-4 col-md-offset-4">
+  <h2></h2>
+  <hr>
+  <%= simple_form_for [:user, @setting], :url => account_setting_path, :method => :put do |f| %>
+  <%= f.input :username, :label =>"用户名" %>
+  <%= f.input :nickname, :label =>"昵称" %>
+  <%= f.input :hobbies, :label =>"爱好" %>
+  <%= f.input :birthday, :label =>"生日" %>
+  <%= f.input :sex, :label =>"性别" %>
+  <%= f.input :selfintroduction, :label =>"自我介绍" %>
+  <%= f.input :address, :label =>"地址" %>
+  <%= f.submit "提交更新", :disable_with =>"提交更新中...", class: "btn btn-info" %>
+  <% end %>
+</div>

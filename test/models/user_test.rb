@@ -16,7 +16,14 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  is_admin               :boolean          default(FALSE)
-#  member_expire_date     :date
+
+#  member_expire_date     :date             default(Thu, 15 Feb 1990)
+#  username               :string
+#  hobbies                :string
+#  sex                    :string
+#  selfintroduction       :string
+#  address                :string
+#  birthday               :string
 #
 # Indexes
 #
