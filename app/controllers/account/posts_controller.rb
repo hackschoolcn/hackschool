@@ -33,6 +33,9 @@ class Account::PostsController < ApplicationController
       else
         redirect_to account_chapter_post_path(post.chapter, post)
       end
+
+    else
+      redirect_to account_chapter_post_path(@post.chapter, @post)
     end
     
   end
@@ -56,6 +59,9 @@ class Account::PostsController < ApplicationController
       else
         redirect_to account_chapter_post_path(post.chapter, post)
       end
+
+    else
+      redirect_to account_chapter_post_path(@post.chapter, @post)
     end
 
   end
