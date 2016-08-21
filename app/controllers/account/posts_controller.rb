@@ -23,12 +23,12 @@ class Account::PostsController < ApplicationController
 
       index -= 1
       post = course.posts[index]
-      while post.is_hidden && index > 0
+      while (post.chapter.is_hidden || post.is_hidden) && index > 0
         index -= 1
         post = course.posts[index]
       end
 
-      if index < 1 && post.is_hidden          #检查是否找到最后都没找到已发布的
+      if index < 1 && (post.chapter.is_hidden || post.is_hidden)          #检查是否找到最后都没找到已发布的
         redirect_to account_chapter_post_path(@post.chapter, @post)
       else
         redirect_to account_chapter_post_path(post.chapter, post)
@@ -51,7 +51,7 @@ class Account::PostsController < ApplicationController
         post = course.posts[index]
       end
 
-      if index > course.posts.length - 2 && post.is_hidden          #检查是否找到最后都没找到已发布的
+      if index > course.posts.length - 2 && (post.chapter.is_hidden || post.is_hidden)   #检查是否找到最后都没找到已发布的
         redirect_to account_chapter_post_path(@post.chapter, @post)
       else
         redirect_to account_chapter_post_path(post.chapter, post)

@@ -49,6 +49,19 @@ class Admin::PostsController < ApplicationController
     redirect_to  admin_course_chapters_path(@course), alert: "Deleted"
   end
 
+
+  def publish
+    @post = Post.find(params[:id])
+    @post.publish!
+    redirect_to :back
+  end
+
+  def hide
+    @post = Post.find(params[:id])
+    @post.hide!
+    redirect_to :back
+  end
+
   private
 
   def get_chapter_params
