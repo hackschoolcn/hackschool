@@ -24,7 +24,7 @@
   <%= f.label :gender, "Female", :value => "false" %>
   <%= f.radio_button :gender, false %>
   <hr>
-  <%= f.input :password, :label =>"Chang My Password" %>
+  <%= link_to 'Change Password', edit_user_registration_path %>
   <hr>
   <%= f.submit "SAVE SETTINGS", class: "btn btn-info" %>
   <% end %>
