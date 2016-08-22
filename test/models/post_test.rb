@@ -16,4 +16,6 @@ end
 #  updated_at :datetime         not null
 #  chapter_id :integer
 #  article    :text
+#  is_hidden  :boolean          default(TRUE)
+#  course_id  :integer
 #

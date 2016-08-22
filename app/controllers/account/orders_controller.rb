@@ -4,7 +4,7 @@ class Account::OrdersController < ApplicationController
   layout 'user'
 
   def index
-    @orders = current_user.orders.all
+    @orders = current_user.orders.all.recent
   end
 
   def quarterly_subscription
@@ -60,7 +60,7 @@ class Account::OrdersController < ApplicationController
 
     if current_user.orders.count > 0 && current_user.orders.last.unpaid?
 
-      flash[:warning] = '您有已创建的订单还未付款，可以继续付款操作，或取消订单'
+      flash[:warning] = '您有已创建的订单还未付款，可以继续操作付款，或取消订单重新选择'
 
       redirect_to account_orders_path
     else

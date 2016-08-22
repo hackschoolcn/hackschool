@@ -16,7 +16,7 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  is_admin               :boolean          default(FALSE)
-#  member_expire_date     :date             default(Thu, 15 Feb 1990)
+#  member_expire_date     :date
 #
 # Indexes
 #
@@ -40,7 +40,7 @@ class User < ApplicationRecord
 
 
   def add_subscription_date!(amount)
-    if member_expire_date > Time.now
+    if member_expire_date && member_expire_date > Time.now
       begin_date = member_expire_date
     else
       begin_date = Time.now

@@ -14,7 +14,7 @@
     </div>
 
     <div class="clearfix">
-      <% if current_user && current_user.member_expire_date > Time.now %>
+      <% if current_user && current_user.member_expire_date && current_user.member_expire_date > Time.now %>
         <%= link_to("前往学习", account_course_chapters_path(@course), class: "btn btn-primary pull-right") %>
       <% else %>
         <%= link_to("立即购买", course_plans_path(@course), class: "btn btn-danger pull-right")%>
