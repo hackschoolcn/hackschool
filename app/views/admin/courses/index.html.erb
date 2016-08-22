@@ -6,7 +6,7 @@
     <tr>
       <td>#</td>
       <td>课程名</td>
-      <td>叙述</td>
+      <td>教师</td>
       <td>选项</td>
       <td>上传</td>
       <td>创建日期</td>
@@ -20,7 +20,7 @@
         <%= render_course_status(course) %>
         <%= link_to(course.title, course_path(course)) %>
       </td>
-      <td><%= render_markdown_text(course.description) %></td>
+      <td><%= course.teacher_name %></td>
 
       <td>
         <%= link_to("编辑", edit_admin_course_path(course), class: "btn btn-xs btn-primary") %> |
