@@ -5,7 +5,7 @@
     <div class="courseTitleBg">
       <h1 class="courseTitle"><%= @course.title%><h1>
     </div>
-  <h3 class="coursePrice">$ <%= @course.price %></h3>
+  <h4 class="coursePrice">$ <%= @course.price %></h4>
   <% if current_user && current_user.member_expire_date && current_user.member_expire_date > Time.now %>
     <%= link_to("立刻学习", account_course_chapters_path(@course), class:"btn btn-lg btn-danger pull-center")%>
   <% else  %>
