@@ -15,11 +15,11 @@
   <tbody>
   <% @courses.each do |course| %>
     <tr>
-      <td> <%= course.id %>
+      <td><%= course.id %></td>
       <td>
         <%= render_course_status(course) %>
         <%= link_to(course.title, course_path(course)) %>  
-        <%= link_to("查看报名人数", "#", class: "btn btn-xs btn-default") %>
+        <%= link_to("查看报名人数", admin_course_path(course), class: "btn btn-xs btn-default") %>
       </td>
       <td><%= course.teacher_name %></td>
 

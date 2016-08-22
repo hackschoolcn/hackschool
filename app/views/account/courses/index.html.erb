@@ -13,7 +13,7 @@
   <tbody>
   <% @courses.each do |course| %>
     <tr>
-      <td> <%= course.id %>
+      <td><%= course.id %></td>
       <td>
         <%= link_to(course.title, account_course_chapters_path(course)) %>
       </td>

@@ -9,6 +9,7 @@ class Admin::CoursesController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
+    @users = @course.enrolled_users
   end
 
   def new
