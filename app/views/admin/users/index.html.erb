@@ -13,6 +13,7 @@
    <% @users.each do |user| %>
      <tr>
        <td>
+		<%= render_user_status(user) %>
          <%= user.email %></td>
        <td>
          <%= user.created_at %>
@@ -23,10 +24,9 @@
 
 	   <td>
         <% if user.is_admin %>
-		<%= render_user_status(user) %>
+		
         <%= link_to("将该管理员设为用户",  turn_to_user_admin_user_url(user), :method => :post, :class => "btn btn-xs btn-default") %>
         <% else %>
-		<%= render_user_status(user) %>
         <%= link_to("将该用户设为管理员", turn_to_admin_admin_user_url(user), :method => :post, :class => "btn btn-xs btn-default") %>
         <% end %>
        </td>
