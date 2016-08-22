@@ -33,3 +33,52 @@ text-align: center;
   padding-top: 9px;
   font-weight: bold;
 }
+
+.carousel {
+  height: 500px;
+  background-color: #000;
+  margin-bottom: 50px;
+}
+.carousel .item {
+  height: 500px;
+  background-color: #000;
+}
+.carousel img{
+  width:100%;
+}
+
+#summary-container .col-md-4{
+  text-align: center;
+}
+
+.feature {
+  padding: 30px 0;
+}
+
+.feature-heading {
+  font-size: 50px;
+  color: #2a6496;
+  margin-top:120px;
+}
+.feature-heading .text-muted{
+  font-size: 28px;
+  color:#999;
+}
+
+
+
+.courselayout{
+}
+.topAd{text-align:center;padding:40px 0px}
+.courseTitleBg{padding:20px;background:rgba(0,0,0,0.3);}
+.courseTitle{text-align: center;text-shadow:0 1px 1px #000;color:#fff;}
+.coursePrice{}
+.courseContent{height:200px;margin-top:10px}
+.imgicon{width:200px;height:200px;margin-left:20px;background:#EEE}
+.floatLeft{float:left;}
+.floatRight{float:left;}
+.marginLR30{margin:0 30px}
+.marginTB30{margin:30px 0}
+.imgiconDescrption{background:#eee}
+.imgiconDescrption h3{font-weight:bold}
+.courseContent p{display:block}

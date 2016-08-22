@@ -1,4 +1,5 @@
 class CoursesController < ApplicationController
+  layout "course"
   def index
     @courses = Course.published
   end

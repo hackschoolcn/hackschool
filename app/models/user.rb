@@ -16,7 +16,29 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  is_admin               :boolean          default(FALSE)
+#  member_expire_date     :date
+#  username               :string
+#  nickname               :string
+#  hobbies                :string
+#  gender                 :string
+#  selfintroduction       :string
+#  address                :string
+#  birthday               :string
+#
+# Indexes
+#
+#  index_users_on_email                 (email) UNIQUE
+#  index_users_on_reset_password_token  (reset_password_token) UNIQUE
+#
+
 #  member_expire_date     :date             default(Thu, 15 Feb 1990)
+#  username               :string
+#  nickname               :string
+#  hobbies                :string
+#  gender                 :string
+#  selfintroduction       :string
+#  address                :string
+#  birthday               :string
 #
 # Indexes
 #
@@ -33,6 +55,7 @@ class User < ApplicationRecord
   has_many :questions
   has_many :answers
   has_many :orders
+  has_one :setting
 
   def admin?
     is_admin || email == 'manyi@123.com'
@@ -49,7 +72,7 @@ class User < ApplicationRecord
   # end
 
   def add_subscription_date!(amount)
-    if member_expire_date > Time.now
+    if member_expire_date && member_expire_date > Time.now
       begin_date = member_expire_date
     else
       begin_date = Time.now

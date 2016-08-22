@@ -3,7 +3,7 @@ class Account::CoursesController < ApplicationController
   before_action :check_subscription_expiration
 
   def index
-    @courses = Course.all
+    @courses = Course.published
   end
 
 end

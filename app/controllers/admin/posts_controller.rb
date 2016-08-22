@@ -22,8 +22,9 @@ class Admin::PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.chapter = @chapter
     @course = @chapter.course
+    @post.chapter = @chapter
+    @post.course = @course
     if @post.save
       redirect_to admin_course_chapters_path(@course), notice: "创建成功"
     else
@@ -46,6 +47,19 @@ class Admin::PostsController < ApplicationController
     @course = @chapter.course
     @post.destroy
     redirect_to  admin_course_chapters_path(@course), alert: "Deleted"
+  end
+
+
+  def publish
+    @post = Post.find(params[:id])
+    @post.publish!
+    redirect_to :back
+  end
+
+  def hide
+    @post = Post.find(params[:id])
+    @post.hide!
+    redirect_to :back
   end
 
   private

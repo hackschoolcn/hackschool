@@ -1,25 +1,21 @@
-<div class="row">
-  <div class="col-md-6">
-    <%= render_course_image(@course, :medium) %>
+
+<div class="container-fluid clearfix">
+<!--读取图片并赋予背景-->
+  <div class="topAd" style='background:url("<%= @course.image.medium %>")'>
+    <div class="courseTitleBg">
+      <h1 class="courseTitle"><%= @course.title%><h1>
+    </div>
+  <h4 class="coursePrice">$ <%= @course.price %></h4>
+  <% if current_user && current_user.member_expire_date && current_user.member_expire_date > Time.now %>
+    <%= link_to("立刻学习", account_course_chapters_path(@course), class:"btn btn-lg btn-danger pull-center")%>
+  <% else  %>
+    <%= link_to("火速报名", course_plans_path(@course), class:"btn btn-lg btn-danger pull-center")%>
+  <% end %>
   </div>
-
-  <div class="col-md-6">
-
-    <div class="course-info">
-      <h2><%= @course.title%></h2>
+  <div class="col-md-12">
+    <div class="container-fluid center marginTB30">
 
       <%= render_markdown_text(@course.description) %>
-
-      <%= render_course_price(@course) %>
     </div>
-
-    <div class="clearfix">
-      <% if current_user && current_user.member_expire_date > Time.now %>
-        <%= link_to("前往学习", account_course_chapters_path(@course), class: "btn btn-primary pull-right") %>
-      <% else %>
-        <%= link_to("立即购买", course_plans_path(@course), class: "btn btn-danger pull-right")%>
-      <% end %>
-    </div>
-
   </div>
 </div>
