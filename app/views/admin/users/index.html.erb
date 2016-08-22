@@ -1,0 +1,34 @@
+<table class="table">
+ <thead>
+     <tr>
+         <td>用户名</td>
+         <td>注册时间</td>
+         <td>上次登录时间</td> 
+		 <td>管理选项</td>    
+     </tr>
+ </thead>
+ <tbody>
+   <% @users.each do |user| %>
+     <tr>
+       <td>
+         <%= user.email %></td>
+       <td>
+         <%= user.created_at %>
+       </td>
+       <td>
+         <%= user.last_sign_in_at %>
+       </td>
+
+	   <td>
+        <% if user.is_admin %>
+
+        <%= link_to("将该管理员设为用户",  turn_to_user_admin_user_url(user), :method => :post, :class => "btn btn-xs btn-default") %>
+        <% else %>
+        <%= link_to("将该用户设为管理员", turn_to_admin_admin_user_url(user), :method => :post, :class => "btn btn-xs btn-default") %>
+        <% end %>
+       </td>
+
+     </tr>
+   <% end %>
+ </tbody>
+</table>
