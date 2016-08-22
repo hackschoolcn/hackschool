@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'https://gems.ruby-china.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
@@ -35,7 +35,6 @@ gem 'awesome_rails_console'
 gem 'font-awesome-rails'
 gem 'carrierwave'
 gem 'mini_magick'
-gem 'pry'
 gem 'gravatarify'
 
 
@@ -46,7 +45,7 @@ gem 'carrierwave-aws'
 gem 'figaro'
 gem 'aasm'
 gem 'redcarpet'
-gem "font-awesome-rails"
+
 
 
 group :development, :test do
