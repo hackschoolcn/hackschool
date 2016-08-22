@@ -6,4 +6,8 @@ module ApplicationHelper
   def render_markdown_text(text)
     text.to_markdown
   end
+
+  def avatar_url
+    'http://imageshack.com/a/img922/5779/PiahZl.jpg'
+  end
 end
