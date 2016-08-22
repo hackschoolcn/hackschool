@@ -1,4 +1,6 @@
-puts "这个seed会自动建立1个admin账号, 10个user账号, 7个 Chapters，和相应的小节 Posts"
+
+puts "这个seed会自动建立1个admin账号, 10个user账号, 7个 Chapters，和相应的小节 Posts, 10个admin创建的questions，10个user创建的questions，"
+
 
 # Create Admin Account
 User.create([email: "admin@gmail.com", password: "123456", password_confirmation: "123456", is_admin: "true"])
@@ -127,5 +129,18 @@ puts "生成第七章第 1 节"
 Post.create([course_id: "1", chapter_id: "7", title: "zsh 与 ohmyzsh", article: "## zsh 与 ohmyzsh\r\n\r\n#### zsh\r\n\r\n***\r\n\r\nMac 系统预设的 shell 叫做 bash。而 zsh 多了一些比 bash 人性化的功能，能客制化的选项也比较多。\r\n\r\n\r\n\r\n#### 改变 shell 成为 zsh\r\n\r\n***\r\n\r\n- `chsh -s /bin/zsh` 即能改变成 zsh\r\n\r\n  ​\r\n\r\n#### 安装 oh-my-zsh\r\n\r\n***\r\n\r\n`cd ~/`\r\n`git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh`\r\n`cp ~/.zshrc ~/.zshrc.orig`\r\n`cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc`\r\n`atom .zshrc` （修改 .zshrc 档案）\r\n\r\n\r\n\r\n#### 修改 theme\r\n\r\n***\r\n\r\n```\r\n#ZSH_THEME=\"robbyrussell\"\r\nZSH_THEME=\"agnoster\"\r\n```\r\n\r\n\r\n\r\n#### 替换掉 agnoster 的 theme source code\r\n\r\n***\r\n\r\n修改 `~/.oh-my-zsh/themes/agnoster.zsh-theme` 换成以下內容\r\n\r\n[https://gist.github.com/agnoster/3712874/raw/c3107c06c04fb42b0ca27b0a81b15854819969c6/agnoster.zsh-theme](https://gist.github.com/agnoster/3712874/raw/c3107c06c04fb42b0ca27b0a81b15854819969c6/agnoster.zsh-theme)\r\n\r\n\r\n\r\n#### 安装字型\r\n\r\n***\r\n\r\n由于 agnoster 需要特殊字型。\r\n\r\n所以必须安装 patched 的三个字体：[https://gist.github.com/1595572](https://gist.github.com/1595572)。(下载后双击安装这三个字体。)", is_hidden: false])
 puts "生成第七章第 2 节"
 
+
 Post.create([course_id: "1", chapter_id: "7", title: "替换掉 iTerm 布景", article: "## 替换掉 iTerm 布景\r\n\r\n#### 安装 SOLARIZED 布景\r\n\r\n***\r\n\r\n[SOLARIZED](http://ethanschoonover.com/solarized) 布景是特殊调制的一个背景。按此 [下载](http://ethanschoonover.com/solarized/files/solarized.zip) 最新版本。\r\n\r\n解压后里面有很多布景。\r\n\r\n\r\n\r\n#### 替换掉 iTerm 布景\r\n\r\n***\r\n\r\n- `Preference` -> `Profiles` -> `Colors` -> `Load Presets` -> `Import`，载入 `iterm2-colors-solarized` 目录下的两个 itermcolors\r\n- `Preference` -> `Profiles` -> `Colors` -> `Load Presets`，载入 `Solarized Dark`\r\n\r\n\r\n\r\n#### 替换掉 iTerm 字型\r\n\r\n***\r\n\r\n- `Preference` -> `Profiles` -> `Text` 换成 Menlo 14 字体", is_hidden: false])
 puts "生成第七章第 3 节"
+
+# Create Questions
+
+create_questions = for i in 1..10 do
+	  Question.create!([title: "Admin Question no.#{i}", description: "这是用seed建立的第 #{i} 个问题", user_id: "1"])
+end
+	  puts "10 Questions created by admin."
+
+create_questions = for i in 1..10 do
+	Question.create!([title: "User Question no.#{i}", description: "这是用seed建立的第 #{i} 个问题", user_id: "2"])
+end
+	puts "10 Questions created by user."
