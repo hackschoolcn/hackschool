@@ -4,6 +4,7 @@ class Account::CoursesController < ApplicationController
   layout "user"
 
   def index
+
     @courses = current_user.enrolled_courses
   end
 
@@ -31,5 +32,6 @@ class Account::CoursesController < ApplicationController
     end
 
     redirect_to account_courses_path
+
   end
 end

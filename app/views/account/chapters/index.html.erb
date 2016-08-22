@@ -1,11 +1,12 @@
 <h3><%= @course.title %></h3>
- 
+
 <% @chapters.each do |chapter| %>
  <div class="panel panel-default">
    <!-- Default panel contents -->
        <div class="panel-heading"><%= chapter.chapter %></div>
        <!-- List group -->
        <ul class="list-group">
+
         <% chapter.posts.where(is_hidden: false).each do |post| %>
           <li class="list-group-item">
             <% if post.tasks.count > 0 %>
@@ -14,6 +15,7 @@
             <%= link_to(post.title, account_chapter_post_path(chapter, post)) %>
           </li>
         <% end %>
+
        </ul>
  </div>
 <% end %>

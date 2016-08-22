@@ -3,9 +3,6 @@ Rails.application.routes.draw do
 
   resources :questions do
     resources :answers
-    # collection do
-    #   get :search
-    # end
   end
 
   namespace :search do
@@ -35,6 +32,7 @@ Rails.application.routes.draw do
     end
 
     resources :chapters do
+
       resources :posts do
         member do
           post :hide
@@ -45,6 +43,7 @@ Rails.application.routes.draw do
 
     resources :posts do
       resources :tasks
+
     end
 
     resources :users do

@@ -6,7 +6,7 @@
 <h2><%= @course.title %></h2>
 
   <% @chapters.each do |chapter| %>
-  
+
     <div class="panel panel-default">
      <!-- Default panel contents -->
      <div class="panel-heading">
@@ -37,7 +37,9 @@
         <% else %>
           <%= link_to("隐藏", hide_admin_chapter_post_path(chapter, post), method: :post, class: "btn btn-xs btn-default pull-right") %>
         <% end %>
+
         <%= link_to("添加作业", new_admin_post_task_path(post), class: "btn btn-xs btn-default pull-right") %>
+
        </li>
        <% end %>
      </ul>
