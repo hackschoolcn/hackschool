@@ -2,6 +2,7 @@ class QuestionsController < ApplicationController
   before_action :authenticate_user!, only: %i(new create update edit destroy)
   before_action :find_question_and_check_permission, only: %i(edit update destroy)
 
+
   def index
     @questions = Question.all
   end
@@ -41,6 +42,7 @@ class QuestionsController < ApplicationController
     @question.destroy
     redirect_to questions_path, alert: "讨论组已删除"
   end
+
 
   private
 

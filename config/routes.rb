@@ -3,6 +3,17 @@ Rails.application.routes.draw do
 
   resources :questions do
     resources :answers
+    # collection do
+    #   get :search
+    # end
+  end
+
+  namespace :search do
+    resources :questions do
+      collection do
+        get :search
+      end
+    end
   end
 
   resources :courses
