@@ -23,6 +23,8 @@ class Order < ApplicationRecord
 
   belongs_to :user
 
+  scope :recent, -> { order("created_at DESC") }
+
   aasm do
     state :unpaid, initial: true
     state :paid

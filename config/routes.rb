@@ -12,7 +12,14 @@ Rails.application.routes.draw do
   namespace :admin do
 
     resources :courses do
-      resources :chapters
+
+      resources :chapters do
+        member do
+          post :hide
+          post :publish
+        end
+      end
+
       member do
         post :hide
         post :publish
@@ -20,7 +27,14 @@ Rails.application.routes.draw do
     end
 
     resources :chapters do
-      resources :posts
+
+      resources :posts do
+        member do
+          post :hide
+          post :publish
+        end
+      end
+      
     end
 
   end
@@ -28,7 +42,6 @@ Rails.application.routes.draw do
 
   root 'courses#index'
 
-  resources :welcome
 
   namespace :account do
 
@@ -37,7 +50,12 @@ Rails.application.routes.draw do
     end
 
     resources :chapters do
-      resources :posts
+      resources :posts do
+        member do
+          post :prev
+          post :next
+        end
+      end
     end
 
     resources :orders do

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160819162036) do
+ActiveRecord::Schema.define(version: 20160821201720) do
 
   create_table "answers", force: :cascade do |t|
     t.text     "content"
@@ -29,9 +29,10 @@ ActiveRecord::Schema.define(version: 20160819162036) do
 
   create_table "chapters", force: :cascade do |t|
     t.string   "chapter"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.integer  "course_id"
+    t.boolean  "is_hidden",  default: true
   end
 
   create_table "courses", force: :cascade do |t|
@@ -68,10 +69,12 @@ ActiveRecord::Schema.define(version: 20160819162036) do
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.integer  "chapter_id"
     t.text     "article"
+    t.boolean  "is_hidden",  default: true
+    t.integer  "course_id"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -84,20 +87,20 @@ ActiveRecord::Schema.define(version: 20160819162036) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "",           null: false
-    t.string   "encrypted_password",     default: "",           null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,            null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                                    null: false
-    t.datetime "updated_at",                                    null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.boolean  "is_admin",               default: false
-    t.date     "member_expire_date",     default: '1990-02-15'
+    t.date     "member_expire_date"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
