@@ -61,6 +61,15 @@ class User < ApplicationRecord
     is_admin || email == 'manyi@123.com'
   end
 
+  # def turn_to_admin!
+  #   self.is_admin = true
+  #   self.save
+  # end
+
+  # def turn_to_user!
+  #   self.is_admin = false
+  #   self.save  
+  # end
 
   def add_subscription_date!(amount)
     if member_expire_date && member_expire_date > Time.now
