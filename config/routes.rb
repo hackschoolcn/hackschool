@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-
     resources :courses do
 
       resources :chapters do
@@ -37,6 +36,12 @@ Rails.application.routes.draw do
       
     end
 
+    resources :users do
+      member do
+        post :turn_to_user
+        post :turn_to_admin
+      end
+    end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
