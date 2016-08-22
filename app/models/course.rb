@@ -11,7 +11,6 @@
 #  updated_at   :datetime         not null
 #  image        :string
 #  teacher_name :string
-#  img1         :string
 #
 
 class Course < ApplicationRecord
