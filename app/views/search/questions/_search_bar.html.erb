@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-sm-9 col-lg-8 col-lg-offset-2">
+    <%= form_tag search_search_questions_path, method: :get, class: 'questions-search-form'  do %>
+      <div class="input-group input-group-lg">
+        <input type="text" class="form-control" name="query_string" value="<%= params[:query_string] %>" placeholder="搜索问题...">
+        <span class="input-group-btn">
+          <button type="submit" class="btn btn-secondary">
+            <span class="glyphicon glyphicon-search"></span>
+          </button>
+        </span>
+      </div>
+    <% end %>
+  </div>
+</div>
