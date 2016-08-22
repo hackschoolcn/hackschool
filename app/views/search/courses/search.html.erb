@@ -1,0 +1,17 @@
+<div class="col-md-8 col-lg-offset-2">
+  <%= render "search/courses/search_bar" %>
+
+  <br>
+
+
+   <div class="item_div">
+     <table class="table table-borderd">
+       <%= render :partial => "search/courses/item", :collection => @courses, :as => :course %>
+     </table>
+
+     <div class="text-center">
+      <%= will_paginate @courses %>
+     </div>
+   </div>
+
+</div>
