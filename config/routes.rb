@@ -31,7 +31,8 @@ Rails.application.routes.draw do
   resources :welcome
 
   namespace :account do
-
+    resources :settings
+    
     resources :courses do
       resources :chapters
     end
