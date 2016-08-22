@@ -46,6 +46,7 @@ gem 'carrierwave-aws'
 gem 'figaro'
 gem 'aasm'
 gem 'redcarpet'
+gem "font-awesome-rails"
 
 
 group :development, :test do
