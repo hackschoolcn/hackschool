@@ -1,7 +1,8 @@
 <div class="col-md-4 col-md-offset-4">
-  <h1>个人中心</h1>
+  <h1>个人中心
+    <%= gravatar_tag current_user.email, :size => 80, :default => "http://imageshack.com/a/img922/5779/PiahZl.jpg" %>
+    </h1>
   <hr>
-  <h4>
     <table class="table table-bordered">
       <tr>
         <th> 用户名 </th>
@@ -34,3 +35,4 @@
     </table>
     <li> <%= link_to("编辑资料", edit_account_setting_path(current_user), class: "btn btn-info") %></li>
   </h4>
+</div>

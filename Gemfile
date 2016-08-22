@@ -36,7 +36,7 @@ gem 'font-awesome-rails'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'pry'
-gem 'gravatar_image_tag'
+gem 'gravatarify'
 
 
 # add by chpwang
