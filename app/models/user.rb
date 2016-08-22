@@ -52,10 +52,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_one :setting
   has_many :questions
   has_many :answers
   has_many :orders
-  has_one :setting
+  has_many :enrollments
+  has_many :enrolled_courses, through: :enrollments, source: :course
+
 
   def admin?
     is_admin || email == 'manyi@123.com'
