@@ -1,6 +1,11 @@
 class Admin::ChaptersController < ApplicationController
+
+  before_action :authenticate_user!
+  before_action :require_is_admin
+  before_action :get_course_params, only: [:index, :new, :edit, :create, :update, :destroy]
+
   def index
-    @chapters = Chapter.all
+    @chapters = @course.chapters
   end
 
   def new
@@ -17,8 +22,9 @@ class Admin::ChaptersController < ApplicationController
 
   def create
     @chapter = Chapter.new(chapter_params)
-    if @chapter.save
-      redirect_to admin_chapters_path, notice: "hahaha"
+    @chapter.course = @course
+    if @chapter.save!
+      redirect_to admin_course_chapters_path(@course), notice: "章节创建成功"
     else
       render :new
     end
@@ -27,7 +33,7 @@ class Admin::ChaptersController < ApplicationController
   def update
     @chapter = Chapter.find(params[:id])
     if @chapter.update(chapter_params)
-      redirect_to admin_chapters_path, notice: "升级成功"
+      redirect_to admin_course_chapters_path(@course), notice: "更新成功"
     else
       render :edit
     end
@@ -36,12 +42,30 @@ class Admin::ChaptersController < ApplicationController
   def destroy
     @chapter = Chapter.find(params[:id])
     @chapter.destroy
-    redirect_to  admin_chapters_path, alert: "Deleted"
+    redirect_to  admin_course_chapters_path(@course), alert: "Deleted"
   end
 
+  def publish
+    @chapter = Chapter.find(params[:id])
+    @chapter.publish!
+    redirect_to :back
+  end
+
+  def hide
+    @chapter = Chapter.find(params[:id])
+    @chapter.hide!
+    redirect_to :back
+  end
+
+
   private
+
+  def get_course_params
+    @course = Course.find(params[:course_id])
+  end
 
   def chapter_params
     params.require(:chapter).permit(:chapter)
   end
+
 end

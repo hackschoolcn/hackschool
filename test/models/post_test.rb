@@ -5,3 +5,17 @@ class PostTest < ActiveSupport::TestCase
   #   assert true
   # end
 end
+
+# == Schema Information
+#
+# Table name: posts
+#
+#  id         :integer          not null, primary key
+#  title      :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  chapter_id :integer
+#  article    :text
+#  is_hidden  :boolean          default(TRUE)
+#  course_id  :integer
+#

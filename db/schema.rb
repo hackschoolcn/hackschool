@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160818042437) do
+ActiveRecord::Schema.define(version: 20160821201720) do
 
   create_table "answers", force: :cascade do |t|
     t.text     "content"
@@ -20,11 +20,19 @@ ActiveRecord::Schema.define(version: 20160818042437) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "assignments", force: :cascade do |t|
+    t.string   "description"
+    t.datetime "due_time"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "chapters", force: :cascade do |t|
     t.string   "chapter"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "section_id"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "course_id"
+    t.boolean  "is_hidden",  default: true
   end
 
   create_table "courses", force: :cascade do |t|
@@ -38,16 +46,35 @@ ActiveRecord::Schema.define(version: 20160818042437) do
     t.string   "teacher_name"
   end
 
+  create_table "homeworks", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "assignment_id"
+    t.integer  "user_id"
+    t.string   "image"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
   create_table "orders", force: :cascade do |t|
-    t.float    "amount",         default: 0.0
+    t.float    "price",               default: 0.0
     t.integer  "user_id"
     t.string   "token"
     t.string   "payment_method"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
-    t.string   "aasm_state",     default: "unpaid"
-    t.integer  "price"
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.string   "aasm_state",          default: "unpaid"
+    t.integer  "subscription_months"
     t.index ["aasm_state"], name: "index_orders_on_aasm_state"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "chapter_id"
+    t.text     "article"
+    t.boolean  "is_hidden",  default: true
+    t.integer  "course_id"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -57,13 +84,6 @@ ActiveRecord::Schema.define(version: 20160818042437) do
     t.datetime "updated_at",  null: false
     t.integer  "user_id"
     t.text     "content"
-  end
-
-  create_table "sections", force: :cascade do |t|
-    t.string   "section"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "chapter_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -80,7 +100,7 @@ ActiveRecord::Schema.define(version: 20160818042437) do
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
     t.boolean  "is_admin",               default: false
-    t.datetime "member_expire_date"
+    t.date     "member_expire_date"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

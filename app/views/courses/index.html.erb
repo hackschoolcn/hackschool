@@ -1,20 +1,38 @@
-<% @courses.each do |course| %>
+<div class="center jumbotron">
+  <h1>Welcome to the Hack School</h1>
 
-<%= link_to course_path(course) do %>
+  <h2>
+    This is the Awesome online coding school
+    <br>Based on<a href="http://www.growthschool.com/"> Rails101</a>
+  </h2>
+  <% if !current_user %>
+  <%= link_to("Sign up now!", new_user_registration_path, class:"btn btn-lg btn-primary") %>
+  <% else %>
+  <% end %>
+</div>
+
+<br>
+<%= render :partial => "search/courses/search_bar" %>
+<br>
+
+
+<% @courses.each do |course| %>
 <div class="col-xs-12 col-sm-6 col-md-4">
+<%= link_to course_path(course) do %>
     <div style="width:360px ; height:390px; overflow:hidden; " class="img-thumbnail">
         <div>
             <%= render_course_image(course) %>
             <br/>
             <h1 style="color:black"><%= course.title %></h1>
             <div style="margin-bottom:0px; color:black">
-                <%= render_course_teacher_name(course) %>
+                <%= render_markdown_text(course.description) %>
             </div>
+            <% end %>
         </div>
     </div>
-    <% end %>
-    <div class="text-left" style="padding: 5px"></div>
 </div>
-
 <% end %>
+
+
+
 <!-- border:1px solid -->

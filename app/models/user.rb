@@ -16,7 +16,7 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  is_admin               :boolean          default(FALSE)
-#  member_expire_date     :datetime
+#  member_expire_date     :date
 #
 # Indexes
 #
@@ -30,20 +30,21 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :questions
+  has_many :answers
+  has_many :orders
+
   def admin?
     is_admin || email == 'manyi@123.com'
   end
 
-  has_many :questions
-  has_many :answers
-
-  has_many :orders, dependent: :destroy
-  has_many :services, dependent: :destroy
-  has_many :questions
-  has_many :answers
 
   def add_subscription_date!(amount)
-    begin_date = member_expire_date || Time.now
+    if member_expire_date && member_expire_date > Time.now
+      begin_date = member_expire_date
+    else
+      begin_date = Time.now
+    end
     self.member_expire_date = begin_date + amount.month
     save
   end

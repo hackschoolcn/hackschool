@@ -1,0 +1,3 @@
+module Search::QuestionsHelper
+
+end
