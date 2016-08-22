@@ -1,21 +1,72 @@
-<div class="col-md-4 col-md-offset-4">
-  <h1> Settings
-    <%= gravatar_tag current_user.email, :size => 80, :default => avatar_url %>
-  </h1>
-  <hr>
-  Username: <%= @setting.username %>
-  <hr>
-  Email   : <%= @setting.email %>
-  <hr>
-  Hobbies : <%= @setting.hobbies %>
-  <hr>
-  Birthday: <%= @setting.birthday %>
-  <hr>
-  About Me: <%= @setting.selfintroduction %>
-  <hr>
-  Location: <%= @setting.address %>
-  <hr>
-  Gender  : <%= gender_type %>
-  <hr>
-  <%= link_to("Edit profile", edit_account_setting_path(current_user), class: "btn btn-info") %>
-</div>
+<div class="container">
+      <div class="row">
+      <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
+<p class=" text-info"><%= Time.now.strftime("%Y-%m-%d %I:%M:%S") %></p>
+      </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+
+
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title">Settings</h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-3 col-lg-3 " align="center"> <%= gravatar_tag current_user.email, :size => 80, :default => avatar_url %> </div>
+
+                <!--<div class="col-xs-10 col-sm-10 hidden-md hidden-lg"> <br>
+                  <dl>
+                    <dt>DEPARTMENT:</dt>
+                    <dd>Administrator</dd>
+                    <dt>HIRE DATE</dt>
+                    <dd>11/12/2013</dd>
+                    <dt>DATE OF BIRTH</dt>
+                       <dd>11/12/2013</dd>
+                    <dt>GENDER</dt>
+                    <dd>Male</dd>
+                  </dl>
+                </div>-->
+                <div class=" col-md-9 col-lg-9 ">
+                  <table class="table table-user-information">
+                    <tbody>
+                      <tr>
+                        <td>Username</td>
+                        <td><%= @setting.username %></td>
+                      </tr>
+                      <tr>
+                        <td>Email</td>
+                        <td><%= @setting.email%></td>
+                      </tr>
+                      <tr>
+                        <td>Hobbies</td>
+                        <td><%= @setting.hobbies %></td>
+                      </tr>
+                      <tr>
+                        <td>Birthday</td>
+                        <td><%= @setting.birthday %></td>
+                      </tr>
+                      <tr>
+                        <td>About Me</td>
+                        <td><%= @setting.selfintroduction %></td>
+                      </tr>
+                      <tr>
+                        <td>Location</td>
+                        <td><%= @setting.address %></td>
+                      </tr>
+                         <tr>
+                             <tr>
+                        <td>Gender</td>
+                        <td><%= gender_type %></td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+
+                  <%= link_to("Edit profile", edit_account_setting_path(current_user), class: "btn btn-info") %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
