@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160822022103) do
+ActiveRecord::Schema.define(version: 20160822062648) do
 
   create_table "answers", force: :cascade do |t|
     t.text     "content"
@@ -44,7 +44,6 @@ ActiveRecord::Schema.define(version: 20160822022103) do
     t.datetime "updated_at",                  null: false
     t.string   "image"
     t.string   "teacher_name"
-    t.string   "img1"
   end
 
   create_table "homeworks", force: :cascade do |t|
@@ -87,11 +86,16 @@ ActiveRecord::Schema.define(version: 20160822022103) do
     t.text     "content"
   end
 
-  create_table "upload_courses", force: :cascade do |t|
-    t.string   "chapter"
-    t.text     "article"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "settings", force: :cascade do |t|
+    t.string   "username"
+    t.string   "nickname"
+    t.string   "hobbies"
+    t.string   "birthday"
+    t.string   "sex"
+    t.string   "selfintroduction"
+    t.string   "address"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -109,6 +113,13 @@ ActiveRecord::Schema.define(version: 20160822022103) do
     t.datetime "updated_at",                             null: false
     t.boolean  "is_admin",               default: false
     t.date     "member_expire_date"
+    t.string   "username"
+    t.string   "nickname"
+    t.string   "hobbies"
+    t.string   "gender"
+    t.string   "selfintroduction"
+    t.string   "address"
+    t.string   "birthday"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

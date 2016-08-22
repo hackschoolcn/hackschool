@@ -17,6 +17,27 @@
 #  updated_at             :datetime         not null
 #  is_admin               :boolean          default(FALSE)
 #  member_expire_date     :date
+#  username               :string
+#  nickname               :string
+#  hobbies                :string
+#  gender                 :string
+#  selfintroduction       :string
+#  address                :string
+#  birthday               :string
+#
+# Indexes
+#
+#  index_users_on_email                 (email) UNIQUE
+#  index_users_on_reset_password_token  (reset_password_token) UNIQUE
+#
+
+#  member_expire_date     :date             default(Thu, 15 Feb 1990)
+#  username               :string
+#  hobbies                :string
+#  gender                 :string
+#  selfintroduction       :string
+#  address                :string
+#  birthday               :string
 #
 # Indexes
 #
