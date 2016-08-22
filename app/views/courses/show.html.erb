@@ -7,7 +7,7 @@
     </div>
   <h4 class="coursePrice">$ <%= @course.price %></h4>
   <% if current_user && current_user.member_expire_date && current_user.member_expire_date > Time.now && current_user.enrolled_courses.include?(@course) %>
-    <%= link_to("立刻学习", account_course_chapters_path(@course), class:"btn btn-lg btn-danger pull-center")%>
+    <%= link_to("立刻学习", account_course_chapters_path(@course), class:"btn btn-lg btn-success pull-center")%>
   <% else  %>
     <%= link_to("火速报名", enroll_course_account_course_path(@course), method: :post, class:"btn btn-lg btn-danger pull-center")%>
   <% end %>
