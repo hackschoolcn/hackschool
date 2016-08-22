@@ -8,13 +8,13 @@
      </tr>
  </thead>
 
-
  <tbody>
    <% @users.each do |user| %>
      <tr>
        <td>
-		<%= render_user_status(user) %>
-         <%= user.email %></td>
+		 <%= render_user_status(user) %>
+         <%= user.email %>
+	   </td>
        <td>
          <%= user.created_at %>
        </td>
@@ -22,15 +22,15 @@
          <%= user.last_sign_in_at %>
        </td>
 
-	   <td>
+	   <td>   
         <% if user.is_admin %>
-		
-        <%= link_to("将该管理员设为用户",  turn_to_user_admin_user_url(user), :method => :post, :class => "btn btn-xs btn-default") %>
+	    	<% if user != current_user %>	
+        		<%= link_to("将该管理员设为用户",  turn_to_user_admin_user_url(user), :method => :post, :class => "btn btn-xs btn-default") %>
+			<% end %>
         <% else %>
-        <%= link_to("将该用户设为管理员", turn_to_admin_admin_user_url(user), :method => :post, :class => "btn btn-xs btn-default") %>
-        <% end %>
+        	<%= link_to("将该用户设为管理员", turn_to_admin_admin_user_url(user), :method => :post, :class => "btn btn-xs btn-default") %>
+        <% end %>		
        </td>
-
 
      </tr>
    <% end %>
