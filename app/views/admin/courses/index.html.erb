@@ -18,7 +18,8 @@
       <td> <%= course.id %>
       <td>
         <%= render_course_status(course) %>
-        <%= link_to(course.title, course_path(course)) %>
+        <%= link_to(course.title, course_path(course)) %>  
+        <%= link_to("查看报名人数", "#", class: "btn btn-xs btn-default") %>
       </td>
       <td><%= course.teacher_name %></td>
 

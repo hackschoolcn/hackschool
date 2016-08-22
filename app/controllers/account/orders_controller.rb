@@ -8,11 +8,11 @@ class Account::OrdersController < ApplicationController
   end
 
   def quarterly_subscription
-    create_subscription_order({price: 2000, months: 3})
+    create_order({price: 2000, months: 3})
   end
 
   def yearly_subscription
-    create_subscription_order({price: 6000, months: 12})
+    create_order({price: 6000, months: 12})
   end
 
   def pay_with_wechat
@@ -56,7 +56,7 @@ class Account::OrdersController < ApplicationController
   end
 
 
-  def create_subscription_order(options={})
+  def create_order(options={})
 
     if current_user.orders.count > 0 && current_user.orders.last.unpaid?
 

@@ -74,6 +74,18 @@ class User < ApplicationRecord
   #   self.save  
   # end
 
+  def enroll_course!(course)
+    enrolled_courses << course
+  end
+
+  def drop_course!(course)
+    enrolled_courses.delete(course)
+  end
+
+  def is_member_of?(course)
+    enrolled_courses.include?(course)
+  end
+
   def add_subscription_date!(amount)
     if member_expire_date && member_expire_date > Time.now
       begin_date = member_expire_date

@@ -9,7 +9,7 @@
   <% if current_user && current_user.member_expire_date && current_user.member_expire_date > Time.now %>
     <%= link_to("立刻学习", account_course_chapters_path(@course), class:"btn btn-lg btn-danger pull-center")%>
   <% else  %>
-    <%= link_to("火速报名", course_plans_path(@course), class:"btn btn-lg btn-danger pull-center")%>
+    <%= link_to("火速报名", enroll_course_account_course_path(@course), method: :post, class:"btn btn-lg btn-danger pull-center")%>
   <% end %>
   </div>
   <div class="col-md-12">

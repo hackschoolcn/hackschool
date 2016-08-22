@@ -5,9 +5,8 @@ Rails.application.routes.draw do
     resources :answers
   end
 
-  resources :courses do
-    resources :plans, only: [:index]
-  end
+  resources :courses
+  resources :plans, only: [:index]
 
   namespace :admin do
     resources :courses do
@@ -53,6 +52,10 @@ Rails.application.routes.draw do
     
     resources :courses do
       resources :chapters
+      member do
+        post :enroll_course
+        post :drop_course
+      end
     end
 
     resources :chapters do
