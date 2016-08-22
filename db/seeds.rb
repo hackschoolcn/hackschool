@@ -1,4 +1,4 @@
-puts "这个seed会自动建立1个admin账号, 1个user账号, 7个 Chapters，和相应的小节 Posts"
+puts "这个seed会自动建立1个admin账号, 1个user账号, 7个 Chapters，和相应的小节 Posts, 10个admin创建的questions，10个user创建的questions，"
 
 create_account = User.create([email: 'admin@gmail.com', password: '123456', password_confirmation: '123456', is_admin: 'true'])
 puts "Admin account created."
@@ -111,6 +111,12 @@ create_post = Post.create([course_id: "1", chapter_id: "7", title: "zsh 与 ohmy
 create_post = Post.create([course_id: "1", chapter_id: "7", title: "替换掉 iTerm 布景", article: "## 替换掉 iTerm 布景\r\n\r\n#### 安装 SOLARIZED 布景\r\n\r\n***\r\n\r\n[SOLARIZED](http://ethanschoonover.com/solarized) 布景是特殊调制的一个背景。按此 [下载](http://ethanschoonover.com/solarized/files/solarized.zip) 最新版本。\r\n\r\n解压后里面有很多布景。\r\n\r\n\r\n\r\n#### 替换掉 iTerm 布景\r\n\r\n***\r\n\r\n- `Preference` -> `Profiles` -> `Colors` -> `Load Presets` -> `Import`，载入 `iterm2-colors-solarized` 目录下的两个 itermcolors\r\n- `Preference` -> `Profiles` -> `Colors` -> `Load Presets`，载入 `Solarized Dark`\r\n\r\n\r\n\r\n#### 替换掉 iTerm 字型\r\n\r\n***\r\n\r\n- `Preference` -> `Profiles` -> `Text` 换成 Menlo 14 字体", is_hidden: false])
   puts "生成第七章第 3 节"
 
+create_questions = for i in 1..10 do
+	  Question.create!([title: "Admin Question no.#{i}", description: "这是用seed建立的第 #{i} 个问题", user_id: "1"])
+end
+	  puts "10 Questions created by admin."
 
-
-
+create_questions = for i in 1..10 do
+	Question.create!([title: "User Question no.#{i}", description: "这是用seed建立的第 #{i} 个问题", user_id: "2"])
+end
+	puts "10 Questions created by user."
