@@ -20,7 +20,7 @@
 #  member_expire_date     :date             default(Thu, 15 Feb 1990)
 #  username               :string
 #  hobbies                :string
-#  sex                    :string
+#  gender                 :string
 #  selfintroduction       :string
 #  address                :string
 #  birthday               :string

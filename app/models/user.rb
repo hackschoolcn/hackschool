@@ -21,7 +21,7 @@
 #  username               :string
 #  nickname               :string
 #  hobbies                :string
-#  sex                    :string
+#  gender                 :string
 #  selfintroduction       :string
 #  address                :string
 #  birthday               :string

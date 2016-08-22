@@ -14,6 +14,7 @@
 ActiveRecord::Schema.define(version: 20160821015308) do
 
 
+
   create_table "answers", force: :cascade do |t|
     t.text     "content"
     t.integer  "question_id"
@@ -122,7 +123,7 @@ ActiveRecord::Schema.define(version: 20160821015308) do
     t.date     "member_expire_date",     default: '1990-02-15'
     t.string   "username"
     t.string   "hobbies"
-    t.string   "sex"
+    t.string   "gender"
     t.string   "selfintroduction"
     t.string   "address"
     t.string   "birthday"
