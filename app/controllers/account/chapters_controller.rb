@@ -5,8 +5,8 @@ class Account::ChaptersController < ApplicationController
   def index
       @course = Course.find(params[:course_id])
 
-      if @course.is_hidden
-        flash[:warning] = "This Post is archived"
+      if @course.is_hidden?
+        flash[:warning] = "This Course is archived"
         redirect_to root_path
       end
       

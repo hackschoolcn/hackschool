@@ -4,7 +4,7 @@ class Account::OrdersController < ApplicationController
   layout 'user'
 
   def index
-    @orders = current_user.orders.all.order("created_at DESC")
+    @orders = current_user.orders.all.recent
   end
 
   def quarterly_subscription

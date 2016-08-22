@@ -32,4 +32,8 @@ class Course < ApplicationRecord
     save
   end
 
+  def is_hidden?
+    self.is_hidden
+  end
+
 end
