@@ -18,3 +18,63 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
+
+
+
+
+
+
+// body { background-image: url("body.jpg"); }
+
+
+
+
+
+/* typography */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h3 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: #777;
+}
+
+h4 {
+  color: white;
+}
+
+p {
+  font-size: 1.1em;
+  line-height:1.7em;
+}
+
+/* footer */
+footer {
+margin-top: 45px;
+padding-top: 5px;
+border-top: 1px solid #eaeaea; color: #777;
+a      {
+color: #555; &:hover {
+          color: #222;
+      }
+}
+small {
+        float: left;
+      }
+ul {
+float: right; list-style: none; li {
+float: left;
+          margin-left: 15px;
+        }
+} }

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hackschool</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+    <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+  </head>
+  <style>
+  body {
+    padding-top: 50px
+  }
+  </style>
+
+  <body>
+      <%= render "common/navbar" %>
+      <%= render "common/flashes" %>
+      <%= yield %>
+
+  </body>
+    <div class="container">
+      <%= render "common/footer" %>
+    </div>
+</html>

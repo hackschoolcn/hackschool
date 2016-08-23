@@ -6,7 +6,8 @@
 #  chapter    :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  section_id :integer
+#  course_id  :integer
+#  is_hidden  :boolean          default(TRUE)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

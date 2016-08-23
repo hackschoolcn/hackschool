@@ -1,32 +1,33 @@
-<nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="/">HackSchool</a>
+      <%= link_to("HackSchool",courses_path, id: "logo") %>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right ">
         <% if !current_user %>
-          <li><%= link_to("注册", new_user_registration_path) %></li>
-          <li><%= link_to("登陆", new_user_session_path) %></li>
+          <li style="font-size:18px;"><%= link_to("log in", new_user_session_path) %></li>
           <% else %>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <a href="#" class="dropdown-toggle  " data-toggle="dropdown">
+              <img src="<%= @setting.avatar.thumb%>" width="30" height="30", class="img-circle" >
               Hi!, <%= current_user.email %>
               <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
 
               <% if current_user.admin? %>
-                  <li><%= link_to("Admin_Panel", admin_courses_path) %> </li>
+                  <li><%= link_to("Admin Panel", admin_courses_path) %> </li>
               <% end %>
 
               <li> <%= link_to("User Panel", account_orders_path) %> </li>
-              <li> <%= link_to("问题讨论区", questions_path) %> </li>
+              <li> <%= link_to("Settings", account_setting_path(current_user)) %> </li>
+              <li> <%= link_to("Discussion", questions_path) %> </li>
 
               <li class="divider"></li>
               <!-- <li><%#= link_to("Admin_Panel", admin_products_path) %> -->
-              <li><%= link_to("登出", destroy_user_session_path, method: :delete) %></li>
+              <li><%= link_to("Sign out", destroy_user_session_path, method: :delete) %></li>
             </ul>
           </li>
           <% end %>

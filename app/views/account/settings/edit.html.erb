@@ -1,0 +1,28 @@
+<div class="col-md-4 col-md-offset-4">
+
+  <h2> Settings for your profile </h2>
+  <hr>
+  <%= simple_form_for [:user,@setting], :url => account_setting_path, :method => :put do |f| %>
+  <%= f.input :username, :label =>"Username" %>
+  <hr>
+  <%= f.input :email, :label =>"Email" %>
+  <hr>
+  <%= f.input :hobbies, :label =>"Hobbies" %>
+  <hr>
+  <%= f.input :birthday, :label =>"Birthday" %>
+  <hr>
+  <%= f.input :selfintroduction, :label =>"About Me" %>
+  <hr>
+  <%= f.input :address, :label =>"Location" %>
+  <hr>
+  <%= f.label :gender %><br />
+  <%= f.label :gender, "Male", :value => "true"  %>
+  <%= f.radio_button :gender, true %>
+  <%= f.label :gender, "Female", :value => "false" %>
+  <%= f.radio_button :gender, false %>
+  <hr>
+  <%= f.input :avatar, :label =>"Avatar" %>
+  <hr>
+  <%= f.submit "SAVE SETTINGS", class: "btn btn-info" %>
+  <% end %>
+</div>

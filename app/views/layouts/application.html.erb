@@ -8,16 +8,21 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
     <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+
   </head>
-
   <body>
-
       <%= render "common/navbar" %>
       <div class="container">
       <%= render "common/flashes" %>
+
       <%= yield %>
+
     </div>
 
-    <%= render "common/footer" %>
+
   </body>
+    <div class="container">
+      <%= render "common/footer" %>
+    </div>
+
 </html>
