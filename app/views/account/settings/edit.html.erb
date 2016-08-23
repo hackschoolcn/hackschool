@@ -2,10 +2,13 @@
 
   <h2> Settings for your profile </h2>
   <hr>
-  <%= gravatar_tag current_user.email, :size => 80, :default => avatar_url %>
-  <%= link_to("Upload a profile picture", class: "btn btn-default") %>
-  <hr>
+  <img src="<%= current_user.avatar.thumb %>" width="90" height="90">
+  <!-- <%= gravatar_tag current_user.email, :size => 80, :default => avatar_url %> -->
+  <%#= link_to("Upload a profile picture", class: "btn btn-default") %>
+
   <%= simple_form_for [:user, @user], :url => account_setting_path, :method => :put do |f| %>
+  <%= f.input :avatar, :label =>"Avatar" %>
+  <hr>
   <%= f.input :username, :label =>"Username" %>
   <hr>
   <%= f.input :email, :label =>"Email" %>
@@ -23,8 +26,6 @@
   <%= f.radio_button :gender, true %>
   <%= f.label :gender, "Female", :value => "false" %>
   <%= f.radio_button :gender, false %>
-  <hr>
-  <%= f.input :avatar, :label =>"Avatar" %>
   <hr>
   <%= f.submit "SAVE SETTINGS", class: "btn btn-info" %>
   <% end %>
