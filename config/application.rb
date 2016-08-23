@@ -1,12 +1,10 @@
-require_relative 'boot'
+require_relative "boot"
 
-require 'rails/all'
+require "rails/all"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
-
-
 
 module Hackschool
   class Application < Rails::Application
@@ -14,6 +12,7 @@ module Hackschool
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
     config.active_record.default_timezone = :local
-    config.time_zone = 'Beijing'  
+    config.time_zone = "Beijing"
+    config.generators.test_framework = nil
   end
 end
