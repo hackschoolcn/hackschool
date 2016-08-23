@@ -1,0 +1,51 @@
+<div class="col-md-12">
+  <div class="container center marginTB30">
+      <div>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Feature</a></li>
+          <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Different</a></li>
+          <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Benifit</a></li>
+          <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Feedback</a></li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="home">
+            <div class="row feature">
+            <div class="col-md-7">
+              <%= image_tag("safari-logo.jpg") %>
+            </div>
+              <h2 class="feature-heading">Safari <span class="text-muted">使用最广的浏览器</span></h2>
+              <p class="lead">描述</p>
+          </div></div>
+
+          <div role="tabpanel" class="tab-pane" id="profile">
+            <div class="col-md-7">
+              <%= image_tag("firefox-logo.jpg") %>
+            </div>
+              <h2 class="feature-heading">Fire Fox <span class="text-muted">使用最广的浏览器</span></h2>
+              <p class="lead">描述</p>
+          </div>
+
+          <div role="tabpanel" class="tab-pane" id="messages">
+            <div class="col-md-7">
+              <%= image_tag("ie-logo.jpg") %>
+            </div>
+              <h2 class="feature-heading">Internet Explore <span class="text-muted">使用最广的浏览器</span></h2>
+              <p class="lead">描述</p>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="settings">
+            <div class="col-md-7">
+              <%= image_tag("chrome-logo.jpg") %>
+            </div>
+              <h2 class="feature-heading">Googel Chrome <span class="text-muted">使用最广的浏览器</span></h2>
+              <p class="lead">描述</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container text-center">
+    <%= render_markdown_text(@course.description) %>
+    </div>
+</div>

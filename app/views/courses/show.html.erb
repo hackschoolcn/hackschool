@@ -12,10 +12,4 @@
     <%= link_to("火速报名", enroll_course_account_course_path(@course), method: :post, class:"btn btn-lg btn-danger pull-center")%>
   <% end %>
   </div>
-  <div class="col-md-12">
-    <div class="container-fluid center marginTB30">
-
-      <%= render_markdown_text(@course.description) %>
-    </div>
-  </div>
-</div>
+  <%= render "form" %>
