@@ -1,10 +1,22 @@
-class Setting < ApplicationRecord
-  belongs_to :user
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-  mount_uploader :avatar, AvatarUploader
+one:
+  username: MyString
+  nickname: MyString
+  hobbies: MyString
+  birthday: MyString
+  sex: MyString
+  selfintroduction: MyString
+  address: MyString
 
-
-end
+two:
+  username: MyString
+  nickname: MyString
+  hobbies: MyString
+  birthday: MyString
+  sex: MyString
+  selfintroduction: MyString
+  address: MyString
 
 # == Schema Information
 #

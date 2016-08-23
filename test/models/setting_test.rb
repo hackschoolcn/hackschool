@@ -1,9 +1,9 @@
-class Setting < ApplicationRecord
-  belongs_to :user
+require 'test_helper'
 
-  mount_uploader :avatar, AvatarUploader
-
-
+class SettingTest < ActiveSupport::TestCase
+  # test "the truth" do
+  #   assert true
+  # end
 end
 
 # == Schema Information
