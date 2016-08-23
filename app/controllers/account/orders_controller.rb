@@ -70,6 +70,6 @@ class Account::OrdersController < ApplicationController
 
     end
 
-    redirect_to account_orders_pat
+    redirect_to account_orders_path
   end
 end
