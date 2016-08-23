@@ -4,7 +4,8 @@
   <thead>
     <tr>
       <td>#</td>
-      <td>课程名</td>
+      <td>课程</td>
+      <td>任务</td>
       <td>教师</td>
       <td>选项</td>
       <td>创建日期</td>
@@ -17,8 +18,12 @@
       <td>
         <%= link_to(course.title, account_course_chapters_path(course)) %>
       </td>
-      <td><%= course.teacher_name %></td>
-
+      <td>
+        <%= render_my_course_task_status(course) %>
+      </td>
+      <td>
+        <%= course.teacher_name %>
+      </td>
       <td>
         <%= link_to("退出课程", drop_course_account_course_path(course), method: :post, class: "btn btn-xs btn-primary") %>
       </td>

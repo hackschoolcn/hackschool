@@ -8,7 +8,7 @@
       <td>课程名</td>
       <td>教师</td>
       <td>选项</td>
-      <td>上传</td>
+      <td>课程控制台</td>
       <td>创建日期</td>
     </tr>
   </thead>
@@ -21,7 +21,9 @@
         <%= link_to(course.title, course_path(course)) %>  
         <%= link_to("查看报名人数", admin_course_path(course), class: "btn btn-xs btn-default") %>
       </td>
-      <td><%= course.teacher_name %></td>
+      <td>
+        <%= course.teacher_name %>
+      </td>
 
       <td>
         <%= link_to("编辑", edit_admin_course_path(course), class: "btn btn-xs btn-primary") %> |
@@ -35,7 +37,7 @@
         <% end %>
       </td>
       <td>
-        <%= link_to("编辑课程内容", admin_course_chapters_path(course), class: "btn btn-xs btn-success") %>
+        <%= link_to("进入控制台", admin_course_chapters_path(course), class: "btn btn-xs btn-success") %>
       </td>
       <td>
         <%= render_formatted_time(course.created_at) %>

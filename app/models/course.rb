@@ -19,6 +19,8 @@ class Course < ApplicationRecord
 
   has_many :chapters, dependent: :destroy
   has_many :posts, dependent: :destroy
+  has_many :tasks
+  has_many :works
   has_many :enrollments
   has_many :enrolled_users, through: :enrollments, source: :user
 

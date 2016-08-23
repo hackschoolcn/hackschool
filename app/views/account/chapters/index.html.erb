@@ -6,9 +6,14 @@
        <div class="panel-heading"><%= chapter.chapter %></div>
        <!-- List group -->
        <ul class="list-group">
-         <% chapter.posts.where(is_hidden: false).each do |post| %>
-         <li class="list-group-item"><%= link_to(post.title, account_chapter_post_path(chapter, post)) %></li>
-         <% end %>
+        <% chapter.posts.where(is_hidden: false).each do |post| %>
+          <li class="list-group-item">
+            <% if post.tasks.count > 0 %>
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+            <% end %>
+            <%= link_to(post.title, account_chapter_post_path(chapter, post)) %>
+          </li>
+        <% end %>
        </ul>
  </div>
 <% end %>
