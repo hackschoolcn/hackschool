@@ -1,8 +1,7 @@
 class Admin::PostsController < ApplicationController
-
   before_action :authenticate_user!
   before_action :require_is_admin
-  before_action :get_chapter_params, only: [:index, :new, :edit, :create, :update, :destroy]
+  before_action :get_chapter_params, only: %i(index new edit create update destroy)
 
   def index
     @posts = @chapter.posts
@@ -46,9 +45,8 @@ class Admin::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @course = @chapter.course
     @post.destroy
-    redirect_to  admin_course_chapters_path(@course), alert: "Deleted"
+    redirect_to admin_course_chapters_path(@course), alert: "Deleted"
   end
-
 
   def publish
     @post = Post.find(params[:id])

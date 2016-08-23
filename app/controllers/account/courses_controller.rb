@@ -1,6 +1,6 @@
 class Account::CoursesController < ApplicationController
   before_action :authenticate_user!
-  before_action :check_subscription_expiration, only: [:enroll_course, :drop_course]
+  before_action :check_subscription_expiration, only: %i(enroll_course drop_course)
   layout "user"
 
   def index
@@ -10,7 +10,7 @@ class Account::CoursesController < ApplicationController
   def enroll_course
     @course = Course.find(params[:id])
 
-    if !current_user.is_member_of?(@course)
+    if !current_user.member_of?(@course)
       current_user.enroll_course!(@course)
       flash[:notice] = "报名成功"
     else
@@ -23,7 +23,7 @@ class Account::CoursesController < ApplicationController
   def drop_course
     @course = Course.find(params[:id])
 
-    if current_user.is_member_of?(@course)
+    if current_user.member_of?(@course)
       current_user.drop_course!(@course)
       flash[:notice] = "退课成功"
     else
@@ -32,5 +32,4 @@ class Account::CoursesController < ApplicationController
 
     redirect_to account_courses_path
   end
-
 end

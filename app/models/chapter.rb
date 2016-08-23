@@ -25,7 +25,6 @@ class Chapter < ApplicationRecord
   end
 
   def is_hidden?
-    self.is_hidden
+    is_hidden
   end
-
 end

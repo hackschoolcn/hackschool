@@ -10,7 +10,6 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :courses do
-
       resources :chapters do
         member do
           post :hide
@@ -30,7 +29,7 @@ Rails.application.routes.draw do
           post :hide
           post :publish
         end
-      end  
+      end
     end
 
     resources :posts do
@@ -46,16 +45,15 @@ Rails.application.routes.draw do
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  root 'courses#index'
-
+  root "courses#index"
 
   namespace :account do
     resources :settings
-    
+
     resources :tasks do
       resources :works
     end
-    
+
     resources :courses do
       resources :chapters
       member do
@@ -84,9 +82,7 @@ Rails.application.routes.draw do
         post :cancel_order
       end
     end
-
   end
 
   resources :groups
-
 end

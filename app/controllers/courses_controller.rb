@@ -1,5 +1,4 @@
 class CoursesController < ApplicationController
-
   layout "course"
   def index
     @courses = Course.published
@@ -8,5 +7,4 @@ class CoursesController < ApplicationController
   def show
     @course = Course.find(params[:id])
   end
-
 end
