@@ -3,5 +3,24 @@
   <div class="container-fluid">
     <%= render_markdown_text(@post.article) %>
   </div>
-  <%= render_prev_next_buttons(@post) %>
 </div>
+
+<div class="clearfix">
+  <br><br>
+</div>
+
+<% @post.tasks.each_with_index do |task, index| %>
+ <div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading">
+      任务 <%= index + 1 %>
+      <%= link_to("提交作业", "#", class: "btn btn-xs btn-success pull-right") %>
+    </div>
+     <!-- List group -->
+    <ul class="list-group">
+      <li class="list-group-item"><%= task.description %></li>
+    </ul>
+ </div>
+<% end %>
+
+<%= render_prev_next_buttons(@post) %>
