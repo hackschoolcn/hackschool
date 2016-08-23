@@ -25,14 +25,16 @@ Rails.application.routes.draw do
     end
 
     resources :chapters do
-
       resources :posts do
         member do
           post :hide
           post :publish
         end
-      end
-      
+      end  
+    end
+
+    resources :posts do
+      resources :tasks
     end
 
     resources :users do
