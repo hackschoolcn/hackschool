@@ -8,6 +8,6 @@ module ApplicationHelper
   end
 
   def avatar_url
-    'http://en.gravatar.com/userimage/109074261/af31ff7a90c4367bd91d50f97e25d885.png'
+    "http://en.gravatar.com/userimage/109074261/af31ff7a90c4367bd91d50f97e25d885.png"
   end
 end

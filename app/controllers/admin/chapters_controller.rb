@@ -1,8 +1,7 @@
 class Admin::ChaptersController < ApplicationController
-
   before_action :authenticate_user!
   before_action :require_is_admin
-  before_action :get_course_params, only: [:index, :new, :edit, :create, :update, :destroy]
+  before_action :find_course, only: %i(index new edit create update destroy)
 
   def index
     @chapters = @course.chapters
@@ -57,15 +56,13 @@ class Admin::ChaptersController < ApplicationController
     redirect_to :back
   end
 
-
   private
 
-  def get_course_params
+  def find_course
     @course = Course.find(params[:course_id])
   end
 
   def chapter_params
     params.require(:chapter).permit(:chapter)
   end
-
 end

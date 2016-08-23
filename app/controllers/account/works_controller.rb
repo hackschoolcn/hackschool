@@ -1,6 +1,6 @@
 class Account::WorksController < ApplicationController
   before_action :authenticate_user!
-  before_action :get_task, only: [:new, :create, :edit, :update]
+  before_action :get_task, only: %i(new create edit update)
 
   def show
     @work = Work.find(params[:id])
@@ -44,7 +44,7 @@ class Account::WorksController < ApplicationController
   def destroy
     @work = Work.find(params[:id])
     @work.destroy
-    redirect_to  :back, alert: "作业已删除"
+    redirect_to :back, alert: "作业已删除"
   end
 
   private

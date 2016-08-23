@@ -16,7 +16,7 @@ class Answer < ApplicationRecord
 
   validates :content, presence: true
 
-  scope :recent, -> {order("created_at DESC")}
+  scope :recent, -> { order("created_at DESC") }
 end
 
 # == Schema Information

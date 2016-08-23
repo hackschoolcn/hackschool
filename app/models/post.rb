@@ -28,9 +28,8 @@ class Post < ApplicationRecord
   end
 
   def is_hidden?
-    self.is_hidden
+    is_hidden
   end
-
 
   def may_prev?
     course = self.course
@@ -45,7 +44,7 @@ class Post < ApplicationRecord
         post = course.posts[index]
       end
 
-      if index < 1 && (post.chapter.is_hidden? || post.is_hidden?)          #检查是否找到最后都没找到已发布的
+      if index < 1 && (post.chapter.is_hidden? || post.is_hidden?) # 检查是否找到最后都没找到已发布的
         false
       else
         post
@@ -55,7 +54,6 @@ class Post < ApplicationRecord
       false
     end
   end
-
 
   def may_next?
     course = self.course
@@ -69,7 +67,7 @@ class Post < ApplicationRecord
         post = course.posts[index]
       end
 
-      if index > course.posts.length - 2 && (post.chapter.is_hidden? || post.is_hidden?)   #检查是否找到最后都没找到已发布的
+      if index > course.posts.length - 2 && (post.chapter.is_hidden? || post.is_hidden?) # 检查是否找到最后都没找到已发布的
         false
       else
         post
@@ -79,5 +77,4 @@ class Post < ApplicationRecord
       false
     end
   end
-  
 end

@@ -1,6 +1,6 @@
 module Account::SettingsHelper
   def gender_type
-    if @setting.gender == 'true'
+    if @setting.gender == "true"
       "Male"
     else
       "Female"

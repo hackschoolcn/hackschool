@@ -1,10 +1,9 @@
 class Admin::TasksController < ApplicationController
   before_action :authenticate_user!
   before_action :require_is_admin
-  before_action :get_post, only: [:new, :create, :edit, :update]
+  before_action :get_post, only: %i(new create edit update)
 
   def index
-    
   end
 
   def new
@@ -40,7 +39,7 @@ class Admin::TasksController < ApplicationController
   def destroy
     @task = Task.find(params[:id])
     @task.destroy
-    redirect_to  :back, alert: "任务已删除"
+    redirect_to :back, alert: "任务已删除"
   end
 
   private

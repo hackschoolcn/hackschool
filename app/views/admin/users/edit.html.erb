@@ -1,0 +1,32 @@
+<h1> Edit Course </h1>
+
+  <h2> Settings for your profile </h2>
+  <hr>
+  <%= gravatar_tag current_user.email, :size => 80, :default => avatar_url %>
+  <%= link_to("Upload a profile picture", class: "btn btn-default") %>
+  <hr>
+  
+  <%= simple_form_for [:admin, @user] do |f| %>
+
+  <%= f.input :username, :label =>"Username" %>
+  <hr>
+  <%= f.input :email, :label =>"Email" %>
+  <hr>
+  <%= f.input :hobbies, :label =>"Hobbies" %>
+  <hr>
+  <%= f.input :birthday, :label =>"Birthday" %>
+  <hr>
+  <%= f.input :selfintroduction, :label =>"About Me" %>
+  <hr>
+  <%= f.input :address, :label =>"Location" %>
+  <hr>
+  <%= f.label :gender %><br />
+  <%= f.label :gender, "Male", :value => "true"  %>
+  <%= f.radio_button :gender, true %>
+  <%= f.label :gender, "Female", :value => "false" %>
+  <%= f.radio_button :gender, false %>
+  <hr>
+  <%= f.submit "SAVE SETTINGS", class: "btn btn-info" %>
+  <% end %>
+
+</div>

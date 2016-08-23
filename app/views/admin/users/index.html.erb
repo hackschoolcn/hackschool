@@ -14,7 +14,7 @@
  <tbody>
      <tr>
        <td><%= render_user_status(user) %></td>
-	   <td><%= user.email %></td>           
+	   <td><%= link_to(user.email, admin_user_path(user)) %></td>          
        <td><%= user.created_at %></td>
        <td><%= user.last_sign_in_at %></td>
 

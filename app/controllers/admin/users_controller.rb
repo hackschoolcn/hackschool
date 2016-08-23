@@ -7,17 +7,34 @@ class Admin::UsersController < ApplicationController
     @users = User.all
   end
 
+  def show
+    @user = User.find(params[:id])
+  end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      redirect_to admin_users_path, notice: "资料已更新！"
+    else
+      render :edit
+    end
+  end
+
   # def turn_to_admin
   #   @user = User.find(params[:id])
   #   @user.admin!
-   
+
   #   redirect_to :back
   # end
 
   # def turn_to_user
   #   @user = User.find(params[:id])
   #   @user.user!
-  
+
   #   redirect_to :back
   # end
 
@@ -35,5 +52,7 @@ class Admin::UsersController < ApplicationController
     redirect_to :back
   end
 
-  private
+  def user_params
+    params.require(:user).permit(:username, :nickname, :hobbies, :birthday, :selfintroduction, :address, :gender)
+  end
 end

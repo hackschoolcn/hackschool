@@ -60,9 +60,8 @@ class User < ApplicationRecord
   has_many :enrollments
   has_many :enrolled_courses, through: :enrollments, source: :course
 
-
   def admin?
-    is_admin || email == 'manyi@123.com'
+    is_admin || email == "manyi@123.com"
   end
 
   # def turn_to_admin!
@@ -72,7 +71,7 @@ class User < ApplicationRecord
 
   # def turn_to_user!
   #   self.is_admin = false
-  #   self.save  
+  #   self.save
   # end
 
   def enroll_course!(course)
@@ -83,16 +82,17 @@ class User < ApplicationRecord
     enrolled_courses.delete(course)
   end
 
-  def is_member_of?(course)
+  def member_of?(course)
     enrolled_courses.include?(course)
   end
 
   def add_subscription_date!(amount)
-    if member_expire_date && member_expire_date > Time.now
-      begin_date = member_expire_date
-    else
-      begin_date = Time.now
-    end
+    begin_date =
+      if member_expire_date && member_expire_date > Time.zone.now
+        member_expire_date
+      else
+        Time.zone.now
+      end
     self.member_expire_date = begin_date + amount.month
     save
   end
