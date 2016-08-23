@@ -24,6 +24,7 @@
 #  selfintroduction       :string
 #  address                :string
 #  birthday               :string
+#  avatar                 :string
 #
 # Indexes
 #
@@ -56,6 +57,8 @@ class User < ApplicationRecord
   has_many :answers
   has_many :orders
   has_one :setting
+
+  mount_uploader :avatar, AvatarUploader
 
   def admin?
     is_admin || email == 'manyi@123.com'

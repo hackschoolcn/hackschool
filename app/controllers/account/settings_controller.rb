@@ -22,6 +22,6 @@ class Account::SettingsController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :nickname, :hobbies, :birthday, :sex, :selfintroduction, :address)
+    params.require(:user).permit(:username, :nickname, :hobbies, :birthday, :sex, :selfintroduction, :address, :avatar)
   end
 end
