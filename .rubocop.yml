@@ -12,7 +12,7 @@ Style/ClassAndModuleChildren:
 
 Style/AsciiComments:
   Enabled: false
-  
+
 Metrics/AbcSize:
   Enabled: false
 
@@ -25,6 +25,9 @@ Metrics/MethodLength:
 Rails:
   Enabled: true
 
+Rails/Output:
+  Enabled: false
+  
 Style/AutoResourceCleanup:
   Enabled: true
 
