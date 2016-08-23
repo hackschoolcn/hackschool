@@ -1,0 +1,8 @@
+<tr>
+  <td width="80%">
+    <%= link_to(render_highlight_content(course,@query_string),account_course_path(course)) %> -
+    <%= course.description %>
+    <%#= course.chapter.description %>
+  </td>
+  <td> <%= course.created_at.to_s(:short) %> </td>
+</tr>

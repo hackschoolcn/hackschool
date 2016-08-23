@@ -28,6 +28,7 @@ Rails.application.routes.draw do
           post :hide
           post :publish
         end
+
       end
 
       member do
@@ -37,7 +38,9 @@ Rails.application.routes.draw do
     end
 
     resources :chapters do
-
+      collection do
+        get :search
+      end
       resources :posts do
         member do
           post :hide
@@ -63,11 +66,13 @@ Rails.application.routes.draw do
   root "courses#index"
 
   namespace :account do
+
     resources :settings
 
     resources :tasks do
       resources :works
     end
+
 
     resources :courses do
       resources :chapters
@@ -78,6 +83,9 @@ Rails.application.routes.draw do
     end
 
     resources :chapters do
+      collection do
+        get :search
+      end
       resources :posts do
         member do
           post :prev

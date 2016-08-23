@@ -1,16 +1,19 @@
 <div class="col-md-8 col-lg-offset-2">
-  <%= render "search/courses/search_bar" %>
+  <%= render "search/chapters/search_bar" %>
 
   <br>
 
 
    <div class="item_div">
      <table class="table table-borderd">
-       <%= render :partial => "search/courses/item", :collection => @courses, :as => :course %>
+       <% if (@chapters.total_entries > 0) %>
+       <%= @chapters.total_entries %>
+       <%= render :partial => "search/chapters/item", :collection => @chapters, :as => :chapter %>
+       <% end %>
      </table>
 
      <div class="text-center">
-      <%= will_paginate @courses %>
+      <%= will_paginate @chapters %>
      </div>
    </div>
 

@@ -27,4 +27,5 @@ class Account::PostsController < ApplicationController
     post = @post.may_next? || @post
     redirect_to account_chapter_post_path(post.chapter, post)
   end
+
 end

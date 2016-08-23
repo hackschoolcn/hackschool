@@ -1,4 +1,11 @@
+
 <h3><%= @course.title %></h3>
+
+
+<br>
+<%= render :partial => "account/chapters/search_bar" %>
+<br>
+
 
 <% @chapters.each do |chapter| %>
  <div class="panel panel-default">

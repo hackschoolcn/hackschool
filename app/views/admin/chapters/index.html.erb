@@ -5,6 +5,10 @@
 </div>
 <h2><%= @course.title %></h2>
 
+<br>
+<%= render :partial => "admin/chapters/search_bar" %>
+<br>
+
   <% @chapters.each do |chapter| %>
 
     <div class="panel panel-default">

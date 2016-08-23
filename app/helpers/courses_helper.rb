@@ -17,4 +17,15 @@ module CoursesHelper
   def render_course_price(_course)
     "$ #{@course.price}"
   end
+
+  def render_chapter_highlight_content(chapter, query_string)
+    excerpt_cont = excerpt(chapter.chapter, query_string, radius: 500)
+    highlight(excerpt_cont,query_string)
+  end
+
+  def render_post_article_highlight_content(post, query_string)
+    excerpt_cont = excerpt(post.article, query_string, radius: 500)
+    highlight(excerpt_cont,query_string)
+
+  end
 end
