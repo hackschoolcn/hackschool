@@ -1,5 +1,9 @@
 class Setting < ApplicationRecord
   belongs_to :user
+
+  mount_uploader :avatar, AvatarUploader
+
+
 end
 
 # == Schema Information
@@ -16,4 +20,5 @@ end
 #  address          :string
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
+#  avatar           :string
 #
