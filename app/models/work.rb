@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: homeworks
+# Table name: works
 #
 #  id            :integer          not null, primary key
 #  content       :text
@@ -11,8 +11,8 @@
 #  updated_at    :datetime         not null
 #
 
-class Homework < ApplicationRecord
+class Work < ApplicationRecord
 
-  belongs_to :assignment
+  belongs_to :task
   
 end

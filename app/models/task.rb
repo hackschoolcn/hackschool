@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: assignments
+# Table name: tasks
 #
 #  id          :integer          not null, primary key
 #  description :string
@@ -9,8 +9,8 @@
 #  updated_at  :datetime         not null
 #
 
-class Assignment < ApplicationRecord
+class Task < ApplicationRecord
 
-  has_many :homeworks,  dependent: :destroy
+  has_many :works,  dependent: :destroy
 
 end
