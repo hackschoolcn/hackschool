@@ -30,7 +30,7 @@ Rails.application.routes.draw do
           post :hide
           post :publish
         end
-      end  
+      end
     end
 
     resources :posts do
@@ -51,11 +51,13 @@ Rails.application.routes.draw do
 
   namespace :account do
     resources :settings
-    
+
+
     resources :tasks do
       resources :works
     end
-    
+
+
     resources :courses do
       resources :chapters
       member do
