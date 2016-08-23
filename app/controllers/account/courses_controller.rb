@@ -1,6 +1,7 @@
 class Account::CoursesController < ApplicationController
   before_action :authenticate_user!
   before_action :check_subscription_expiration, only: [:enroll_course, :drop_course]
+  layout "user"
 
   def index
     @courses = current_user.enrolled_courses

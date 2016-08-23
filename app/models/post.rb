@@ -15,6 +15,7 @@
 class Post < ApplicationRecord
   belongs_to :chapter
   belongs_to :course
+  has_many :tasks, dependent: :destroy
 
   def publish!
     self.is_hidden = false
