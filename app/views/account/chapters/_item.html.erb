@@ -1,0 +1,11 @@
+<tr>
+  <td width="80%">
+
+       <h2><%= post.chapter.chapter %>  >
+       <%= link_to(post.title, account_chapter_post_path(post.chapter,post)) %></h2>
+       <br>
+       <%= render_post_article_highlight_content(post,@query_string) %>
+
+  </td>
+
+</tr>

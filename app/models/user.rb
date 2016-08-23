@@ -17,6 +17,7 @@
 #  updated_at             :datetime         not null
 #  is_admin               :boolean          default(FALSE)
 #  member_expire_date     :date
+
 #  username               :string
 #  nickname               :string
 #  hobbies                :string
@@ -40,6 +41,7 @@
 #  selfintroduction       :string
 #  address                :string
 #  birthday               :string
+
 #
 # Indexes
 #

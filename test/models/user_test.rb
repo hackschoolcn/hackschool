@@ -25,6 +25,7 @@
 #  address                :string
 #  birthday               :string
 #  avatar                 :string
+
 #
 # Indexes
 #
@@ -39,6 +40,7 @@
 #  selfintroduction       :string
 #  address                :string
 #  birthday               :string
+
 #
 # Indexes
 #

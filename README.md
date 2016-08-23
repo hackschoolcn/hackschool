@@ -8,5 +8,7 @@
 # 开发用帐号
 
 * Admin : admin@gmail.com / 123456
+
 * user : user1@gmail.com ~ user10@gmail.com / 123456
+
 * 小组内成员请登陆 [Tower](https://tower.im/projects/4662ebd7b07a498cb4ec0b17acf8c318/)查看组长分配的项目任务

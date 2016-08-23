@@ -2,6 +2,7 @@ class Admin::ChaptersController < ApplicationController
   before_action :authenticate_user!
   before_action :require_is_admin
   before_action :find_course, only: %i(index new edit create update destroy)
+  before_action :validate_search_key, only:[:search]
 
   def index
     @chapters = @course.chapters
@@ -54,6 +55,24 @@ class Admin::ChaptersController < ApplicationController
     @chapter = Chapter.find(params[:id])
     @chapter.hide!
     redirect_to :back
+  end
+
+  def search
+    if @query_string.present?
+      search_result = Post.ransack(@search_criteria).result(distinct: true)
+      @posts = search_result.paginate(page: params[:page], per_page:20)
+    end
+  end
+
+  protected
+
+  def validate_search_key
+    @query_string = params[:query_string].gsub(/\\|\'|\/|\?/, "") if params[:query_string].present?
+    @search_criteria = search_criteria(@query_string)
+  end
+
+  def search_criteria(query_string)
+    { article_cont: query_string }
   end
 
   private

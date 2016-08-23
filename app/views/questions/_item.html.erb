@@ -1,0 +1,7 @@
+<tr>
+  <td width="80%">
+    <%= link_to(render_highlight_content(question,@query_string),question_path(question)) %> -
+    <%= question.description %>
+  </td>
+  <td> <%= question.created_at.to_s(:short) %> </td>
+</tr>
