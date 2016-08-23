@@ -82,7 +82,7 @@ class User < ApplicationRecord
     enrolled_courses.delete(course)
   end
 
-  def is_member_of?(course)
+  def member_of?(course)
     enrolled_courses.include?(course)
   end
 

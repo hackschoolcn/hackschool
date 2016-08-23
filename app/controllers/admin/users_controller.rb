@@ -17,8 +17,8 @@ class Admin::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if@user.update(user_params)
-      redirect_to admin_users_path,notice:'资料已更新！'
+    if @user.update(user_params)
+      redirect_to admin_users_path, notice: "资料已更新！"
     else
       render :edit
     end
@@ -27,14 +27,14 @@ class Admin::UsersController < ApplicationController
   # def turn_to_admin
   #   @user = User.find(params[:id])
   #   @user.admin!
-   
+
   #   redirect_to :back
   # end
 
   # def turn_to_user
   #   @user = User.find(params[:id])
   #   @user.user!
-  
+
   #   redirect_to :back
   # end
 
