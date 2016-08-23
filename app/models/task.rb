@@ -12,9 +12,7 @@
 #
 
 class Task < ApplicationRecord
-
   belongs_to :post
   belongs_to :course
-  has_many :works,  dependent: :destroy
-
+  has_many :works, dependent: :destroy
 end
