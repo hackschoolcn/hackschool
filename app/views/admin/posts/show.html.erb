@@ -16,6 +16,7 @@
       任务 <%= index + 1 %>
       <%= link_to("删除此任务", admin_post_task_path(@post, task), method: :delete, class: "btn btn-xs btn-danger pull-right", data: { confirm: "Are you sure?"}) %>
         <%= link_to("编辑任务内容", edit_admin_post_task_path(@post, task), class: "btn btn-xs btn-default pull-right") %>
+        <%= render_students_homework_submitted_status(task) %>
     </div>
      <!-- List group -->
     <ul class="list-group">

@@ -1,6 +1,6 @@
 module Account::CoursesHelper
 
-  def render_course_task_status(course)
+  def render_my_course_task_status(course)
     all_tasks = course.tasks
     submitted_works = current_user.works.where(course_id: course.id)
     
