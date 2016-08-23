@@ -1,0 +1,24 @@
+<h3>【<%= @course.title %>】报名人数： <%= @course.enrolled_users.count %></h3>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <td>#</td>
+      <td>用户</td>
+      <td>到期时间</td>
+    </tr>
+  </thead>
+  <tbody>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.id %></td>
+      <td>
+        <%= user.email %>
+      </td>
+      <td>
+        <%= render_formatted_time(user.member_expire_date) %>
+      </td>
+
+    </tr>
+  <% end %>
+  </tbody>
+</table>

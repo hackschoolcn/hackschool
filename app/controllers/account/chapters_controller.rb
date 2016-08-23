@@ -6,11 +6,17 @@ class Account::ChaptersController < ApplicationController
       @course = Course.find(params[:course_id])
 
       if @course.is_hidden?
-        flash[:warning] = "This Course is archived"
+        flash[:warning] = "此课程没有开课"
         redirect_to root_path
       end
       
-      @chapters = @course.chapters.where(is_hidden: false)
+      if current_user.enrolled_courses.include?(@course)
+        @chapters = @course.chapters.where(is_hidden: false)
+      else
+        flash[:warning] = "请先报名参加该课程"
+        redirect_to course_path(@course)
+      end
+      
   end
 
 end

@@ -52,10 +52,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_one :setting
   has_many :questions
   has_many :answers
   has_many :orders
-  has_one :setting
+  has_many :enrollments
+  has_many :enrolled_courses, through: :enrollments, source: :course
+
 
   def admin?
     is_admin || email == 'manyi@123.com'
@@ -70,6 +73,18 @@ class User < ApplicationRecord
   #   self.is_admin = false
   #   self.save  
   # end
+
+  def enroll_course!(course)
+    enrolled_courses << course
+  end
+
+  def drop_course!(course)
+    enrolled_courses.delete(course)
+  end
+
+  def is_member_of?(course)
+    enrolled_courses.include?(course)
+  end
 
   def add_subscription_date!(amount)
     if member_expire_date && member_expire_date > Time.now

@@ -3,11 +3,13 @@ puts "这个seed会自动建立1个admin账号, 1个user账号, 7个 Chapters，
 create_account = User.create([email: 'admin@gmail.com', password: '123456', password_confirmation: '123456', is_admin: 'true'])
 puts "Admin account created."
 
-create_account = User.create([email: 'user@gmail.com', password: '123456', password_confirmation: '123456'])
-	puts "User accounts created."
+create_account = for i in 1..10 do
+  User.create([email: "user#{i}@gmail.com", password: '123456', password_confirmation: '123456'])
+end
+  puts "10 User accounts created."
 
 create_course = Course.create([title: "Rails 基础环境建设", description: "准备必要的工具和软件，配置 Rails 开发环境", teacher_name: "xdite"])
-  puts "User accounts created."
+  puts "1st Course created."
 
 create_chapter = Chapter.create([chapter: "第一章 开始之前", course_id: "1"])
   puts "生成第一章"
