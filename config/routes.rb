@@ -2,23 +2,19 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :questions do
+    collection do
+      get :search
+    end
     resources :answers
+
   end
 
-  namespace :search do
-    resources :questions do
-      collection do
-        get :search
-      end
-    end
-    resources :courses do
-      collection do
-        get :search
-      end
+  resources :courses do
+    collection do
+      get :search
     end
   end
 
-  resources :courses
   resources :plans, only: [:index]
 
   namespace :admin do
@@ -75,6 +71,9 @@ Rails.application.routes.draw do
 
 
     resources :courses do
+      collection do
+        get :search
+      end
       resources :chapters
       member do
         post :enroll_course

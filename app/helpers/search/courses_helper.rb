@@ -1,2 +1,0 @@
-module Search::CoursesHelper
-end

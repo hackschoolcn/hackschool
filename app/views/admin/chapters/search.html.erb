@@ -1,9 +1,8 @@
 <div class="col-md-8 col-lg-offset-2">
   <%= render "admin/chapters/search_bar" %>
-  <h3>Your search for <%= @query_string %> matches results: <%= @posts.total_entries %></h3>
 
+  <h2>Your search for <%= @query_string %> matches <%= @posts.total_entries %> results: </h2>
   <br>
-
 
    <div class="item_div">
      <table class="table table-borderd">
