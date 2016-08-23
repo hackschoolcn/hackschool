@@ -13,10 +13,11 @@ class Admin::TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
-    @task.post = @post
     @course = @post.course
+    @task.post = @post
+    @task.course = @course
     if @task.save
-      redirect_to admin_course_chapters_path(@course), notice: "作业添加成功"
+      redirect_to admin_course_chapters_path(@course), notice: "任务添加成功"
     else
       render :new
     end
@@ -30,7 +31,7 @@ class Admin::TasksController < ApplicationController
     @task = Task.find(params[:id])
     @chapter = @post.chapter
     if @task.update(task_params)
-      redirect_to admin_chapter_post_path(@chapter, @post), notice: "作业编辑成功"
+      redirect_to admin_chapter_post_path(@chapter, @post), notice: "任务编辑成功"
     else
       render :edit
     end
@@ -39,7 +40,7 @@ class Admin::TasksController < ApplicationController
   def destroy
     @task = Task.find(params[:id])
     @task.destroy
-    redirect_to  :back, alert: "作业已删除"
+    redirect_to  :back, alert: "任务已删除"
   end
 
   private

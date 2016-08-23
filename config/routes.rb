@@ -52,6 +52,10 @@ Rails.application.routes.draw do
   namespace :account do
     resources :settings
     
+    resources :tasks do
+      resources :works
+    end
+    
     resources :courses do
       resources :chapters
       member do

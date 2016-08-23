@@ -14,7 +14,7 @@
     <!-- Default panel contents -->
     <div class="panel-heading">
       任务 <%= index + 1 %>
-      <%= link_to("提交作业", "#", class: "btn btn-xs btn-success pull-right") %>
+      <%= render_work_submit_status(task) %>
     </div>
      <!-- List group -->
     <ul class="list-group">

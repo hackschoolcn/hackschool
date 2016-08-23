@@ -19,7 +19,7 @@
         <%= link_to(course.title, account_course_chapters_path(course)) %>
       </td>
       <td>
-        <%= link_to("进度条", "#") %>
+        <%= render_course_task_status(course) %>
       </td>
       <td>
         <%= course.teacher_name %>
