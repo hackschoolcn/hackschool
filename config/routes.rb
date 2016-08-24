@@ -94,7 +94,6 @@ Rails.application.routes.draw do
 
     resources :orders do
       collection do
-        post :quarterly_subscription
         post :yearly_subscription
       end
       member do

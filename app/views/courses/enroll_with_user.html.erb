@@ -6,7 +6,7 @@
     <div class="col-md-6">
         <div class="panel panel-success">
             <div class="panel-heading">
-                <h3 class="panel-title">季费</h3>
+                <h3 class="panel-title">單次購買</h3>
             </div>
             <div class="panel-body">
                 <h3> 好處 </h3>
@@ -20,7 +20,7 @@
 
                 </ul>
 
-                <%= link_to("季费 $2000", quarterly_subscription_account_orders_path, method: :post, :class => "btn btn-success btn-block") %>
+                <%= link_to("單次購買 $#{@course.price}", "xxx", method: :post, :class => "btn btn-success btn-block") %>
 
 
 

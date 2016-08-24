@@ -7,10 +7,6 @@ class Account::OrdersController < ApplicationController
     @orders = current_user.orders.all.recent
   end
 
-  def quarterly_subscription
-    create_order(price: 2000, months: 3)
-  end
-
   def yearly_subscription
     create_order(price: 6000, months: 12)
   end
@@ -55,7 +51,7 @@ class Account::OrdersController < ApplicationController
   end
 
   def create_order(options = {})
-    if current_user.orders.count > 0 && current_user.orders.last.unpaid?
+    if current_user.orders.count.positive? && current_user.orders.last.unpaid?
 
       flash[:warning] = "您有已创建的订单还未付款，可以继续操作付款，或取消订单重新选择"
 
