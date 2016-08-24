@@ -3,13 +3,13 @@ puts "这个seed会自动建立1个admin账号, 10个user账号, 7个 Chapters�
 
 
 # Create Admin Account
-User.create([email: "admin@gmail.com", password: "123456", password_confirmation: "123456", is_admin: "true"])
+User.create([username: "admin", email: "admin@gmail.com", password: "123456", password_confirmation: "123456", is_admin: "true"])
 puts "Admin account created."
 
 
 # Create Account
 for i in 1..10 do
-  User.create([email: "user#{i}@gmail.com", password: "123456", password_confirmation: "123456"])
+  User.create([username: "user#{i}", email: "user#{i}@gmail.com", password: "123456", password_confirmation: "123456"])
 
 end
 puts "10 User accounts created."
