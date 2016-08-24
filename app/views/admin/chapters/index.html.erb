@@ -1,56 +1,55 @@
 <div class="row">
-<div class="col-md-12">
-<div class="pull-right">
-  <%= link_to("上传章节", new_admin_course_chapter_path(@course), :class => "btn btn-default") %>
-</div>
-<h2><%= @course.title %></h2>
+    <div class="col-md-12">
+        <div class="pull-right">
+            <%= link_to("上传章节", new_admin_course_chapter_path(@course), :class => "btn btn-default") %>
+        </div>
+        <h2><%= @course.title %></h2>
 
-<br>
-<%= render :partial => "admin/chapters/search_bar" %>
-<br>
+        <br>
+        <%= render :partial => "admin/chapters/search_bar" %>
+        <br>
 
-  <% @chapters.each do |chapter| %>
+        <% @chapters.each do |chapter| %>
 
-    <div class="panel panel-default">
-     <!-- Default panel contents -->
-     <div class="panel-heading">
-     <%= chapter.chapter %>
-      <div class="pull-right">
-        <% if chapter.is_hidden %>
-          <%= link_to("点击发布章节", publish_admin_course_chapter_path(@course, chapter), method: :post, class: "btn btn-xs btn-success") %>
-        <% else %>
-          <%= link_to("点击隐藏章节", hide_admin_course_chapter_path(@course, chapter), method: :post, class: "btn btn-xs btn-warning") %>
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading">
+                <%= chapter.chapter %>
+                <div class="pull-right">
+                    <% if chapter.is_hidden %>
+                    <%= link_to("点击发布章节", publish_admin_course_chapter_path(@course, chapter), method: :post, class: "btn btn-xs btn-success") %>
+                <% else %>
+                    <%= link_to("点击隐藏章节", hide_admin_course_chapter_path(@course, chapter), method: :post, class: "btn btn-xs btn-warning") %>
+                    <% end %>
+                    <%= link_to("Edit", edit_admin_course_chapter_path(@course, chapter), class: "btn btn-xs btn-primary") %>
+                    <%= link_to("Delete", admin_course_chapter_path(@course, chapter), method: :delete, class: "btn btn-xs btn-danger", data: { confirm: "Are you sure?"}) %>
+                    <%= link_to("Add a post", new_admin_chapter_post_path(chapter), class: "btn btn-xs btn-primary") %>
+                </div>
+            </div>
+            <!-- List group -->
+            <ul class="list-group">
+                <% chapter.posts.each do |post| %>
+                <li class="list-group-item">
+                    <% if post.tasks.count > 0 %>
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                    <% end %>
+                    <%= link_to(post.title, admin_chapter_post_path(chapter, post)) %>
+                    <%= link_to("Delete", admin_chapter_post_path(chapter, post), method: :delete, class: "btn btn-xs btn-default pull-right", data: { confirm: "Are you sure?"}) %>
+                    <%= link_to("Edit", edit_admin_chapter_post_path(chapter, post), class: "btn btn-xs btn-default pull-right") %>
+                    <% if post.is_hidden %>
+                    <%= link_to("发布", publish_admin_chapter_post_path(chapter, post), method: :post, class: "btn btn-xs btn-info pull-right") %>
+                <% else %>
+                    <%= link_to("隐藏", hide_admin_chapter_post_path(chapter, post), method: :post, class: "btn btn-xs btn-default pull-right") %>
+                    <% end %>
+
+                    <%= link_to("添加作业", new_admin_post_task_path(post), class: "btn btn-xs btn-default pull-right") %>
+
+                </li>
+                <% end %>
+            </ul>
+        </div>
+
         <% end %>
-        <%= link_to("Edit", edit_admin_course_chapter_path(@course, chapter), class: "btn btn-xs btn-primary") %>
-        <%= link_to("Delete", admin_course_chapter_path(@course, chapter), method: :delete, class: "btn btn-xs btn-danger", data: { confirm: "Are you sure?"}) %>
-        <%= link_to("Add a post", new_admin_chapter_post_path(chapter), class: "btn btn-xs btn-primary") %>
-      </div>
-     </div>
-     <!-- List group -->
-     <ul class="list-group">
-       <% chapter.posts.each do |post| %>
-       <li class="list-group-item">
-        <% if post.tasks.count > 0 %>
-          <i class="fa fa-pencil" aria-hidden="true"></i>
-        <% end %>
-        <%= link_to(post.title, admin_chapter_post_path(chapter, post)) %>
-        <%= link_to("Delete", admin_chapter_post_path(chapter, post), method: :delete, class: "btn btn-xs btn-default pull-right", data: { confirm: "Are you sure?"}) %>
-        <%= link_to("Edit", edit_admin_chapter_post_path(chapter, post), class: "btn btn-xs btn-default pull-right") %>
-        <% if post.is_hidden %>
-          <%= link_to("发布", publish_admin_chapter_post_path(chapter, post), method: :post, class: "btn btn-xs btn-info pull-right") %>
-        <% else %>
-          <%= link_to("隐藏", hide_admin_chapter_post_path(chapter, post), method: :post, class: "btn btn-xs btn-default pull-right") %>
-        <% end %>
 
-        <%= link_to("添加作业", new_admin_post_task_path(post), class: "btn btn-xs btn-default pull-right") %>
-
-       </li>
-       <% end %>
-     </ul>
     </div>
-
-  <% end %>
-
-
-</div>
 </div>
