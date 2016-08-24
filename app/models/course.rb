@@ -20,7 +20,7 @@ class Course < ApplicationRecord
 
   has_many :chapters, dependent: :destroy
   has_many :posts, dependent: :destroy
-
+  has_many :faqs
   has_many :tasks
   has_many :works
   has_many :enrollments

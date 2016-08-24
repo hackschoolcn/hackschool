@@ -24,8 +24,9 @@ Rails.application.routes.draw do
           post :hide
           post :publish
         end
-
       end
+
+    resources :faqs
 
       member do
         post :hide
@@ -68,7 +69,6 @@ Rails.application.routes.draw do
 
     resources :settings
 
-    resources :faqs
 
     resources :tasks do
       resources :works
@@ -84,7 +84,9 @@ Rails.application.routes.draw do
         post :enroll_course
         post :drop_course
       end
+      resources :faqs
     end
+
 
     resources :chapters do
       collection do
