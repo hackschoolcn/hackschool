@@ -31,8 +31,12 @@ module CoursesHelper
     end
   end
 
-  def render_course_price(_course)
-    "$ #{@course.price}"
+  def render_course_description(course)
+    course.description
+  end
+
+  def render_course_price(course)
+    "$ #{course.price}"
   end
 
   def render_chapter_highlight_content(chapter, query_string)
