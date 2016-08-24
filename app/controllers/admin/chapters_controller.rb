@@ -4,6 +4,9 @@ class Admin::ChaptersController < AdminController
 
   def index
     @chapters = @course.chapters
+
+    drop_breadcrumb "Courses", admin_courses_path
+    drop_breadcrumb @course.title, admin_course_chapters_path(@course)
   end
 
   def new
