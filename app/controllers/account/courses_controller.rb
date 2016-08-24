@@ -1,11 +1,9 @@
 class Account::CoursesController < ApplicationController
   before_action :authenticate_user!
-  before_action :validate_search_key, only:[:search]
+  before_action :validate_search_key, only: [:search]
   layout "user"
 
-
   def index
-
     @courses = current_user.enrolled_courses
   end
 
@@ -19,13 +17,12 @@ class Account::CoursesController < ApplicationController
       flash[:warning] = "您已报名该课程"
     end
 
-    if !current_user.member_expire_date || current_user.member_expire_date < Time.now
+    if currnet_user.is_valid_subscriber?
       flash[:notice] = "请先选择你的订阅套餐"
       redirect_to plans_path
     else
       redirect_to account_courses_path
     end
-
   end
 
   def drop_course
@@ -39,13 +36,12 @@ class Account::CoursesController < ApplicationController
     end
 
     redirect_to account_courses_path
-
   end
 
   def search
     if @query_string.present?
-      search_result = Course.where(:is_hidden => false).ransack(@search_criteria).result(distinct: true)
-      @courses = search_result.paginate(page: params[:page], per_page:20)
+      search_result = Course.where(is_hidden: false).ransack(@search_criteria).result(distinct: true)
+      @courses = search_result.paginate(page: params[:page], per_page: 20)
     else
       redirect_to :back
     end
@@ -61,5 +57,4 @@ class Account::CoursesController < ApplicationController
   def search_criteria(query_string)
     { title_or_description_or_answers_content_cont: query_string }
   end
-
 end
