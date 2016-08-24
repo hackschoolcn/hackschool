@@ -26,7 +26,11 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
 
     if current_user
-      render :enroll_with_user
+      if current_user.is_valid_subscriber?
+        render :confirm_enroll
+      else
+        render :enroll_with_user
+      end
     end
   end
 
