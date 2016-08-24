@@ -19,7 +19,7 @@ module Account::SettingsHelper
   def render_user_avatar_from_gravatar(user, size)
     case size
     when :tiny
-      gravatar_tag(user.email, size: 90, default: avatar_url)
+      gravatar_tag(user.email, size: 30, default: avatar_url)
     when :thumb
       gravatar_tag(user.email, size: 90, default: avatar_url)
     end
