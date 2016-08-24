@@ -17,8 +17,7 @@ class Devise::Users::RegistrationsController < Devise::RegistrationsController
 
     # 将私钥传入，在geetest.com注册
 
-    sdk = GeetestSDK.new('06cba990948662e669f16dd00de4a6a2')
-    # sdk = GeetestSDK.new(ENV['GEE_TEST_KEY'])
+    sdk = GeetestSDK.new(ENV['GEET_KEY'])
 
     if sdk.validate(challenge, validate, seccode)
       super
