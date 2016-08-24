@@ -6,6 +6,11 @@ class Account::SettingsController < AccountController
     drop_breadcrumb "用户设置"
   end
 
+  def edit_profile
+    @user = current_user
+    drop_breadcrumb "编辑个人档案"
+  end
+
   def show
     @user = current_user
   end
@@ -14,12 +19,12 @@ class Account::SettingsController < AccountController
     @user = current_user
   end
 
-  def update
+  def update_profile
     @user = current_user
     if @user.update(user_params)
-      redirect_to account_setting_path, notice: "Update Success"
+      redirect_to account_settings_path, notice: "Update Success"
     else
-      render :edit
+      render :edit_profile
     end
   end
 
