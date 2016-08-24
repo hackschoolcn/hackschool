@@ -1,0 +1,59 @@
+<%= render :partial => "upper_bar" %>
+<%= render :partial => "courses/steps/hint_2" %>
+
+<div class="container">
+
+    <div class="col-md-6">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h3 class="panel-title">單次購買</h3>
+            </div>
+            <div class="panel-body">
+                <h3> 好處 </h3>
+                <ul>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+
+                </ul>
+
+                <%= link_to("單次購買 $#{@course.price}", single_purchase_account_orders_path(:course_id => @course.id) , method: :post, :class => "btn btn-success btn-block") %>
+
+
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-6">
+
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">年费</h3>
+            </div>
+            <div class="panel-body">
+                  <h3> 好處 </h3>
+
+                  <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+
+                  </ul>
+
+                  <%= link_to("年费", yearly_subscription_account_orders_path, method: :post, :class => "btn btn-primary btn-block") %>
+
+            </div>
+        </div>
+
+    </div>
+
+
+</div>

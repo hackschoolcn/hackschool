@@ -95,6 +95,11 @@ class User < ApplicationRecord
   #   self.save
   # end
 
+  def is_valid_subscriber?
+    return false unless member_expire_date
+    member_expire_date && member_expire_date > Time.now
+  end
+
   def enroll_course!(course)
     enrolled_courses << course
   end

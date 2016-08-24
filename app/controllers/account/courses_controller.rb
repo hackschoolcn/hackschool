@@ -16,7 +16,7 @@ class Account::CoursesController < AccountController
       flash[:warning] = "您已报名该课程"
     end
 
-    if !current_user.member_expire_date || current_user.member_expire_date < Time.now
+    if currnet_user.is_valid_subscriber?
       flash[:notice] = "请先选择你的订阅套餐"
       redirect_to plans_path
     else

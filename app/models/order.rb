@@ -11,6 +11,8 @@
 #  updated_at          :datetime         not null
 #  aasm_state          :string           default("unpaid")
 #  subscription_months :integer
+#  course_id           :integer
+#  order_type          :string
 #
 # Indexes
 #
@@ -22,6 +24,7 @@ class Order < ApplicationRecord
   include AASM
 
   belongs_to :user
+  belongs_to :course
 
   scope :recent, -> { order("created_at DESC") }
 

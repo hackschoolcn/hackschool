@@ -13,6 +13,10 @@
             订单状态
         </th>
         <th>
+
+          订单种类
+        </th>
+        <th>
             操作
         </th>
         <th>
@@ -34,6 +38,11 @@
         <td>
             <%= order.aasm_state %>
         </td>
+
+        <td>
+            <%= order.order_type %>
+        </td>
+
 
         <%= render_order_payment_part_in_user_panel(order) %>
 

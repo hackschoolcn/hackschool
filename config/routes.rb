@@ -12,6 +12,10 @@ Rails.application.routes.draw do
     collection do
       get :search
     end
+    member do
+      get :enroll
+      post :member_confirm_enroll
+    end
   end
 
   resources :plans, only: [:index]
@@ -99,8 +103,8 @@ Rails.application.routes.draw do
 
     resources :orders do
       collection do
-        post :quarterly_subscription
         post :yearly_subscription
+        post :single_purchase
       end
       member do
         post :pay_with_wechat

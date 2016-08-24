@@ -14,7 +14,7 @@ module CoursesHelper
   def render_fake_course_image(_course, size = :thumb)
     case size
     when :thumb
-      image_tag("http://placehold.it/350x150")
+      image_tag("http://placehold.it/200x150")
     when :front
       image_tag("http://placehold.it/400x300")
     end

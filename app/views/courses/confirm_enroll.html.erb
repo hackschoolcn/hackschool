@@ -1,0 +1,10 @@
+<%= render :partial => "upper_bar" %>
+<%= render :partial => "courses/steps/hint_3" %>
+
+
+<div class="container">
+
+  <div class="text-center" style="margin-top:100px; margin-bottom: 100px;">
+    <%= link_to("报名上课", member_confirm_enroll_course_path(@course), :class => "btn btn-primary", :method => :post ) %>
+  </div>
+</div>
