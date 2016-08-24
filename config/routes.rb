@@ -80,6 +80,9 @@ Rails.application.routes.draw do
         post :enroll_course
         post :drop_course
       end
+
+      resources :questions
+      resources :assignments
     end
 
     resources :chapters do

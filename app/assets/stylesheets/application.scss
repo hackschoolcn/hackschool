@@ -67,6 +67,19 @@ p {
     font-size: 1.1em;
     line-height: 1.7em;
 }
+
+.group:before, .group:after {
+   content: "";
+   display: table;
+}
+.group:after {
+   clear: both;
+}
+.group {
+   zoom: 1; /* IE6&7 */
+}
+
+
 /* footer */
 footer {
     margin-top: 45px;
