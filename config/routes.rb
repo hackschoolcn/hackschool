@@ -95,6 +95,7 @@ Rails.application.routes.draw do
     resources :orders do
       collection do
         post :yearly_subscription
+        post :single_purchase
       end
       member do
         post :pay_with_wechat

@@ -19,6 +19,9 @@ class Account::OrdersController < ApplicationController
     redirect_to account_orders_path
   end
 
+  def single_purchase
+  end
+
   def pay_with_wechat
     if @order.may_make_payment?
       @order.pay("wechat")
