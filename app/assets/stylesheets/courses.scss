@@ -1,13 +1,7 @@
 // Place all the styles related to the courses controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.course-info {
-    min-height: 300px;
-    h3 {
-        color: black;
-    }
-    text-align: center;
-}
+
 .course-item {
     a:hover {
         text-decoration: none !important;
@@ -16,6 +10,23 @@
     height: 390px;
     overflow: hidden;
 }
+
+.course-info {
+    min-height: 300px;
+    h3 {
+        color: black;
+        margin-bottom: 10px;
+    }
+    text-align: center;
+    color: grey;
+
+    .course-author{
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+}
+
+
 /* navbar */
 #logo {
     float: left;
