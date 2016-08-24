@@ -1,5 +1,5 @@
 <!--读取图片并赋予背景-->
-<div class="topAd" style='background:url("<%= @course.image.medium %>")'>
+<div class="course-hero-image" style='background:url("<%= @course.image.medium %>")'>
     <div class="course-title-bg">
         <h1 class="course-title"><%= @course.title%></h1>
             <h4 class="course-price"><%= render_course_price(@course) %>  </h4>
