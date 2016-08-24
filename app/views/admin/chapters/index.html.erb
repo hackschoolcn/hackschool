@@ -32,15 +32,15 @@
                 <% chapter.posts.each do |post| %>
                 <li class="list-group-item">
                     <%= render_post_status(post) %>
+                    <%= link_to(post.title, admin_chapter_post_path(chapter, post)) %>
                     <% if post.tasks.count > 0 %>
                     <i class="fa fa-pencil" aria-hidden="true"></i>
                     <% end %>
-                    <%= link_to(post.title, admin_chapter_post_path(chapter, post)) %>
                     <%= link_to("Delete", admin_chapter_post_path(chapter, post), method: :delete, class: "btn btn-xs btn-default pull-right", data: { confirm: "Are you sure?"}) %>
                     <%= link_to("Edit", edit_admin_chapter_post_path(chapter, post), class: "btn btn-xs btn-default pull-right") %>
                     <% if post.is_hidden %>
                     <%= link_to("发布", publish_admin_chapter_post_path(chapter, post), method: :post, class: "btn btn-xs btn-info pull-right") %>
-                <% else %>
+                    <% else %>
                     <%= link_to("隐藏", hide_admin_chapter_post_path(chapter, post), method: :post, class: "btn btn-xs btn-default pull-right") %>
                     <% end %>
 
