@@ -18,7 +18,7 @@
     </div>
      <!-- List group -->
     <ul class="list-group">
-      <li class="list-group-item"><%= task.description %></li>
+      <li class="list-group-item"><%= render_markdown_text(task.description) %></li>
     </ul>
  </div>
 <% end %>

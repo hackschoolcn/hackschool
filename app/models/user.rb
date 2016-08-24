@@ -17,6 +17,20 @@
 #  updated_at             :datetime         not null
 #  is_admin               :boolean          default(FALSE)
 #  member_expire_date     :date
+#  username               :string
+#  nickname               :string
+#  hobbies                :string
+#  gender                 :string
+#  selfintroduction       :string
+#  address                :string
+#  birthday               :string
+#  avatar                 :string
+#
+# Indexes
+#
+#  index_users_on_email                 (email) UNIQUE
+#  index_users_on_reset_password_token  (reset_password_token) UNIQUE
+#
 
 #  username               :string
 #  nickname               :string
@@ -62,6 +76,8 @@ class User < ApplicationRecord
   has_many :works
   has_many :enrollments
   has_many :enrolled_courses, through: :enrollments, source: :course
+
+  validates :username, presence: true
 
   mount_uploader :avatar, AvatarUploader
 
