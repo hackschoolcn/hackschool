@@ -127,6 +127,8 @@ puts "生成第七章第 2 节"
 Post.create([course_id: "1", chapter_id: "7", title: "替换掉 iTerm 布景", article: "## 替换掉 iTerm 布景\r\n\r\n#### 安装 SOLARIZED 布景\r\n\r\n***\r\n\r\n[SOLARIZED](http://ethanschoonover.com/solarized) 布景是特殊调制的一个背景。按此 [下载](http://ethanschoonover.com/solarized/files/solarized.zip) 最新版本。\r\n\r\n解压后里面有很多布景。\r\n\r\n\r\n\r\n#### 替换掉 iTerm 布景\r\n\r\n***\r\n\r\n- `Preference` -> `Profiles` -> `Colors` -> `Load Presets` -> `Import`，载入 `iterm2-colors-solarized` 目录下的两个 itermcolors\r\n- `Preference` -> `Profiles` -> `Colors` -> `Load Presets`，载入 `Solarized Dark`\r\n\r\n\r\n\r\n#### 替换掉 iTerm 字型\r\n\r\n***\r\n\r\n- `Preference` -> `Profiles` -> `Text` 换成 Menlo 14 字体", is_hidden: false])
 puts "生成第七章第 3 节"
 
+Chapter.update_all(is_hidden: false)
+Post.update_all(is_hidden: false)
 # Create Questions
 
 create_questions = for i in 1..10 do

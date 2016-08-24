@@ -1,0 +1,40 @@
+<div class="col-md-12">
+    <div class="container course-tab">
+        <div>
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active">
+                    <a href="#home" aria-controls="home" role="tab" data-toggle="tab">Course Description</a>
+                </li>
+                <li role="presentation">
+                    <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Curriculum</a>
+                </li>
+                <li role="presentation">
+                    <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">About Instructor</a>
+                </li>
+                <li role="presentation">
+                    <a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">FAQ</a>
+                </li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="home">
+                    <%= render_course_description(@course) %>
+                </div>
+
+                <div role="tabpanel" class="tab-pane" id="profile">
+                   <%= render :partial => "course_curriculum_for_preview" %>
+                </div>
+
+                <div role="tabpanel" class="tab-pane" id="messages">
+
+                </div>
+                <div role="tabpanel" class="tab-pane" id="settings">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
