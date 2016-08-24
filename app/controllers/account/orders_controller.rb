@@ -20,6 +20,17 @@ class Account::OrdersController < ApplicationController
   end
 
   def single_purchase
+    # TODO : check_course_valid
+    @course = Course.find(params[:course_id])
+
+    @order = Order.new
+    @order.price = @course.price
+    @order.user = current_user
+    @order.save
+
+    flash[:notice] = "订单已创建"
+
+    redirect_to account_orders_path
   end
 
   def pay_with_wechat
