@@ -1,11 +1,9 @@
 
 puts "这个seed会自动建立1个admin账号, 10个user账号, 7个 Chapters，和相应的小节 Posts, 10个admin创建的questions，10个user创建的questions，"
 
-
 # Create Admin Account
 User.create([username: "admin", email: "admin@gmail.com", password: "123456", password_confirmation: "123456", is_admin: "true"])
 puts "Admin account created."
-
 
 # Create Account
 for i in 1..10 do
@@ -16,10 +14,8 @@ puts "10 User accounts created."
 
 # Create Course
 
-
-Course.create([title: "Rails 基础环境建设", description: "准备必要的工具和软件，配置 Rails 开发环境", teacher_name: "xdite"])
+Course.create([title: "Rails 基础环境建设", description: "准备必要的工具和软件，配置 Rails 开发环境", teacher_name: "xdite", is_hidden: false])
 puts "1st Course created."
-
 
 # Create Chapter
 Chapter.create([chapter: "第一章 开始之前", course_id: "1"])
@@ -117,7 +113,6 @@ puts "生成第六章第 1 节"
 Post.create([course_id: "1", chapter_id: "6", title: "上传专案到 Heroku", article: "## 上传专案到 Heroku\r\n\r\n#### 第一次 deploy 的方法\r\n\r\n***\r\n\r\n##### 步骤 1：开一个新的 Heroku 应用程式\r\n\r\n***\r\n\r\n在终端机打这些字：\r\n\r\n`heroku create`\r\n\r\n`heroku create` 会在 Heroku 的系统里面注册新的应用程式。跑完之后你应该会看到输出里面告诉你新的应用程式的 URL。\r\n\r\n![](http://imageshack.com/a/img921/4691/bRjV6r.png)\r\n\r\n\r\n\r\n然后 `git push heroku master`\r\n\r\n![](http://imageshack.com/a/img922/8871/ATSxaq.png)\r\n\r\n\r\n\r\n提示开发者并没有安装 sqlite3 。\r\n\r\n![](http://imageshack.com/a/img923/6329/31fEO8.png)\r\n\r\n\r\n\r\n这时候请千万不要傻傻的安装 sqlite3 。\r\n\r\nHeroku 的正式环境里，资料库其实并不支持 sqlite3，而是有自定义的资料库 pg。不过关于这段的解释太专业了，初入门的朋友可能看不懂，我们这里只先谈：如何绕过这个错误信息，让你的网站可以顺利部署上 Heroku。\r\n\r\n\r\n\r\n##### 步骤 2：修改 Gemfile\r\n\r\n***\r\n\r\n* 安装Atom的朋友，请在编辑器输入：`cd first＿app`， 按[enter]\r\n\r\n* 输入：`atom .`  ，按[enter]  就可以成功开启专案的档案群\r\n\r\n* 安装 Sublime的朋友，请在编辑器输入：`cd first＿app` 按[enter]\r\n\r\n* 输入：`subl .` ，按[enter]  就可以成功开启专案的档案群\r\n\r\n  ​\r\n\r\n在编辑器里打开 `Gemfile`  这个档案，将第 7 行的`gem 'sqlite3'` 剪下\r\n\r\n![](http://imageshack.com/a/img922/1032/EY3ixt.png)\r\n\r\n\r\n\r\n把 sqlite3 搬到大约第 30 行的这个 group 里面。\r\n\r\n![](http://imageshack.com/a/img921/8673/swvTLY.png)\r\n\r\n\r\n\r\n然后在大约第 47 行新增一个 production group，加上 pg 这个 gem\r\n\r\n![](http://imageshack.com/a/img923/3746/iRZwk7.png)\r\n\r\n存档。（按 command+s）\r\n\r\n\r\n\r\n##### 步骤 3：套用 Gemfile 的异动\r\n\r\n***\r\n\r\n然后在终端机里执行这条指令\r\n\r\n- `bundle install`\r\n\r\n每当你改 Gemfile 的時候，你都要跑一次 `bundle install`，这样子异动才会被套用。套用之后的异动会被存在另一个档案 `Gemfile.lock`。\r\n\r\n\r\n\r\n##### 步骤 4：把 Gemfile 的异动 commit 到 git\r\n\r\n***\r\n\r\n* `git add Gemfile`\r\n* `git add Gemfile.lock`\r\n* `git commit -m \"move sqlite3 to dev group & add pg to production group \"`\r\n\r\n\r\n\r\n##### 步骤5：上传到 Heroku\r\n\r\n***\r\n\r\n* `git push heroku master`\r\n\r\n![](http://imageshack.com/a/img923/6925/ELsm4u.png)\r\n\r\n![](http://imageshack.com/a/img923/4381/xhBO1o.png)\r\n\r\n\r\n\r\n#### 设定根目录\r\n\r\n***\r\n\r\n然后我们可以用 `heroku open` 打开网站。\r\n\r\n不过映入眼帘的却是：\r\n\r\n![](http://imageshack.com/a/img921/1000/SLWhy7.png)\r\n\r\n这是因为我们没有在 `config/routes.rb` 下设定首页。\r\n\r\n\r\n\r\n![](http://imageshack.com/a/img923/4397/0OaeRL.png)\r\n\r\n在第 3 行加入：\r\n\r\n`root \"topics#index\"` 让首页根目录指到 topics 的 index 那一页。\r\n\r\n之后我们再执行：\r\n\r\n* `git add . `\r\n* `git commit -m \"add root path\"`\r\n\r\n![](http://imageshack.com/a/img921/2129/MswxIy.png)\r\n\r\n再执行：\r\n\r\n* `git push heroku master`\r\n* `heroku open`\r\n\r\n映入眼帘的还是错误信息，只是这次变成：We're sorry, but something went wrong.\r\n\r\n![](http://imageshack.com/a/img922/3750/F2kP5n.png)\r\n\r\n\r\n\r\n我们可以使用 `heroku logs` ，观看 heroku 上的错误：\r\n\r\n![](http://imageshack.com/a/img924/5931/LR6mda.png)\r\n\r\n发现错误的信息在于 heroku 上面的 topics 资料库栏位，似乎并不存在。\r\n\r\n原来我们忘记跑了一个指令叫： `heroku run rake db:migrate`\r\n\r\n![](http://imageshack.com/a/img923/499/39TJxA.png)\r\n\r\n\r\n\r\n跑完再 `heroku open` ，看到这个画面，就表示一切顺利运行了。恭喜你，你有了第一个可以在公开空间上运行的论坛App！\r\n\r\n![](http://imageshack.com/a/img924/8867/gQdgEC.png)\r\n\r\n\r\n\r\n#### deploy 新版程式的方法\r\n\r\n***\r\n\r\n##### 步骤 1：把所有异动动 commit 到 git\r\n\r\n***\r\n\r\nHeroku 只受理我们有 commit 进本地 git repo 的程式，所以要确定修改过的档案都有 commit 进去了。\r\n\r\n在终端机输入这些字：\r\n\r\n`git status`\r\n\r\n`git status` 显示你还没 commit 进 git 的异动。如果没有输出任何东西的话，那你可以 deploy 了！不然的话就要 commit 程式码进去：\r\n\r\n在终端机输入这些字：\r\n\r\n`git add . `\r\n\r\n`git commit -m \"Some helpful message for your future self\"`\r\n\r\nCommit message 应该要可以描述你这次修改了什么东西，像是：“把投票数加到 topics 列表页”\r\n\r\n\r\n\r\n##### 步骤 2：把异动 push（上传）到 Heroku\r\n\r\n***\r\n\r\n在终端机输入这些字：\r\n\r\n`git push heroku master`\r\n\r\n这样子会把本地所有已经 commit 进去的异动都 push 到 Heroku。\r\n\r\n\r\n\r\n##### 步骤 3：在 Heroku 跑资料库的 migration\r\n\r\n***\r\n\r\n在终端机输入这些字：\r\n\r\n`heroku run rake db:migrate`\r\n\r\n这是叫 Heroku 在它的资料库跑 migration ，作用就像我们在本地跑 rake db:migrate。\r\n\r\nHeroku 的资料库跟你电脑上的资料库是分开的，也就是说每一次你更改了资料库的结构，你都要在 Heroku 的资料库更新一次。这也就是说在 Heroku 上面你不会看到你电脑上的 sqlite3 资料库里面的资料。\r\n\r\n\r\n\r\n##### 步骤4 ：上网看你的程式\r\n\r\n***\r\n\r\n在终端机输入这些字：\r\n\r\n`heroku open`\r\n\r\n会在浏览器打开你上传到 Heroku 的程式。\r\n\r\n\r\n\r\n#### 解说\r\n\r\n***\r\n\r\n首先，我们要让 Heroku 跟我们的程式可以整合。这需要修改 Gemfile 和重跑 bundler。\r\n\r\n* `Gemfile` 这个档案列出了所有你的 Rails 程式所需要的 Ruby 程式库（Library），称为「gem」。我们这里谈的是说，要在自己电脑的开发环境使用 `sqlite3` gem（写在 development group 里面）， 但是在上传到 Heroku（production group）的時候要使用 `pg` gem，这是专门设计给 Heroku 使用的资料库。\r\n* `Bundler`是 Ruby 专案用来追踪有使用哪些 gem 的工具。我们透过 `Gemfile` 跟 Bundler 说我们要什么 gem，然后我们要确定这些 gem 都有安装。因为我们目前电脑里面没有 Heroku 用的资料库系统， 所以我们跳过不安装 production 用的 gem。别担心，Bundler 还是会帮我们记得，让 Heroku 帮你安装。\r\n\r\n你可以在任何你的程式没问题、会动的时候 deploy。标准流程长得像这样：\r\n\r\n![](http://imageshack.com/a/img924/7731/cKphSq.png)\r\n\r\n1. 改程式\r\n\r\n2. 把异动 commit 进 git （`git commit`）\r\n\r\n3. （重复）\r\n\r\n   ​\r\n\r\n每当你把异动 commit 进 git 之后，你都可以执行 git push heroku master，然后新版本就上线了！", is_hidden: false])
 puts "生成第六章第 2 节"
 
-
 # Create Chapter
 
 Chapter.create([chapter: "第七章 将「开发环境」变得顺手", course_id: "1"])
@@ -129,18 +124,17 @@ puts "生成第七章第 1 节"
 Post.create([course_id: "1", chapter_id: "7", title: "zsh 与 ohmyzsh", article: "## zsh 与 ohmyzsh\r\n\r\n#### zsh\r\n\r\n***\r\n\r\nMac 系统预设的 shell 叫做 bash。而 zsh 多了一些比 bash 人性化的功能，能客制化的选项也比较多。\r\n\r\n\r\n\r\n#### 改变 shell 成为 zsh\r\n\r\n***\r\n\r\n- `chsh -s /bin/zsh` 即能改变成 zsh\r\n\r\n  ​\r\n\r\n#### 安装 oh-my-zsh\r\n\r\n***\r\n\r\n`cd ~/`\r\n`git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh`\r\n`cp ~/.zshrc ~/.zshrc.orig`\r\n`cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc`\r\n`atom .zshrc` （修改 .zshrc 档案）\r\n\r\n\r\n\r\n#### 修改 theme\r\n\r\n***\r\n\r\n```\r\n#ZSH_THEME=\"robbyrussell\"\r\nZSH_THEME=\"agnoster\"\r\n```\r\n\r\n\r\n\r\n#### 替换掉 agnoster 的 theme source code\r\n\r\n***\r\n\r\n修改 `~/.oh-my-zsh/themes/agnoster.zsh-theme` 换成以下內容\r\n\r\n[https://gist.github.com/agnoster/3712874/raw/c3107c06c04fb42b0ca27b0a81b15854819969c6/agnoster.zsh-theme](https://gist.github.com/agnoster/3712874/raw/c3107c06c04fb42b0ca27b0a81b15854819969c6/agnoster.zsh-theme)\r\n\r\n\r\n\r\n#### 安装字型\r\n\r\n***\r\n\r\n由于 agnoster 需要特殊字型。\r\n\r\n所以必须安装 patched 的三个字体：[https://gist.github.com/1595572](https://gist.github.com/1595572)。(下载后双击安装这三个字体。)", is_hidden: false])
 puts "生成第七章第 2 节"
 
-
 Post.create([course_id: "1", chapter_id: "7", title: "替换掉 iTerm 布景", article: "## 替换掉 iTerm 布景\r\n\r\n#### 安装 SOLARIZED 布景\r\n\r\n***\r\n\r\n[SOLARIZED](http://ethanschoonover.com/solarized) 布景是特殊调制的一个背景。按此 [下载](http://ethanschoonover.com/solarized/files/solarized.zip) 最新版本。\r\n\r\n解压后里面有很多布景。\r\n\r\n\r\n\r\n#### 替换掉 iTerm 布景\r\n\r\n***\r\n\r\n- `Preference` -> `Profiles` -> `Colors` -> `Load Presets` -> `Import`，载入 `iterm2-colors-solarized` 目录下的两个 itermcolors\r\n- `Preference` -> `Profiles` -> `Colors` -> `Load Presets`，载入 `Solarized Dark`\r\n\r\n\r\n\r\n#### 替换掉 iTerm 字型\r\n\r\n***\r\n\r\n- `Preference` -> `Profiles` -> `Text` 换成 Menlo 14 字体", is_hidden: false])
 puts "生成第七章第 3 节"
 
 # Create Questions
 
 create_questions = for i in 1..10 do
-	  Question.create!([title: "Admin Question no.#{i}", description: "这是用seed建立的第 #{i} 个问题", user_id: "1"])
+                     Question.create!([title: "Admin Question no.#{i}", description: "这是用seed建立的第 #{i} 个问题", user_id: "1"])
 end
-	  puts "10 Questions created by admin."
+puts "10 Questions created by admin."
 
 create_questions = for i in 1..10 do
-	Question.create!([title: "User Question no.#{i}", description: "这是用seed建立的第 #{i} 个问题", user_id: "2"])
+                     Question.create!([title: "User Question no.#{i}", description: "这是用seed建立的第 #{i} 个问题", user_id: "2"])
 end
-	puts "10 Questions created by user."
+puts "10 Questions created by user."
