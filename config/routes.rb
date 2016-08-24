@@ -57,7 +57,7 @@ Rails.application.routes.draw do
         post :turn_to_admin
       end
     end
-    
+
     #faqs routes
     resources :faqs
   end
@@ -73,6 +73,8 @@ Rails.application.routes.draw do
         get :edit_password
       end
     end
+
+    resources :faqs
 
     resources :tasks do
       resources :works
