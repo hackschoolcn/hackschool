@@ -1,0 +1,17 @@
+<div class="course-upper-bar well">
+  <div class="group container">
+    <div class="row">
+      <div class="col-md-1">
+      </div>
+      <div class="col-md-3">
+          <%= render_course_image(@course) %>
+      </div>
+
+      <div class="col-md-8">
+        <h2> <%= @course.title %> </h2>
+
+        <span class="price"><%= render_course_price(@course) %></span>
+      </div>
+    </div>
+  </div>
+</div>
