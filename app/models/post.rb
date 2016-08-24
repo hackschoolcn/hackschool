@@ -18,6 +18,7 @@ class Post < ApplicationRecord
 
   has_many :tasks, dependent: :destroy
 
+  scope :published, -> { where(is_hidden: false) }
 
   def publish!
     self.is_hidden = false
@@ -37,11 +38,11 @@ class Post < ApplicationRecord
     course = self.course
     index = course.posts.find_index(self)
 
-    if index > 0
+    if index.positive?
 
       index -= 1
       post = course.posts[index]
-      while (post.chapter.is_hidden? || post.is_hidden?) && index > 0
+      while (post.chapter.is_hidden? || post.is_hidden?) && index.positive?
         index -= 1
         post = course.posts[index]
       end
@@ -79,5 +80,4 @@ class Post < ApplicationRecord
       false
     end
   end
-
 end

@@ -14,6 +14,8 @@ class Chapter < ApplicationRecord
   belongs_to :course
   has_many :posts, dependent: :destroy
 
+  scope :published, -> { where(is_hidden: false) }
+
   def publish!
     self.is_hidden = false
     save
