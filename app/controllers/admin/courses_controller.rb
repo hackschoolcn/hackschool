@@ -41,7 +41,7 @@ class Admin::CoursesController < ApplicationController
   def destroy
     @course = Course.find(params[:id])
     @course.destroy
-    redirect_to admin_courses_path alert: "Course Deleted"
+    redirect_to admin_courses_path, alert: "Course Deleted"
   end
 
   def publish
@@ -59,6 +59,6 @@ class Admin::CoursesController < ApplicationController
   private
 
   def course_params
-    params.require(:course).permit(:title, :description, :price, :is_hidden, :image, :teacher_name)
+    params.require(:course).permit(:title, :description, :price, :is_hidden, :image, :teacher_name, :hero_image)
   end
 end
