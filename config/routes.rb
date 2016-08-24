@@ -56,7 +56,7 @@ Rails.application.routes.draw do
         post :turn_to_admin
       end
     end
-    
+
     #faqs routes
     resources :faqs
   end
@@ -67,6 +67,8 @@ Rails.application.routes.draw do
   namespace :account do
 
     resources :settings
+
+    resources :faqs
 
     resources :tasks do
       resources :works

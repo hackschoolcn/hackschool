@@ -1,9 +1,1 @@
-<%= simple_form_for [:admin, @faq] do |f| %>
-<%= f.input :title %>
-<%= f.input :description %>
-<%= f.submit %>
-<% end %>
-<script>
-var simplemde = new SimpleMDE({ element: document.getElementById("faq_description") });
-simplemde.value();
-</script>
+<%= render "form" %>

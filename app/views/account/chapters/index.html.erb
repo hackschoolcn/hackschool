@@ -2,6 +2,9 @@
 <h3><%= @course.title %></h3>
 
 
+<div class="pull-right">
+  <%= link_to("FAQ", account_faqs_path, :class => "btn btn-primary btn-lg") %>
+</div>
 <br>
 <%= render :partial => "account/chapters/search_bar" %>
 <br>
