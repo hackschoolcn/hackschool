@@ -11,6 +11,11 @@ class Account::SettingsController < AccountController
     drop_breadcrumb "编辑个人档案"
   end
 
+  def edit_password
+    @user = current_user
+    drop_breadcrumb "编辑个人密码"
+  end
+
   def show
     @user = current_user
   end

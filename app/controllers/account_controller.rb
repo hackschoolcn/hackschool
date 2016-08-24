@@ -4,7 +4,7 @@ class AccountController < ApplicationController
   layout "user"
 
   def set_breadcrumbs
-    @breadcrumbs = [view_context.link_to("My Account", "/")]
+    @breadcrumbs = [view_context.link_to("My Account", "/account/courses")]
   end
 
   def drop_breadcrumb(title = nil, url = nil)
