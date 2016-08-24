@@ -1,12 +1,9 @@
-class Account::CoursesController < ApplicationController
-  before_action :authenticate_user!
-  before_action :validate_search_key, only:[:search]
-  layout "user"
-
+class Account::CoursesController < AccountController
+  before_action :validate_search_key, only: [:search]
 
   def index
-
     @courses = current_user.enrolled_courses
+    drop_breadcrumb "我的课程", account_courses_path
   end
 
   def enroll_course
@@ -25,7 +22,6 @@ class Account::CoursesController < ApplicationController
     else
       redirect_to account_courses_path
     end
-
   end
 
   def drop_course
@@ -39,13 +35,12 @@ class Account::CoursesController < ApplicationController
     end
 
     redirect_to account_courses_path
-
   end
 
   def search
     if @query_string.present?
-      search_result = Course.where(:is_hidden => false).ransack(@search_criteria).result(distinct: true)
-      @courses = search_result.paginate(page: params[:page], per_page:20)
+      search_result = Course.where(is_hidden: false).ransack(@search_criteria).result(distinct: true)
+      @courses = search_result.paginate(page: params[:page], per_page: 20)
     else
       redirect_to :back
     end
@@ -61,5 +56,4 @@ class Account::CoursesController < ApplicationController
   def search_criteria(query_string)
     { title_or_description_or_answers_content_cont: query_string }
   end
-
 end
