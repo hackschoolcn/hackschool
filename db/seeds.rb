@@ -14,7 +14,7 @@ puts "10 User accounts created."
 
 # Create Course
 
-Course.create([title: "Rails 基础环境建设", description: "准备必要的工具和软件，配置 Rails 开发环境", teacher_name: "xdite", is_hidden: false])
+Course.create([title: "Rails 基础环境建设", description: "准备必要的工具和软件，配置 Rails 开发环境", teacher_name: "xdite", is_hidden: false, price: 100])
 puts "1st Course created."
 
 # Create Chapter

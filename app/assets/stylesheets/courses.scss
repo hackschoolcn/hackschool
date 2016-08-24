@@ -1,7 +1,5 @@
-// Place all the styles related to the courses controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
 
+/* course-index-page */
 .course-item {
     a:hover {
         text-decoration: none !important;
@@ -24,6 +22,33 @@
       margin-top: 10px;
       margin-bottom: 10px;
     }
+}
+
+/* course-show-page */
+
+
+.course-hero-image {
+    text-align: center;
+    padding: 40px 0;
+}
+.course-title-bg {
+    padding: 20px;
+    background: rgba(0,0,0,0.3);
+    margin-bottom: 10px;
+
+    .course-title {
+        text-align: center;
+        text-shadow: 0 1px 1px #000;
+        color: #fff;
+    }
+        
+
+}
+
+.course-price {}
+.courseContent {
+    height: 200px;
+    margin-top: 10px;
 }
 
 
@@ -66,24 +91,7 @@
     color: #999;
 }
 .courselayout {}
-.topAd {
-    text-align: center;
-    padding: 40px 0;
-}
-.courseTitleBg {
-    padding: 20px;
-    background: rgba(0,0,0,0.3);
-}
-.courseTitle {
-    text-align: center;
-    text-shadow: 0 1px 1px #000;
-    color: #fff;
-}
-.coursePrice {}
-.courseContent {
-    height: 200px;
-    margin-top: 10px;
-}
+
 .imgicon {
     width: 200px;
     height: 200px;

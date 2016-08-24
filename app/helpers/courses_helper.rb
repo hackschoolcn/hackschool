@@ -24,19 +24,17 @@ module CoursesHelper
     case size
     when :thumb
       image_tag(course.image.thumb)
-    when :medium
-      image_tag(course.image.medium)
     else
       image_tag(course.image)
     end
   end
 
-  def render_course_description(course)
-    course.description
+  def render_course_price(course)
+    "$ #{course.price} RMB "
   end
 
-  def render_course_price(course)
-    "$ #{course.price}"
+  def render_course_description(course)
+    course.description
   end
 
   def render_chapter_highlight_content(chapter, query_string)

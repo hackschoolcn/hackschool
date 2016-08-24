@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class ImageUploader < CarrierWave::Uploader::Base
+class HeroImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
@@ -15,22 +15,14 @@ class ImageUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
-  process resize_to_fit: [1500, 600]
-
-  version :thumb do
-    process resize_to_fill: [340, 202.38]
-  end
-
-  version :front do
-    process resize_to_fill: [400, 300]
-  end
+  process resize_to_fit: [1200, 460]
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   def default_url
     # For Rails 3.1+ asset pipeline compatibility:
     # ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
 
-    "/images/fallback/" + [medium, "haha.jpg"].compact.join("_")
+    "/images/fallback/" + ["default_hero_image.jpg"].compact.join("_")
   end
 
   # Process files as they are uploaded:
