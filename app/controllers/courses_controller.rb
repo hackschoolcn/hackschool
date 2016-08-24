@@ -2,6 +2,8 @@ class CoursesController < ApplicationController
   before_action :validate_search_key, only: [:search]
   layout "course"
 
+  before_action :authenticate_user!, only: [:member_confirm_enroll]
+
   def index
     @courses = Course.all.where(is_hidden: false)
   end
@@ -27,10 +29,32 @@ class CoursesController < ApplicationController
 
     if current_user
       if current_user.is_valid_subscriber?
-        render :confirm_enroll
+        if current_user.member_of?(@course)
+          flash[:warning] = "您已报名该课程"
+          redirect_to account_courses_path
+        else
+          render :confirm_enroll
+        end
       else
         render :enroll_with_user
       end
+    end
+  end
+
+  def member_confirm_enroll
+    @course = Course.find(params[:id])
+
+    if current_user.is_valid_subscriber?
+      if current_user.member_of?(@course)
+        flash[:warning] = "您已报名该课程"
+        redirect_to account_courses_path
+      else
+        current_user.enroll_course!(@course)
+        flash[:notice] = "报名成功"
+        redirect_to account_courses_path
+      end
+    else
+      render :enroll_with_user
     end
   end
 

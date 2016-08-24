@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     end
     member do
       get :enroll
+      post :member_confirm_enroll
     end
   end
 
