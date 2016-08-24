@@ -1,5 +1,10 @@
-class Account::SettingsController < ApplicationController
+class Account::SettingsController < AccountController
   before_action :authenticate_user!
+
+  def index
+    @user = current_user
+    drop_breadcrumb "用户设置"
+  end
 
   def show
     @user = current_user

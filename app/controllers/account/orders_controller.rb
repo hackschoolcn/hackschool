@@ -2,7 +2,8 @@ class Account::OrdersController < AccountController
   before_action :get_order_params, only: %i(pay_with_wechat pay_with_alipay cancel_order)
 
   def index
-    @orders = current_user.orders.all.recent
+    @orders = current_user.orders.recent
+    drop_breadcrumb "我的课程", account_courses_path
   end
 
   def quarterly_subscription
