@@ -24,6 +24,7 @@ class Order < ApplicationRecord
   include AASM
 
   belongs_to :user
+  belongs_to :course
 
   scope :recent, -> { order("created_at DESC") }
 

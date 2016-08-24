@@ -1,6 +1,7 @@
 class Account::OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :find_order, only: %i(pay_with_wechat pay_with_alipay cancel_order)
+  before_action :check_order_may_pay, only: %i(pay_with_wechat pay_with_alipay)
   layout "user"
 
   def index
@@ -28,6 +29,7 @@ class Account::OrdersController < ApplicationController
     @order.price = @course.price
     @order.user = current_user
     @order.order_type = "single_purchase"
+    @order.course = @course
     @order.save
 
     flash[:notice] = "订单已创建"
@@ -36,23 +38,28 @@ class Account::OrdersController < ApplicationController
   end
 
   def pay_with_wechat
-    if @order.may_make_payment?
-      @order.pay("wechat")
+    @order.pay("wechat")
+
+    case @order.order_type
+    when "subscription"
+
       current_user.add_subscription_date!(@order.subscription_months)
-
-    else
-      flash[:warning] = "该订单已付款"
-
+    when "single_purchase"
+      current_user.enrolled_courses << @order.course
     end
+
     redirect_to :back
   end
 
   def pay_with_alipay
-    if @order.may_make_payment?
+    @order.pay("wechat")
+
+    case @order.order_type
+    when "subscription"
       @order.pay("alipay")
       current_user.add_subscription_date!(@order.subscription_months)
-    else
-      flash[:warning] = "该订单已付款"
+    when "single_purchase"
+      current_user.enrolled_courses << @order.course
     end
 
     redirect_to :back
@@ -68,6 +75,13 @@ class Account::OrdersController < ApplicationController
   end
 
   private
+
+  def check_order_may_pay
+    unless @order.may_make_payment?
+      flash[:warning] = "该订单已付款"
+      redirect_to account_orders_path
+    end
+  end
 
   def find_order
     @order = Order.find_by_token(params[:id])
