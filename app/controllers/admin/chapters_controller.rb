@@ -1,11 +1,12 @@
-class Admin::ChaptersController < ApplicationController
-  before_action :authenticate_user!
-  before_action :require_is_admin
+class Admin::ChaptersController < AdminController
   before_action :find_course, only: %i(index new edit create update destroy)
-  before_action :validate_search_key, only:[:search]
+  before_action :validate_search_key, only: [:search]
 
   def index
     @chapters = @course.chapters
+
+    drop_breadcrumb "Courses", admin_courses_path
+    drop_breadcrumb @course.title, admin_course_chapters_path(@course)
   end
 
   def new
@@ -60,9 +61,9 @@ class Admin::ChaptersController < ApplicationController
   def search
     if @query_string.present?
       search_result = Post.ransack(@search_criteria).result(distinct: true)
-      @posts = search_result.paginate(page: params[:page], per_page:20)
+      @posts = search_result.paginate(page: params[:page], per_page: 20)
     else
-      redirect_to :back  
+      redirect_to :back
     end
   end
 

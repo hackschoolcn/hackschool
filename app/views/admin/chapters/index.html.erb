@@ -14,6 +14,7 @@
         <div class="panel panel-default">
             <!-- Default panel contents -->
             <div class="panel-heading">
+                <%= render_chapter_status(chapter) %>
                 <%= chapter.chapter %>
                 <div class="pull-right">
                     <% if chapter.is_hidden %>
@@ -30,6 +31,7 @@
             <ul class="list-group">
                 <% chapter.posts.each do |post| %>
                 <li class="list-group-item">
+                    <%= render_post_status(post) %>
                     <% if post.tasks.count > 0 %>
                     <i class="fa fa-pencil" aria-hidden="true"></i>
                     <% end %>

@@ -1,10 +1,7 @@
-class Admin::CoursesController < ApplicationController
-  before_action :authenticate_user!
-  before_action :require_is_admin
-  layout "admin"
-
+class Admin::CoursesController < AdminController
   def index
-    @courses = Course.all
+    @courses = Course.recent
+    drop_breadcrumb "Courses"
   end
 
   def show
@@ -14,10 +11,14 @@ class Admin::CoursesController < ApplicationController
 
   def new
     @course = Course.new
+    drop_breadcrumb "新增课程"
   end
 
   def edit
     @course = Course.find(params[:id])
+    drop_breadcrumb "Courses", admin_courses_path
+    drop_breadcrumb @course.title
+    drop_breadcrumb "编辑课程"
   end
 
   def create
