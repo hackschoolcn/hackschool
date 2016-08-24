@@ -1,0 +1,25 @@
+
+
+<div class="dropdown">
+  <button class="btn btn-default btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+    选项
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    <li><%= link_to("编辑课程信息", edit_admin_course_path(course)) %></li>
+    <li><%= link_to("删除", admin_course_path(course), method: :delete,   data: { confirm:  "Are you sure?" } ) %>
+</li>
+    <li>
+
+      <% if course.is_hidden %>
+      <%= link_to("上架课程", publish_admin_course_path(course), method: :post) %>
+      <% else %>
+      <%= link_to("下架课程", hide_admin_course_path(course), method: :post) %>
+      <% end %>
+
+
+    </li>
+
+  </ul>
+</div>

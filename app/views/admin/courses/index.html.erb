@@ -1,51 +1,43 @@
 <div class="pull-right">
-  <%= link_to("Add a course", new_admin_course_path, :class => "btn btn-default") %>
+    <%= link_to("Add a course", new_admin_course_path, :class => "btn btn-default") %>
 </div>
 <table class="table table-bordered">
-  <thead>
-    <tr>
-      <td>#</td>
-      <td>课程名</td>
-      <td>教师</td>
-      <td>选项</td>
-      <td>课程控制台</td>
-      <td>创建日期</td>
-    </tr>
-  </thead>
-  <tbody>
-  <% @courses.each do |course| %>
-    <tr>
-      <td><%= course.id %></td>
-      <td>
-        <%= render_course_status(course) %>
-        <%= link_to(course.title, course_path(course)) %>
-        <%= link_to("查看报名人数", admin_course_path(course), class: "btn btn-xs btn-default") %>
-      </td>
-      <td>
-        <%= course.teacher_name %>
-      </td>
+    <thead>
+        <tr>
+            <td>#</td>
+            <td>课程名</td>
+            <td>教师</td>
+            <td>选项</td>
+            <td>课程控制台</td>
+            <td>创建日期</td>
+        </tr>
+    </thead>
+    <tbody>
+        <% @courses.each do |course| %>
+        <tr>
+            <td><%= course.id %></td>
+            <td>
+                <%= render_course_status(course) %>
+                <%= link_to(course.title, course_path(course)) %>
+                <%= link_to("查看报名人数", admin_course_path(course), class: "btn btn-xs btn-default") %>
+            </td>
+            <td>
+                <%= course.teacher_name %>
+            </td>
 
-      <td>
-        <%= link_to("编辑", edit_admin_course_path(course), class: "btn btn-xs btn-primary") %> |
-        <%= link_to("删除", admin_course_path(course), method: :delete, class: "btn btn-xs btn-danger",
-        data: { confirm:  "Are you sure?" } ) %>
+            <td>
+              <%= render :partial => "admin/courses/course_options", :locals => { :course => course} %>
+            </td>
+            <td>
 
-        <% if course.is_hidden %>
-          <%= link_to("上架课程", publish_admin_course_path(course), method: :post, class: "btn btn-xs btn-primary") %>
-        <% else %>
-          <%= link_to("下架课程", hide_admin_course_path(course), method: :post, class: "btn btn-xs btn-warning") %>
+                <%= link_to("进入控制台", admin_course_chapters_path(course), class: "btn btn-xs btn-success") %>
+
+            </td>
+            <td>
+                <%= render_formatted_time(course.created_at) %>
+            </td>
+
+        </tr>
         <% end %>
-      </td>
-      <td>
-
-        <%= link_to("进入控制台", admin_course_chapters_path(course), class: "btn btn-xs btn-success") %>
-
-      </td>
-      <td>
-        <%= render_formatted_time(course.created_at) %>
-      </td>
-
-    </tr>
-  <% end %>
-  </tbody>
+    </tbody>
 </table>
