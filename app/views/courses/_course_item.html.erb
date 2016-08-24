@@ -1,0 +1,15 @@
+<div class="col-xs-12 col-sm-6 col-md-4">
+    <%= link_to course_path(course) do %>
+    <div style="width:360px ; height:390px; overflow:hidden;" class="thumbnail">
+
+        <%= render_course_image(course, :front) %>
+        <br/>
+        <div class="caption text-center">
+            <h2 style="color:black"><%= course.title %></h2>
+            <div style="color:black；">
+                <%#= render_markdown_text(course.description) %>
+            </div>
+        </div>
+        <% end %>
+    </div>
+</div>

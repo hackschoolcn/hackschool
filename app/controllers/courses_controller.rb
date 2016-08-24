@@ -1,9 +1,9 @@
 class CoursesController < ApplicationController
-before_action :validate_search_key, only:[:search]
-layout "course"
+  before_action :validate_search_key, only: [:search]
+  layout "course"
 
   def index
-    @courses = Course.published
+    @courses = Course.all
   end
 
   def show
@@ -16,7 +16,7 @@ layout "course"
   def search
     if @query_string.present?
       search_result = Course.ransack(@search_criteria).result(distinct: true)
-      @courses = search_result.paginate(page: params[:page], per_page:20)
+      @courses = search_result.paginate(page: params[:page], per_page: 20)
     end
   end
 
@@ -30,5 +30,4 @@ layout "course"
   def search_criteria(query_string)
     { title_or_description_cont: query_string }
   end
-
 end
