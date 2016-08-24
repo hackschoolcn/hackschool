@@ -11,10 +11,12 @@
 #  updated_at   :datetime         not null
 #  image        :string
 #  teacher_name :string
+#  hero_image   :string
 #
 
 class Course < ApplicationRecord
   mount_uploader :image, ImageUploader
+  mount_uploader :hero_image, HeroImageUploader
 
   has_many :chapters, dependent: :destroy
   has_many :posts, dependent: :destroy
@@ -23,7 +25,6 @@ class Course < ApplicationRecord
   has_many :works
   has_many :enrollments
   has_many :enrolled_users, through: :enrollments, source: :user
-
 
   scope :published, -> { where(is_hidden: false) }
 

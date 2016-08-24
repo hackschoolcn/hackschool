@@ -24,8 +24,6 @@ module CoursesHelper
     case size
     when :thumb
       image_tag(course.image.thumb)
-    when :medium
-      image_tag(course.image.medium)
     else
       image_tag(course.image)
     end
