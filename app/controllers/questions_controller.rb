@@ -47,6 +47,8 @@ class QuestionsController < ApplicationController
     if @query_string.present?
       search_result = Question.ransack(@search_criteria).result(distinct: true).includes(:answers)
       @questions = search_result.paginate(page: params[:page], per_page:20)
+    else
+      redirect_to :back  
     end
   end
 
