@@ -35,7 +35,7 @@ class Account::ChaptersController < AccountController
 
   def set_breadcrumbs
     @course = Course.find(params[:course_id])
-    @breadcrumbs = [view_context.link_to(@course.title, account_courses_path)]
+    @breadcrumbs = [view_context.link_to(@course.title, account_course_chapters_path(@course))]
   end
 
   def drop_breadcrumb(title = nil, url = nil)
