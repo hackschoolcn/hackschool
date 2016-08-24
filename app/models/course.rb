@@ -26,6 +26,8 @@ class Course < ApplicationRecord
   has_many :enrollments
   has_many :enrolled_users, through: :enrollments, source: :user
 
+  validates :price, numericality: true
+
   scope :published, -> { where(is_hidden: false) }
 
   def publish!

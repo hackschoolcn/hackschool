@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   resources :plans, only: [:index]
 
   namespace :admin do
-    resources :courses do
+    resources :courses do # admin panel 课程与章 - chpwang
       resources :chapters do
         member do
           post :hide
@@ -33,7 +33,7 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :chapters do
+    resources :chapters do # admin panel 章与节 - chpwang
       collection do
         get :search
       end
@@ -45,12 +45,11 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :posts do
+    resources :posts do # admin panel 任务与作业 - chpwang
       resources :tasks
-
     end
 
-    resources :users do
+    resources :users do # admin panel 管理用户 - lanxin
       member do
         post :turn_to_user
         post :turn_to_admin
@@ -65,23 +64,22 @@ Rails.application.routes.draw do
 
     resources :settings
 
-    resources :tasks do
+    resources :tasks do # 任务与作业 - chpwang
       resources :works
     end
 
 
-    resources :courses do
+    resources :courses do # user panel 课程与章 - chpwang
       collection do
         get :search
       end
       resources :chapters
       member do
         post :enroll_course
-        post :drop_course
       end
     end
 
-    resources :chapters do
+    resources :chapters do # user panel 章与节 - chpwang
       collection do
         get :search
       end
@@ -93,9 +91,8 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :orders do
+    resources :orders do # user panel 订单 - chpwang
       collection do
-        post :quarterly_subscription
         post :yearly_subscription
       end
       member do

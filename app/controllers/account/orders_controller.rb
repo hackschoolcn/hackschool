@@ -7,35 +7,19 @@ class Account::OrdersController < ApplicationController
     @orders = current_user.orders.all.recent
   end
 
-  def quarterly_subscription
-    create_order(price: 2000, months: 3)
-  end
-
   def yearly_subscription
-    create_order(price: 6000, months: 12)
+    create_order(months: 12, price: 6000, description: "year")
   end
 
   def pay_with_wechat
-    if @order.may_make_payment?
-      @order.pay("wechat")
-      current_user.add_subscription_date!(@order.subscription_months)
+    pay_action("wechat")
 
-    else
-      flash[:warning] = "该订单已付款"
-
-    end
     redirect_to :back
   end
 
   def pay_with_alipay
-    if @order.may_make_payment?
-      @order.pay("alipay")
-      current_user.add_subscription_date!(@order.subscription_months)
-
-    else
-      flash[:warning] = "该订单已付款"
-
-    end
+    pay_action("alipay")
+    
     redirect_to :back
   end
 
@@ -54,6 +38,24 @@ class Account::OrdersController < ApplicationController
     @order = Order.find_by_token(params[:id])
   end
 
+  def pay_action(pay_method)
+
+    if @order.may_make_payment?
+      @order.pay(pay_method)
+      current_user.add_subscription_date!(@order.subscription_months)
+
+      unless @order.description == "year"
+        course_id = @order.description.to_i
+        course = Course.find(course_id)
+        current_user.enroll_course!(course)
+      end
+
+    else
+      flash[:warning] = "该订单已付款"
+    end
+    
+  end
+
   def create_order(options = {})
     if current_user.orders.count > 0 && current_user.orders.last.unpaid?
 
@@ -62,6 +64,7 @@ class Account::OrdersController < ApplicationController
     else
       @order = Order.new
       @order.price = options[:price]
+      @order.description = options[:description]
       @order.subscription_months = options[:months]
       @order.user = current_user
       @order.save
@@ -72,4 +75,5 @@ class Account::OrdersController < ApplicationController
 
     redirect_to account_orders_path
   end
+
 end

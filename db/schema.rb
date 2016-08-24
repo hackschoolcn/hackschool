@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160824031329) do
+ActiveRecord::Schema.define(version: 20160824071236) do
 
   create_table "answers", force: :cascade do |t|
     t.text     "content"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20160824031329) do
     t.datetime "updated_at",                             null: false
     t.string   "aasm_state",          default: "unpaid"
     t.integer  "subscription_months"
+    t.string   "description"
     t.index ["aasm_state"], name: "index_orders_on_aasm_state"
   end
 

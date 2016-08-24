@@ -17,6 +17,12 @@ puts "10 User accounts created."
 Course.create([title: "Rails 基础环境建设", description: "准备必要的工具和软件，配置 Rails 开发环境", teacher_name: "xdite", is_hidden: false, price: 100])
 puts "1st Course created."
 
+Course.create([title: "从篮球教练到全栈工程师", description: "讲述安西教练变成全栈工程师的秘籍", teacher_name: "xdite", is_hidden: false, price: 299])
+puts "2nd Course created."
+
+Course.create([title: "全栈之为责任", description: "出发前的热身 - 速度和压力练习，训练你在10小时之内做出 KnewOne 剁手网站", teacher_name: "xdite", is_hidden: false, price: 1000])
+puts "3rd Course created."
+
 # Create Chapter
 Chapter.create([chapter: "第一章 开始之前", course_id: "1"])
 puts "生成第一章"
