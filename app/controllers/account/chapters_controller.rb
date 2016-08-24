@@ -1,8 +1,9 @@
-class Account::ChaptersController < ApplicationController
+class Account::ChaptersController < AccountController
   before_action :authenticate_user!
   before_action :check_subscription_expiration
-  before_action :validate_search_key, only:[:search]
+  before_action :validate_search_key, only: [:search]
 
+  layout "application"
 
   def index
     @course = Course.find(params[:course_id])
@@ -23,11 +24,10 @@ class Account::ChaptersController < ApplicationController
   def search
     if @query_string.present?
       search_result = Post.ransack(@search_criteria).result(distinct: true).includes(:chapter)
-      @posts = search_result.paginate(page: params[:page], per_page:20)
+      @posts = search_result.paginate(page: params[:page], per_page: 20)
     else
       redirect_to :back
     end
-
   end
 
   protected
@@ -38,7 +38,6 @@ class Account::ChaptersController < ApplicationController
   end
 
   def search_criteria(query_string)
-    { article_cont: query_string , chapter_is_hidden_eq: false }
+    { article_cont: query_string, chapter_is_hidden_eq: false }
   end
-
 end

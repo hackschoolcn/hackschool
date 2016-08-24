@@ -3,39 +3,38 @@
 <%= render :partial => "account/courses/search_bar" %>
 <br>
 
-
 <table class="table table-bordered">
-  <thead>
-    <tr>
-      <td>#</td>
-      <td>课程</td>
-      <td>任务</td>
-      <td>教师</td>
-      <td>选项</td>
-      <td>创建日期</td>
-    </tr>
-  </thead>
-  <tbody>
-  <% @courses.each do |course| %>
-    <tr>
-      <td><%= course.id %></td>
-      <td>
-        <%= link_to(course.title, account_course_chapters_path(course)) %>
-      </td>
-      <td>
-        <%= render_my_course_task_status(course) %>
-      </td>
-      <td>
-        <%= course.teacher_name %>
-      </td>
-      <td>
-        <%= link_to("退出课程", drop_course_account_course_path(course), method: :post, class: "btn btn-xs btn-primary") %>
-      </td>
-      <td>
-        <%= render_formatted_time(course.created_at) %>
-      </td>
+    <thead>
+        <tr>
+            <td>#</td>
+            <td>课程</td>
+            <td>任务</td>
+            <td>教师</td>
+            <td>选项</td>
+            <td>创建日期</td>
+        </tr>
+    </thead>
+    <tbody>
+        <% @courses.each do |course| %>
+        <tr>
+            <td><%= course.id %></td>
+            <td>
+                <%= link_to(course.title, account_course_chapters_path(course)) %>
+            </td>
+            <td>
+                <%= render_my_course_task_status(course) %>
+            </td>
+            <td>
+                <%= course.teacher_name %>
+            </td>
+            <td>
+                <%= link_to("退出课程", drop_course_account_course_path(course), method: :post, class: "btn btn-xs btn-primary") %>
+            </td>
+            <td>
+                <%= render_formatted_time(course.created_at) %>
+            </td>
 
-    </tr>
-  <% end %>
-  </tbody>
+        </tr>
+        <% end %>
+    </tbody>
 </table>
