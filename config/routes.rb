@@ -82,6 +82,7 @@ Rails.application.routes.draw do
       end
 
       resources :questions
+      resources :assignments
     end
 
     resources :chapters do
