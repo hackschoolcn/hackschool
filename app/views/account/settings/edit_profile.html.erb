@@ -4,10 +4,8 @@
         Settings for your profile
     </h2>
     <hr>
-    <img src="<%= current_user.avatar.thumb %>" width="90" height="90">
-    <!-- <%= gravatar_tag current_user.email, :size => 80, :default => avatar_url %> -->
-    <%#= link_to("Upload a profile picture", class: "btn btn-default") %>
 
+    <%= render_user_avatar(current_user, :thumb) %>
     <%= simple_form_for @user , :url => update_profile_account_settings_path, :method => :put do |f| %>
     <%= f.input :avatar, :label =>"Avatar" %>
     <hr>

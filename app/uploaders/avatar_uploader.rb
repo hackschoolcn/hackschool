@@ -1,7 +1,6 @@
 # encoding: utf-8
 
 class AvatarUploader < CarrierWave::Uploader::Base
-
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
@@ -19,7 +18,11 @@ class AvatarUploader < CarrierWave::Uploader::Base
   process resize_to_fit: [400, 400]
 
   version :thumb do
-    process resize_to_fill: [140, 140]
+    process resize_to_fill: [30, 30]
+  end
+
+  version :thumb do
+    process resize_to_fill: [90, 90]
   end
 
   version :medium do
@@ -57,5 +60,4 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
-
 end
