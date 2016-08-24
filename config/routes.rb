@@ -6,12 +6,14 @@ Rails.application.routes.draw do
       get :search
     end
     resources :answers
-
   end
 
   resources :courses do
     collection do
       get :search
+    end
+    member do
+      get :enroll
     end
   end
 
@@ -24,7 +26,6 @@ Rails.application.routes.draw do
           post :hide
           post :publish
         end
-
       end
 
       member do
@@ -47,7 +48,6 @@ Rails.application.routes.draw do
 
     resources :posts do
       resources :tasks
-
     end
 
     resources :users do
@@ -62,13 +62,11 @@ Rails.application.routes.draw do
   root "courses#index"
 
   namespace :account do
-
     resources :settings
 
     resources :tasks do
       resources :works
     end
-
 
     resources :courses do
       collection do
