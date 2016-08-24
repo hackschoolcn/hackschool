@@ -6,7 +6,7 @@
         </h4>
     </div>
 
-    <% if current_user && current_user.is_valid_subscriber? && current_user.enrolled_courses.include?(@course) %>
+    <% if current_user && current_user.enrolled_courses.include?(@course) %>
       <%= link_to("立刻学习", account_course_chapters_path(@course), class:"btn btn-lg btn-success pull-center")%>
     <% else  %>
       <%= link_to("火速报名", enroll_course_path(@course), class:"btn btn-lg btn-danger pull-center")%>
