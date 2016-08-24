@@ -1,0 +1,16 @@
+<div class="col-md-12 center">
+  <div class="container-fluid">
+    <h1><%= render_markdown_text(@faq.title) %></h1>
+  </div>
+
+
+<div class="clearfix">
+  <br><br>
+</div>
+ <div class="panel panel-default">
+     <!-- List group -->
+    <ul class="list-group">
+      <li class="list-group-item"><%= render_markdown_text(@faq.description) %></li>
+    </ul>
+ </div>
+</div>

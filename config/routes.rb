@@ -25,6 +25,8 @@ Rails.application.routes.draw do
         end
       end
 
+    resources :faqs
+
       member do
         post :hide
         post :publish
@@ -53,6 +55,9 @@ Rails.application.routes.draw do
         post :turn_to_admin
       end
     end
+
+    #faqs routes
+    resources :faqs
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -67,6 +72,7 @@ Rails.application.routes.draw do
       end
     end
 
+
     resources :tasks do
       resources :works
     end
@@ -80,7 +86,9 @@ Rails.application.routes.draw do
         post :enroll_course
         post :drop_course
       end
+      resources :faqs
     end
+
 
     resources :chapters do
       collection do
@@ -108,4 +116,5 @@ Rails.application.routes.draw do
   end
 
   resources :groups
+
 end
