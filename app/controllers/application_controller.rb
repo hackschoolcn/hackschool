@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   def check_subscription_expiration
     if !current_user.member_expire_date || current_user.member_expire_date < Time.now
 
-      flash[:notice] = "请先选择你的套餐"
+      flash[:notice] = "您还未订阅，请先选择您的套餐"
       redirect_to plans_path
 
     end

@@ -1,10 +1,7 @@
 class Account::CoursesController < ApplicationController
   before_action :authenticate_user!
-  before_action :check_subscription_expiration, only: %i(enroll_course drop_course)
   before_action :validate_search_key, only:[:search]
   layout "user"
-
-
 
 
   def index
@@ -22,7 +19,13 @@ class Account::CoursesController < ApplicationController
       flash[:warning] = "您已报名该课程"
     end
 
-    redirect_to account_courses_path
+    if !current_user.member_expire_date || current_user.member_expire_date < Time.now
+      flash[:notice] = "请先选择你的订阅套餐"
+      redirect_to plans_path
+    else
+      redirect_to account_courses_path
+    end
+    
   end
 
   def drop_course
