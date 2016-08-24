@@ -10,7 +10,6 @@
             <td>课程名</td>
             <td>教师</td>
             <td>选项</td>
-            <td>课程控制台</td>
             <td>创建日期</td>
         </tr>
     </thead>
@@ -30,11 +29,7 @@
             <td>
               <%= render :partial => "admin/courses/course_options", :locals => { :course => course} %>
             </td>
-            <td>
 
-                <%= link_to("进入控制台", admin_course_chapters_path(course), class: "btn btn-xs btn-success") %>
-
-            </td>
             <td>
                 <%= render_formatted_time(course.created_at) %>
             </td>

@@ -7,6 +7,7 @@
     <span class="caret"></span>
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    <li><%= link_to("进入控制台", admin_course_chapters_path(course)) %></li>
     <li><%= link_to("编辑课程信息", edit_admin_course_path(course)) %></li>
     <li><%= link_to("删除", admin_course_path(course), method: :delete,   data: { confirm:  "Are you sure?" } ) %>
 </li>
