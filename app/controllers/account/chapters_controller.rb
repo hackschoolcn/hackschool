@@ -1,23 +1,16 @@
 class Account::ChaptersController < ApplicationController
   before_action :authenticate_user!
-  before_action :check_subscription_expiration
+  before_action :check_enrollment_for_chapter, only: [:index]
   before_action :validate_search_key, only:[:search]
 
 
   def index
-    @course = Course.find(params[:course_id])
-
     if @course.is_hidden?
       flash[:warning] = "此课程没有开课"
       redirect_to root_path
     end
 
-    if current_user.enrolled_courses.include?(@course)
-      @chapters = @course.chapters.where(is_hidden: false)
-    else
-      flash[:warning] = "请先报名参加该课程"
-      redirect_to course_path(@course)
-    end
+    @chapters = @course.chapters.where(is_hidden: false)
   end
 
   def search
@@ -36,6 +29,17 @@ class Account::ChaptersController < ApplicationController
 
   def search_criteria(query_string)
     { article_cont: query_string }
+  end
+
+  private
+
+  def check_enrollment_for_chapter
+    @course = Course.find(params[:course_id])
+
+    if !current_user.enrolled_courses.include?(@course)
+      flash[:warning] = "请先报名参加该课程"
+      redirect_to course_path(@course)
+    end
   end
 
 end

@@ -108,13 +108,15 @@ class User < ApplicationRecord
   end
 
   def add_subscription_date!(amount)
-    begin_date =
-      if member_expire_date && member_expire_date > Time.zone.now
-        member_expire_date
-      else
-        Time.zone.now
-      end
-    self.member_expire_date = begin_date + amount.month
-    save
+    if amount
+      begin_date =
+        if member_expire_date && member_expire_date > Time.zone.now
+          member_expire_date
+        else
+          Time.zone.now
+        end
+      self.member_expire_date = begin_date + amount.month
+      save
+    end
   end
 end
