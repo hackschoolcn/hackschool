@@ -15,9 +15,12 @@ class Account::ChaptersController < ApplicationController
 
   def search
     if @query_string.present?
-      search_result = Post.ransack(@search_criteria).result(distinct: true)
+      search_result = Post.ransack(@search_criteria).result(distinct: true).includes(:chapter)
       @posts = search_result.paginate(page: params[:page], per_page:20)
+    else
+      redirect_to :back
     end
+
   end
 
   protected
@@ -28,7 +31,18 @@ class Account::ChaptersController < ApplicationController
   end
 
   def search_criteria(query_string)
-    { article_cont: query_string }
+    { article_cont: query_string , chapter_is_hidden_eq: false }
+  end
+
+  private
+
+  def check_enrollment_for_chapter
+    @course = Course.find(params[:course_id])
+
+    if !current_user.enrolled_courses.include?(@course)
+      flash[:warning] = "请先报名参加该课程"
+      redirect_to course_path(@course)
+    end
   end
 
   private

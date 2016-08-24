@@ -29,10 +29,13 @@ class Account::CoursesController < ApplicationController
   end
 
 
+
   def search
     if @query_string.present?
-      search_result = Course.ransack(@search_criteria).result(distinct: true).includes(:chapters).includes(:posts)
+      search_result = Course.where(:is_hidden => false).ransack(@search_criteria).result(distinct: true)
       @courses = search_result.paginate(page: params[:page], per_page:20)
+    else
+      redirect_to :back
     end
   end
 

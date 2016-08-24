@@ -61,6 +61,8 @@ class Admin::ChaptersController < ApplicationController
     if @query_string.present?
       search_result = Post.ransack(@search_criteria).result(distinct: true)
       @posts = search_result.paginate(page: params[:page], per_page:20)
+    else
+      redirect_to :back  
     end
   end
 
