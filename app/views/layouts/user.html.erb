@@ -16,18 +16,19 @@
             <%= render "common/navbar" %>
             <div class="container">
             <%= render "common/flashes" %>
-            <div class="row">
+            <div class="row" style="padding-top:20px;">
               <div class="col-md-2">
 
-                <ul class="nav nav-pills nav-stacked" style="max-width: 300px; padding-top:20px;">
+                <ul class="nav nav-pills nav-stacked" style="max-width: 300px">
 
-                  <%= active_link_to("My Courses", account_courses_path , :active => :inclusive, :wrap_tag => :li ) %>
-                  <%= active_link_to("My Orders", account_orders_path , :active => :inclusive, :wrap_tag => :li ) %>
+                  <%= active_link_to("我的课程", account_courses_path , :active => :inclusive, :wrap_tag => :li ) %>
+                  <%= active_link_to("我的订单", account_orders_path , :active => :inclusive, :wrap_tag => :li ) %>
                 </ul>
 
               </div>
 
               <div class="col-md-10">
+                <%= render_breadcrumb %>
                 <%= yield %>
               </div>
         </div>
