@@ -3,7 +3,7 @@ class CoursesController < ApplicationController
   layout "course"
 
   def index
-    @courses = Course.all
+    @courses = Course.all.where(is_hidden: false)
   end
 
   def show
