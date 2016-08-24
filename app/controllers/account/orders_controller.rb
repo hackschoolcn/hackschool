@@ -46,6 +46,7 @@ class Account::OrdersController < ApplicationController
       current_user.add_subscription_date!(@order.subscription_months)
     when "single_purchase"
       current_user.enrolled_courses << @order.course
+      # TODO: need to check uniq
     end
 
     redirect_to :back
@@ -60,6 +61,8 @@ class Account::OrdersController < ApplicationController
       current_user.add_subscription_date!(@order.subscription_months)
     when "single_purchase"
       current_user.enrolled_courses << @order.course
+      # TODO: need to check uniq
+
     end
 
     redirect_to :back

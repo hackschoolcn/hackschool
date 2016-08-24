@@ -3,6 +3,7 @@ class CoursesController < ApplicationController
   layout "course"
 
   before_action :authenticate_user!, only: [:member_confirm_enroll]
+  before_action :check_enrolled_status, only: %i(enroll member_confirm_enroll)
 
   def index
     @courses = Course.all.where(is_hidden: false)
@@ -25,40 +26,38 @@ class CoursesController < ApplicationController
   end
 
   def enroll
-    @course = Course.find(params[:id])
-
     if current_user
       if current_user.is_valid_subscriber?
-        if current_user.member_of?(@course)
-          flash[:warning] = "您已报名该课程"
-          redirect_to account_courses_path
-        else
-          render :confirm_enroll
-        end
+        render :confirm_enroll
       else
         render :enroll_with_user
       end
+
+    else
+
+      render :enroll_with_signup_form
     end
   end
 
   def member_confirm_enroll
-    @course = Course.find(params[:id])
-
     if current_user.is_valid_subscriber?
-      if current_user.member_of?(@course)
-        flash[:warning] = "您已报名该课程"
-        redirect_to account_courses_path
-      else
-        current_user.enroll_course!(@course)
-        flash[:notice] = "报名成功"
-        redirect_to account_courses_path
-      end
+      current_user.enroll_course!(@course)
+      flash[:notice] = "报名成功"
+      redirect_to account_courses_path
     else
       render :enroll_with_user
     end
   end
 
   protected
+
+  def check_enrolled_status
+    @course = Course.find(params[:id])
+    if current_user && current_user.member_of?(@course)
+      flash[:warning] = "您已报名该课程"
+      redirect_to account_courses_path
+    end
+  end
 
   def validate_search_key
     @query_string = params[:query_string].gsub(/\\|\'|\/|\?/, "") if params[:query_string].present?
