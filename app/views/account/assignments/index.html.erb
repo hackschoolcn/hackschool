@@ -7,3 +7,21 @@
 
 
 <h1> TBD </h1>
+
+<% @course.tasks.each_with_index do |task, index| %>
+ <div class="panel panel-default">
+   <!-- Default panel contents -->
+       <div class="panel-heading">
+        任务 <%= index + 1%> - 对应章节：
+        <%= link_to(task.post.title, account_chapter_post_path(task.post.chapter, task.post)) %>
+        <%= render_work_operate_buttons(task) %>
+       </div>
+       <!-- List group -->
+       <ul class="list-group">
+          <li class="list-group-item">
+            <%= render_markdown_text(task.description) %>
+          </li>
+
+       </ul>
+ </div>
+<% end %>

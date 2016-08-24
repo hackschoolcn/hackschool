@@ -1,9 +1,8 @@
 class CoursesController < ApplicationController
   before_action :validate_search_key, only: [:search]
-  layout "course"
-
   before_action :authenticate_user!, only: [:member_confirm_enroll]
   before_action :check_enrolled_status, only: %i(enroll member_confirm_enroll)
+  layout "course"
 
   def index
     @courses = Course.all.where(is_hidden: false)

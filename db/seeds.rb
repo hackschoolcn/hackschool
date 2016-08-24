@@ -31,6 +31,7 @@ puts "生成第一章"
 Post.create([course_id: "1", chapter_id: "1", title: "购买电脑（Mac 电脑）", article: "## 购买电脑（Mac 电脑）\r\n\r\n因为这个课程使用的基础设备是 Mac 电脑。所以接下来的整个教程都是以 Mac 为基础的教学课程。\r\n\r\n所以请在开学之前，确保你自己已经购买了一台 Mac 电脑，并且把 Rails 开发环境搭建完毕。\r\n\r\n---\r\n\r\n### Mac 电脑的最低需求\r\n为了确保开发过程的流畅。我们建议你购买以下的电脑配置\r\n*  2014年以后出厂的 Macbook Air/Macbook Pro\r\n*  屏幕限制 13\"以上，最好是 15\"+\r\n*  内存限制 8GB 以上，最好是 16GB\r\n*  操作系统限制 OSX 10.10 以上，最好是 10.11\r\n\r\n", is_hidden: false])
 puts "生成第一章第 1 节"
 
+
 Post.create([course_id: "1", chapter_id: "1", title: "加入课程 Slack 频道（学会翻墙交流技能）", article: "## 加入课程 Slack 频道（学会翻墙交流技能）\r\n这个课程的官方交流频道在 Slack 上：\r\n* 请各位同学到 https://growthschool-slack.herokuapp.com/ 上注册一个 slack 账号。\r\n* 加入 channel：#rails-fullstack-1\r\n\r\n### Slack\r\n![](http://imageshack.com/a/img922/9831/dLTfz0.png)\r\n[slack](https://slack.com) 是一套即时通讯系统。台湾地区敏捷团队多半使用此套即时通讯系统，作为团队内部的信息交流使用。我们在这套课程里，也会使用这一套工具交流学习以及协作开发。\r\n\r\n### Slack 被挡了怎么办？（Only for 大陆学员）\r\n程序员寻找的很多资源都在墙以外的世界。你可以使用\r\n\r\n* [云梯](https://yuntidata.com/)\r\n\r\n之类的服务，翻墙出去，这样就可以使用 Slack App了。\r\n", is_hidden: false])
 puts "生成第一章第 2 节"
 
@@ -135,6 +136,13 @@ puts "生成第七章第 3 节"
 
 Chapter.update_all(is_hidden: false)
 Post.update_all(is_hidden: false)
+
+# Create Tasks
+create_tasks = for i in 1..25 do
+  Task.create([course_id: "1", post_id: "#{i}", due_time: Time.now + 1.month, description: "請輸入\r\n```\r\ngit --version\r\n```\r\n貼出你的 git 版本號"])
+end
+puts "25 Tasks created by admin."
+
 # Create Questions
 
 create_questions = for i in 1..10 do
