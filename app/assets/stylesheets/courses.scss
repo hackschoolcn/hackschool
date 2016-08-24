@@ -36,12 +36,15 @@
     background: rgba(0,0,0,0.3);
     margin-bottom: 10px;
 
+    .course-title {
+        text-align: center;
+        text-shadow: 0 1px 1px #000;
+        color: #fff;
+    }
+        
+
 }
-.course-title {
-    text-align: center;
-    text-shadow: 0 1px 1px #000;
-    color: #fff;
-}
+
 .course-price {}
 .courseContent {
     height: 200px;
