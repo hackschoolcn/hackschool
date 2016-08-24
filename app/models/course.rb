@@ -27,6 +27,7 @@ class Course < ApplicationRecord
   has_many :enrolled_users, through: :enrollments, source: :user
 
   scope :published, -> { where(is_hidden: false) }
+  scope :recent, -> { order("created_at DESC") }
 
   def publish!
     self.is_hidden = false
