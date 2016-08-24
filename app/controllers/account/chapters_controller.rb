@@ -1,6 +1,7 @@
 class Account::ChaptersController < AccountController
   before_action :authenticate_user!
-  before_action :check_subscription_expiration
+  before_action :find_course
+  before_action :check_enrolled_status
   before_action :validate_search_key, only: [:search]
 
   layout "application"
@@ -32,6 +33,17 @@ class Account::ChaptersController < AccountController
   end
 
   protected
+
+  def find_course
+    @course = Course.find(params[:course_id])
+  end
+
+  def check_enrolled_status
+    unless current_user.enrolled_courses.include?(@course)
+      flash[:alert] = "您尚未报名此课程"
+      redirect_to enroll_course_path(@course)
+    end
+  end
 
   def set_breadcrumbs
     @course = Course.find(params[:course_id])

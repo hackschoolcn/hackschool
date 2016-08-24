@@ -1,11 +1,11 @@
 class Account::PostsController < ApplicationController
   before_action :authenticate_user!
-  before_action :check_subscription_expiration
+
+  before_action :find_post_and_course
+  before_action :check_enrolled_status
 
   def show
     @chapter = Chapter.find(params[:chapter_id])
-    @post = Post.find(params[:id])
-    @course = @post.course
 
     set_breadcrumbs
 
@@ -19,22 +19,28 @@ class Account::PostsController < ApplicationController
   end
 
   def prev
-    @post = Post.find(params[:id])
-    course = @post.course
-
     post = @post.may_prev? || @post
     redirect_to account_chapter_post_path(post.chapter, post)
   end
 
   def next
-    @post = Post.find(params[:id])
-    course = @post.course
-
     post = @post.may_next? || @post
     redirect_to account_chapter_post_path(post.chapter, post)
   end
 
   protected
+
+  def find_post_and_course
+    @post = Post.find(params[:id])
+    @course = @post.course
+  end
+
+  def check_enrolled_status
+    unless current_user.enrolled_courses.include?(@course)
+      flash[:alert] = "您尚未报名此课程"
+      redirect_to enroll_course_path(@course)
+    end
+  end
 
   def set_breadcrumbs
     @breadcrumbs = [view_context.link_to(@course.title, account_courses_path)]
