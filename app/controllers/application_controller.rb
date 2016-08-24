@@ -9,15 +9,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def check_subscription_expiration
-    if !current_user.member_expire_date || current_user.member_expire_date < Time.now
-
-      flash[:notice] = "您还未订阅，请先选择您的套餐"
-      redirect_to plans_path
-
-    end
-  end
-
   protected
 
   def configure_permitted_parameters

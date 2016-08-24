@@ -6,11 +6,12 @@
         </h4>
     </div>
 
-    <% if current_user && current_user.member_expire_date && current_user.member_expire_date > Time.now && current_user.enrolled_courses.include?(@course) %>
-    <%= link_to("立刻学习", account_course_chapters_path(@course), class:"btn btn-lg btn-success pull-center")%>
-<% else  %>
-    <%= link_to("火速报名", enroll_course_account_course_path(@course), method: :post, class:"btn btn-lg btn-danger pull-center")%>
-    <% end %>
+    <% if current_user && current_user.enrolled_courses.include?(@course) %>
+      <%= link_to("前往学习", account_course_chapters_path(@course), class:"btn btn-lg btn-success pull-center")%>
+    <% else  %>
+      <%= link_to("加入年费会员", yearly_subscription_account_orders_path, method: :post, class:"btn btn-lg btn-primary pull-center")%>
+      <%= link_to("购买单次课程", enroll_course_account_course_path(@course), method: :post, class:"btn btn-lg btn-danger pull-center")%>
+      <% end %>
 </div>
 
 
