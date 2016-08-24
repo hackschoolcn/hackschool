@@ -1,6 +1,6 @@
 class Account::OrdersController < ApplicationController
   before_action :authenticate_user!
-  before_action :get_order_params, only: %i(pay_with_wechat pay_with_alipay cancel_order)
+  before_action :find_order, only: %i(pay_with_wechat pay_with_alipay cancel_order)
   layout "user"
 
   def index
@@ -12,6 +12,7 @@ class Account::OrdersController < ApplicationController
     @order.price = 6000
     @order.subscription_months = 12
     @order.user = current_user
+    @order.order_type = "subscription"
     @order.save
 
     flash[:notice] = "订单已创建"
@@ -26,6 +27,7 @@ class Account::OrdersController < ApplicationController
     @order = Order.new
     @order.price = @course.price
     @order.user = current_user
+    @order.order_type = "single_purchase"
     @order.save
 
     flash[:notice] = "订单已创建"
@@ -49,7 +51,6 @@ class Account::OrdersController < ApplicationController
     if @order.may_make_payment?
       @order.pay("alipay")
       current_user.add_subscription_date!(@order.subscription_months)
-
     else
       flash[:warning] = "该订单已付款"
     end
@@ -68,7 +69,7 @@ class Account::OrdersController < ApplicationController
 
   private
 
-  def get_order_params
+  def find_order
     @order = Order.find_by_token(params[:id])
   end
 end

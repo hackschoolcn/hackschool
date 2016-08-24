@@ -12,6 +12,7 @@
 #  aasm_state          :string           default("unpaid")
 #  subscription_months :integer
 #  course_id           :integer
+#  order_type          :string
 #
 # Indexes
 #
