@@ -3,6 +3,7 @@ class Account::CoursesController < AccountController
 
   def index
     @courses = current_user.enrolled_courses
+    drop_breadcrumb "我的课程", account_courses_path
   end
 
   def enroll_course
