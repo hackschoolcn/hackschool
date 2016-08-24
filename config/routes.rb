@@ -63,7 +63,13 @@ Rails.application.routes.draw do
   root "courses#index"
 
   namespace :account do
-    resources :settings
+    resources :settings do
+      collection do
+        get :edit_profile
+        put :update_profile
+        get :edit_password
+      end
+    end
 
     resources :tasks do
       resources :works

@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/xdite/active_link_to.git
+  revision: 2ba9f926fd8564a0d08307e490ea3886a7e5a325
+  branch: wrap_tag_css
+  specs:
+    active_link_to (1.0.2)
+      actionpack
+
 GEM
   remote: https://gems.ruby-china.org/
   specs:
@@ -390,6 +398,7 @@ PLATFORMS
 
 DEPENDENCIES
   aasm
+  active_link_to!
   annotate
   awesome_rails_console
   bootstrap-sass

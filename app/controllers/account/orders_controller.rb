@@ -1,11 +1,10 @@
-class Account::OrdersController < ApplicationController
-  before_action :authenticate_user!
+class Account::OrdersController < AccountController
   before_action :find_order, only: %i(pay_with_wechat pay_with_alipay cancel_order)
   before_action :check_order_may_pay, only: %i(pay_with_wechat pay_with_alipay)
-  layout "user"
 
   def index
-    @orders = current_user.orders.all.recent
+    @orders = current_user.orders.recent
+    drop_breadcrumb "我的课程", account_courses_path
   end
 
   def yearly_subscription
@@ -83,6 +82,7 @@ class Account::OrdersController < ApplicationController
     unless @order.may_make_payment?
       flash[:warning] = "该订单已付款"
       redirect_to account_orders_path
+
     end
   end
 

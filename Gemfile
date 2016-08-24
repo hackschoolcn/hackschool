@@ -27,6 +27,7 @@ gem "jbuilder", "~> 2.5"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem "active_link_to", github: "xdite/active_link_to", branch: "wrap_tag_css"
 gem "bootstrap-sass"
 gem "devise"
 gem "simple_form"

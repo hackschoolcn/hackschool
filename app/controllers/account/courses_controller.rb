@@ -1,10 +1,9 @@
-class Account::CoursesController < ApplicationController
-  before_action :authenticate_user!
+class Account::CoursesController < AccountController
   before_action :validate_search_key, only: [:search]
-  layout "user"
 
   def index
     @courses = current_user.enrolled_courses
+    drop_breadcrumb "我的课程", account_courses_path
   end
 
   def enroll_course
