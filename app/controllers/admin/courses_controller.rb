@@ -1,8 +1,4 @@
-class Admin::CoursesController < ApplicationController
-  before_action :authenticate_user!
-  before_action :require_is_admin
-  layout "admin"
-
+class Admin::CoursesController < AdminController
   def index
     @courses = Course.all
   end

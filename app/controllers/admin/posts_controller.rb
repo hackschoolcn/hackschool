@@ -1,6 +1,4 @@
-class Admin::PostsController < ApplicationController
-  before_action :authenticate_user!
-  before_action :require_is_admin
+class Admin::PostsController < AdminController
   before_action :get_chapter_params, only: %i(index new edit create update destroy)
 
   def index
