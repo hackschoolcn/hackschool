@@ -24,6 +24,10 @@ class CoursesController < ApplicationController
 
   def enroll
     @course = Course.find(params[:id])
+
+    if current_user
+      render :enroll_with_user
+    end
   end
 
   protected
