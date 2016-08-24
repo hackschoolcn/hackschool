@@ -3,6 +3,9 @@
         <div class="pull-right">
             <%= link_to("上传章节", new_admin_course_chapter_path(@course), :class => "btn btn-default") %>
         </div>
+        <div class="pull-right">
+        <%= link_to("上传FAQ",  admin_course_faqs_path(@course), class: "btn btn-primary" ) %> </li>
+        </div>
         <h2><%= @course.title %></h2>
 
         <br>

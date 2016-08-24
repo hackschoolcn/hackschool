@@ -29,6 +29,8 @@ Rails.application.routes.draw do
         end
       end
 
+    resources :faqs
+
       member do
         post :hide
         post :publish
@@ -74,7 +76,6 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :faqs
 
     resources :tasks do
       resources :works
@@ -92,7 +93,9 @@ Rails.application.routes.draw do
 
       resources :questions
       resources :assignments
+      resources :faqs
     end
+
 
     resources :chapters do
       collection do
