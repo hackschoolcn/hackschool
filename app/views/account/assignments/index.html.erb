@@ -13,7 +13,7 @@
        <div class="panel-heading">
         任务 <%= index + 1%> - 对应章节：
         <%= link_to(task.post.title, account_chapter_post_path(task.post.chapter, task.post)) %>
-        <%= render_work_operate_buttons(task) %>
+        <%= render_work_operate_buttons_from_all_tasks_view(task, @course) %>
        </div>
        <!-- List group -->
        <ul class="list-group">

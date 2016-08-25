@@ -12,6 +12,7 @@
 #  image        :string
 #  teacher_name :string
 #  hero_image   :string
+#  faq          :text
 #
 
 class Course < ApplicationRecord
