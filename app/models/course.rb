@@ -2,22 +2,25 @@
 #
 # Table name: courses
 #
-#  id           :integer          not null, primary key
-#  title        :string
-#  description  :text
-#  price        :integer
-#  is_hidden    :boolean          default(TRUE)
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
-#  image        :string
-#  teacher_name :string
-#  hero_image   :string
-#  faq          :text
+
+#  id            :integer          not null, primary key
+#  title         :string
+#  description   :text
+#  price         :integer
+#  is_hidden     :boolean          default(TRUE)
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  image         :string
+#  teacher_name  :string
+#  hero_image    :string
+#  teacher_image :string
+#  about_teacher :text
 #
 
 class Course < ApplicationRecord
   mount_uploader :image, ImageUploader
   mount_uploader :hero_image, HeroImageUploader
+  mount_uploader :teacher_image, TeacherImageUploader
 
   has_many :chapters, dependent: :destroy
   has_many :posts, dependent: :destroy
@@ -44,5 +47,5 @@ class Course < ApplicationRecord
   def is_hidden?
     is_hidden
   end
-  
+
 end
