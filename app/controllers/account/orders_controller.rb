@@ -20,6 +20,22 @@ class Account::OrdersController < AccountController
     redirect_to account_orders_path
   end
 
+  def yearly_subscription_from_course_view
+    @course = Course.find(params[:course_id])
+
+    @order = Order.new
+    @order.price = 6000
+    @order.subscription_months = 12
+    @order.user = current_user
+    @order.course = @course
+    @order.order_type = "subscription"
+    @order.save
+
+    flash[:notice] = "订单已创建"
+
+    redirect_to account_orders_path
+  end
+
   def single_purchase
     
     @course = Course.find(params[:course_id])
@@ -50,6 +66,7 @@ class Account::OrdersController < AccountController
     case @order.order_type
     when "subscription"
       current_user.add_subscription_date!(@order.subscription_months)
+      current_user.enroll_course!(@order.course) if @order.course
     when "single_purchase"
       current_user.enroll_course!(@order.course)
     end
@@ -58,11 +75,12 @@ class Account::OrdersController < AccountController
   end
 
   def pay_with_alipay
-    @order.pay("alpay")
+    @order.pay("alipay")
 
     case @order.order_type
     when "subscription"
       current_user.add_subscription_date!(@order.subscription_months)
+      current_user.enroll_course!(@order.course) if @order.course
     when "single_purchase"
       current_user.enroll_course!(@order.course)
     end
