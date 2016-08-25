@@ -1,0 +1,44 @@
+<h2>订单详情</h2>
+<p class="small">
+  当您选择了我们的商品和服务，即表示您已经接受了Hackschool的隐私声明和使用条件。您点击“提交订单”按钮后，我们将向您发送电子邮件或短信确认我们已收到您的订单，只有当我们向您发出发货确认的电子邮件或短信，方构成我们对您的订单的确认，我们和您之间的订购合同才成立。
+</p>
+
+
+<div class="panel panel-default">
+  <div class="panel-body">
+        <ul class="media-list">
+            <li class="media">
+                <div class="media-left">
+                  <%= render_course_image(@order.course, :front) %>
+                </div>
+                <div class="media-body">
+                  <p class="media-heading lead"><strong><%= @order.course.title %></strong></p>
+                  <p><%= @order.course.description %></p>
+                </div>
+              </li>
+        </ul>
+    <br>
+    <div class="container text-center">
+      <p class="lead text-danger text-left">
+         订单总计：¥ <%= @order.price %>
+      </p>
+      <% if @order.unpaid? %>
+          <%= link_to("微信支付", pay_with_wechat_account_order_path(@order.token), method: :post, class:"btn btn-success btn-lg") %>
+          <%= link_to("支付宝支付", pay_with_alipay_account_order_path(@order.token), method: :post, class:"btn btn-info btn-lg") %>
+          <%= link_to("取消订单", cancel_order_account_order_path(@order.token), method: :post, class:"btn btn-secondary") %>
+      <% else %>
+          <% if @order.order_cancelled? %>
+              该订单已取消!
+          <% else %>
+              订单已支付。支付方式:
+              <% if (@order.payment_method == "alipay") %>
+                  支付宝
+              <% else %>
+                  微信支付
+              <% end %>
+          <% end %>
+          <%= link_to('查看全部订单', account_orders_path, class:"btn btn-secondary") %>
+      <% end %>
+    </div>
+  </div>
+</div>

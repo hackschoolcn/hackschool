@@ -1,54 +1,59 @@
-<table class="table table-boldered">
-    <tr>
-        <th>
-            #
-        </th>
-        <th>
-            订单收件人
-        </th>
-        <th>
-            商品总价
-        </th>
-        <th>
-            订单状态
-        </th>
-        <th>
 
-          订单种类
-        </th>
-        <th>
-            操作
-        </th>
-        <th>
-            订单创建时间
-        </th>
-    </tr>
-    <% @orders.each do |order| %>
-    <tr>
-        <td>
-            <%= order.id %>
-        </td>
-        <td>
-            <%= order.user.email %>
-        </td>
-        <td>
-            <%= order.price %>
-            RMB
-        </td>
-        <td>
-            <%= order.aasm_state %>
-        </td>
+<% @orders.each do |order| %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <tr>
+          <th>
+              #
+          </th>
+          <th>
+              订单收件人
+          </th>
+          <th>
+              商品总价
+          </th>
+          <th>
+              订单状态
+          </th>
+          <th>
 
-        <td>
-            <%= order.order_type %>
-        </td>
+            订单种类
+          </th>
+          <th>
+              操作
+          </th>
+          <th>
+              订单创建时间
+          </th>
+      </tr>
+    </div>
+    <div class="panel-body">
+      <tr>
+          <td>
+              <%= order.id %>
+          </td>
+          <td>
+              <%= order.user.email %>
+          </td>
+          <td>
+              <%= order.price %>
+              RMB
+          </td>
+          <td>
+              <%= order.aasm_state %>
+          </td>
+
+          <td>
+              <%= order.order_type %>
+          </td>
 
 
-        <%= render_order_payment_part_in_user_panel(order) %>
+          <%= render_order_payment_part_in_user_panel(order) %>
 
-        <td>
-            <%= render_formatted_time(order.created_at) %>
-        </td>
-    </tr>
-    <% end %>
-</table>
+          <td>
+              <%= render_formatted_time(order.created_at) %>
+          </td>
+      </tr>
+    </div>
+  </div>
+<% end %>
