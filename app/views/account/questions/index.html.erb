@@ -29,8 +29,13 @@
           <td><%= question.description %></td>
           <td><%= question.user.email %></td>
           <td>
-            <%= link_to("Edit", edit_account_course_question_path(@course, question), class: "btn btn-sm btn-default") %>
-            <%= link_to("Delete", account_course_question_path(@course, question), class: "btn btn-sm btn-default", method: :delete, data: {confirm: "你确认要删除此问题吗?"}) %>
+
+
+        <% if current_user && current_user == question.user %>
+        <%= link_to("Edit", edit_account_course_question_path(@course, question), class: "btn btn-sm btn-default") %>
+        <%= link_to("Delete", account_course_question_path(@course, question), class: "btn btn-sm btn-default", method: :delete, data: {confirm: "你确认要删除此问题吗?"}) %>
+        <% end %>
+
           </td>
         </tr>
       <% end %>
