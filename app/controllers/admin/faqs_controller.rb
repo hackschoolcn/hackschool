@@ -1,9 +1,5 @@
 class Admin::FaqsController < ApplicationController
-  before_action :authenticate_user!
-  before_action :require_is_admin
   before_action :find_course, only: %i(index new edit create update destroy)
-
-  layout "admin"
 
   def index
     @faqs = @course.faqs
