@@ -28,10 +28,21 @@
                 </div>
 
                 <div role="tabpanel" class="tab-pane" id="messages">
+                  <div class="row">
 
+                    <div class="col-md-2 col-md-offset-2">
+                  <%= image_tag(@course.teacher_image, class: "img-circle") %>
                 </div>
+                    <div class="col-md-6">
+                  <%= render_markdown_text(@course.about_teacher) %>
+                </div>
+
+              </div>
+            </div>
                 <div role="tabpanel" class="tab-pane" id="settings">
+                  <div class="col-md-8 col-md-offset-2">
                   <%= render "collapse" %>
+                </div>
                 </div>
             </div>
         </div>

@@ -2,10 +2,12 @@
 <%= f.input :title %>
 <%= f.input :description %>
 <%= f.input :faq %>
+<%= f.input :about_teacher %>
 <%= f.input :price %>
 <%= f.input :teacher_name %>
 <%= f.input :image %>
 <%= f.input :hero_image %>
+<%= f.input :teacher_image %>
 <%= f.submit %>
 <% end %>
 
@@ -13,6 +15,8 @@
 <script>
 var simplemde_1 = new SimpleMDE({ element: document.getElementById("course_description") });
 var simplemde_2 = new SimpleMDE({ element: document.getElementById("course_faq") });
+var simplemde_3 = new SimpleMDE({ element: document.getElementById("course_about_teacher") });
 simplemde_1.value();
 simplemde_2.value();
+simplemde_3.value();
 </script>

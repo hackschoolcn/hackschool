@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160825073336) do
+
+ActiveRecord::Schema.define(version: 20160825095421) do
 
   create_table "answers", force: :cascade do |t|
     t.text     "content"
@@ -32,13 +33,16 @@ ActiveRecord::Schema.define(version: 20160825073336) do
     t.string   "title"
     t.text     "description"
     t.integer  "price"
-    t.boolean  "is_hidden",    default: true
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.boolean  "is_hidden",     default: true
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.string   "image"
     t.string   "teacher_name"
     t.string   "hero_image"
     t.text     "faq"
+    t.string   "teacher_image"
+    t.text     "about_teacher"
+
   end
 
   create_table "enrollments", force: :cascade do |t|
