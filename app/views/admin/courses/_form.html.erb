@@ -1,6 +1,7 @@
 <%= simple_form_for [:admin, @course] do |f| %>
 <%= f.input :title %>
 <%= f.input :description %>
+<%= f.input :faq %>
 <%= f.input :price %>
 <%= f.input :teacher_name %>
 <%= f.input :image %>
@@ -10,6 +11,8 @@
 
 
 <script>
-var simplemde = new SimpleMDE({ element: document.getElementById("course_description") });
-simplemde.value();
+var simplemde_1 = new SimpleMDE({ element: document.getElementById("course_description") });
+var simplemde_2 = new SimpleMDE({ element: document.getElementById("course_faq") });
+simplemde_1.value();
+simplemde_2.value();
 </script>

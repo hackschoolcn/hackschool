@@ -13,14 +13,18 @@
        <div class="panel-heading">
         任务 <%= index + 1%> - 对应章节：
         <%= link_to(task.post.title, account_chapter_post_path(task.post.chapter, task.post)) %>
-        <%= render_work_operate_buttons(task) %>
+        <%= render_work_operate_buttons_from_all_tasks_view(task, @course) %>
        </div>
        <!-- List group -->
        <ul class="list-group">
           <li class="list-group-item">
             <%= render_markdown_text(task.description) %>
           </li>
-
+          <% if task.works.where(user_id: current_user.id).count > 0 %>
+          <li class="list-group-item">
+            <%= render_markdown_text(task.works.where(user_id: current_user.id)[0].content) %>
+          </li>
+          <% end %>
        </ul>
  </div>
 <% end %>

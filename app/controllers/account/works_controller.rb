@@ -8,19 +8,26 @@ class Account::WorksController < ApplicationController
 
   def new
     @work = Work.new
+    session[:course_id] = params[:course_id]  # 记录来自哪个页面
   end
 
   def create
     post = @task.post
+    chapter = post.chapter
     course = post.course
     @work = Work.new(work_params)
     @work.user = current_user
     @work.task = @task
     @work.course = course
 
-    chapter = post.chapter
     if @work.save
-      redirect_to account_chapter_post_path(post, chapter), notice: "作业已提交"
+      if session[:course_id]
+        course = Course.find(session[:course_id])  # 根据记录回到原来的页面
+        session[:course_id] = false
+        redirect_to account_course_assignments_path(course), notice: "作业已提交"
+      else
+        redirect_to account_chapter_post_path(chapter, post), notice: "作业已提交"
+      end
     else
       render :new
     end
@@ -28,6 +35,7 @@ class Account::WorksController < ApplicationController
 
   def edit
     @work = Work.find(params[:id])
+    session[:course_id] = params[:course_id]  # 记录来自哪个页面
   end
 
   def update
@@ -35,7 +43,13 @@ class Account::WorksController < ApplicationController
     post = @task.post
     chapter = post.chapter
     if @work.update(work_params)
-      redirect_to account_chapter_post_path(post, chapter), notice: "作业编辑成功"
+      if session[:course_id]
+        course = Course.find(session[:course_id])  # 根据记录回到原来的页面
+        session[:course_id] = false
+        redirect_to account_course_assignments_path(course), notice: "作业编辑成功"
+      else
+        redirect_to account_chapter_post_path(chapter, post), notice: "作业编辑成功"
+      end
     else
       render :edit
     end

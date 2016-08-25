@@ -14,4 +14,14 @@ module Account::PostsHelper
     end
   end
 
+  def render_work_operate_buttons_from_all_tasks_view(task, course)
+    works = task.works.where(user_id: current_user.id)
+
+    if works.count > 0
+      link_to("编辑作业", edit_account_task_work_path(task_id: task.id, id: works[0].id, course_id: course.id), class: "btn btn-xs btn-primary pull-right")
+    else
+      link_to("提交作业", new_account_task_work_path(task_id: task.id, course_id: course.id), class: "btn btn-xs btn-success pull-right")
+    end
+  end
+
 end
