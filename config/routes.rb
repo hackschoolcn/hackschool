@@ -1,13 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :questions do
-    collection do
-      get :search
-    end
-    resources :answers
-  end
-
   resources :courses do
     collection do
       get :search
@@ -63,6 +56,7 @@ Rails.application.routes.draw do
   root "courses#index"
 
   namespace :account do
+
     resources :settings do
       collection do
         get :edit_profile
@@ -79,14 +73,24 @@ Rails.application.routes.draw do
       collection do
         get :search
       end
-      resources :chapters
       member do
         post :enroll_course
         post :drop_course
       end
 
-      resources :questions
+      resources :questions do
+        collection do
+          get :search
+        end
+      end
+
+      resources :chapters
       resources :assignments
+    end
+
+    
+    resources :questions do
+      resources :answers
     end
 
     resources :chapters do
@@ -114,5 +118,4 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :groups
 end

@@ -1,5 +1,4 @@
 class Account::AssignmentsController < AccountController
-  layout "application"
 
   def index
     @course = Course.find(params[:course_id])

@@ -23,6 +23,7 @@ class Course < ApplicationRecord
 
   has_many :tasks
   has_many :works
+  has_many :questions
   has_many :enrollments
   has_many :enrolled_users, through: :enrollments, source: :user
 
@@ -42,4 +43,5 @@ class Course < ApplicationRecord
   def is_hidden?
     is_hidden
   end
+  
 end

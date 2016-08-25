@@ -31,9 +31,14 @@ puts "生成第一章"
 Post.create([course_id: "1", chapter_id: "1", title: "购买电脑（Mac 电脑）", article: "## 购买电脑（Mac 电脑）\r\n\r\n因为这个课程使用的基础设备是 Mac 电脑。所以接下来的整个教程都是以 Mac 为基础的教学课程。\r\n\r\n所以请在开学之前，确保你自己已经购买了一台 Mac 电脑，并且把 Rails 开发环境搭建完毕。\r\n\r\n---\r\n\r\n### Mac 电脑的最低需求\r\n为了确保开发过程的流畅。我们建议你购买以下的电脑配置\r\n*  2014年以后出厂的 Macbook Air/Macbook Pro\r\n*  屏幕限制 13\"以上，最好是 15\"+\r\n*  内存限制 8GB 以上，最好是 16GB\r\n*  操作系统限制 OSX 10.10 以上，最好是 10.11\r\n\r\n", is_hidden: false])
 puts "生成第一章第 1 节"
 
+Task.create([course_id: 1, post_id: 1, due_time: Time.now + 1.month, description: "请把你的电脑型号贴在这里\r\n\r\n\r\n\r\n请将你的电脑规格截图贴上来\r\n\r\n点击选择左上角苹果图案，选择第一项 “关于这台电脑”\r\n\r\n将你的电脑规格截图（ command + shift + 4 ，选取画面，截图会自动存在您的桌面上）\r\n\r\n将图片拖曳到回答栏位，即可上传图片"])
+puts "生成作业 - 第一章第 1 节"
 
 Post.create([course_id: "1", chapter_id: "1", title: "加入课程 Slack 频道（学会翻墙交流技能）", article: "## 加入课程 Slack 频道（学会翻墙交流技能）\r\n这个课程的官方交流频道在 Slack 上：\r\n* 请各位同学到 https://growthschool-slack.herokuapp.com/ 上注册一个 slack 账号。\r\n* 加入 channel：#rails-fullstack-1\r\n\r\n### Slack\r\n![](http://imageshack.com/a/img922/9831/dLTfz0.png)\r\n[slack](https://slack.com) 是一套即时通讯系统。台湾地区敏捷团队多半使用此套即时通讯系统，作为团队内部的信息交流使用。我们在这套课程里，也会使用这一套工具交流学习以及协作开发。\r\n\r\n### Slack 被挡了怎么办？（Only for 大陆学员）\r\n程序员寻找的很多资源都在墙以外的世界。你可以使用\r\n\r\n* [云梯](https://yuntidata.com/)\r\n\r\n之类的服务，翻墙出去，这样就可以使用 Slack App了。\r\n", is_hidden: false])
 puts "生成第一章第 2 节"
+
+Task.create([course_id: 1, post_id: 2, due_time: Time.now + 1.month, description: "\r\n这个课程官方交流频道在 Slack 上：\r\n\r\n* 请各位同学到 [https://growthschool-slack.herokuapp.com/](https://growthschool-slack.herokuapp.com/) 上注册一个 slack 账号\r\n\r\n- 加入 channel ：#rails-fullstack-1 和 #rails-newbie\r\n\r\n并在这里缴交你的 slack id 与真名"])
+puts "生成作业 - 第一章第 2 节"
 
 # Create Chapter
 
@@ -46,14 +51,23 @@ puts "生成第二章第 1 节"
 Post.create([course_id: "1", chapter_id: "2", title: "安装 Xcode", article: "## 安装 Xcode\r\n\r\n![](http://imageshack.com/a/img924/4168/fmGknS.png)\r\n\r\n找到 Xcode 并点击安装\r\n\r\n![](http://imageshack.com/a/img921/4756/B3qJtd.png)\r\n\r\n#### 首次执行，同意协议\r\n\r\n安装过程大约需要2~3小时，安装时间可能会受到您的网路速度的影响。\r\n\r\n\r\n\r\n安装 Xcode 完毕，在桌面左下角找到 Launchpad，并点击打开\r\n\r\n![](http://imageshack.com/a/img922/8080/esf9mZ.png)\r\n\r\n\r\n\r\n找到 Xcode，并打开执行\r\n\r\n![](http://imageshack.com/a/img924/7701/6ggS6N.png)\r\n\r\n\r\n\r\n首次执行， Xcode会要求同意”使用者协议“，选择 Agree\r\n\r\n![](http://imageshack.com/a/img924/361/yaJHST.png)\r\n\r\n\r\n\r\n若 Xcode 要求执行权限，请输入您的电脑开机密码，并同意。\r\n\r\n![](http://imageshack.com/a/img921/6753/7YWGuI.png)\r\n\r\n", is_hidden: false])
 puts "生成第二章第 2 节"
 
+Task.create([course_id: 1, post_id: 4, due_time: Time.now + 1.month, description: "\r\n安装完成后请输入 “ok”\r\n\r\n点击选择 Submit"])
+puts "生成作业 - 第二章第 2 节"
+
 Post.create([course_id: "1", chapter_id: "2", title: "确认安装 Command Line Tools", article: "## 确认安装 Command Line Tools\r\n\r\n到 Mac 的 Spotlight\r\n\r\n![](http://imageshack.com/a/img924/6691/3NIOt3.png)\r\n\r\n搜索 Terminal\r\n\r\n![](http://imageshack.com/a/img921/1157/BY3ZwP.png)\r\n\r\n打开你的 “Terminal” 程式。（以后我们都会透过这个程式来输入程序指令）\r\n\r\n\r\n\r\n##### 在窗口里输入指令：\r\n\r\n`xcode-select --install`\r\n\r\n它将会安装 command line tools（这是安装 Ruby 所需要的 Library）\r\n\r\n执行后会出现这个窗口，点击“安装”这个按钮进行安装。\r\n\r\n![](http://imageshack.com/a/img921/5334/XG7pwF.png)\r\n\r\n\r\n\r\n### 如何确定是否已经安装好？\r\n\r\n***\r\n\r\n在 Terminal 窗口中输入：\r\n\r\n`xcode-select -p`\r\n\r\n显示出：/Library/Developer/CommandLineTools\r\n\r\n即表示已经安装成功！", is_hidden: false])
 puts "生成第二章第 3 节"
 
 Post.create([course_id: "1", chapter_id: "2", title: "确认安装 Homebrew", article: "## 确认安装 Homebrew\r\n\r\n#### Homebrew 简介\r\n\r\n***\r\n\r\nHomebrew 是开发者社群专门为 MacOSX 打造的第三方套件管理程式，比如说安装 Ruby 需要一些编译工具或函式库，这些工具或函式库，可以从 Homebrew 取得。\r\n\r\nHomebrew 的官方网址是：http://brew.sh/index_zh-tw.html\r\n\r\n![](http://imageshack.com/a/img923/3668/8x9ASa.png)\r\n\r\n\r\n\r\n#### 如何安装 Homebrew ？\r\n\r\n***\r\n\r\n在终端机输入：（若以下指令失效，可以到官方网址查看最新版）\r\n\r\n`/usr/bin/ruby -e \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)\"`\r\n\r\n\r\n\r\n发现在使用 Homebrew 之前，需要先同意 Xcode 的使用者规范\r\n\r\n![](http://imageshack.com/a/img921/1339/FMiH4B.png)\r\n\r\n输入：`sudo xcodebuild -license`  同意。\r\n\r\n* 中间会出现很多条文，一直按 “空白键” 拖到最下页，然后输入 agree 同意。", is_hidden: false])
 puts "生成第二章第 4 节"
 
+Task.create([course_id: 1, post_id: 6, due_time: Time.now + 1.month, description: "安装完成后请输入 “ok”\r\n\r\n点击选择 Submit"])
+puts "生成作业 - 第二章第 4 节"
+
 Post.create([course_id: "1", chapter_id: "2", title: "在 Homebrew 安装 git", article: "## 在 Homebrew 安装 git\r\n\r\n#### Git 简介\r\n\r\n***\r\n\r\nGit 是目前最流行的原始码控制软件。你可以把 Git 想象成是程式码的时光备份机器。\r\n\r\n\r\n\r\n#### 安装 Git\r\n\r\n***\r\n\r\n使用 Homebrew 安装 Git\r\n\r\n在 Terminal 窗口中输入：\r\n\r\n`brew install git`\r\n\r\n", is_hidden: false])
 puts "生成第二章第 5 节"
+
+Task.create([course_id: 1, post_id: 7, due_time: Time.now + 1.month, description: "\r\n请输入\r\n\r\ngit —version\r\n\r\n贴出你的 git 版本号"])
+puts "生成作业 - 第二章第 5 节"
 
 Post.create([course_id: "1", chapter_id: "2", title: "安装 ImageMagick", article: "## 安装 ImageMagick\r\n\r\n#### ImageMagick 简介\r\n\r\n***\r\n\r\nImageMagick 是专门处理图片的函式库。以后我们在用 Ruby 的时候会常常需要使用 ImageMagick 相关的功能，所以通常在初期建置环境时，我们也会安装ImageMagick。\r\n\r\n\r\n\r\n#### 安装 ImageMagick\r\n\r\n***\r\n\r\n`brew install imagemagick`\r\n\r\n", is_hidden: false])
 puts "生成第二章第 6 节"
@@ -61,14 +75,23 @@ puts "生成第二章第 6 节"
 Post.create([course_id: "1", chapter_id: "2", title: "安装 PostgresSQL", article: "## 安装 PostgresSQL\r\n\r\n#### PostgresSQL 简介\r\n\r\n***\r\n\r\nPostgresSQL 是一套强大的资料库。许多网站开发预设使用 PostgresSQL 作为底层资料库。在初期建置环境时，我们也会安装 PostgresSQL。\r\n\r\n\r\n\r\n#### 安装 PostgresSQL\r\n\r\n***\r\n\r\n`brew install postgresql`\r\n\r\n安装完毕后：\r\n\r\n`brew services start postgresql` （确保在你下次开机时，也会一起启动资料库）\r\n\r\n", is_hidden: false])
 puts "生成第二章第 7 节"
 
+Task.create([course_id: 1, post_id: 9, due_time: Time.now + 1.month, description: "请输入 postgres -V\r\n\r\n贴出你的版本号"])
+puts "生成作业 - 第二章第 7 节"
+
 Post.create([course_id: "1", chapter_id: "2", title: "确认安装 RVM", article: "## 确认安装 RVM\r\n\r\n#### RVM 简介\r\n\r\n***\r\n\r\n在 Mac 开发 Ruby on Rails 程式时，因为 Ruby 版本更新很快，常常会遇到一些版本与权限上的问题。所以，在开发时，我们通常不会使用系统内建的 Ruby。而是会采用一套 Ruby Version Manager 去管理 Ruby 的安装与升级。透过 Ruby Version Manager（RVM）去安装 Ruby。\r\n\r\n\r\n\r\n#### 安装 RVM\r\n\r\n***\r\n\r\nRVM 的官方网址是 [http://rvm.io](http://rvm.io/)\r\n\r\n官方网站提供的安装指令是：\r\n\r\n`\\curl -L https://get.rvm.io | bash -s stable`\r\n\r\n安装完输入：\r\n\r\n`source ~/.rvm/scripts/rvm`\r\n\r\n让 ram 生效。\r\n\r\n然后安装一个套件\r\n\r\n`brew install libxml2`\r\n\r\n\r\n\r\n", is_hidden: false])
 puts "生成第二章第 8 节"
 
 Post.create([course_id: "1", chapter_id: "2", title: "确认安装 Ruby", article: "## 确认安装 Ruby\r\n\r\n#### 安装 Ruby\r\n\r\n***\r\n\r\n`rvm install 2.3.1` <== 尾端可选择自己需要的版本 EX: 1.9.3 , 2.1.2 ... etc\r\n\r\n`rvm use 2.3.1 --default` 使用 ruby 2.3.1 为预设版本 (可改成自己需要的版本)\r\n\r\n安装完以后记得重开 terminal。\r\n\r\n`rvm list` 列出目前已安装的 Ruby 版本。\r\n\r\n\r\n\r\n#### 指定 RubyGems 来源（参考：如果你人在大陆，无法连上时再使用这个方法）\r\n\r\n***\r\n\r\n如果遇到不太连得上  [https://rubygems.org](https://rubygems.org/) 的时候，可以多执行一行指令：\r\n\r\n`gem sources --add https://ruby.taobao.org/ --remove https://rubygems.org/`", is_hidden: false])
 puts "生成第二章第 9 节"
 
+Task.create([course_id: 1, post_id: 11, due_time: Time.now + 1.month, description: "请输入 ruby -v 并贴出版本号"])
+puts "生成作业 - 第二章第 9 节"
+
 Post.create([course_id: "1", chapter_id: "2", title: "确认安装 Rails", article: "## 确认安装 Rails\r\n\r\n#### 安装 Rails\r\n\r\n***\r\n\r\n（建议你在连上 vpn 的状态下操作。因为墙会挡掉 rubygems.org 的）\r\n\r\n`gem install rails -v 5.0.0`\r\n\r\n后面的参数是指定版本，预设会抓取最新的版本\r\n\r\n", is_hidden: false])
 puts "生成第二章第 10 节"
+
+Task.create([course_id: 1, post_id: 12, due_time: Time.now + 1.month, description: "请输入 rails -v 并贴出版本号"])
+puts "生成作业 - 第二章第 10 节"
 
 # Create Chapter
 
@@ -95,6 +118,9 @@ puts "生成第四章第 2 节"
 Post.create([course_id: "1", chapter_id: "4", title: "建立一个简单的留言板功能", article: "## 建立一个简单的留言板功能\r\n\r\n这只是个刚建好的空专案，我们可以加点功能来体验 Rails 的开发\r\n\r\n首先，再开一个新的终端机窗口（快捷键： ⌘ + N）\r\n\r\n* `cd first_app` 进入到 first_app 的资料夹\r\n\r\n\r\n* `ls`  确认目前资料夹位置的档案结构\r\n\r\n![](http://imageshack.com/a/img924/7452/rYvRKZ.png)\r\n\r\n这时候会有两个窗口，一个放着跑 rails s，一个继续做指令操作来开发。到做开发的窗口下输入：\r\n\r\n`rails g scaffold topic title:string description:text`\r\n\r\n![](http://imageshack.com/a/img924/2668/MZ1rkb.png)\r\n\r\n跑 `rake db:migrate`\r\n\r\n![](http://imageshack.com/a/img924/9233/JHbLgN.png)\r\n\r\n\r\n\r\n#### 体验刚建好的留言板功能\r\n\r\n***\r\n\r\n前往 [http://localhost:3000/topics](http://localhost:3000/topics)\r\n\r\n体验留言板功能吧！\r\n\r\n![](http://imageshack.com/a/img922/2607/Xkb381.png)\r\n\r\n\r\n\r\n![](http://imageshack.com/a/img921/4327/y6vJfO.png)\r\n\r\n\r\n\r\n![](http://imageshack.com/a/img921/3642/ceaSFR.png)\r\n\r\n\r\n\r\n", is_hidden: false])
 puts "生成第四章第 3 节"
 
+Task.create([course_id: 1, post_id: 17, due_time: Time.now + 1.month, description: "请将你的实际作品画面 贴到 答案里（将截图拉倒对话框即可上传）"])
+puts "生成作业 - 第四章第 3 节"
+
 Chapter.create([chapter: "第五章 体验 Git", course_id: "1"])
 puts "生成第五章"
 
@@ -104,8 +130,14 @@ puts "生成第五章第 1 节"
 Post.create([course_id: "1", chapter_id: "5", title: "将 project 上传到 Github - (1) 设定 Github 账号", article: "## 将 project 上传到 Github - (1) 设定 Github 账号\r\n\r\nGithub 是 Opensource 社群中，重要的资源集散地。几乎人人都有一个账号，几乎是强制必备。请在此注册一个账号。\r\n\r\n[http://github.com](http://github.com/)\r\n\r\n\r\n\r\n#### 在 Github 上设定自己的电子签章\r\n\r\n***\r\n\r\n你可以这样想象，每一台笔记本电脑都有自己的电子签章，它就是你的 SSH Key。而 SSH Public Key 你可以想象成是在银行 ( Github）留的印章卡，去银行办事时，跟你的私有 Key 一对，就能确定这是你本人。\r\n\r\n所以在这里我们要进行一个在 Github 留印章卡的动作\r\n\r\n###### 步骤1\r\n\r\n***\r\n\r\n在 Terminal 先输入 `more ~/.ssh/id_rsa.pub` 看看有沒有东西。\r\n\r\n![](http://imageshack.com/a/img923/1329/n1tsR9.png)\r\n\r\n* 有的话 copy 整个内容，到步骤 3\r\n* 没有的话到步骤 2\r\n\r\n###### 步骤 2\r\n\r\n***\r\n\r\n如果沒有 id_rsa.pub 这个档案，请输入 `ssh-keygen` 连按三个 enter\r\n\r\n![](http://imageshack.com/a/img921/8559/UzyYdr.png)\r\n\r\n然后再输入一次 `more ~/.ssh/id_rsa.pub` ，把出来的内容 copy 起来\r\n\r\n\r\n\r\n###### 步骤 3\r\n\r\n***\r\n\r\n前往 [https://github.com/settings/ssh](https://github.com/settings/ssh)\r\n\r\n![](http://imageshack.com/a/img922/8035/HmoQXh.png)\r\n\r\n![](http://imageshack.com/a/img924/3844/cuq8MN.png)\r\n\r\n![](http://imageshack.com/a/img921/1210/9q4BEg.png)\r\n\r\n", is_hidden: false])
 puts "生成第五章第 2 节"
 
+Task.create([course_id: 1, post_id: 19, due_time: Time.now + 1.month, description: "请留下你的 github 账号"])
+puts "生成作业 - 第五章第 2 节"
+
 Post.create([course_id: "1", chapter_id: "5", title: "将 project 上传到 Github - (2) 在 Github 上建立专案并上传程式码", article: "## 将 project 上传到 Github - (2) 在 Github 上建立专案并上传程式码\r\n\r\n#### 建立新 Project\r\n\r\n***\r\n\r\n假设你拥有一个全新的 Github 账号。你的 Github 首页会只出现两个选项。按下 “Start a project” 新增一个专案。\r\n\r\n![](http://imageshack.com/a/img922/1310/HFxGgt.png)\r\n\r\n选好你要的名字建立专案。这里我们使用 first_app\r\n\r\n![](http://imageshack.com/a/img923/5272/X6GIdR.png)\r\n\r\n建立以后，Github 会出现两个选项。一个是你复制 github 的空专案，重新来过。一个是你汇入现有的专案。而因为我们之前已经在本机里面有一个 git 专案了。所以我们选择选项 2。\r\n\r\n![](http://imageshack.com/a/img924/7407/W7yvgr.png)\r\n\r\n\r\n\r\n#### 上传专案\r\n\r\n***\r\n\r\n接着我们将 Github 好心帮我们准备的两行指令，贴到 Terminal 里面去。\r\n\r\n`git remote add origin git@github.com:xxddite/first_app.git` ( 这边改成 Github 提供给你的网址）\r\n`git push -u origin master`\r\n\r\n![](http://imageshack.com/a/img924/5660/sOYuIG.png)\r\n\r\n这样就完成了上传的动作。\r\n\r\n接着到我们刚刚设立的专案网址：[https://github.com/xxddite/first_app](https://github.com/xxddite/first_app)。 (这边改成 Github 提供给你的网址）\r\n\r\n这样就看到了我们刚刚上传的程式码。\r\n\r\n![](http://imageshack.com/a/img921/5408/MWybx1.png)\r\n\r\n", is_hidden: false])
 puts "生成第五章第 3 节"
+
+Task.create([course_id: 1, post_id: 20, due_time: Time.now + 1.month, description: "请贴 github 网址"])
+puts "生成作业 - 第五章第 3 节"
 
 Post.create([course_id: "1", chapter_id: "5", title: "持续开发新功能并且上传到 Github", article: "## 持续开发新功能并且上传到 Github\r\n\r\n以后要如何持续开发新功能并且上传到 Github 呢？\r\n\r\n其实在这个阶段，你只要持续做 3 个功能，就行了。\r\n\r\n* `git add [档案名称]` （单个档案） 或 `git add .` （全部档案）\r\n* `git commit -m \"这次存档的信息\"`\r\n* `git push origin master` （上传到 github）\r\n\r\n就可以持续把进度同步到 Github。", is_hidden: false])
 puts "生成第五章第 4 节"
@@ -119,6 +151,9 @@ puts "生成第六章第 1 节"
 
 Post.create([course_id: "1", chapter_id: "6", title: "上传专案到 Heroku", article: "## 上传专案到 Heroku\r\n\r\n#### 第一次 deploy 的方法\r\n\r\n***\r\n\r\n##### 步骤 1：开一个新的 Heroku 应用程式\r\n\r\n***\r\n\r\n在终端机打这些字：\r\n\r\n`heroku create`\r\n\r\n`heroku create` 会在 Heroku 的系统里面注册新的应用程式。跑完之后你应该会看到输出里面告诉你新的应用程式的 URL。\r\n\r\n![](http://imageshack.com/a/img921/4691/bRjV6r.png)\r\n\r\n\r\n\r\n然后 `git push heroku master`\r\n\r\n![](http://imageshack.com/a/img922/8871/ATSxaq.png)\r\n\r\n\r\n\r\n提示开发者并没有安装 sqlite3 。\r\n\r\n![](http://imageshack.com/a/img923/6329/31fEO8.png)\r\n\r\n\r\n\r\n这时候请千万不要傻傻的安装 sqlite3 。\r\n\r\nHeroku 的正式环境里，资料库其实并不支持 sqlite3，而是有自定义的资料库 pg。不过关于这段的解释太专业了，初入门的朋友可能看不懂，我们这里只先谈：如何绕过这个错误信息，让你的网站可以顺利部署上 Heroku。\r\n\r\n\r\n\r\n##### 步骤 2：修改 Gemfile\r\n\r\n***\r\n\r\n* 安装Atom的朋友，请在编辑器输入：`cd first＿app`， 按[enter]\r\n\r\n* 输入：`atom .`  ，按[enter]  就可以成功开启专案的档案群\r\n\r\n* 安装 Sublime的朋友，请在编辑器输入：`cd first＿app` 按[enter]\r\n\r\n* 输入：`subl .` ，按[enter]  就可以成功开启专案的档案群\r\n\r\n  ​\r\n\r\n在编辑器里打开 `Gemfile`  这个档案，将第 7 行的`gem 'sqlite3'` 剪下\r\n\r\n![](http://imageshack.com/a/img922/1032/EY3ixt.png)\r\n\r\n\r\n\r\n把 sqlite3 搬到大约第 30 行的这个 group 里面。\r\n\r\n![](http://imageshack.com/a/img921/8673/swvTLY.png)\r\n\r\n\r\n\r\n然后在大约第 47 行新增一个 production group，加上 pg 这个 gem\r\n\r\n![](http://imageshack.com/a/img923/3746/iRZwk7.png)\r\n\r\n存档。（按 command+s）\r\n\r\n\r\n\r\n##### 步骤 3：套用 Gemfile 的异动\r\n\r\n***\r\n\r\n然后在终端机里执行这条指令\r\n\r\n- `bundle install`\r\n\r\n每当你改 Gemfile 的時候，你都要跑一次 `bundle install`，这样子异动才会被套用。套用之后的异动会被存在另一个档案 `Gemfile.lock`。\r\n\r\n\r\n\r\n##### 步骤 4：把 Gemfile 的异动 commit 到 git\r\n\r\n***\r\n\r\n* `git add Gemfile`\r\n* `git add Gemfile.lock`\r\n* `git commit -m \"move sqlite3 to dev group & add pg to production group \"`\r\n\r\n\r\n\r\n##### 步骤5：上传到 Heroku\r\n\r\n***\r\n\r\n* `git push heroku master`\r\n\r\n![](http://imageshack.com/a/img923/6925/ELsm4u.png)\r\n\r\n![](http://imageshack.com/a/img923/4381/xhBO1o.png)\r\n\r\n\r\n\r\n#### 设定根目录\r\n\r\n***\r\n\r\n然后我们可以用 `heroku open` 打开网站。\r\n\r\n不过映入眼帘的却是：\r\n\r\n![](http://imageshack.com/a/img921/1000/SLWhy7.png)\r\n\r\n这是因为我们没有在 `config/routes.rb` 下设定首页。\r\n\r\n\r\n\r\n![](http://imageshack.com/a/img923/4397/0OaeRL.png)\r\n\r\n在第 3 行加入：\r\n\r\n`root \"topics#index\"` 让首页根目录指到 topics 的 index 那一页。\r\n\r\n之后我们再执行：\r\n\r\n* `git add . `\r\n* `git commit -m \"add root path\"`\r\n\r\n![](http://imageshack.com/a/img921/2129/MswxIy.png)\r\n\r\n再执行：\r\n\r\n* `git push heroku master`\r\n* `heroku open`\r\n\r\n映入眼帘的还是错误信息，只是这次变成：We're sorry, but something went wrong.\r\n\r\n![](http://imageshack.com/a/img922/3750/F2kP5n.png)\r\n\r\n\r\n\r\n我们可以使用 `heroku logs` ，观看 heroku 上的错误：\r\n\r\n![](http://imageshack.com/a/img924/5931/LR6mda.png)\r\n\r\n发现错误的信息在于 heroku 上面的 topics 资料库栏位，似乎并不存在。\r\n\r\n原来我们忘记跑了一个指令叫： `heroku run rake db:migrate`\r\n\r\n![](http://imageshack.com/a/img923/499/39TJxA.png)\r\n\r\n\r\n\r\n跑完再 `heroku open` ，看到这个画面，就表示一切顺利运行了。恭喜你，你有了第一个可以在公开空间上运行的论坛App！\r\n\r\n![](http://imageshack.com/a/img924/8867/gQdgEC.png)\r\n\r\n\r\n\r\n#### deploy 新版程式的方法\r\n\r\n***\r\n\r\n##### 步骤 1：把所有异动动 commit 到 git\r\n\r\n***\r\n\r\nHeroku 只受理我们有 commit 进本地 git repo 的程式，所以要确定修改过的档案都有 commit 进去了。\r\n\r\n在终端机输入这些字：\r\n\r\n`git status`\r\n\r\n`git status` 显示你还没 commit 进 git 的异动。如果没有输出任何东西的话，那你可以 deploy 了！不然的话就要 commit 程式码进去：\r\n\r\n在终端机输入这些字：\r\n\r\n`git add . `\r\n\r\n`git commit -m \"Some helpful message for your future self\"`\r\n\r\nCommit message 应该要可以描述你这次修改了什么东西，像是：“把投票数加到 topics 列表页”\r\n\r\n\r\n\r\n##### 步骤 2：把异动 push（上传）到 Heroku\r\n\r\n***\r\n\r\n在终端机输入这些字：\r\n\r\n`git push heroku master`\r\n\r\n这样子会把本地所有已经 commit 进去的异动都 push 到 Heroku。\r\n\r\n\r\n\r\n##### 步骤 3：在 Heroku 跑资料库的 migration\r\n\r\n***\r\n\r\n在终端机输入这些字：\r\n\r\n`heroku run rake db:migrate`\r\n\r\n这是叫 Heroku 在它的资料库跑 migration ，作用就像我们在本地跑 rake db:migrate。\r\n\r\nHeroku 的资料库跟你电脑上的资料库是分开的，也就是说每一次你更改了资料库的结构，你都要在 Heroku 的资料库更新一次。这也就是说在 Heroku 上面你不会看到你电脑上的 sqlite3 资料库里面的资料。\r\n\r\n\r\n\r\n##### 步骤4 ：上网看你的程式\r\n\r\n***\r\n\r\n在终端机输入这些字：\r\n\r\n`heroku open`\r\n\r\n会在浏览器打开你上传到 Heroku 的程式。\r\n\r\n\r\n\r\n#### 解说\r\n\r\n***\r\n\r\n首先，我们要让 Heroku 跟我们的程式可以整合。这需要修改 Gemfile 和重跑 bundler。\r\n\r\n* `Gemfile` 这个档案列出了所有你的 Rails 程式所需要的 Ruby 程式库（Library），称为「gem」。我们这里谈的是说，要在自己电脑的开发环境使用 `sqlite3` gem（写在 development group 里面）， 但是在上传到 Heroku（production group）的時候要使用 `pg` gem，这是专门设计给 Heroku 使用的资料库。\r\n* `Bundler`是 Ruby 专案用来追踪有使用哪些 gem 的工具。我们透过 `Gemfile` 跟 Bundler 说我们要什么 gem，然后我们要确定这些 gem 都有安装。因为我们目前电脑里面没有 Heroku 用的资料库系统， 所以我们跳过不安装 production 用的 gem。别担心，Bundler 还是会帮我们记得，让 Heroku 帮你安装。\r\n\r\n你可以在任何你的程式没问题、会动的时候 deploy。标准流程长得像这样：\r\n\r\n![](http://imageshack.com/a/img924/7731/cKphSq.png)\r\n\r\n1. 改程式\r\n\r\n2. 把异动 commit 进 git （`git commit`）\r\n\r\n3. （重复）\r\n\r\n   ​\r\n\r\n每当你把异动 commit 进 git 之后，你都可以执行 git push heroku master，然后新版本就上线了！", is_hidden: false])
 puts "生成第六章第 2 节"
+
+Task.create([course_id: 1, post_id: 23, due_time: Time.now + 1.month, description: "请将你的 Heroku 作品网址贴在这里"])
+puts "生成作业 - 第六章第 2 节"
 
 # Create Chapter
 
@@ -137,20 +172,11 @@ puts "生成第七章第 3 节"
 Chapter.update_all(is_hidden: false)
 Post.update_all(is_hidden: false)
 
-# Create Tasks
-create_tasks = for i in 1..25 do
-  Task.create([course_id: "1", post_id: "#{i}", due_time: Time.now + 1.month, description: "請輸入\r\n```\r\ngit --version\r\n```\r\n貼出你的 git 版本號"])
-end
-puts "25 Tasks created by admin."
+
 
 # Create Questions
 
 create_questions = for i in 1..10 do
-                     Question.create!([title: "Admin Question no.#{i}", description: "这是用seed建立的第 #{i} 个问题", user_id: "1"])
+  Question.create!([course_id: 1, title: "Admin Question no.#{i}", description: "这是用seed建立的第 #{i} 个问题", user_id: 1])
 end
 puts "10 Questions created by admin."
-
-create_questions = for i in 1..10 do
-                     Question.create!([title: "User Question no.#{i}", description: "这是用seed建立的第 #{i} 个问题", user_id: "2"])
-end
-puts "10 Questions created by user."

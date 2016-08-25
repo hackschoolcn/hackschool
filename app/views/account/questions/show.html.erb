@@ -1,27 +1,8 @@
-<head>
-  <style>
-  table, th, td {
-    border: 1px solid #dddddd;
-    border-collapse: collapse;
-    padding: 8px;
-    text-align: left
-  }
-  tr:nth-child(odd) {
-    background-color: #dddddd;
-  }
-  </style>
-</head>
-<body>
-
-
 <h2><%= @question.title %></h2>
 <div class="col-md-12">
   <div class="group">
-    <%= link_to("回答问题", new_question_answer_path(@question), class: "btn btn-default pull-right") %>
+    <%= link_to("回答问题", new_account_question_answer_path(@question), class: "btn btn-default pull-right") %>
     <br>
-    <% if current_user && current_user == @question.user %>
-      <%= link_to("Edit", edit_question_path(@question), class: "btn btn-default pull-right") %>
-    <% end %>
     <br>
   </div>
 
