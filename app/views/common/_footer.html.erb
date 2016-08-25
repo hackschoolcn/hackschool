@@ -3,13 +3,45 @@
 <footer class="footer" style="margin-top:10px;">
   <small>
     Copyright ©2016 <a href="#">HackSchool</a>
-    Design by <a href="#">FullStack-Team-2</a>
+    Design by FullStack-Team-2
   </small>
   <nav>
     <ul>
-      <li><%= link_to("About", "#") %></li>
-      <li><%= link_to("Contact", "#") %></li>
-      <li><a href="#">News</a></li>
-    </ul>
+    <li><a href="#" data-toggle="modal" data-target="#about">About</a></li>
+    <li><a href="#" data-toggle="modal" data-target="#contact">Contact</a></li>    </ul>
   </nav>
 </footer>
+<!-- about -->
+<div class="modal fade" id="about">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title">关于我们</h3>
+      </div>
+      <div class="modal-body">
+        <p>我们是一群致力于革新编程教育界的开拓者&hellip;</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- Contact -->
+<div class="modal fade" id="contact">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title">联系我们</h3>
+      </div>
+      <div class="modal-body">
+        <p>与其电话联络，不如相忘于江湖&hellip;</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
