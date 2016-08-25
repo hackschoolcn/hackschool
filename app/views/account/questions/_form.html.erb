@@ -1,4 +1,4 @@
-<%= simple_form_for @question do |f| %>
+<%= simple_form_for [:account, @course, @question] do |f| %>
   <div class="form-group">
     <%= f.input :title, input_html: {class: "form-control"} %>
     <%= f.input :description, input_html: {class: "form-control"} %>
