@@ -12,15 +12,15 @@ class Account::WorksController < ApplicationController
 
   def create
     post = @task.post
+    chapter = post.chapter
     course = post.course
     @work = Work.new(work_params)
     @work.user = current_user
     @work.task = @task
     @work.course = course
 
-    chapter = post.chapter
     if @work.save
-      redirect_to account_chapter_post_path(post, chapter), notice: "作业已提交"
+      redirect_to account_chapter_post_path(chapter, post), notice: "作业已提交"
     else
       render :new
     end
@@ -35,7 +35,7 @@ class Account::WorksController < ApplicationController
     post = @task.post
     chapter = post.chapter
     if @work.update(work_params)
-      redirect_to account_chapter_post_path(post, chapter), notice: "作业编辑成功"
+      redirect_to account_chapter_post_path(chapter, post), notice: "作业编辑成功"
     else
       render :edit
     end
