@@ -3,7 +3,6 @@
   <h2> Settings for your profile </h2>
   <hr>
 
-  <%#= gravatar_tag current_user.email, :size => 80, :default => avatar_url %>
   <img src="<%= current_user.avatar.thumb %>" width="90" height="90">
 
   <%= simple_form_for [:admin, @user] do |f| %>

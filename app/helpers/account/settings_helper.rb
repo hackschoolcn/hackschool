@@ -1,10 +1,10 @@
 module Account::SettingsHelper
   def render_user_avatar(user, size = :thumb)
-    if user.avatar.present?
+    # if user.avatar.present?
       render_user_avatar_from_upload(user, size)
-    else
-      render_user_avatar_from_gravatar(user, size)
-    end
+    # else
+    #   render_user_avatar_from_gravatar(user, size)
+    # end
   end
 
   def render_user_avatar_from_upload(user, size)
@@ -16,12 +16,12 @@ module Account::SettingsHelper
     end
   end
 
-  def render_user_avatar_from_gravatar(user, size)
-    case size
-    when :tiny
-      gravatar_tag(user.email, size: 30, default: avatar_url)
-    when :thumb
-      gravatar_tag(user.email, size: 90, default: avatar_url)
-    end
-  end
+  # def render_user_avatar_from_gravatar(user, size)
+  #   case size
+  #   when :tiny
+  #     gravatar_tag(user.email, size: 30, default: avatar_url)
+  #   when :thumb
+  #     gravatar_tag(user.email, size: 90, default: avatar_url)
+  #   end
+  # end
 end
