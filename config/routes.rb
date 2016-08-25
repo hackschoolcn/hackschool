@@ -118,6 +118,7 @@ Rails.application.routes.draw do
 
     resources :orders do
       collection do
+        post :yearly_subscription_from_course_view
         post :yearly_subscription
         post :single_purchase
       end
