@@ -20,8 +20,11 @@
                 <div class="col-md-2">
                     <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
 
-                        <%= active_link_to("课程", admin_courses_path , :active => :inclusive, :wrap_tag => :li ) %>
-                        <%= active_link_to("使用者", admin_users_path , :active => :inclusive, :wrap_tag => :li ) %>
+
+                    <li><%= active_link_to("课程", admin_courses_path , :active => :inclusive, :wrap_tag => :li ) %></li>
+                    <li><%= active_link_to("使用者", admin_users_path , :active => :inclusive, :wrap_tag => :li ) %></li>
+                 </ul>
+
 
                     </ul>
                 </div>
