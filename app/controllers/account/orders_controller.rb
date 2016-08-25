@@ -21,19 +21,27 @@ class Account::OrdersController < AccountController
   end
 
   def single_purchase
-    # TODO : check_course_valid
+    
     @course = Course.find(params[:course_id])
 
-    @order = Order.new
-    @order.price = @course.price
-    @order.user = current_user
-    @order.order_type = "single_purchase"
-    @order.course = @course
-    @order.save
+    if @course.is_hidden?  # check_course_valid
+      redirect_to root_path, notice: "该课程没有开课"
+    else
+      if current_user.member_of?(@course) # check encrolled_course uniq
+        redirect_to account_courses_path, warning: "您已参加课程中"
+      else
+        @order = Order.new
+        @order.price = @course.price
+        @order.user = current_user
+        @order.order_type = "single_purchase"
+        @order.course = @course
+        @order.save
 
-    flash[:notice] = "订单已创建"
+        flash[:notice] = "订单已创建"
 
-    redirect_to account_orders_path
+        redirect_to account_orders_path
+      end
+   end
   end
 
   def pay_with_wechat
@@ -41,27 +49,22 @@ class Account::OrdersController < AccountController
 
     case @order.order_type
     when "subscription"
-
       current_user.add_subscription_date!(@order.subscription_months)
     when "single_purchase"
-      current_user.enrolled_courses << @order.course
-      # TODO: need to check uniq
+      current_user.enroll_course!(@order.course)
     end
 
     redirect_to :back
   end
 
   def pay_with_alipay
-    @order.pay("wechat")
+    @order.pay("alpay")
 
     case @order.order_type
     when "subscription"
-      @order.pay("alipay")
       current_user.add_subscription_date!(@order.subscription_months)
     when "single_purchase"
-      current_user.enrolled_courses << @order.course
-      # TODO: need to check uniq
-
+      current_user.enroll_course!(@order.course)
     end
 
     redirect_to :back
@@ -82,7 +85,6 @@ class Account::OrdersController < AccountController
     unless @order.may_make_payment?
       flash[:warning] = "该订单已付款"
       redirect_to account_orders_path
-
     end
   end
 
