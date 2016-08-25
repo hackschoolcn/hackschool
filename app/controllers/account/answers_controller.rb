@@ -1,4 +1,4 @@
-class AnswersController < ApplicationController
+class Account::AnswersController < ApplicationController
   before_action :authenticate_user!, only: %i(new create)
 
   def new
@@ -8,12 +8,13 @@ class AnswersController < ApplicationController
 
   def create
     @question = Question.find(params[:question_id])
+    @course = @question.course
     @answer = Answer.new(answer_params)
     @answer.question = @question
     @answer.user = current_user
 
     if @answer.save
-      redirect_to question_path(@question)
+      redirect_to account_course_question_path(@course, @question)
     else
       render :new
     end

@@ -1,12 +1,12 @@
 <div class="col-md-8 col-lg-offset-2">
-  <%= render "questions/search_bar" %>
+  <%= render "account/questions/search_bar" %>
 
   <h2>Your search for <%= @query_string %> matches <%= @questions.total_entries %> results: </h2>
   <br>
 
    <div class="item_div">
      <table class="table table-borderd">
-       <%= render :partial => "questions/item", :collection => @questions, :as => :question %>
+       <%= render :partial => "account/questions/item", :collection => @questions, :as => :question %>
      </table>
 
      <div class="text-center">
