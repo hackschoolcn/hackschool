@@ -1,6 +1,6 @@
 class Account::FaqsController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_course, only: %i(index new edit create update destroy)
+  before_action :find_course, only: %i(index)
 
   def index
     @faqs = @course.faqs
