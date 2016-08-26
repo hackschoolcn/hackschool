@@ -7,6 +7,19 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right ">
 
+    <li>
+     <% if current_user.is_valid_subscriber? %>
+    
+      <button class="btn btn-xs btn-danger">
+        <li class="fa fa-star" aria-hidden="true">我是会员</li>
+      </button>
+    <% else %>
+      <button class="btn btn-danger">
+        <span>成为年费会员</span>
+      </button>
+    <% end %>
+    </li>
+
         <% if !current_user %>
           <li style="font-size:18px;"><%= link_to("log in", new_user_session_path) %></li>
 
@@ -27,9 +40,7 @@
                   <li><%= link_to("Admin Panel", admin_courses_path) %> </li>
               <% end %>
 
-              <li> <%= link_to("我的课程", account_courses_path) %> </li>
-              <li> <%= link_to("我的订单", account_orders_path ) %> </li>
-              <li> <%= link_to("个人设置", account_settings_path) %> </li>
+              <li> <%= link_to("个人主页", account_courses_path) %> </li>
 
               <li class="divider"></li>
               <li><%= link_to("Sign out", destroy_user_session_path, method: :delete) %></li>

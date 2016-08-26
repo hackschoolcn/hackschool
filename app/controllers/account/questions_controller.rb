@@ -18,6 +18,10 @@ class Account::QuestionsController < AccountController
   end
 
   def edit
+    @question = Question.find(params[:id])
+    if current_user != @question.user
+      redirect_to root_path, alert: "You have no permission."
+    end
   end
 
   def create
@@ -43,6 +47,9 @@ class Account::QuestionsController < AccountController
   def destroy
     @question.destroy
     redirect_to :back, alert: "提问已删除"
+    if current_user != @question.user
+      redirect_to root_path, alert: "You have no permission."
+    end
   end
 
   def search
