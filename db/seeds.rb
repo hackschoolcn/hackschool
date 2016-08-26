@@ -14,13 +14,16 @@ puts "10 User accounts created."
 
 # Create Course
 
-Course.create([title: "Rails 基础环境建设", description: "准备必要的工具和软件，配置 Rails 开发环境", teacher_name: "xdite", is_hidden: false, price: 100])
+Course.create([title: "Rails 基础环境建设", one_sentence_summary: "准备必要的工具和软件，配置 Rails 开发环境", teacher_name: "xdite", is_hidden: false, price: 100])
 puts "1st Course created."
 
-Course.create([title: "从篮球教练到全栈工程师", description: "讲述安西教练变成全栈工程师的秘籍", teacher_name: "xdite", is_hidden: false, price: 299])
+Course.create([title: "出发前的热身", one_sentence_summary: "速度和压力练习，训练你在10小时之内做出 KnewOne 剁手网站", teacher_name: "xdite", is_hidden: false, price: 1000])
 puts "2nd Course created."
 
-Course.create([title: "全栈之为责任", description: "出发前的热身 - 速度和压力练习，训练你在10小时之内做出 KnewOne 剁手网站", teacher_name: "xdite", is_hidden: false, price: 1000])
+Course.create([title: "游戏，但这不是游戏", one_sentence_summary: "完整的网页端多人合作游戏开发 - 没热身的请绕道", teacher_name: "xdite", is_hidden: false, price: 2000])
+puts "3rd Course created."
+
+Course.create([title: "速度的极限和极限的速度", one_sentence_summary: "搭建直播平台，训练解决复杂网络环境下网速问题的能力", teacher_name: "xdite", is_hidden: false, price: 2000])
 puts "3rd Course created."
 
 # Create Chapter
