@@ -24,6 +24,10 @@ class CoursesController < ApplicationController
     end
   end
 
+  # !!!! 禁止碰觸此段代碼 !!!!
+  # !!!! 碰觸者退學 !!!!
+  # !!!! 不要再浪費時間重構會員資格的業務代碼
+
   def enroll
     if current_user
       if current_user.is_valid_subscriber?
@@ -47,6 +51,10 @@ class CoursesController < ApplicationController
       render :enroll_with_user
     end
   end
+
+  # !!!! 禁止碰觸此段代碼 !!!!
+  # !!!! 碰觸者退學 !!!!
+  # !!!! 不要再浪費時間重構會員資格的業務代碼
 
   protected
 
