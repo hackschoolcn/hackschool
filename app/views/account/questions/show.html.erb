@@ -1,7 +1,7 @@
 <h2><%= @question.title %></h2>
 <div class="col-md-12">
   <div class="group">
-    <%= link_to("回答问题", new_account_question_answer_path(@question), class: "btn btn-default pull-right") %>
+    <%= link_to("回答问题", new_account_course_question_answer_path(@course, @question), class: "btn btn-default pull-right") %>
     <br>
     <br>
   </div>

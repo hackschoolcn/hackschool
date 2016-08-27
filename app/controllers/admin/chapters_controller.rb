@@ -59,8 +59,9 @@ class Admin::ChaptersController < AdminController
   end
 
   def search
+    @course = Course.find(params[:course_id])
     if @query_string.present?
-      search_result = Post.ransack(@search_criteria).result(distinct: true)
+      search_result = Post.where(course_id: params[:course_id]).ransack(@search_criteria).result(distinct: true)
       @posts = search_result.paginate(page: params[:page], per_page: 20)
     else
       redirect_to :back

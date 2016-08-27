@@ -2,7 +2,7 @@ class Account::OrdersController < AccountController
   before_action :find_order, only: %i(pay_with_wechat pay_with_alipay cancel_order)
   before_action :check_order_may_pay, only: %i(pay_with_wechat pay_with_alipay)
   layout "order-details", only:[:show]
-  layout "order-lists", only:[:index]
+  layout "user", only:[:index]
 
   def index
     @orders = current_user.orders.recent

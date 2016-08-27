@@ -1,9 +1,0 @@
-<tr>
-  <% if !course.is_hidden? %>
-    <td width="80%">
-      <%= link_to(render_highlight_content(course,@query_string),course_path(course)) %> -
-      <%= course.description %>
-    </td>
-    <td> <%= course.created_at.to_s(:short) %> </td>
-  <% end %>
-</tr>

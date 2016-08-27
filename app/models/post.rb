@@ -19,6 +19,7 @@ class Post < ApplicationRecord
   has_many :tasks, dependent: :destroy
 
   scope :published, -> { where(is_hidden: false) }
+#  scope :current_course, -> (course_id) { where course_id: course_id }
 
   def publish!
     self.is_hidden = false

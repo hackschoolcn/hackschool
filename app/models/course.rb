@@ -2,6 +2,7 @@
 #
 # Table name: courses
 #
+
 #  id                   :integer          not null, primary key
 #  title                :string
 #  description          :text
