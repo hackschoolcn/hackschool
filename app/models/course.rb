@@ -2,6 +2,21 @@
 #
 # Table name: courses
 #
+#  id                   :integer          not null, primary key
+#  title                :string
+#  description          :text
+#  price                :integer
+#  is_hidden            :boolean          default(TRUE)
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#  image                :string
+#  teacher_name         :string
+#  hero_image           :string
+#  faq                  :text
+#  teacher_image        :string
+#  about_teacher        :text
+#  one_sentence_summary :string
+#
 
 #  id                   :integer          not null, primary key
 #  title                :string
