@@ -21,6 +21,7 @@
             </td>
             <td>
                 <%= render_my_course_task_status(course) %>
+                <%= render_progress(percent = number_with_precision(current_user.works.where(course_id: course.id).count.to_f / course.tasks.count * 100, :precision => 2))  %>
             </td>
             <td>
                 <%= course.teacher_name %>
