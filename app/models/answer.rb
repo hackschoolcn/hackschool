@@ -8,11 +8,13 @@
 #  user_id     :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  course_id   :integer
 #
 
 class Answer < ApplicationRecord
   belongs_to :user
   belongs_to :question
+  belongs_to :course
 
   validates :content, presence: true
 

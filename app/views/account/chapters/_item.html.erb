@@ -1,11 +1,9 @@
 <tr>
   <td width="80%">
-  <% if !post.is_hidden? && !post.chapter.is_hidden?   %>
        <h2><%= post.chapter.chapter %>  >
-       <%= link_to(post.title, account_chapter_post_path(post.chapter,post)) %></h2>
+       <%= link_to(post.title, account_course_chapter_post_path(post.course, post.chapter, post)) %></h2>
        <br>
        <%= render_post_article_highlight_content(post,@query_string) %>
-  <% end %>
   </td>
 
 </tr>

@@ -24,8 +24,9 @@ class Account::ChaptersController < AccountController
   end
 
   def search
+    @course = Course.find(params[:course_id])
     if @query_string.present?
-      search_result = Post.ransack(@search_criteria).result(distinct: true).includes(:chapter)
+      search_result = Post.where(course_id: params[:course_id], is_hidden: false).ransack(@search_criteria).result(distinct: true)
       @posts = search_result.paginate(page: params[:page], per_page: 20)
     else
       redirect_to :back
@@ -66,6 +67,6 @@ class Account::ChaptersController < AccountController
   end
 
   def search_criteria(query_string)
-    { article_cont: query_string, chapter_is_hidden_eq: false }
+    { article_cont: query_string, chapter_is_hidden_eq: false, course_is_hidden_eq: false }
   end
 end

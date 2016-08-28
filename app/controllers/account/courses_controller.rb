@@ -1,5 +1,4 @@
 class Account::CoursesController < AccountController
-  before_action :validate_search_key, only: [:search]
 
   def index
     @courses = current_user.enrolled_courses
@@ -37,15 +36,6 @@ class Account::CoursesController < AccountController
     redirect_to account_courses_path
   end
 
-  def search
-    if @query_string.present?
-      search_result = Course.where(is_hidden: false).ransack(@search_criteria).result(distinct: true)
-      @courses = search_result.paginate(page: params[:page], per_page: 20)
-    else
-      redirect_to :back
-    end
-  end
-
   protected
 
   def set_breadcrumbs
@@ -62,12 +52,4 @@ class Account::CoursesController < AccountController
     end
   end
 
-  def validate_search_key
-    @query_string = params[:query_string].gsub(/\\|\'|\/|\?/, "") if params[:query_string].present?
-    @search_criteria = search_criteria(@query_string)
-  end
-
-  def search_criteria(query_string)
-    { title_or_description_or_answers_content_cont: query_string }
-  end
 end

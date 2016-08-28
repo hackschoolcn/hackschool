@@ -14,6 +14,7 @@ class Account::QuestionsController < AccountController
   end
 
   def show
+    @question = Question.find(params[:id])
     @answers = @question.answers.recent
   end
 
@@ -46,15 +47,16 @@ class Account::QuestionsController < AccountController
   end
 
   def search
+    @course = Course.find(params[:course_id])
     if @query_string.present?
-      search_result = Question.ransack(@search_criteria).result(distinct: true).includes(:answers)
+      search_result = Question.where(course_id: params[:course_id]).ransack(@search_criteria).result(distinct: true).includes(:answers)
       @questions = search_result.paginate(page: params[:page], per_page:20)
     else
-      redirect_to :back  
+      redirect_to :back
     end
   end
 
-  
+
   # protected
   protected
 

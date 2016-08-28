@@ -2,9 +2,6 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :courses do
-    collection do
-      get :search
-    end
     member do
       get :enroll
       post :member_confirm_enroll
@@ -16,10 +13,15 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :courses do
       resources :chapters do
+        collection do
+          get :search     # 搜索A课程内容 admin > course > chapter > search
+        end
+        resources :posts  # 显示搜到的A课程内容 admin > course > chapter > post
         member do
           post :hide
           post :publish
         end
+
       end
 
     resources :faqs
@@ -31,9 +33,6 @@ Rails.application.routes.draw do
     end
 
     resources :chapters do
-      collection do
-        get :search
-      end
       resources :posts do
         member do
           post :hide
@@ -76,9 +75,6 @@ Rails.application.routes.draw do
     end
 
     resources :courses do
-      collection do
-        get :search
-      end
       member do
         post :enroll_course
         post :drop_course
@@ -86,28 +82,26 @@ Rails.application.routes.draw do
 
       resources :questions do
         collection do
-          get :search
+          get :search     # 搜索A课程讨论区内容 account > course > question > search
         end
+        resources :answers# 显示搜到的A课程讨论区内容 account > course > question > answer
       end
 
-      resources :chapters
+      resources :chapters do
+        collection do
+          get :search     # 搜索A课程内容 account > course > chapter > search
+        end
+        resources :posts  # 显示搜到的A课程内容 account > course > chapter > post
+      end
       resources :assignments
       resources :faqs
     end
-    
-    resources :questions do
-      resources :answers
-    end
 
-    
     resources :questions do
       resources :answers
     end
 
     resources :chapters do
-      collection do
-        get :search
-      end
       resources :posts do
         member do
           post :prev
