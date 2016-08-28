@@ -74,5 +74,3 @@ gem "tzinfo-data", platforms: %i(mingw mswin x64_mingw jruby)
 gem "will_paginate"
 gem "ransack"
 gem "seo_helper"
-gem "delayed_job_active_record"
-gem "progress_job"
