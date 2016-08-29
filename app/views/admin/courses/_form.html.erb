@@ -1,20 +1,7 @@
 <%= simple_form_for [:admin, @course] do |f| %>
-<%= f.input :hero_title, label: "课程标题"%>
-<%= f.input :description, label: "课程详情描述" %>
-<%= f.input :faq, label: "课程问答" %>
-<%= f.input :about_teacher, label: "教师介绍" %>
-<%= f.input :price, label: "课程价格" %>
-<%= f.input :hero_image, label: "课程背景大图" %>
-<%= f.input :teacher_image, label: "教师头像" %>
+<%= f.input :title, label: "课程首页标题"%>
+<%= f.input :one_sentence_summary, label: "一句话描述课程"  %>
+<%= f.input :teacher_name, label: "教师姓名" %>
+<%= f.input :image, label: "首页课程图片" %>
 <%= f.submit %>
 <% end %>
-
-
-<script>
-var simplemde_1 = new SimpleMDE({ element: document.getElementById("course_description") });
-var simplemde_2 = new SimpleMDE({ element: document.getElementById("course_faq") });
-var simplemde_3 = new SimpleMDE({ element: document.getElementById("course_about_teacher") });
-simplemde_1.value();
-simplemde_2.value();
-simplemde_3.value();
-</script>
