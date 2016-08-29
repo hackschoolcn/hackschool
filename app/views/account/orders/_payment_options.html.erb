@@ -6,6 +6,6 @@
     <%= link_to('取消订单', cancel_order_account_order_path(order.token), method: :post, class: 'btn btndefault btnsm') %>
 
   <% else %>
-    <%= link_to('查看', account_order_path(order), class: 'btn btndefault btnsm') %>
+    <%= link_to('查看', account_order_path(order.token), class: 'btn btndefault btnsm') %>
   <% end %>
 </td>
