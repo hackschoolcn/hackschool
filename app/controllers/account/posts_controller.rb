@@ -16,6 +16,7 @@ class Account::PostsController < ApplicationController
 
     drop_breadcrumb @chapter.chapter
     drop_breadcrumb @post.title
+    set_page_title "#{@post.title} | #{@chapter.chapter}"
   end
 
   def prev

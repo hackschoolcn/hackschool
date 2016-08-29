@@ -1,12 +1,13 @@
 class Account::OrdersController < AccountController
   before_action :find_order, only: %i(pay_with_wechat pay_with_alipay cancel_order)
   before_action :check_order_may_pay, only: %i(pay_with_wechat pay_with_alipay)
-  layout "order-details", only:[:show]
-  layout "user", only:[:index]
+  layout "order-details", only: [:show]
+  layout "user", only: [:index]
 
   def index
     @orders = current_user.orders.recent
     drop_breadcrumb "我的订单", account_orders_path
+    set_page_title "我的订单"
   end
 
   def show
@@ -24,10 +25,9 @@ class Account::OrdersController < AccountController
   end
 
   def single_purchase
-
     @course = Course.find(params[:course_id])
 
-    if @course.is_hidden?  # check_course_valid
+    if @course.is_hidden? # check_course_valid
       redirect_to root_path, notice: "该课程没有开课"
     else
       if current_user.is_valid_subscriber?
@@ -40,7 +40,6 @@ class Account::OrdersController < AccountController
         end
       end
     end
-
   end
 
   def pay_with_wechat
@@ -103,9 +102,8 @@ class Account::OrdersController < AccountController
     @order = Order.find_by_token(params[:id])
   end
 
-
   def create_order(options = {})
-    if current_user.orders.count > 0 && current_user.orders.last.unpaid?
+    if current_user.orders.count.positive? && current_user.orders.last.unpaid?
       flash[:warning] = "您有已创建的订单还未付款，可以继续操作付款，或取消订单重新选择"
       redirect_to account_orders_path
     else
@@ -126,5 +124,4 @@ class Account::OrdersController < AccountController
   def order_params
     params.require(:order).permit(:price, :token, :payment_method, :created_at, :aasm_state, :subscription_months, :order_type)
   end
-
 end

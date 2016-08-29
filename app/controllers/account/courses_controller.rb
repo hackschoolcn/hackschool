@@ -1,8 +1,8 @@
 class Account::CoursesController < AccountController
-
   def index
     @courses = current_user.enrolled_courses
     drop_breadcrumb "我的课程", account_courses_path
+    set_page_title "我的课程"
   end
 
   def enroll_course
@@ -51,5 +51,4 @@ class Account::CoursesController < AccountController
       @breadcrumbs.push(title.to_s.html_safe)
     end
   end
-
 end

@@ -3,7 +3,6 @@ class Account::ChaptersController < AccountController
   before_action :check_enrolled_status
   before_action :validate_search_key, only: [:search]
 
-
   def index
     @course = Course.find(params[:course_id])
 
@@ -19,6 +18,8 @@ class Account::ChaptersController < AccountController
       flash[:warning] = "请先报名参加该课程"
       redirect_to course_path(@course)
     end
+
+    set_page_title "Rails 基础环境建设"
   end
 
   def search

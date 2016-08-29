@@ -9,11 +9,11 @@ class CoursesController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
+    set_page_title @course.title
   end
 
   def test
   end
-
 
   def search
     if @query_string.present?
@@ -27,7 +27,6 @@ class CoursesController < ApplicationController
   # !!!! 禁止碰觸此段代碼 !!!!
   # !!!! 碰觸者退學 !!!!
   # !!!! 不要再浪費時間重構會員資格的業務代碼
-
 
   def enroll
     if current_user
@@ -66,5 +65,4 @@ class CoursesController < ApplicationController
       redirect_to account_courses_path
     end
   end
-
 end
