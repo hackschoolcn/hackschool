@@ -10,7 +10,8 @@
         <% if current_user %>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle  " data-toggle="dropdown">
-                <%= render_user_avatar(current_user, :tiny) %> 
+
+                <%= render_user_avatar_from_upload(current_user, :tiny) %> 
                     <% if !current_user.username == false %>
                     Hi!, <%= current_user.username  %>
                     <% else %>
