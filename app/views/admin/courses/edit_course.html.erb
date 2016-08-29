@@ -10,9 +10,9 @@
 <% end %>
 
 <script>
-var simplemde_1 = new SimpleMDE({ element: document.getElementById("course_description") });
-var simplemde_2 = new SimpleMDE({ element: document.getElementById("course_faq") });
-var simplemde_3 = new SimpleMDE({ element: document.getElementById("course_about_teacher") });
+var simplemde_1 = new SimpleMDE({ element: document.getElementById("course_description"), spellChecker: false });
+var simplemde_2 = new SimpleMDE({ element: document.getElementById("course_faq"), spellChecker: false });
+var simplemde_3 = new SimpleMDE({ element: document.getElementById("course_about_teacher"), spellChecker: false });
 simplemde_1.value();
 simplemde_2.value();
 simplemde_3.value();

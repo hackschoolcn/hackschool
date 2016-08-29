@@ -10,7 +10,7 @@ class Account::OrdersController < AccountController
   end
 
   def show
-    @order = Order.find(params[:id])
+    @order = Order.find_by_token(params[:id])
   end
 
   def yearly_subscription
@@ -117,7 +117,7 @@ class Account::OrdersController < AccountController
       @order.user = current_user
       @order.save
       flash[:notice] = "订单已创建"
-      redirect_to account_order_path(@order)
+      redirect_to account_order_path(@order.token)
     end
   end
 
