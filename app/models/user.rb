@@ -84,15 +84,13 @@ class User < ApplicationRecord
     is_admin || email == "manyi@123.com"
   end
 
-  # def turn_to_admin!
-  #   self.is_admin = true
-  #   self.save
-  # end
-
-  # def turn_to_user!
-  #   self.is_admin = false
-  #   self.save
-  # end
+  def completed_works_in_percent(course)
+    if member_of?(course)
+      (self.works.where(course_id: course.id).count.to_f / course.tasks.count.to_f * 100).round(1)
+    else
+      0
+    end
+  end
 
   def is_valid_subscriber?
     member_expire_date && member_expire_date > Time.now

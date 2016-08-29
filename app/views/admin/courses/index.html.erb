@@ -4,37 +4,37 @@
 <br><br>
 
 <table class="table table-bordered">
-    <thead>
-        <tr>
-            <td>#</td>
-            <td>课程名</td>
-            <td>教师</td>
-            <td>选项</td>
-            <td>创建日期</td>
-        </tr>
-    </thead>
-    <tbody>
-        <% @courses.each do |course| %>
-        <tr>
-            <td><%= course.id %></td>
-            <td>
-                <%= render_course_status(course) %>
-                <%= link_to(course.title, course_path(course)) %>
+<thead>
+    <tr>
+        <td>#</td>
+        <td>课程名</td>
+        <td>教师</td>
+        <td>选项</td>
+        <td>创建日期</td>
+    </tr>
+</thead>
+<tbody>
+    <% @courses.each do |course| %>
+    <tr>
+        <td><%= course.id %></td>
+        <td>
+            <%= render_course_status(course) %>
+            <%= link_to(course.title, course_path(course)) %>
+        
+        </td>
+        <td>
+            <%= course.teacher_name %>
+        </td>
 
-            </td>
-            <td>
-                <%= course.teacher_name %>
-            </td>
+        <td>
+          <%= render :partial => "admin/courses/course_options", :locals => { :course => course} %>
+        </td>
 
-            <td>
-              <%= render :partial => "admin/courses/course_options", :locals => { :course => course} %>
-            </td>
+        <td>
+            <%= render_formatted_time(course.created_at) %>
+        </td>
 
-            <td>
-                <%= render_formatted_time(course.created_at) %>
-            </td>
-
-        </tr>
-        <% end %>
-    </tbody>
+    </tr>
+    <% end %>
+</tbody>
 </table>

@@ -20,7 +20,7 @@
             </td>
             <td>
                 <%= render_my_course_task_status(course) %>
-                <%= render_progress_bar(course)  %>
+                <%= render_progress_bar(current_user.completed_works_in_percent(course))  %>
             </td>
             <td>
                 <%= course.teacher_name %>

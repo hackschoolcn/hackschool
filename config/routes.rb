@@ -24,7 +24,7 @@ Rails.application.routes.draw do
 
       end
 
-    resources :faqs # admin课程下的FAQ admin > course > faq
+      resources :faqs # admin课程下的FAQ admin > course > faq
 
       member do
         post :hide
@@ -53,6 +53,7 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :works
     #faqs routes
     resources :faqs
   end
