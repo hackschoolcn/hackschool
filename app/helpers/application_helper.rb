@@ -14,8 +14,10 @@ module ApplicationHelper
   def gender_type
     if @user.gender == 'true'
       "Male"
-    else
+    elsif
       "Female"
+    else
+      ""
     end
   end
 
