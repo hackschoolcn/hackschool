@@ -11,9 +11,9 @@ class AccountController < ApplicationController
     title ||= @page_title
 
     if title && url
-      @breadcrumbs.push("<a href='#{url}'>#{title}</a>".html_safe)
+      @breadcrumbs.push(view_context.link_to(title, url))
     elsif title
-      @breadcrumbs.push(title.to_s.html_safe)
+      @breadcrumbs.push(title)
     end
   end
 end

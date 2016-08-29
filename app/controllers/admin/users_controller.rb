@@ -6,9 +6,11 @@ class Admin::UsersController < AdminController
   end
 
   def show
+    drop_breadcrumb "Users", admin_users_path
   end
 
   def edit
+    drop_breadcrumb "Users", admin_users_path
   end
 
   def update

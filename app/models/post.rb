@@ -46,6 +46,7 @@ class Post < ApplicationRecord
 
     index -= 1
     prev_post = course.posts[index]
+
     while (prev_post.chapter.hidden? || prev_post.hidden?) && index.positive?
       index -= 1
       prev_post = course.posts[index]
