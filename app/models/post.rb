@@ -35,50 +35,45 @@ class Post < ApplicationRecord
     is_hidden
   end
 
+  def current_index
+    course.posts.find_index(self)
+  end
+
   def may_prev?
-    course = self.course
-    index = course.posts.find_index(self)
+    index = current_index
 
-    if index.positive?
+    return false unless index.positive?
 
+    index -= 1
+    post = course.posts[index]
+    while (post.chapter.hidden? || post.hidden?) && index.positive?
       index -= 1
       post = course.posts[index]
-      while (post.chapter.hidden? || post.hidden?) && index.positive?
-        index -= 1
-        post = course.posts[index]
-      end
+    end
 
-      if index < 1 && (post.chapter.hidden? || post.hidden?) # 检查是否找到最后都没找到已发布的
-        false
-      else
-        post
-      end
-
-    else
+    if index < 1 && (post.chapter.hidden? || post.hidden?) # 检查是否找到最后都没找到已发布的
       false
+    else
+      post
     end
   end
 
   def may_next?
-    course = self.course
-    index = course.posts.find_index(self)
+    index = current_index
 
-    if index < course.posts.length - 1
+    return false unless index < course.posts.length
+
+    index += 1
+    post = course.posts[index]
+    while (post.chapter.hidden? || post.hidden?) && index < course.posts.length - 1
       index += 1
       post = course.posts[index]
-      while (post.chapter.hidden? || post.hidden?) && index < course.posts.length - 1
-        index += 1
-        post = course.posts[index]
-      end
+    end
 
-      if index > course.posts.length - 2 && (post.chapter.hidden? || post.hidden?) # 检查是否找到最后都没找到已发布的
-        false
-      else
-        post
-      end
-
-    else
+    if index > course.posts.length - 2 && (post.chapter.hidden? || post.hidden?) # 检查是否找到最后都没找到已发布的
       false
+    else
+      post
     end
   end
 end
