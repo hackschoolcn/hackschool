@@ -16,6 +16,7 @@
 #  teacher_image        :string
 #  about_teacher        :text
 #  one_sentence_summary :string
+#  hero_title           :string
 #
 
 #  id                   :integer          not null, primary key

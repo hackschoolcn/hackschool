@@ -1,11 +1,12 @@
 class Admin::CoursesController < AdminController
+  before_action :find_params, only: [:show, :edit, :update, :destroy, :publish, :hide, :edit_course]
+
   def index
     @courses = Course.recent
     drop_breadcrumb "Courses"
   end
 
   def show
-    @course = Course.find(params[:id])
     @users = @course.enrolled_users
   end
 
@@ -15,7 +16,6 @@ class Admin::CoursesController < AdminController
   end
 
   def edit
-    @course = Course.find(params[:id])
     drop_breadcrumb "Courses", admin_courses_path
     drop_breadcrumb @course.title
     drop_breadcrumb "编辑课程"
@@ -31,7 +31,6 @@ class Admin::CoursesController < AdminController
   end
 
   def update
-    @course = Course.find(params[:id])
     if @course.update(course_params)
       redirect_to admin_courses_path, notice: "Update Success"
     else
@@ -40,26 +39,30 @@ class Admin::CoursesController < AdminController
   end
 
   def destroy
-    @course = Course.find(params[:id])
     @course.destroy
     redirect_to admin_courses_path, alert: "Course Deleted"
   end
 
   def publish
-    @course = Course.find(params[:id])
     @course.publish!
     redirect_to :back
   end
 
   def hide
-    @course = Course.find(params[:id])
     @course.hide!
     redirect_to :back
   end
 
+  def edit_course
+  end
+
   private
+  def find_params
+    @course = Course.find(params[:id])
+  end
+
 
   def course_params
-    params.require(:course).permit(:faq, :title, :description, :price, :is_hidden, :image, :teacher_name, :hero_image, :teacher_image, :about_teacher, :one_sentence_summary)
+    params.require(:course).permit(:faq, :title, :description, :price, :is_hidden, :image, :teacher_name, :hero_image, :teacher_image, :about_teacher, :one_sentence_summary, :hero_title)
   end
 end

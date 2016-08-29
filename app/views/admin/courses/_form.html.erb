@@ -1,14 +1,11 @@
 <%= simple_form_for [:admin, @course] do |f| %>
-<%= f.input :title %>
-<%= f.input :one_sentence_summary %>
-<%= f.input :description %>
-<%= f.input :faq %>
-<%= f.input :about_teacher %>
-<%= f.input :price %>
-<%= f.input :teacher_name %>
-<%= f.input :image %>
-<%= f.input :hero_image %>
-<%= f.input :teacher_image %>
+<%= f.input :hero_title, label: "课程标题"%>
+<%= f.input :description, label: "课程详情描述" %>
+<%= f.input :faq, label: "课程问答" %>
+<%= f.input :about_teacher, label: "教师介绍" %>
+<%= f.input :price, label: "课程价格" %>
+<%= f.input :hero_image, label: "课程背景大图" %>
+<%= f.input :teacher_image, label: "教师头像" %>
 <%= f.submit %>
 <% end %>
 
