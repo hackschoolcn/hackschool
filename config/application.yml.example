@@ -9,9 +9,3 @@
 # production:
 #   stripe_api_key: sk_live_EeHnL644i6zo4Iyq4v1KdV9H
 #   stripe_publishable_key: pk_live_9lcthxpSIHbGwmdO941O1XVU
-production:
-  GEET_KEY: "06cba990948662e669f16dd00de4a6a2"
-
-
-development:
-  GEET_KEY: "06cba990948662e669f16dd00de4a6a2"

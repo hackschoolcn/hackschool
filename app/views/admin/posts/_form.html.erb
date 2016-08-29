@@ -4,6 +4,6 @@
   <%= f.submit "Submit" %>
 <% end %>
 <script>
-var simplemde = new SimpleMDE({ element: document.getElementById("post_article") });
+var simplemde = new SimpleMDE({ element: document.getElementById("post_article"), spellChecker: false });
 simplemde.value();
 </script>
