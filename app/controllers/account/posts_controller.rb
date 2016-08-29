@@ -9,7 +9,7 @@ class Account::PostsController < ApplicationController
 
     set_breadcrumbs
 
-    if @post.is_hidden? || @chapter.is_hidden?
+    if @post.hidden? || @chapter.hidden?
       flash[:warning] = "The content is archived"
       redirect_to root_path
     end

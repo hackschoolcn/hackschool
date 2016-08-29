@@ -21,7 +21,6 @@ Rails.application.routes.draw do
           post :hide
           post :publish
         end
-
       end
 
       resources :faqs # admin课程下的FAQ admin > course > faq
@@ -54,7 +53,7 @@ Rails.application.routes.draw do
     end
 
     resources :works
-    #faqs routes
+    # faqs routes
     resources :faqs
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -62,7 +61,6 @@ Rails.application.routes.draw do
   root "courses#index"
 
   namespace :account do
-
     resources :settings do
       collection do
         get :edit_profile
@@ -70,7 +68,6 @@ Rails.application.routes.draw do
         get :edit_password
       end
     end
-
 
     resources :tasks do
       resources :works
@@ -83,9 +80,9 @@ Rails.application.routes.draw do
 
       resources :questions do
         collection do
-          get :search     # 搜索A课程讨论区内容 account > course > question > search
+          get :search # 搜索A课程讨论区内容 account > course > question > search
         end
-        resources :answers# 显示搜到的A课程讨论区内容 account > course > question > answer
+        resources :answers # 显示搜到的A课程讨论区内容 account > course > question > answer
       end
 
       resources :chapters do
@@ -124,5 +121,4 @@ Rails.application.routes.draw do
       end
     end
   end
-
 end

@@ -1,5 +1,4 @@
 class Account::CoursesController < AccountController
-
   def index
     @courses = current_user.enrolled_courses
     drop_breadcrumb "我的课程", account_courses_path
@@ -15,7 +14,7 @@ class Account::CoursesController < AccountController
       flash[:warning] = "您已报名该课程"
     end
 
-    if currnet_user.is_valid_subscriber?
+    if currnet_user.valid_subscriber?
       flash[:notice] = "请先选择你的订阅套餐"
       redirect_to plans_path
     else
@@ -51,5 +50,4 @@ class Account::CoursesController < AccountController
       @breadcrumbs.push(title.to_s.html_safe)
     end
   end
-
 end

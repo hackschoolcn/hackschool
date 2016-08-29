@@ -2,7 +2,7 @@ class Account::QuestionsController < AccountController
   before_action :authenticate_user!, only: %i(new create update edit destroy)
   before_action :find_question, only: %i(show show edit update destroy)
   before_action :find_course, only: %i(index show new edit create update destroy)
-  before_action :validate_search_key, only:[:search]
+  before_action :validate_search_key, only: [:search]
 
   def index
     @questions = @course.questions
@@ -50,12 +50,11 @@ class Account::QuestionsController < AccountController
     @course = Course.find(params[:course_id])
     if @query_string.present?
       search_result = Question.where(course_id: params[:course_id]).ransack(@search_criteria).result(distinct: true).includes(:answers)
-      @questions = search_result.paginate(page: params[:page], per_page:20)
+      @questions = search_result.paginate(page: params[:page], per_page: 20)
     else
       redirect_to :back
     end
   end
-
 
   # protected
   protected
@@ -98,5 +97,4 @@ class Account::QuestionsController < AccountController
   def question_params
     params.require(:question).permit(:title, :description)
   end
-
 end

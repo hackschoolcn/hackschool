@@ -19,7 +19,7 @@ class Post < ApplicationRecord
   has_many :tasks, dependent: :destroy
 
   scope :published, -> { where(is_hidden: false) }
-#  scope :current_course, -> (course_id) { where course_id: course_id }
+  #  scope :current_course, -> (course_id) { where course_id: course_id }
 
   def publish!
     self.is_hidden = false
@@ -31,7 +31,7 @@ class Post < ApplicationRecord
     save
   end
 
-  def is_hidden?
+  def hidden?
     is_hidden
   end
 
@@ -43,12 +43,12 @@ class Post < ApplicationRecord
 
       index -= 1
       post = course.posts[index]
-      while (post.chapter.is_hidden? || post.is_hidden?) && index.positive?
+      while (post.chapter.hidden? || post.hidden?) && index.positive?
         index -= 1
         post = course.posts[index]
       end
 
-      if index < 1 && (post.chapter.is_hidden? || post.is_hidden?) # 检查是否找到最后都没找到已发布的
+      if index < 1 && (post.chapter.hidden? || post.hidden?) # 检查是否找到最后都没找到已发布的
         false
       else
         post
@@ -66,12 +66,12 @@ class Post < ApplicationRecord
     if index < course.posts.length - 1
       index += 1
       post = course.posts[index]
-      while (post.chapter.is_hidden? || post.is_hidden?) && index < course.posts.length - 1
+      while (post.chapter.hidden? || post.hidden?) && index < course.posts.length - 1
         index += 1
         post = course.posts[index]
       end
 
-      if index > course.posts.length - 2 && (post.chapter.is_hidden? || post.is_hidden?) # 检查是否找到最后都没找到已发布的
+      if index > course.posts.length - 2 && (post.chapter.hidden? || post.hidden?) # 检查是否找到最后都没找到已发布的
         false
       else
         post

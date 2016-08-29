@@ -1,6 +1,6 @@
 class Admin::PostsController < AdminController
   before_action :get_chapter_params, only: %i(index new edit create update destroy)
-  before_action :find_post only: %i(edit show update destroy publish hide)
+  before_action :find_post, only: %i(edit show update destroy publish hide)
 
   def index
     @posts = @chapter.posts

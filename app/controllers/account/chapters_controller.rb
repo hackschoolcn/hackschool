@@ -3,11 +3,10 @@ class Account::ChaptersController < AccountController
   before_action :check_enrolled_status
   before_action :validate_search_key, only: [:search]
 
-
   def index
     @course = Course.find(params[:course_id])
 
-    if @course.is_hidden?
+    if @course.hidden?
       flash[:warning] = "此课程没有开课"
       redirect_to root_path
     end
