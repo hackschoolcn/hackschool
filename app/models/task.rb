@@ -17,14 +17,13 @@ class Task < ApplicationRecord
   has_many :works, dependent: :destroy
 
   def submitted_users_in_percent
-    submitted_works_num = self.works.count
-    all_enrolled_users_num = self.course.enrolled_users.count
-    
-    if all_enrolled_users_num > 0
+    submitted_works_num = works.count
+    all_enrolled_users_num = course.enrolled_users.count
+
+    if all_enrolled_users_num.positive?
       (submitted_works_num.to_f / all_enrolled_users_num.to_f * 100).round(1)
     else
       0
     end
   end
-
 end

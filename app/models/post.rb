@@ -19,7 +19,7 @@ class Post < ApplicationRecord
   has_many :tasks, dependent: :destroy
 
   scope :published, -> { where(is_hidden: false) }
-#  scope :current_course, -> (course_id) { where course_id: course_id }
+  #  scope :current_course, -> (course_id) { where course_id: course_id }
 
   def publish!
     self.is_hidden = false
@@ -31,54 +31,50 @@ class Post < ApplicationRecord
     save
   end
 
-  def is_hidden?
+  def hidden?
     is_hidden
   end
 
+  def current_index
+    course.posts.find_index(self)
+  end
+
   def may_prev?
-    course = self.course
-    index = course.posts.find_index(self)
+    index = current_index
 
-    if index.positive?
+    return false unless index.positive?
 
+    index -= 1
+    prev_post = course.posts[index]
+
+    while (prev_post.chapter.hidden? || prev_post.hidden?) && index.positive?
       index -= 1
-      post = course.posts[index]
-      while (post.chapter.is_hidden? || post.is_hidden?) && index.positive?
-        index -= 1
-        post = course.posts[index]
-      end
+      prev_post = course.posts[index]
+    end
 
-      if index < 1 && (post.chapter.is_hidden? || post.is_hidden?) # 检查是否找到最后都没找到已发布的
-        false
-      else
-        post
-      end
-
-    else
+    if index < 1 && (prev_post.chapter.hidden? || prev_post.hidden?) # 检查是否找到最后都没找到已发布的
       false
+    else
+      prev_post
     end
   end
 
   def may_next?
-    course = self.course
-    index = course.posts.find_index(self)
+    index = current_index
 
-    if index < course.posts.length - 1
+    return false unless index < course.posts.length
+
+    index += 1
+    next_post = course.posts[index]
+    while (next_post.chapter.hidden? || next_post.hidden?) && index < course.posts.length - 1
       index += 1
-      post = course.posts[index]
-      while (post.chapter.is_hidden? || post.is_hidden?) && index < course.posts.length - 1
-        index += 1
-        post = course.posts[index]
-      end
+      next_post = course.posts[index]
+    end
 
-      if index > course.posts.length - 2 && (post.chapter.is_hidden? || post.is_hidden?) # 检查是否找到最后都没找到已发布的
-        false
-      else
-        post
-      end
-
-    else
+    if index > course.posts.length - 2 && (next_post.chapter.hidden? || next_post.hidden?) # 检查是否找到最后都没找到已发布的
       false
+    else
+      next_post
     end
   end
 end

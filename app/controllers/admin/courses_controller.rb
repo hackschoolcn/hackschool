@@ -1,5 +1,5 @@
 class Admin::CoursesController < AdminController
-  before_action :find_params, only: [:show, :edit, :update, :destroy, :publish, :hide, :edit_course]
+  before_action :find_course, only: %i(show edit update destroy publish hide edit_course)
 
   def index
     @courses = Course.recent
@@ -57,10 +57,10 @@ class Admin::CoursesController < AdminController
   end
 
   private
-  def find_params
+
+  def find_course
     @course = Course.find(params[:id])
   end
-
 
   def course_params
     params.require(:course).permit(:faq, :title, :description, :price, :is_hidden, :image, :teacher_name, :hero_image, :teacher_image, :about_teacher, :one_sentence_summary, :hero_title)

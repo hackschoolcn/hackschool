@@ -1,5 +1,4 @@
 class Account::AssignmentsController < AccountController
-
   def index
     @course = Course.find(params[:course_id])
     drop_breadcrumb "课程作业"
@@ -16,9 +15,9 @@ class Account::AssignmentsController < AccountController
     title ||= @page_title
 
     if title && url
-      @breadcrumbs.push("<a href='#{url}'>#{title}</a>".html_safe)
+      @breadcrumbs.push(view_context.link_to(title, url))
     elsif title
-      @breadcrumbs.push(title.to_s.html_safe)
+      @breadcrumbs.push(title)
     end
   end
 end

@@ -77,7 +77,6 @@ class User < ApplicationRecord
   has_many :enrollments
   has_many :enrolled_courses, through: :enrollments, source: :course
 
-
   mount_uploader :avatar, AvatarUploader
 
   def admin?
@@ -86,14 +85,14 @@ class User < ApplicationRecord
 
   def completed_works_in_percent(course)
     if member_of?(course)
-      (self.works.where(course_id: course.id).count.to_f / course.tasks.count.to_f * 100).round(1)
+      (works.where(course_id: course.id).count.to_f / course.tasks.count.to_f * 100).round(1)
     else
       0
     end
   end
 
-  def is_valid_subscriber?
-    member_expire_date && member_expire_date > Time.now
+  def valid_subscriber?
+    member_expire_date && member_expire_date > Time.zone.now
   end
 
   def enroll_course!(course)
