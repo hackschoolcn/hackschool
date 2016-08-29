@@ -26,19 +26,11 @@ class Account::OrdersController < AccountController
   def single_purchase
     @course = Course.find(params[:course_id])
 
-    if @course.hidden? # check_course_valid
-      redirect_to root_path, notice: "该课程没有开课"
-    else
-      if current_user.valid_subscriber?
-        redirect_to course_path(@course), notice: "您是年费会员，可以免费报名，不必单独购买此课程"
-      else
-        if current_user.member_of?(@course) # check encrolled_course uniq
-          redirect_to account_courses_path, warning: "您已参加课程中"
-        else
-          create_order(months: 12, price: @course.price, order_type: "single_purchase", course: @course)
-        end
-      end
-    end
+    check_course_hidden
+    check_valid_subscriber
+    check_already_enrolled
+
+    create_order(months: 12, price: @course.price, order_type: "single_purchase", course: @course)
   end
 
   def pay_with_wechat
@@ -89,6 +81,24 @@ class Account::OrdersController < AccountController
   end
 
   private
+
+  def check_course_hidden
+    if @course.hidden? # check_course_valid
+      redirect_to root_path, notice: "该课程没有开课"
+    end
+  end
+
+  def check_valid_subscriber
+    if current_user.valid_subscriber?
+      redirect_to course_path(@course), notice: "您是年费会员，可以免费报名，不必单独购买此课程"
+    end
+  end
+
+  def check_already_enrolled
+    if current_user.member_of?(@course) # check encrolled_course uniq
+      redirect_to account_courses_path, warning: "您已参加课程中"
+    end
+  end
 
   def check_order_may_pay
     unless @order.may_make_payment?
