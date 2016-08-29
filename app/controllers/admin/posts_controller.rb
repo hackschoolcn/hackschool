@@ -1,5 +1,5 @@
 class Admin::PostsController < AdminController
-  before_action :get_chapter_params, only: %i(index new edit create update destroy)
+  before_action :find_chapter, only: %i(index new edit create update destroy)
   before_action :find_post, only: %i(edit show update destroy publish hide)
 
   def index
@@ -59,7 +59,7 @@ class Admin::PostsController < AdminController
     @post = Post.find(params[:id])
   end
 
-  def get_chapter_params
+  def find_chapter
     @chapter = Chapter.find(params[:chapter_id])
   end
 

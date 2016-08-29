@@ -1,6 +1,6 @@
 class Account::WorksController < ApplicationController
   before_action :authenticate_user!
-  before_action :get_task, only: %i(new create edit update)
+  before_action :find_task, only: %i(new create edit update)
   before_action :find_work, only: %i(show edit update destroy)
 
   def show
@@ -68,7 +68,7 @@ class Account::WorksController < ApplicationController
     @work = Work.find(params[:id])
   end
 
-  def get_task
+  def find_task
     @task = Task.find(params[:task_id])
   end
 
