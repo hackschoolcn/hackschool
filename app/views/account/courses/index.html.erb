@@ -8,7 +8,6 @@
             <td>课程</td>
             <td>任务</td>
             <td>教师</td>
-            <td>选项</td>
             <td>创建日期</td>
         </tr>
     </thead>
@@ -24,9 +23,6 @@
             </td>
             <td>
                 <%= course.teacher_name %>
-            </td>
-            <td>
-                <%= link_to("退出课程", "#", class: "btn btn-xs btn-primary") %>
             </td>
             <td>
                 <%= render_formatted_time(course.created_at) %>

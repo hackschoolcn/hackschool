@@ -77,7 +77,6 @@ Rails.application.routes.draw do
     resources :courses do
       member do
         post :enroll_course
-        post :drop_course
       end
 
       resources :questions do
