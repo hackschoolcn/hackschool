@@ -45,16 +45,16 @@ class Post < ApplicationRecord
     return false unless index.positive?
 
     index -= 1
-    post = course.posts[index]
-    while (post.chapter.hidden? || post.hidden?) && index.positive?
+    prev_post = course.posts[index]
+    while (prev_post.chapter.hidden? || prev_post.hidden?) && index.positive?
       index -= 1
-      post = course.posts[index]
+      prev_post = course.posts[index]
     end
 
-    if index < 1 && (post.chapter.hidden? || post.hidden?) # 检查是否找到最后都没找到已发布的
+    if index < 1 && (prev_post.chapter.hidden? || prev_post.hidden?) # 检查是否找到最后都没找到已发布的
       false
     else
-      post
+      prev_post
     end
   end
 
@@ -64,16 +64,16 @@ class Post < ApplicationRecord
     return false unless index < course.posts.length
 
     index += 1
-    post = course.posts[index]
-    while (post.chapter.hidden? || post.hidden?) && index < course.posts.length - 1
+    next_post = course.posts[index]
+    while (next_post.chapter.hidden? || next_post.hidden?) && index < course.posts.length - 1
       index += 1
-      post = course.posts[index]
+      next_post = course.posts[index]
     end
 
-    if index > course.posts.length - 2 && (post.chapter.hidden? || post.hidden?) # 检查是否找到最后都没找到已发布的
+    if index > course.posts.length - 2 && (next_post.chapter.hidden? || next_post.hidden?) # 检查是否找到最后都没找到已发布的
       false
     else
-      post
+      next_post
     end
   end
 end
