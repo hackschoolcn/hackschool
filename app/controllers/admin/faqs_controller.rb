@@ -1,4 +1,4 @@
-class Admin::FaqsController < ApplicationController
+class Admin::FaqsController < AdminController
   before_action :find_course, only: %i(index new edit create update destroy)
   before_action :find_params, only: [:show, :edit, :update, :destroy]
 

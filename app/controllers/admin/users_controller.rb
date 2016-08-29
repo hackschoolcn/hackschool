@@ -1,8 +1,5 @@
 class Admin::UsersController < AdminController
-  before_action :authenticate_user!
-  before_action :require_is_admin
   before_action :find_params, only: [:show, :edit, :update, :turn_to_admin, :turn_to_user]
-  layout "admin"
 
   def index
     @users = User.all

@@ -1,10 +1,8 @@
 class Account::ChaptersController < AccountController
-  before_action :authenticate_user!
   before_action :find_course
   before_action :check_enrolled_status
   before_action :validate_search_key, only: [:search]
 
-  layout "application"
 
   def index
     @course = Course.find(params[:course_id])
