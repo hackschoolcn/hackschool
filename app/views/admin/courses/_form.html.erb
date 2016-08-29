@@ -1,12 +1,9 @@
 <%= simple_form_for [:admin, @course] do |f| %>
-<%= f.input :title %>
-<%= f.input :one_sentence_summary %>
+<%= f.input :hero_title %>
 <%= f.input :description %>
 <%= f.input :faq %>
 <%= f.input :about_teacher %>
 <%= f.input :price %>
-<%= f.input :teacher_name %>
-<%= f.input :image %>
 <%= f.input :hero_image %>
 <%= f.input :teacher_image %>
 <%= f.submit %>

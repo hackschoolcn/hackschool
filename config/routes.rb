@@ -24,11 +24,12 @@ Rails.application.routes.draw do
 
       end
 
-    resources :faqs
+    resources :faqs # admin课程下的FAQ admin > course > faq
 
       member do
         post :hide
         post :publish
+        get :edit_course
       end
     end
 
