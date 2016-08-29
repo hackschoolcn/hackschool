@@ -1,7 +1,7 @@
   <%= simple_form_for [:admin, @course] do |f| %>
-  <%= f.input :title %>
-  <%= f.input :one_sentence_summary %>
-  <%= f.input :teacher_name %>
-  <%= f.input :image %>
+  <%= f.input :title, label: "课程首页标题"%>
+  <%= f.input :one_sentence_summary, label: "一句话描述课程"  %>
+  <%= f.input :teacher_name, label: "教师姓名" %>
+  <%= f.input :image, label: "首页课程图片" %>
   <%= f.submit %>
   <% end %>

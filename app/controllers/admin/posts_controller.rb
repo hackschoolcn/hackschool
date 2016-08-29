@@ -1,5 +1,6 @@
 class Admin::PostsController < AdminController
   before_action :get_chapter_params, only: %i(index new edit create update destroy)
+  before_action :find_params, only: [:edit, :show, :update, :destroy, :publish, :hide]
 
   def index
     @posts = @chapter.posts
@@ -10,11 +11,9 @@ class Admin::PostsController < AdminController
   end
 
   def edit
-    @post = Post.find(params[:id])
   end
 
   def show
-    @post = Post.find(params[:id])
   end
 
   def create
@@ -31,7 +30,6 @@ class Admin::PostsController < AdminController
 
   def update
     @course = @chapter.course
-    @post = Post.find(params[:id])
     if @post.update(post_params)
       redirect_to admin_course_chapters_path(@course), notice: "更新成功"
     else
@@ -40,25 +38,25 @@ class Admin::PostsController < AdminController
   end
 
   def destroy
-    @post = Post.find(params[:id])
     @course = @chapter.course
     @post.destroy
     redirect_to admin_course_chapters_path(@course), alert: "Deleted"
   end
 
   def publish
-    @post = Post.find(params[:id])
     @post.publish!
     redirect_to :back
   end
 
   def hide
-    @post = Post.find(params[:id])
     @post.hide!
     redirect_to :back
   end
 
   private
+  def find_params
+    @post = Post.find(params[:id])
+  end
 
   def get_chapter_params
     @chapter = Chapter.find(params[:chapter_id])

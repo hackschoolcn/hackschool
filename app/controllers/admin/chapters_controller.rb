@@ -1,5 +1,6 @@
 class Admin::ChaptersController < AdminController
-  before_action :find_course, only: %i(index new edit create update destroy)
+  before_action :find_course, only: %i(index new edit create update destroy search)
+  before_action :find_params, only: [:edit, :show, :update, :destroy, :publish, :hide]
   before_action :validate_search_key, only: [:search]
 
   def index
@@ -14,11 +15,9 @@ class Admin::ChaptersController < AdminController
   end
 
   def edit
-    @chapter = Chapter.find(params[:id])
   end
 
   def show
-    @chapter = Chapter.find(params[:id])
   end
 
   def create
@@ -32,7 +31,6 @@ class Admin::ChaptersController < AdminController
   end
 
   def update
-    @chapter = Chapter.find(params[:id])
     if @chapter.update(chapter_params)
       redirect_to admin_course_chapters_path(@course), notice: "更新成功"
     else
@@ -41,25 +39,21 @@ class Admin::ChaptersController < AdminController
   end
 
   def destroy
-    @chapter = Chapter.find(params[:id])
     @chapter.destroy
     redirect_to  admin_course_chapters_path(@course), alert: "Deleted"
   end
 
   def publish
-    @chapter = Chapter.find(params[:id])
     @chapter.publish!
     redirect_to :back
   end
 
   def hide
-    @chapter = Chapter.find(params[:id])
     @chapter.hide!
     redirect_to :back
   end
 
   def search
-    @course = Course.find(params[:course_id])
     if @query_string.present?
       search_result = Post.where(course_id: params[:course_id]).ransack(@search_criteria).result(distinct: true)
       @posts = search_result.paginate(page: params[:page], per_page: 20)
@@ -80,6 +74,9 @@ class Admin::ChaptersController < AdminController
   end
 
   private
+  def find_params
+    @chapter = Chapter.find(params[:id])
+  end
 
   def find_course
     @course = Course.find(params[:course_id])

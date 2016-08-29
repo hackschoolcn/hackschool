@@ -1,6 +1,7 @@
 class Admin::UsersController < AdminController
   before_action :authenticate_user!
   before_action :require_is_admin
+  before_action :find_params, only: [:show, :edit, :update, :turn_to_admin, :turn_to_user]
   layout "admin"
 
   def index
@@ -8,15 +9,12 @@ class Admin::UsersController < AdminController
   end
 
   def show
-    @user = User.find(params[:id])
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
     if @user.update(user_params)
       redirect_to admin_users_path, notice: "资料已更新！"
     else
@@ -39,17 +37,21 @@ class Admin::UsersController < AdminController
   # end
 
   def turn_to_admin
-    @user = User.find(params[:id])
     @user.is_admin = true
     @user.save
     redirect_to :back
   end
 
   def turn_to_user
-    @user = User.find(params[:id])
     @user.is_admin = false
     @user.save
     redirect_to :back
+  end
+
+private
+
+  def find_params
+    @user = User.find(params[:id])
   end
 
   def user_params
