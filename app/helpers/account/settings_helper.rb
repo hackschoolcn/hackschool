@@ -10,7 +10,7 @@ module Account::SettingsHelper
   def render_user_avatar_from_upload(user, size)
     case size
     when :tiny
-      image_tag(user.avatar.thumb, width: 30, height: 30, class: "image-circle")
+      image_tag(user.avatar.thumb, width: 30, height: 30, class: "img-circle")
     when :thumb
       image_tag(user.avatar.thumb, width: 90, height: 90)
     end
