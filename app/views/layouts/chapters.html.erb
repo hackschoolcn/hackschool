@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hackschool</title>
+        <%= csrf_meta_tags %>
+
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= stylesheet_link_tag    'simplemde.min' %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_include_tag 'simplemde.min' %>
+
+    </head>
+    <body style="background-image: url(/crossword_background.png); padding-top: 60px;">
+
+        <%= render "common/navbar" %>
+        <%= render "common/flashes" %>
+                <!-- 侧边栏 -->
+                <div class="col-sm-2 col-md-2 col-lg-2">
+                  <nav class="navbar navbar-fixed-side navbar-inverse">
+                    <div class="container">
+                      <div class="navbar-header">
+                        <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                          <span class="sr-only">Toggle navigation</span>
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#"><%= @course.title %></a>
+                      </div>
+                      <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                          <li class="dropdown">
+                            <% @chapters.each do |chapter| %>
+                              <li class="dropdown-header"><%= chapter.chapter %></li>
+                              <% chapter.posts.where(is_hidden: false).each do |post| %>
+                                <li>
+                                  <%= link_to(post.title, account_chapter_post_path(chapter, post)) %>
+                                </li>
+                              <% end %>
+                              <li class="divider"></li>
+
+                              <% end %>
+                          </li>
+                          <p class="navbar-text">
+                            <br>
+                            <br>
+                            Design by Hack School
+                          </p>
+                        </ul>
+                      </div>
+                    </div>
+                  </nav>
+                </div>
+
+          <!-- 内容页 -->
+          <div class="col-sm-8 col-md-8 col-lg-8" style="padding-left: 2%;">
+            <%= yield %>
+            <br><br><br><br>
+          </div>
+
+    </body>
+
+</html>
