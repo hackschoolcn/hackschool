@@ -12,7 +12,7 @@
         <%= render :partial => "admin/chapters/search_bar" %>
         <br>
 
-        <% @chapters.each do |chapter| %>
+        <% @chapters.order("created_at ASC").each do |chapter| %>
 
         <div class="panel panel-default">
             <!-- Default panel contents -->
@@ -32,7 +32,7 @@
             </div>
             <!-- List group -->
             <ul class="list-group">
-                <% chapter.posts.each do |post| %>
+                <% chapter.posts.order("created_at ASC").each do |post| %>
                 <li class="list-group-item">
                     <%= render_post_status(post) %>
                     <%= link_to(post.title, admin_chapter_post_path(chapter, post)) %>
