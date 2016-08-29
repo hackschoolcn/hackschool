@@ -9,8 +9,8 @@
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
     <li><%= link_to("查看报名人数", admin_course_path(course))  %> </li>
-    <li><%= link_to("编辑首页课程信息",edit_course_admin_course_path(course)) %>
-    <li><%= link_to("编辑课程详情信息", edit_admin_course_path(course)) %></li>
+    <li><%= link_to("编辑首页课程信息", edit_admin_course_path(course)) %></li>
+    <li><%= link_to("编辑课程详情信息", edit_course_admin_course_path(course)) %></li>
     <li>
       <%= link_to("删除", admin_course_path(course), method: :delete,   data: { confirm:  "Are you sure?" } ) %>
     </li>
