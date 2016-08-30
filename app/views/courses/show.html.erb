@@ -2,13 +2,14 @@
 <div class="course-hero-image" style='background:url("<%= @course.hero_image %>")'>
     <div class="course-title-bg">
         <h1 class="course-title"><%= @course.hero_title%></h1>
-        <h4 class="course-price"><%= render_course_price(@course) %>
-        </h4>
+        <h4>未来需要更多的程序员，而软件开发则是未来创造世界必备的技能</h4>
+        
     </div>
 
     <% if current_user && current_user.enrolled_courses.include?(@course) %>
       <%= link_to("立刻学习", account_course_chapters_path(@course), class:"btn btn-lg btn-success pull-center")%>
     <% else  %>
+    <h4 class="course-price"><%= render_course_price(@course) %></h4>
       <%= link_to("火速报名", enroll_course_path(@course), class:"btn btn-lg btn-danger pull-center")%>
     <% end %>
 </div>
