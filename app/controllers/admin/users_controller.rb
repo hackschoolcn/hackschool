@@ -21,6 +21,10 @@ class Admin::UsersController < AdminController
     end
   end
 
+  def user_paid
+    @users = User.all
+  end
+
   # def turn_to_admin
   #   @user = User.find(params[:id])
   #   @user.admin!
