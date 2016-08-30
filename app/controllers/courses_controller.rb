@@ -4,7 +4,7 @@ class CoursesController < ApplicationController
   layout "course"
 
   def index
-    @courses = Course.all.where(is_hidden: false)
+    @courses = Course.all.where(is_hidden: false).order("created_at ASC")
   end
 
   def show
