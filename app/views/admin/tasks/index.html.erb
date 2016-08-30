@@ -1,0 +1,79 @@
+<div class="group">
+  <div class="btn-group pull-right" >
+
+    <div class="dropdown">
+      <button class="btn btn-default btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        <% if @course %>
+          <%= @course.title %>
+        <% else %>
+          所有作业
+        <% end %>
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li><%= link_to("所有作业", admin_tasks_path) %></li>
+        <% @courses.each do |course| %>
+          <li><%= link_to(course.title, admin_tasks_path(course_id: course.id)) %></li>
+        <% end %>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+
+<% if @course %>
+  <br><br>
+  <h3>【 <%= @course.title %> 】 - 作业列表</h3>
+  <hr>
+  <% @course.tasks.each_with_index do |task, index| %>
+   <div class="panel panel-default">
+     <!-- Default panel contents -->
+         <div class="panel-heading">
+          任务<%= index + 1%> - 章节：
+          <%= link_to(task.post.title, admin_chapter_post_path(task.post.chapter, task.post)) %>
+          <span class="pull-right">
+            <%= link_to(render_students_homework_submitted_status(task), admin_task_works_path(task)) %>
+          </span>
+          <span class="col-md-2 pull-right">
+            <%= render_progress_bar(task.submitted_users_in_percent) %>
+          </span>
+         </div>
+         <!-- List group -->
+         <ul class="list-group">
+            <li class="list-group-item">
+              <%= render_markdown_text(task.description) %>
+            </li>
+         </ul>
+   </div>
+  <% end %>
+
+<% else %>
+  <% @courses.each do |course| %>
+    <br><br>
+    <h3>【 <%= course.title %> 】 - 作业列表</h3>
+    <hr>
+    <% course.tasks.each_with_index do |task, index| %>
+     <div class="panel panel-default">
+       <!-- Default panel contents -->
+           <div class="panel-heading">
+            任务<%= index + 1%> - 章节：
+            <%= link_to(task.post.title, admin_chapter_post_path(task.post.chapter, task.post)) %>
+            <span class="pull-right">
+              <%= link_to(render_students_homework_submitted_status(task), admin_task_works_path(task)) %>
+            </span>
+            <span class="col-md-2 pull-right">
+              <%= render_progress_bar(task.submitted_users_in_percent) %>
+            </span>
+           </div>
+           <!-- List group -->
+           <ul class="list-group">
+              <li class="list-group-item">
+                <%= render_markdown_text(task.description) %>
+              </li>
+           </ul>
+     </div>
+    <% end %>
+  <% end %>
+
+<% end %>
