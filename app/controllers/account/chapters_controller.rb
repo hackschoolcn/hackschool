@@ -5,7 +5,6 @@ class Account::ChaptersController < AccountController
   layout "application"
   layout "chapters", only:[:index]
 
-
   def index
     @course = Course.find(params[:course_id])
 
