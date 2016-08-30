@@ -1,5 +1,5 @@
 class Admin::TasksController < AdminController
-  before_action :get_post, only: %i(new create edit update)
+  before_action :find_post, only: %i(new create edit update)
 
   def index
   end
@@ -42,7 +42,7 @@ class Admin::TasksController < AdminController
 
   private
 
-  def get_post
+  def find_post
     @post = Post.find(params[:post_id])
   end
 

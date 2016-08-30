@@ -1,6 +1,6 @@
 class Admin::ChaptersController < AdminController
   before_action :find_course, only: %i(index new edit create update destroy search)
-  before_action :find_params, only: [:edit, :show, :update, :destroy, :publish, :hide]
+  before_action :find_chapter, only: %i(edit show update destroy publish hide)
   before_action :validate_search_key, only: [:search]
 
   def index
@@ -40,7 +40,7 @@ class Admin::ChaptersController < AdminController
 
   def destroy
     @chapter.destroy
-    redirect_to  admin_course_chapters_path(@course), alert: "Deleted"
+    redirect_to admin_course_chapters_path(@course), alert: "Deleted"
   end
 
   def publish
@@ -74,7 +74,8 @@ class Admin::ChaptersController < AdminController
   end
 
   private
-  def find_params
+
+  def find_chapter
     @chapter = Chapter.find(params[:id])
   end
 

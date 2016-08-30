@@ -6,7 +6,7 @@ CarrierWave.configure do |config|
       :secret_access_key  => ENV["AWS_SECRET_ACCESS_KEY"],
       :region  => ENV['AWS_BUCKET_REGION']                        # required
     }
-    config.aws_bucket  = ENV["AWS_BUCKET_NAME"]                     # required
+    config.aws_bucket = ENV["AWS_BUCKET_NAME"] # required
   else
     config.storage :file
   end

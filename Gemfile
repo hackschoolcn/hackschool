@@ -38,6 +38,7 @@ gem "font-awesome-rails"
 gem "carrierwave"
 gem "mini_magick"
 gem "gravatarify"
+gem "seo_helper"
 
 # add by chpwang
 gem "font-awesome-sass"
@@ -75,4 +76,3 @@ end
 gem "tzinfo-data", platforms: %i(mingw mswin x64_mingw jruby)
 gem "will_paginate"
 gem "ransack"
-gem "seo_helper"

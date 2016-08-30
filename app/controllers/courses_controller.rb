@@ -9,11 +9,11 @@ class CoursesController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
+    set_page_title @course.title
   end
 
   def test
   end
-
 
   def search
     if @query_string.present?
@@ -28,10 +28,9 @@ class CoursesController < ApplicationController
   # !!!! 碰觸者退學 !!!!
   # !!!! 不要再浪費時間重構會員資格的業務代碼
 
-
   def enroll
     if current_user
-      if current_user.is_valid_subscriber?
+      if current_user.valid_subscriber?
         render :confirm_enroll
       else
         render :enroll_with_user
@@ -44,7 +43,7 @@ class CoursesController < ApplicationController
   end
 
   def member_confirm_enroll
-    if current_user.is_valid_subscriber?
+    if current_user.valid_subscriber?
       current_user.enroll_course!(@course)
       flash[:notice] = "报名成功"
       redirect_to account_courses_path
@@ -66,5 +65,4 @@ class CoursesController < ApplicationController
       redirect_to account_courses_path
     end
   end
-
 end

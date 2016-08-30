@@ -20,7 +20,7 @@
     <% @orders.each do |order| %>
     
     <tr>
-        <td><%= order.id %></td>
+        <td><%= order.token %></td>
         <td><%= link_to(order.course.title, account_course_chapters_path(order.course)) %></td>
         <td>¥ <%= order.price %></td>
         <td>

@@ -1,7 +1,7 @@
 class Account::WorksController < ApplicationController
   before_action :authenticate_user!
-  before_action :get_task, only: %i(new create edit update)
-  before_action :find_params, only: [:show, :edit, :update, :destroy]
+  before_action :find_task, only: %i(new create edit update)
+  before_action :find_work, only: %i(show edit update destroy)
 
   def show
     @work = Work.find(params[:id])
@@ -9,7 +9,7 @@ class Account::WorksController < ApplicationController
 
   def new
     @work = Work.new
-    session[:course_id] = params[:course_id]  # 记录来自哪个页面
+    session[:course_id] = params[:course_id] # 记录来自哪个页面
   end
 
   def create
@@ -23,7 +23,7 @@ class Account::WorksController < ApplicationController
 
     if @work.save
       if session[:course_id]
-        course = Course.find(session[:course_id])  # 根据记录回到原来的页面
+        course = Course.find(session[:course_id]) # 根据记录回到原来的页面
         session[:course_id] = false
         redirect_to account_course_assignments_path(course), notice: "作业已提交"
       else
@@ -36,7 +36,7 @@ class Account::WorksController < ApplicationController
 
   def edit
     @work = Work.find(params[:id])
-    session[:course_id] = params[:course_id]  # 记录来自哪个页面
+    session[:course_id] = params[:course_id] # 记录来自哪个页面
   end
 
   def update
@@ -45,7 +45,7 @@ class Account::WorksController < ApplicationController
     chapter = post.chapter
     if @work.update(work_params)
       if session[:course_id]
-        course = Course.find(session[:course_id])  # 根据记录回到原来的页面
+        course = Course.find(session[:course_id]) # 根据记录回到原来的页面
         session[:course_id] = false
         redirect_to account_course_assignments_path(course), notice: "作业编辑成功"
       else
@@ -64,11 +64,11 @@ class Account::WorksController < ApplicationController
 
   private
 
-  def find_params
+  def find_work
     @work = Work.find(params[:id])
   end
 
-  def get_task
+  def find_task
     @task = Task.find(params[:task_id])
   end
 

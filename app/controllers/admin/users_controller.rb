@@ -1,14 +1,16 @@
 class Admin::UsersController < AdminController
-  before_action :find_params, only: [:show, :edit, :update, :turn_to_admin, :turn_to_user]
+  before_action :find_user, only: %i(show edit update turn_to_admin turn_to_user)
 
   def index
     @users = User.all
   end
 
   def show
+    drop_breadcrumb "Users", admin_users_path
   end
 
   def edit
+    drop_breadcrumb "Users", admin_users_path
   end
 
   def update
@@ -45,9 +47,9 @@ class Admin::UsersController < AdminController
     redirect_to :back
   end
 
-private
+  private
 
-  def find_params
+  def find_user
     @user = User.find(params[:id])
   end
 

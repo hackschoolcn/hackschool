@@ -1,54 +1,3 @@
-# == Schema Information
-#
-# Table name: courses
-#
-#  id                   :integer          not null, primary key
-#  title                :string
-#  description          :text
-#  price                :integer
-#  is_hidden            :boolean          default(TRUE)
-#  created_at           :datetime         not null
-#  updated_at           :datetime         not null
-#  image                :string
-#  teacher_name         :string
-#  hero_image           :string
-#  faq                  :text
-#  teacher_image        :string
-#  about_teacher        :text
-#  one_sentence_summary :string
-#  hero_title           :string
-#
-
-#  id                   :integer          not null, primary key
-#  title                :string
-#  description          :text
-#  price                :integer
-#  is_hidden            :boolean          default(TRUE)
-#  created_at           :datetime         not null
-#  updated_at           :datetime         not null
-#  image                :string
-#  teacher_name         :string
-#  hero_image           :string
-#  faq                  :text
-#  teacher_image        :string
-#  about_teacher        :text
-#  one_sentence_summary :string
-#
-
-#  id            :integer          not null, primary key
-#  title         :string
-#  description   :text
-#  price         :integer
-#  is_hidden     :boolean          default(TRUE)
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
-#  image         :string
-#  teacher_name  :string
-#  hero_image    :string
-#  teacher_image :string
-#  about_teacher :text
-#
-
 class Course < ApplicationRecord
   mount_uploader :image, ImageUploader
   mount_uploader :hero_image, HeroImageUploader
@@ -76,8 +25,28 @@ class Course < ApplicationRecord
     save
   end
 
-  def is_hidden?
+  def hidden?
     is_hidden
   end
-
 end
+
+# == Schema Information
+#
+# Table name: courses
+#
+#  id                   :integer          not null, primary key
+#  title                :string
+#  description          :text
+#  price                :integer
+#  is_hidden            :boolean          default(TRUE)
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#  image                :string
+#  teacher_name         :string
+#  hero_image           :string
+#  faq                  :text
+#  teacher_image        :string
+#  about_teacher        :text
+#  one_sentence_summary :string
+#  hero_title           :string
+#

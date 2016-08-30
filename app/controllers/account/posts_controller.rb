@@ -9,13 +9,14 @@ class Account::PostsController < ApplicationController
 
     set_breadcrumbs
 
-    if @post.is_hidden? || @chapter.is_hidden?
+    if @post.hidden? || @chapter.hidden?
       flash[:warning] = "The content is archived"
       redirect_to root_path
     end
 
     drop_breadcrumb @chapter.chapter
     drop_breadcrumb @post.title
+    set_page_title "#{@post.title} | #{@chapter.chapter}"
   end
 
   def prev
@@ -50,9 +51,9 @@ class Account::PostsController < ApplicationController
     title ||= @page_title
 
     if title && url
-      @breadcrumbs.push("<a href='#{url}'>#{title}</a>".html_safe)
+      @breadcrumbs.push(view_context.link_to(title, url))
     elsif title
-      @breadcrumbs.push(title.to_s.html_safe)
+      @breadcrumbs.push(title)
     end
   end
 end
