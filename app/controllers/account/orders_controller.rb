@@ -33,7 +33,7 @@ class Account::OrdersController < AccountController
     check_valid_subscriber
     check_already_enrolled
 
-    create_order(months: 3, price: @course.price, order_type: "single_purchase", course: @course)
+    create_order(price: @course.price, order_type: "single_purchase", course: @course)
 
   end
 
