@@ -2,9 +2,12 @@ class Account::OrdersController < AccountController
   before_action :find_order, only: %i(pay_with_wechat pay_with_alipay cancel_order)
   before_action :check_order_may_pay, only: %i(pay_with_wechat pay_with_alipay)
 
+
   def index
     @orders = current_user.orders.recent
     drop_breadcrumb "我的订单", account_orders_path
+
+    set_page_title "我的订单"
     render layout: "user"
   end
 
@@ -31,6 +34,7 @@ class Account::OrdersController < AccountController
     check_already_enrolled
 
     create_order(months: 12, price: @course.price, order_type: "single_purchase", course: @course)
+
   end
 
   def pay_with_wechat

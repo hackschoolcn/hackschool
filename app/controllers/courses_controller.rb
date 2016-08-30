@@ -9,6 +9,7 @@ class CoursesController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
+    set_page_title @course.title
   end
 
   def test

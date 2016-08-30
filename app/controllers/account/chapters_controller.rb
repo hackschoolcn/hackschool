@@ -18,6 +18,8 @@ class Account::ChaptersController < AccountController
       flash[:warning] = "请先报名参加该课程"
       redirect_to course_path(@course)
     end
+
+    set_page_title "Rails 基础环境建设"
   end
 
   def search
