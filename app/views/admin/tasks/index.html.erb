@@ -32,8 +32,12 @@
          <div class="panel-heading">
           任务<%= index + 1%> - 章节：
           <%= link_to(task.post.title, admin_chapter_post_path(task.post.chapter, task.post)) %>
-          <span class="pull-right"><%= render_students_homework_submitted_status(task) %></span>
-          <span class="col-md-2 pull-right"><%= render_progress_bar(task.submitted_users_in_percent) %></span>
+          <span class="pull-right">
+            <%= link_to(render_students_homework_submitted_status(task), admin_task_works_path(task)) %>
+          </span>
+          <span class="col-md-2 pull-right">
+            <%= render_progress_bar(task.submitted_users_in_percent) %>
+          </span>
          </div>
          <!-- List group -->
          <ul class="list-group">
@@ -55,8 +59,12 @@
            <div class="panel-heading">
             任务<%= index + 1%> - 章节：
             <%= link_to(task.post.title, admin_chapter_post_path(task.post.chapter, task.post)) %>
-            <span class="pull-right"><%= render_students_homework_submitted_status(task) %></span>
-            <span class="col-md-2 pull-right"><%= render_progress_bar(task.submitted_users_in_percent) %></span>
+            <span class="pull-right">
+              <%= link_to(render_students_homework_submitted_status(task), admin_task_works_path(task)) %>
+            </span>
+            <span class="col-md-2 pull-right">
+              <%= render_progress_bar(task.submitted_users_in_percent) %>
+            </span>
            </div>
            <!-- List group -->
            <ul class="list-group">

@@ -1,0 +1,37 @@
+
+<h2> 未交作业者 </h2>
+<hr>
+<%= render_users_that_havent_submitted(@task) %>
+<br><br>
+  <div class="panel panel-default">
+     <!-- Default panel contents -->
+         <div class="panel-heading">
+          任务内容：
+          <span class="pull-right"><%= render_students_homework_submitted_status(@task) %></span>
+          <span class="col-md-2 pull-right"><%= render_progress_bar(@task.submitted_users_in_percent) %></span>
+         </div>
+         <!-- List group -->
+         <ul class="list-group">
+            <li class="list-group-item">
+              <%= render_markdown_text(@task.description) %>
+            </li>
+         </ul>
+   </div>
+<br>
+<h2> 提交的作业 </h2>
+<hr>
+<br>
+  <% @task.works.each do |work| %>
+   <div class="panel panel-default">
+     <!-- Default panel contents -->
+         <div class="panel-heading">
+          <%= work.user.email %>
+         </div>
+         <!-- List group -->
+         <ul class="list-group">
+            <li class="list-group-item">
+              <%= render_markdown_text(work.content) %>
+            </li>
+         </ul>
+   </div>
+  <% end %>

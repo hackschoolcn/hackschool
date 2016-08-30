@@ -45,6 +45,10 @@ Rails.application.routes.draw do
       resources :tasks
     end
 
+    resources :tasks do
+      resources :works
+    end
+
     resources :users do
       member do
         post :turn_to_user
@@ -52,8 +56,6 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :works
-    resources :tasks
     # faqs routes
     resources :faqs
   end
