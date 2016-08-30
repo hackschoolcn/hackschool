@@ -53,6 +53,7 @@ Rails.application.routes.draw do
     end
 
     resources :works
+    resources :tasks
     # faqs routes
     resources :faqs
   end
