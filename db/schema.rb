@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160829142619) do
+ActiveRecord::Schema.define(version: 20160830074039) do
 
   create_table "answers", force: :cascade do |t|
     t.text     "content"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20160829142619) do
     t.datetime "updated_at",                null: false
     t.integer  "course_id"
     t.boolean  "is_hidden",  default: true
+    t.integer  "position"
   end
 
   create_table "courses", force: :cascade do |t|
@@ -83,6 +84,7 @@ ActiveRecord::Schema.define(version: 20160829142619) do
     t.text     "article"
     t.boolean  "is_hidden",  default: true
     t.integer  "course_id"
+    t.integer  "position"
   end
 
   create_table "questions", force: :cascade do |t|

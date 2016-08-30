@@ -8,11 +8,13 @@
 #  updated_at :datetime         not null
 #  course_id  :integer
 #  is_hidden  :boolean          default(TRUE)
+#  position   :integer
 #
 
 class Chapter < ApplicationRecord
   belongs_to :course
-  has_many :posts, dependent: :destroy
+  acts_as_list scope: :course
+  has_many :posts, -> { order(position: :asc) },  dependent: :destroy
 
   scope :published, -> { where(is_hidden: false) }
 
