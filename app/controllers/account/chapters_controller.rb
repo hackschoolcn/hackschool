@@ -6,7 +6,7 @@ class Account::ChaptersController < AccountController
   def index
     @course = Course.find(params[:course_id])
 
-    if @course.is_hidden?
+    if @course.hidden?
       flash[:warning] = "此课程没有开课"
       redirect_to root_path
     end
@@ -54,9 +54,9 @@ class Account::ChaptersController < AccountController
     title ||= @page_title
 
     if title && url
-      @breadcrumbs.push("<a href='#{url}'>#{title}</a>".html_safe)
+      @breadcrumbs.push(view_context.link_to(title, url))
     elsif title
-      @breadcrumbs.push(title.to_s.html_safe)
+      @breadcrumbs.push(title)
     end
   end
 

@@ -6,7 +6,7 @@ class HeroImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
- storage :file
+  storage :file
   # storage :fog
   # storage :aws
 

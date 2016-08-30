@@ -30,7 +30,7 @@ class CoursesController < ApplicationController
 
   def enroll
     if current_user
-      if current_user.is_valid_subscriber?
+      if current_user.valid_subscriber?
         render :confirm_enroll
       else
         render :enroll_with_user
@@ -43,7 +43,7 @@ class CoursesController < ApplicationController
   end
 
   def member_confirm_enroll
-    if current_user.is_valid_subscriber?
+    if current_user.valid_subscriber?
       current_user.enroll_course!(@course)
       flash[:notice] = "报名成功"
       redirect_to account_courses_path

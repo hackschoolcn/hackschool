@@ -5,14 +5,9 @@ class Account::FaqsController < ApplicationController
     @faqs = @course.faqs
   end
 
-
   def show
     @faq = Faq.find(params[:id])
   end
-
-
-
-
 
   private
 

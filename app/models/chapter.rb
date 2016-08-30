@@ -26,7 +26,7 @@ class Chapter < ApplicationRecord
     save
   end
 
-  def is_hidden?
+  def hidden?
     is_hidden
   end
 end
