@@ -20,6 +20,8 @@ Rails.application.routes.draw do
         member do
           post :hide
           post :publish
+          post :higher_chapter
+          post :lower_chapter
         end
       end
 
@@ -37,6 +39,8 @@ Rails.application.routes.draw do
         member do
           post :hide
           post :publish
+          post :higher_post
+          post :lower_post
         end
       end
     end

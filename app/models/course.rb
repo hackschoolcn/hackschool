@@ -3,7 +3,7 @@ class Course < ApplicationRecord
   mount_uploader :hero_image, HeroImageUploader
   mount_uploader :teacher_image, TeacherImageUploader
 
-  has_many :chapters, dependent: :destroy
+  has_many :chapters, -> { order(position: :asc) }, dependent: :destroy
   has_many :posts, dependent: :destroy
   has_many :faqs
   has_many :tasks
