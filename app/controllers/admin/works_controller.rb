@@ -1,10 +1,9 @@
 class Admin::WorksController < AdminController
 
   def index
-    if params[:course_id]
-      @course = Course.find(params[:course_id])
-    end
-    @courses = Course.all
+    @task = Task.find(params[:task_id])
+
+    drop_breadcrumb "Tasks", admin_tasks_path(course_id: @task.course.id)
     drop_breadcrumb "Works"
   end
 

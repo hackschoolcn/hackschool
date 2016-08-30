@@ -1,34 +1,39 @@
+
+<%= link_to("付费用户", user_paid_admin_users_path, class: "btn btn-lg btn-success pull-right") %>
 <table class="table">
  <thead>
      <tr>
-         <th>是否为管理员</th>
+
          <th>用户名</th>
          <th>注册时间</th>
          <th>上次登录时间</th>
-		 <th>管理选项</th>    
+		     <th>管理选项</th>
+            
      </tr>
  </thead>
 
- <% @users.each do |user| %>
 
+ <% @users.each do |user| %>
  <tbody>
      <tr>
-       <td><%= render_user_status(user) %></td>
-	   <td><%= link_to(user.email, admin_user_path(user)) %></td>          
-       <td><%= user.created_at %></td>
-       <td><%= user.last_sign_in_at %></td>
+	   <td>
+       <%= render_user_status(user) %>
+       <%= link_to(user.email, admin_user_path(user)) %></td>     
 
-	   <td>   
+       <td><%= render_formatted_time(user.created_at) %></td>
+       <td><%= render_formatted_time(user.last_sign_in_at) %></td>
+
+	   <td><%=  %>
         	<% if user.is_admin %>
+          <!-- 空 -->
 	    		<% if user != current_user %>
-	    	<%= link_to("将该管理员设为用户",  turn_to_user_admin_user_url(user), :method => :post, :class => "btn btn-xs btn-default") %>
+	    	<%= link_to("设为用户",  turn_to_user_admin_user_url(user), :method => :post, :class => "btn btn-xs btn-default") %>
 	    		<% end %>
             <% else %>
-			<%= link_to("将该用户设为管理员", turn_to_admin_admin_user_url(user), :method => :post, :class => "btn btn-xs btn-default") %>
-			<% end %>		
+			<%= link_to("设为管理员", turn_to_admin_admin_user_url(user), :method => :post, :class => "btn btn-xs btn-default") %>
+			<% end %>
        </td>
-
      </tr>
-   <% end %>
+   <% end %>
  </tbody>
 </table>

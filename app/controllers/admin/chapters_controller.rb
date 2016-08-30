@@ -1,6 +1,6 @@
 class Admin::ChaptersController < AdminController
   before_action :find_course, only: %i(index new edit create update destroy search)
-  before_action :find_chapter, only: %i(edit show update destroy publish hide)
+  before_action :find_chapter, only: %i(edit show update destroy publish hide higher_chapter lower_chapter)
   before_action :validate_search_key, only: [:search]
 
   def index
@@ -52,6 +52,17 @@ class Admin::ChaptersController < AdminController
     @chapter.hide!
     redirect_to :back
   end
+
+  def higher_chapter
+    @chapter.move_higher
+    redirect_to :back
+  end
+
+  def lower_chapter
+    @chapter.move_lower
+    redirect_to :back
+  end
+
 
   def search
     if @query_string.present?

@@ -10,10 +10,12 @@
 #  article    :text
 #  is_hidden  :boolean          default(TRUE)
 #  course_id  :integer
+#  position   :integer
 #
 
 class Post < ApplicationRecord
   belongs_to :chapter
+  acts_as_list scope: :chapter
   belongs_to :course
 
   has_many :tasks, dependent: :destroy

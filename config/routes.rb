@@ -20,6 +20,8 @@ Rails.application.routes.draw do
         member do
           post :hide
           post :publish
+          post :higher_chapter
+          post :lower_chapter
         end
       end
 
@@ -37,6 +39,8 @@ Rails.application.routes.draw do
         member do
           post :hide
           post :publish
+          post :higher_post
+          post :lower_post
         end
       end
     end
@@ -45,14 +49,21 @@ Rails.application.routes.draw do
       resources :tasks
     end
 
+    resources :tasks do
+      resources :works
+    end
+
     resources :users do
       member do
         post :turn_to_user
         post :turn_to_admin
       end
+
+      collection do
+        get :user_paid
+      end
     end
 
-    resources :works
     # faqs routes
     resources :faqs
   end
