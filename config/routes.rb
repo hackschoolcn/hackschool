@@ -50,6 +50,10 @@ Rails.application.routes.draw do
         post :turn_to_user
         post :turn_to_admin
       end
+
+      collection do
+        get :user_paid
+      end
     end
 
     resources :works
