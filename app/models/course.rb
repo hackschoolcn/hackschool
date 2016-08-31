@@ -30,6 +30,23 @@ class Course < ApplicationRecord
   def hidden?
     is_hidden
   end
+
+  def dismissed?
+    is_dismissed
+  end
+
+  def dismiss!
+    self.is_dismissed = true
+    save
+    enrolled_users.delete_all
+  end
+
+  def start!
+    self.is_dismissed = false
+    save
+    enrolled_users.delete_all
+  end
+
 end
 
 # == Schema Information
@@ -51,4 +68,5 @@ end
 #  about_teacher        :text
 #  one_sentence_summary :string
 #  hero_title           :string
+#  is_dismissed         :boolean          default(TRUE)
 #

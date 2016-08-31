@@ -23,19 +23,35 @@ class Account::OrdersController < AccountController
   def yearly_subscription_from_course_view
     @course = Course.find(params[:course_id])
 
+    if @course.hidden? || @course.dismissed? # check_course_valid
+      flash[:warning] = "该课程没有开课"
+      redirect_to root_path
+      return
+    end
+
     create_order(months: 12, price: 6000, order_type: "subscription", course: @course)
   end
 
   def single_purchase
     @course = Course.find(params[:course_id])
 
-    check_course_hidden
-    check_valid_subscriber
-    check_already_enrolled
+    if @course.hidden? || @course.dismissed? # check_course_valid
+      flash[:warning] = "该课程没有开课"
+      redirect_to root_path
+      return
+    elsif current_user.valid_subscriber?
+      flash[:notice] = "您是年费会员，可以免费报名，不必单独购买此课程"
+      redirect_to course_path(@course)
+      return
+    elsif current_user.member_of?(@course) # check encrolled_course uniq
+      flash[:notice] = "您已参加课程中"
+      redirect_to account_courses_path
+      return
+    end
 
     create_order(price: @course.price, order_type: "single_purchase", course: @course)
-
   end
+
 
   def pay_with_wechat
     @order.pay("wechat")
@@ -86,24 +102,6 @@ class Account::OrdersController < AccountController
 
   private
 
-  def check_course_hidden
-    if @course.hidden? # check_course_valid
-      redirect_to root_path, notice: "该课程没有开课"
-    end
-  end
-
-  def check_valid_subscriber
-    if current_user.valid_subscriber?
-      redirect_to course_path(@course), notice: "您是年费会员，可以免费报名，不必单独购买此课程"
-    end
-  end
-
-  def check_already_enrolled
-    if current_user.member_of?(@course) # check encrolled_course uniq
-      redirect_to account_courses_path, warning: "您已参加课程中"
-    end
-  end
-
   def check_order_may_pay
     unless @order.may_make_payment?
       flash[:warning] = "该订单已付款"
@@ -132,9 +130,8 @@ class Account::OrdersController < AccountController
     end
   end
 
-  private
-
   def order_params
     params.require(:order).permit(:price, :token, :payment_method, :created_at, :aasm_state, :subscription_months, :order_type)
   end
+
 end

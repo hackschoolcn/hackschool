@@ -8,8 +8,14 @@ class CoursesController < ApplicationController
   end
 
   def show
-    @course = Course.find(params[:id])
-    set_page_title @course.title
+    course = Course.find(params[:id])
+    if course.hidden?
+      flash[:warning] = "该课程已下架"
+      redirect_to root_path
+    else
+      @course = course
+      set_page_title @course.title
+    end
   end
 
   def test
@@ -31,7 +37,7 @@ class CoursesController < ApplicationController
   def enroll
     if current_user
       if current_user.valid_subscriber?
-        render :confirm_enroll
+        member_confirm_enroll
       else
         render :enroll_with_user
       end
@@ -43,6 +49,12 @@ class CoursesController < ApplicationController
   end
 
   def member_confirm_enroll
+    if @course.hidden? || @course.dismissed? # check_course_valid
+      flash[:warning] = "该课程没有开课"
+      redirect_to root_path
+      return
+    end
+    
     if current_user.valid_subscriber?
       current_user.enroll_course!(@course)
       flash[:notice] = "报名成功"
@@ -92,4 +104,5 @@ class CoursesController < ApplicationController
       redirect_to account_courses_path
     end
   end
+
 end

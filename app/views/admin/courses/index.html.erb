@@ -10,6 +10,7 @@
         <td>课程名</td>
         <td>教师</td>
         <td>选项</td>
+        <td>报名人数</td>
         <td>创建日期</td>
     </tr>
 </thead>
@@ -18,9 +19,13 @@
     <tr>
         <td><%= course.id %></td>
         <td>
-            <%= render_course_status(course) %>
-            <%= link_to(course.title, course_path(course)) %>
-        
+          <%= render_course_status(course) %>
+          <%= link_to(course.title, admin_course_path(course)) %>
+          <% if course.dismissed? %>
+            <%= link_to("点击开课", start_course_admin_course_path(course), method: :post, class: "btn btn-xs btn-success pull-right")  %>
+          <% else %>
+            <%= link_to("结课", dismiss_course_admin_course_path(course), method: :post, class: "btn btn-xs btn-warning pull-right", data: {confirm: "你确认要结束本期的【#{course.title}】课程吗? \r\n注意：\r\n课程内学生将被全部移除。下次开课，非年费会员需要再次付费参加。"})  %>
+          <% end %>
         </td>
         <td>
             <%= course.teacher_name %>
@@ -28,6 +33,10 @@
 
         <td>
           <%= render :partial => "admin/courses/course_options", :locals => { :course => course} %>
+        </td>
+
+        <td>
+            <%= course.enrolled_users.count %>
         </td>
 
         <td>

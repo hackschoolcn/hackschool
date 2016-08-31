@@ -18,7 +18,7 @@
 
                 </ul>
 
-                <%= link_to("单次购买 ¥#{@course.price}", single_purchase_account_orders_path(:course_id => @course.id) , method: :post, :class => "btn btn-success btn-block") %>
+                <%= link_to("单次购买", single_purchase_account_orders_path(:course_id => @course.id) , method: :post, :class => "btn btn-success btn-block") %>
 
 
 
@@ -34,7 +34,7 @@
               <h3 class="panel-title">年费</h3>
           </div>
           <div class="panel-body">
-            <h2 class="text-center"> 好处 </h2>
+            <h2 class="text-center"> ¥6000 </h2>
 
             <ul>
               <h3><li>除了左侧所有的好处</li></h3>

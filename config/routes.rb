@@ -32,6 +32,8 @@ Rails.application.routes.draw do
       member do
         post :hide
         post :publish
+        post :dismiss_course
+        post :start_course
         get :edit_course
       end
     end
@@ -89,9 +91,6 @@ Rails.application.routes.draw do
     end
 
     resources :courses do
-      member do
-        post :enroll_course
-      end
 
       resources :questions do
         collection do
