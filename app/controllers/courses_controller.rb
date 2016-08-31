@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_action :authenticate_user!, only: [:member_confirm_enroll]
+  before_action :authenticate_user!, only: [:member_confirm_enroll, :join_favorite]
   before_action :check_enrolled_status, only: %i(enroll member_confirm_enroll)
   layout "course"
 
@@ -8,8 +8,14 @@ class CoursesController < ApplicationController
   end
 
   def show
-    @course = Course.find(params[:id])
-    set_page_title @course.title
+    course = Course.find(params[:id])
+    if course.hidden?
+      flash[:warning] = "该课程已下架"
+      redirect_to root_path
+    else
+      @course = course
+      set_page_title @course.title
+    end
   end
 
   def test
@@ -31,7 +37,7 @@ class CoursesController < ApplicationController
   def enroll
     if current_user
       if current_user.valid_subscriber?
-        render :confirm_enroll
+        member_confirm_enroll
       else
         render :enroll_with_user
       end
@@ -43,6 +49,12 @@ class CoursesController < ApplicationController
   end
 
   def member_confirm_enroll
+    if @course.hidden? || @course.dismissed? # check_course_valid
+      flash[:warning] = "该课程没有开课"
+      redirect_to root_path
+      return
+    end
+    
     if current_user.valid_subscriber?
       current_user.enroll_course!(@course)
       flash[:notice] = "报名成功"
@@ -56,6 +68,33 @@ class CoursesController < ApplicationController
   # !!!! 碰觸者退學 !!!!
   # !!!! 不要再浪費時間重構會員資格的業務代碼
 
+
+  def join_favorite
+    @course = Course.find(params[:id])
+
+    if !current_user.is_member_of?(@course)
+      current_user.favorite!(@course)
+      flash[:notice] = "加入收藏成功"
+    else
+      flash[:warning] = "你已经加入收藏！"
+    end
+
+    redirect_to :back
+  end
+
+
+  def cancel_favorite
+    @course = Course.find(params[:id])
+    if current_user.is_member_of?(@course)
+      current_user.favorite_cancel!(@course)
+      flash[:alert] = " 你已经取消收藏 "
+    else
+      flash[:warning] = "你已经取消过收藏了"
+    end
+
+    redirect_to :back
+  end
+
   protected
 
   def check_enrolled_status
@@ -65,4 +104,5 @@ class CoursesController < ApplicationController
       redirect_to account_courses_path
     end
   end
+
 end

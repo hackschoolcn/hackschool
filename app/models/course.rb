@@ -3,7 +3,7 @@ class Course < ApplicationRecord
   mount_uploader :hero_image, HeroImageUploader
   mount_uploader :teacher_image, TeacherImageUploader
 
-  has_many :chapters, dependent: :destroy
+  has_many :chapters, -> { order(position: :asc) }, dependent: :destroy
   has_many :posts, dependent: :destroy
   has_many :faqs
   has_many :tasks
@@ -11,6 +11,8 @@ class Course < ApplicationRecord
   has_many :questions
   has_many :enrollments
   has_many :enrolled_users, through: :enrollments, source: :user
+  has_many :course_relationships
+  has_many :favorite_users, through: :course_relationships, source: :user
 
   scope :published, -> { where(is_hidden: false) }
   scope :recent, -> { order("created_at DESC") }
@@ -28,6 +30,23 @@ class Course < ApplicationRecord
   def hidden?
     is_hidden
   end
+
+  def dismissed?
+    is_dismissed
+  end
+
+  def dismiss!
+    self.is_dismissed = true
+    save
+    enrolled_users.delete_all
+  end
+
+  def start!
+    self.is_dismissed = false
+    save
+    enrolled_users.delete_all
+  end
+
 end
 
 # == Schema Information
@@ -49,4 +68,5 @@ end
 #  about_teacher        :text
 #  one_sentence_summary :string
 #  hero_title           :string
+#  is_dismissed         :boolean          default(TRUE)
 #

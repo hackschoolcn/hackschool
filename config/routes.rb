@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     member do
       get :enroll
       post :member_confirm_enroll
+      post :join_favorite
+      post :cancel_favorite
     end
   end
 
@@ -20,6 +22,8 @@ Rails.application.routes.draw do
         member do
           post :hide
           post :publish
+          post :higher_chapter
+          post :lower_chapter
         end
       end
 
@@ -28,6 +32,8 @@ Rails.application.routes.draw do
       member do
         post :hide
         post :publish
+        post :dismiss_course
+        post :start_course
         get :edit_course
       end
     end
@@ -37,6 +43,8 @@ Rails.application.routes.draw do
         member do
           post :hide
           post :publish
+          post :higher_post
+          post :lower_post
         end
       end
     end
@@ -45,14 +53,21 @@ Rails.application.routes.draw do
       resources :tasks
     end
 
+    resources :tasks do
+      resources :works
+    end
+
     resources :users do
       member do
         post :turn_to_user
         post :turn_to_admin
       end
+
+      collection do
+        get :user_paid
+      end
     end
 
-    resources :works
     # faqs routes
     resources :faqs
   end
@@ -69,14 +84,13 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :favorites #课程收藏
+
     resources :tasks do
       resources :works
     end
 
     resources :courses do
-      member do
-        post :enroll_course
-      end
 
       resources :questions do
         collection do

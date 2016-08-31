@@ -1,6 +1,6 @@
 class Admin::PostsController < AdminController
   before_action :find_chapter, only: %i(index new edit create update destroy)
-  before_action :find_post, only: %i(edit show update destroy publish hide)
+  before_action :find_post, only: %i(edit show update destroy publish hide higher_post lower_post)
 
   def index
     @posts = @chapter.posts
@@ -52,6 +52,17 @@ class Admin::PostsController < AdminController
     @post.hide!
     redirect_to :back
   end
+
+  def higher_post
+    @post.move_higher
+    redirect_to :back
+  end
+
+  def lower_post
+    @post.move_lower
+    redirect_to :back
+  end
+
 
   private
 

@@ -19,7 +19,7 @@
                 <%= link_to(course.title, account_course_chapters_path(course)) %>
             </td>
             <td>
-                <%= render_my_course_task_status(course) %>
+                <%= link_to(render_my_course_task_status(course), account_course_assignments_path(course)) %>
                 <%= render_progress_bar(current_user.completed_works_in_percent(course))  %>
             </td>
             <td>

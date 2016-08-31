@@ -6,21 +6,19 @@
     <div class="col-md-6">
         <div class="panel panel-success">
             <div class="panel-heading">
-                <h3 class="panel-title">单次购买</h3>
+                <h3 class="panel-title">单节课程购买</h3>
             </div>
             <div class="panel-body">
-                <h2 class="text-center"> 好处 </h2>
+                <h2 class="text-center"> ¥100 </h2>
                 <ul>
-                  <h3><li>让你成为天才的教学模式，几百人从零基础迅速成长为真正的全栈工程师，实践派的教学模式让你发觉自己真正的潜力，不断积累成就感，让你发觉自己其实是天才。</li></h3>
-                  <h3><li>真正的0基础，手把手教你如何从0基础做出自己想做的网站</li></h3>
+                  <h3><li>手把手教你如何从0基础做出自己想做的网站</li></h3>
+                  <h3><li>专业FAQ数据库支撑，解答学习疑惑</li></h3>
                   <h3><li>线上班级制度，让你在线上也能享受线下的学习氛围，线上班级老师定期分享课程精华知识，让你成长犹如坐火箭。</li></h3>
-                  <h3><li>专业FAQ数据库，让你不用等待别人的解答迅速解决自己的问题，你所有会遇到的坑前人都帮你铺平了，让你在平坦的道路上飞速前进。</li></h3>
-                  <h3><li>专业问答区域，使用GITHUB作为专业问答区域，你所有遇到的问题都会被同学或者老师回答，彻底避免遇到问题不知道该怎么办的困局。</li></h3>
-                  <h3><li>最新版本，每次课程均使用软件最新版本以及更新了的教材，避免学习资料的陈旧导致的学习困扰。</li></h3>
+                  <h3><li>GITHUB作为问答区域，你提出的问题将被同学或老师第一时间解答及时更新教材，使用软件最新版本，强大的后台维护团队</li></h3>
 
                 </ul>
 
-                <%= link_to("单次购买 ¥#{@course.price}", single_purchase_account_orders_path(:course_id => @course.id) , method: :post, :class => "btn btn-success btn-block") %>
+                <%= link_to("单次购买", single_purchase_account_orders_path(:course_id => @course.id) , method: :post, :class => "btn btn-success btn-block") %>
 
 
 
@@ -36,16 +34,12 @@
               <h3 class="panel-title">年费</h3>
           </div>
           <div class="panel-body">
-            <h2 class="text-center"> 好处 </h2>
+            <h2 class="text-center"> ¥6000 </h2>
 
             <ul>
               <h3><li>除了左侧所有的好处</li></h3>
-              <h3><li>可以在一年之内参加HackSchool的所有课程</li></h3>
-              <h3><li>可以加入全栈工程师社群，大神坐镇，群内高手云集，定期举办分享，让你知道周围全是神队友是一种什么样的体验。</li></h3>
-              <h3><li>对于优秀的学员有机会获得各大公司面试的机会</li></h3>
-              <h3><li>获得6000积分</li></h3>
-
-
+              <h3><li>全年免费参加HackSchool所有课程</li></h3>
+              <h3><li>加入全栈工程师社群，这里有牛逼的世界级程序员和上进的学员们</li></h3>
             </ul>
 
             <%= link_to("年费", yearly_subscription_from_course_view_account_orders_path(course_id: @course.id), method: :post, :class => "btn btn-primary btn-block") %>
