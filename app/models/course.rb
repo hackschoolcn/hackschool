@@ -38,12 +38,14 @@ class Course < ApplicationRecord
   def dismiss!
     self.is_dismissed = true
     save
+    self.works.destroy_all
     enrolled_users.delete_all
   end
 
   def start!
     self.is_dismissed = false
     save
+    self.works.destroy_all
     enrolled_users.delete_all
   end
 

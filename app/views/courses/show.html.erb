@@ -11,7 +11,12 @@
     <% elsif current_user && current_user.enrolled_courses.include?(@course) %>
       <%= link_to("立刻学习", account_course_chapters_path(@course), class:"btn btn-lg btn-success pull-center")%>
     <% else  %>
-      <%= link_to("火速报名", enroll_course_path(@course), class:"btn btn-lg btn-danger pull-center")%>
+
+      <% if current_user && current_user.valid_subscriber? %>
+        <%= link_to("年费会员免费参加", enroll_course_path(@course), class:"btn btn-lg btn-primary pull-center")%>
+      <% else  %>
+        <%= link_to("火速报名", enroll_course_path(@course), class:"btn btn-lg btn-danger pull-center")%>
+      <% end %>
     <% end %>
 </div>
 

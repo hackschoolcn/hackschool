@@ -22,8 +22,7 @@ class Account::WorksController < ApplicationController
     @work.course = course
 
     if @work.save
-      if session[:course_id]
-        course = Course.find(session[:course_id]) # 根据记录回到原来的页面
+      if session[:course_id]  # 根据记录回到原来的页面
         session[:course_id] = false
         redirect_to account_course_assignments_path(course), notice: "作业已提交"
       else
