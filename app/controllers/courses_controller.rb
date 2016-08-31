@@ -56,6 +56,33 @@ class CoursesController < ApplicationController
   # !!!! 碰觸者退學 !!!!
   # !!!! 不要再浪費時間重構會員資格的業務代碼
 
+
+  def join_favorite
+    @course = Course.find(params[:id])
+
+    if !current_user.is_member_of?(@course)
+      current_user.favorite!(@course)
+      flash[:notice] = "加入收藏成功"
+    else
+      flash[:warning] = "你已经加入收藏！"
+    end
+
+    redirect_to :back
+  end
+
+
+  def cancel_favorite
+    @course = Course.find(params[:id])
+    if current_user.is_member_of?(@course)
+      current_user.favorite_cancel!(@course)
+      flash[:alert] = " 你已经取消收藏 "
+    else
+      flash[:warning] = "你已经取消过收藏了"
+    end
+
+    redirect_to :back
+  end
+
   protected
 
   def check_enrolled_status

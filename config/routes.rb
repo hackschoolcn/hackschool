@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     member do
       get :enroll
       post :member_confirm_enroll
+      post :join_favorite
+      post :cancel_favorite
     end
   end
 

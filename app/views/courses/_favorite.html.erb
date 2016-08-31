@@ -1,0 +1,9 @@
+<span class="pull-right">
+  <% if current_user && current_user.is_member_of?(@course) %>
+  <label class="label label-success">已收藏课程</label>
+  <%= link_to("取消收藏", cancel_favorite_course_path(@course), method: :post, class: "btn btn-xs btn-default") %>
+  <% else %>
+  <label class="label label-warning">未收藏课程</label>
+  <%= link_to("收藏课程", join_favorite_course_path(@course), method: :post, class: "btn btn-xs btn-default") %>
+  <% end %>
+</span>
