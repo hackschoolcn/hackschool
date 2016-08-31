@@ -1,7 +1,7 @@
 <div class="group">
   <div class="btn-group pull-right" >
     <%= link_to("课程控制台", admin_course_chapters_path(@course), :class => "btn btn-primary") %>
-    <%= link_to("编辑课程", edit_course_admin_course_path(@course), :class => "btn btn-default") %>
+    <%= link_to("编辑", edit_course_admin_course_path(course_id: @course.id, edit_course_detail: 1), :class => "btn btn-default") %>
   </div>
 </div>
 

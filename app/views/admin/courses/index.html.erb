@@ -24,7 +24,7 @@
           <% if course.dismissed? %>
             <%= link_to("点击开课", start_course_admin_course_path(course), method: :post, class: "btn btn-xs btn-success pull-right")  %>
           <% else %>
-            <%= link_to("结课", dismiss_course_admin_course_path(course), method: :post, class: "btn btn-xs btn-warning pull-right")  %>
+            <%= link_to("结课", dismiss_course_admin_course_path(course), method: :post, class: "btn btn-xs btn-warning pull-right", data: {confirm: "你确认要结束本期的【#{course.title}】课程吗? \r\n注意：\r\n课程内学生将被全部移除。下次开课，非年费会员需要再次付费参加。"})  %>
           <% end %>
         </td>
         <td>
