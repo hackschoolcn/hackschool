@@ -11,6 +11,8 @@ class Course < ApplicationRecord
   has_many :questions
   has_many :enrollments
   has_many :enrolled_users, through: :enrollments, source: :user
+  has_many :course_relationships
+  has_many :favorite_users, through: :course_relationships, source: :user
 
   scope :published, -> { where(is_hidden: false) }
   scope :recent, -> { order("created_at DESC") }

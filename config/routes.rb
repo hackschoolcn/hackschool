@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     member do
       get :enroll
       post :member_confirm_enroll
+      post :join_favorite
+      post :cancel_favorite
     end
   end
 
@@ -79,6 +81,8 @@ Rails.application.routes.draw do
         get :edit_password
       end
     end
+
+    resources :favorites #课程收藏
 
     resources :tasks do
       resources :works

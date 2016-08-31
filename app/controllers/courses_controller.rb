@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_action :authenticate_user!, only: [:member_confirm_enroll]
+  before_action :authenticate_user!, only: [:member_confirm_enroll, :join_favorite]
   before_action :check_enrolled_status, only: %i(enroll member_confirm_enroll)
   layout "course"
 
@@ -55,6 +55,33 @@ class CoursesController < ApplicationController
   # !!!! 禁止碰觸此段代碼 !!!!
   # !!!! 碰觸者退學 !!!!
   # !!!! 不要再浪費時間重構會員資格的業務代碼
+
+
+  def join_favorite
+    @course = Course.find(params[:id])
+
+    if !current_user.is_member_of?(@course)
+      current_user.favorite!(@course)
+      flash[:notice] = "加入收藏成功"
+    else
+      flash[:warning] = "你已经加入收藏！"
+    end
+
+    redirect_to :back
+  end
+
+
+  def cancel_favorite
+    @course = Course.find(params[:id])
+    if current_user.is_member_of?(@course)
+      current_user.favorite_cancel!(@course)
+      flash[:alert] = " 你已经取消收藏 "
+    else
+      flash[:warning] = "你已经取消过收藏了"
+    end
+
+    redirect_to :back
+  end
 
   protected
 
