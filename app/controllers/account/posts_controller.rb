@@ -11,6 +11,7 @@ class Account::PostsController < ApplicationController
 
   def show
     @chapter = Chapter.find(params[:chapter_id])
+    @chapters = @course.chapters.where(is_hidden: false)
 
     set_breadcrumbs
 
