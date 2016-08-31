@@ -99,13 +99,9 @@ class User < ApplicationRecord
   end
 
   def enroll_course!(course)
-    unless member_of?(course)
+    unless member_of?(course) || course.dismissed?
       enrolled_courses << course
     end
-  end
-
-  def drop_course!(course)
-    enrolled_courses.delete(course)
   end
 
   def member_of?(course)

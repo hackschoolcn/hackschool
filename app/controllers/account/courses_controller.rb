@@ -4,38 +4,7 @@ class Account::CoursesController < AccountController
     drop_breadcrumb "我的课程", account_courses_path
     set_page_title "我的课程"
   end
-
-  def enroll_course
-    @course = Course.find(params[:id])
-
-    if !current_user.member_of?(@course)
-      current_user.enroll_course!(@course)
-      flash[:notice] = "报名成功"
-    else
-      flash[:warning] = "您已报名该课程"
-    end
-
-    if currnet_user.valid_subscriber?
-      flash[:notice] = "请先选择你的订阅套餐"
-      redirect_to plans_path
-    else
-      redirect_to account_courses_path
-    end
-  end
-
-  def drop_course
-    @course = Course.find(params[:id])
-
-    if current_user.member_of?(@course)
-      current_user.drop_course!(@course)
-      flash[:notice] = "退课成功"
-    else
-      flash[:warning] = "您还未报名该课程"
-    end
-
-    redirect_to account_courses_path
-  end
-
+  
   protected
 
   def set_breadcrumbs

@@ -16,8 +16,8 @@
       <% @orders.each do |order| %>
           <tbody>
             <tr>
-              <td> <%= order.id %> </td>
-              <td> <%= link_to(order.course.title, account_course_chapters_path(order.course)) %></td>
+              <td> <%= order.token[0..12] %> </td>
+              <td> <%= order.course.title %></td>
               <td> ¥ <%= order.price %> </td>
               <td>
                 <% if order.paid? %>

@@ -8,19 +8,14 @@ class Account::ChaptersController < AccountController
   def index
     @course = Course.find(params[:course_id])
 
-    if @course.hidden?
+    if @course.hidden? || @course.dismissed
       flash[:warning] = "此课程没有开课"
       redirect_to root_path
+      return
     end
 
-    if current_user.enrolled_courses.include?(@course)
-      @chapters = @course.chapters.where(is_hidden: false)
-      set_breadcrumbs
-    else
-      flash[:warning] = "请先报名参加该课程"
-      redirect_to course_path(@course)
-    end
-
+    @chapters = @course.chapters.where(is_hidden: false)
+    set_breadcrumbs
     set_page_title "Rails 基础环境建设"
   end
 
@@ -43,7 +38,7 @@ class Account::ChaptersController < AccountController
   def check_enrolled_status
     unless current_user.enrolled_courses.include?(@course)
       flash[:alert] = "您尚未报名此课程"
-      redirect_to enroll_course_path(@course)
+      redirect_to course_path(@course)
     end
   end
 

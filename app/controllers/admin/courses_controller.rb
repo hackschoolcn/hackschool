@@ -53,6 +53,27 @@ class Admin::CoursesController < AdminController
     redirect_to :back
   end
 
+
+  def dismiss_course
+    @course = Course.find(params[:id])
+
+    @course.dismiss!
+
+    flash[:warning] = "#{@course.title} 已结课"
+    redirect_to :back
+  end
+
+
+  def start_course
+    @course = Course.find(params[:id])
+
+    @course.start!
+
+    flash[:notice] = "#{@course.title} 已开课"
+    redirect_to :back
+  end
+
+
   def edit_course
   end
 

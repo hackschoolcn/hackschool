@@ -18,9 +18,13 @@
     <tr>
         <td><%= course.id %></td>
         <td>
-            <%= render_course_status(course) %>
-            <%= link_to(course.title, course_path(course)) %>
-        
+          <%= render_course_status(course) %>
+          <%= link_to(course.title, course_path(course)) %>
+          <% if course.dismissed? %>
+            <%= link_to("开课", start_course_admin_course_path(course), method: :post, class: "btn btn-xs btn-success pull-right")  %>
+          <% else %>
+            <%= link_to("结课", dismiss_course_admin_course_path(course), method: :post, class: "btn btn-xs btn-warning pull-right")  %>
+          <% end %>
         </td>
         <td>
             <%= course.teacher_name %>
