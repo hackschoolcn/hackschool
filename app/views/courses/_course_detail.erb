@@ -4,13 +4,13 @@
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
                 <li role="presentation" class="active">
-                    <a href="#home" aria-controls="home" role="tab" data-toggle="tab">Course Description</a>
+                    <a href="#home" aria-controls="home" role="tab" data-toggle="tab">课程介绍</a>
                 </li>
                 <li role="presentation">
-                    <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Curriculum</a>
+                    <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">课程目录</a>
                 </li>
                 <li role="presentation">
-                    <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">About Instructor</a>
+                    <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">教师介绍</a>
                 </li>
                 <li role="presentation">
                     <a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">FAQ</a>
@@ -41,7 +41,7 @@
             </div>
                 <div role="tabpanel" class="tab-pane" id="settings">
                   <div class="col-md-8 col-md-offset-2">
-                  <%= render "collapse" %>
+                  <%= render_markdown_text(@course.faq) %>
                 </div>
                 </div>
             </div>
