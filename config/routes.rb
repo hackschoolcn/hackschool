@@ -82,6 +82,8 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :favorites #课程收藏
+
     resources :tasks do
       resources :works
     end
