@@ -1,0 +1,86 @@
+<div>
+    <div class="col-md-12 container course-tab">
+        <div>
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active">
+                    <a href="#home" aria-controls="home" role="tab" data-toggle="tab">课程介绍</a>
+                </li>
+                <li role="presentation">
+                    <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">课程目录</a>
+                </li>
+                <li role="presentation">
+                    <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">教师介绍</a>
+                </li>
+                <li role="presentation">
+                    <a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">FAQ</a>
+                </li>
+                <li role="presentation">
+                    <a href="#enrolled_users" aria-controls="enrolled_users" role="tab" data-toggle="tab">用户列表</a>
+                </li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="home">
+                    <%= render_markdown_text(@course.description) %>
+                </div>
+
+                <div role="tabpanel" class="tab-pane" id="profile">
+                  <div class="col-md-12">
+                    <%= render partial: "admin/courses/course_curriculum_for_preview" %>
+                  </div>
+                </div>
+
+                <div role="tabpanel" class="tab-pane" id="messages">
+                  <div class="row">
+
+                    <div class="col-md-2 col-md-offset-2">
+                  <%= image_tag(@course.teacher_image, class: "img-circle") %>
+                </div>
+                    <div class="col-md-6">
+                  <%= render_markdown_text(@course.about_teacher) %>
+                </div>
+
+              </div>
+            </div>
+                <div role="tabpanel" class="tab-pane" id="settings">
+                  <div class="col-md-12">
+                  <%= render_markdown_text(@course.faq) %>
+                  </div>
+                </div>
+
+                <div role="tabpanel" class="tab-pane" id="enrolled_users">
+                  <div class="col-md-12">
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <td>#</td>
+                          <td>用户</td>
+                          <td>到期时间</td>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      <% @users.each do |user| %>
+                        <tr>
+                          <td><%= user.id %></td>
+                          <td>
+                            <%= user.email %>
+                          </td>
+                          <td>
+                            <%= render_formatted_time(user.member_expire_date) %>
+                          </td>
+
+                        </tr>
+                      <% end %>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+

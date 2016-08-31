@@ -37,7 +37,7 @@ class CoursesController < ApplicationController
   def enroll
     if current_user
       if current_user.valid_subscriber?
-        render :confirm_enroll
+        member_confirm_enroll
       else
         render :enroll_with_user
       end

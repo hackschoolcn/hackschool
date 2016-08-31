@@ -1,24 +1,20 @@
-<h3>【<%= @course.title %>】报名人数： <%= @course.enrolled_users.count %></h3>
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <td>#</td>
-      <td>用户</td>
-      <td>到期时间</td>
-    </tr>
-  </thead>
-  <tbody>
-  <% @users.each do |user| %>
-    <tr>
-      <td><%= user.id %></td>
-      <td>
-        <%= user.email %>
-      </td>
-      <td>
-        <%= render_formatted_time(user.member_expire_date) %>
-      </td>
+<div class="group">
+  <div class="btn-group pull-right" >
+    <%= link_to("课程控制台", admin_course_chapters_path(@course), :class => "btn btn-primary") %>
+    <%= link_to("编辑课程", edit_course_admin_course_path(@course), :class => "btn btn-default") %>
+  </div>
+</div>
 
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+<h3>【<%= @course.title %>】报名人数： <%= @course.enrolled_users.count %></h3>
+<br>
+<!--读取图片并赋予背景-->
+<div class="course-hero-image" style='background:url("<%= @course.hero_image %>")'>
+    <div class="course-title-bg">
+        <h1 class="course-title"><%= @course.hero_title%></h1>
+        <h4 class="course-price"><%= render_course_price(@course) %>
+        </h4>
+    </div>
+</div>
+
+
+<%= render "admin/courses/course_detail" %>

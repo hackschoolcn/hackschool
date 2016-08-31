@@ -8,7 +8,7 @@ class Account::ChaptersController < AccountController
   def index
     @course = Course.find(params[:course_id])
 
-    if @course.hidden? || @course.dismissed
+    if @course.hidden? || @course.dismissed?
       flash[:warning] = "此课程没有开课"
       redirect_to root_path
       return

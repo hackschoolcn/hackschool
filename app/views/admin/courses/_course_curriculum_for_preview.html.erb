@@ -1,0 +1,19 @@
+<% @course.chapters.published.each do |chapter| %>
+
+<div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading">
+        <%= chapter.chapter %>
+
+    </div>
+    <!-- List group -->
+    <ul class="list-group">
+        <% chapter.posts.published.each do |post| %>
+        <li class="list-group-item">
+            <%= post.title %>
+        </li>
+        <% end %>
+    </ul>
+</div>
+
+<% end %>
