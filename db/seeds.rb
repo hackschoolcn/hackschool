@@ -249,8 +249,17 @@ Chapter.update_all(is_hidden: false)
 Post.update_all(is_hidden: false)
 
 # Create Faqs inside Course
-Faq.create([course_id: 1, title: "建立错误的 model 如何删除？", description: "执行\r\n\r\n`rails d model vote topic_id:integer`\r\n\r\n可以把建好的 model删掉。"])
+Faq.create([course_id: 1, title: "即时通讯工具 slack 需要翻墙才能用。如何翻墙？", description: "请搜索可以提供翻墙的服务软件，如：云梯、多态、ExpressVPN"])
 puts "1st Faq in 1st Course created."
+
+Faq.create([course_id: 1, title: "安装 Ruby 的过程中后台一直没有动。", description: "因为安装 RubyGems 的时候需要打开 vpn，很可能是vpn连不上。\r\n\r\n解决方法：在 Terminal 窗口多执行一行以下指令。速度应该会快很多。\r\n\r\n```\r\ngem sources --add https://ruby.taobao.org/ --remove https://rubygems.org/\r\n```"])
+puts "2nd Faq in 1st Course created."
+
+Faq.create([course_id: 1, title: "关于将 project（专案） 上传（deploy）到 Heroku 时遇到的问题", description: "将专案上传到 Heroku 时要注意几点：\r\n\r\n1. 免费的用户在 Heroku 上只能建 5 个app。如果都 5 个都用完了，建议到 Heroku 上把不需要的 app 删了。这样就又可以继续 `heroku create`\r\n2. 跟着教程做的时候，第一次 push（推）到 heroku 主机（maste）上时并不会成功，会出现提示没有安装 splite3 。解决方法请参考教程。\r\n3. 一定要跟着教程的步骤一步一步的做。如果觉得陌生可以多操作几遍。"])
+puts "3rd Faq in 1st Course created."
+
+Faq.create([course_id: 1, title: "解决 bug 的步骤", description: "如果出错报错。请确认你的 code 有没有写错，可以把课件里的代码复制、粘贴到相应位置，保存，运行看是否还出现错误提示。\r\n\r\n请注意确保输入这些的时候是“英文、半角”的状态。\r\n\r\n如果还是报错，欢迎到[提问区](https://github.com/hackschoolcn/hackschool/issues)，提出您的问题。我们会保证在12小时内回复。"])
+puts "4th Faq in 1st Course created."
 
 
 # Create Questions
