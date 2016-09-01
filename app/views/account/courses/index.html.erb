@@ -19,8 +19,12 @@
                 <%= link_to(course.title, account_course_chapters_path(course)) %>
             </td>
             <td>
+              <% if course.tasks.count.positive? %>
                 <%= link_to(render_my_course_task_status(course), account_course_assignments_path(course)) %>
                 <%= render_progress_bar(current_user.completed_works_in_percent(course))  %>
+              <% else %>
+                <%= link_to("此课程还没有布置任务【点击进入讨论区】", account_course_questions_path(course)) %>
+              <% end %>
             </td>
             <td>
                 <%= course.teacher_name %>
