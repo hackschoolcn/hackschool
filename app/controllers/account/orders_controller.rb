@@ -64,12 +64,8 @@ class Account::OrdersController < AccountController
       current_user.enroll_course!(@order.course)
     end
 
-    if @order.course
-      redirect_to account_course_chapters_path(@order.course)
-      flash[:notice] = "您已通过微信支付该课程！"
-    else
-      redirect_to :back
-    end
+    flash[:notice] = "支付成功！"
+    redirect_to account_orders_path
   end
 
   def pay_with_alipay
@@ -83,12 +79,8 @@ class Account::OrdersController < AccountController
       current_user.enroll_course!(@order.course)
     end
 
-    if @order.course
-      redirect_to account_course_chapters_path(@order.course)
-      flash[:notice] = "您已通过支付宝支付该课程！"
-    else
-      redirect_to :back
-    end
+    flash[:notice] = "支付成功！"
+    redirect_to account_orders_path
   end
 
   def cancel_order

@@ -3,7 +3,7 @@ class Account::PostsController < ApplicationController
   before_action :get_chapters, only:[:show]
   before_action :find_post_and_course
   before_action :check_enrolled_status
-  layout "chapters", only:[:show]
+  # layout "chapters", only:[:show]
 
   def get_chapters
     @chapters = Chapter.all
