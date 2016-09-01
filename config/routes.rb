@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+  #devise_for :users, :controllers => { :registrations => "registrations", :sessions => "sessions", :passwords => "passwords",  :confirmations => "confirmations"}
 
   resources :courses do
     member do
