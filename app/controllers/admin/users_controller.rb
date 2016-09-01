@@ -25,6 +25,22 @@ class Admin::UsersController < AdminController
     @users = User.all
   end
 
+  def user_works
+    @course = Course.find(params[:course_id])
+    @user = User.find(params[:id])
+    @submitted_works = @user.works.where(course_id: @course.id)
+    @unsolved_tasks = []
+
+    @course.tasks.each do |task|  # 用户未完成的任务
+      work = task.works.where(user_id: @user.id)
+      if task.works.where(user_id: @user.id).count < 1
+        @unsolved_tasks << task
+      end
+    end
+    drop_breadcrumb "Courses", admin_courses_path
+    drop_breadcrumb "#{@user.email} 课程作业 - #{@course.title}"
+  end
+
   # def turn_to_admin
   #   @user = User.find(params[:id])
   #   @user.admin!

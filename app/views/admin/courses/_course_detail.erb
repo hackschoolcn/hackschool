@@ -65,7 +65,7 @@
                         <tr>
                           <td><%= user.id %></td>
                           <td>
-                            <%= user.email %>
+                            <%= link_to(user.email, user_works_admin_course_user_path(@course, user)) %>
                           </td>
                           <td>
                             <%= render_formatted_time(user.member_expire_date) %>
