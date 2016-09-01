@@ -4,7 +4,7 @@
 <table class="table table-bordered">
     <thead>
         <tr>
-            <td>#</td>
+            <!-- <td>#</td> -->
             <td>课程</td>
             <td>任务</td>
             <td>教师</td>
@@ -14,7 +14,7 @@
     <tbody>
         <% @courses.each do |course| %>
         <tr>
-            <td><%= course.id %></td>
+            <!-- <td><%= course.id %></td> -->
             <td>
                 <%= link_to(course.title, account_course_chapters_path(course)) %>
             </td>
@@ -23,7 +23,7 @@
                 <%= link_to(render_my_course_task_status(course), account_course_assignments_path(course)) %>
                 <%= render_progress_bar(current_user.completed_works_in_percent(course))  %>
               <% else %>
-                <%= link_to("此课程还没有布置任务【点击进入讨论区】", account_course_questions_path(course)) %>
+                <%= link_to("此课程还没有布置任务【点击进入讨论区】", "https://github.com/hackschoolcn/class-1", target: "_blank") %>
               <% end %>
             </td>
             <td>

@@ -10,7 +10,7 @@ class Admin::CoursesController < AdminController
     @users = @course.enrolled_users
     drop_breadcrumb "Courses", admin_courses_path
     drop_breadcrumb @course.title + "- 课程详情页"
-    drop_breadcrumb 
+    drop_breadcrumb
   end
 
   def new
@@ -84,7 +84,6 @@ class Admin::CoursesController < AdminController
     @course = Course.find(params[:id])
 
     @course.start!
-
     flash[:notice] = "#{@course.title} 已开课"
     redirect_to :back
   end
