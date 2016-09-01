@@ -8,6 +8,10 @@ class Admin::PostsController < AdminController
 
   def new
     @post = Post.new
+
+    drop_breadcrumb "Courses", admin_courses_path
+    drop_breadcrumb "章节列表", admin_course_chapters_path(@chapter.course)
+    drop_breadcrumb "新增 Post"
   end
 
   def edit
