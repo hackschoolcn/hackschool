@@ -64,7 +64,7 @@ class Post < ApplicationRecord
   def may_next?
     index = current_index
 
-    return false unless index > course.posts.length
+    return false unless index < course.posts.length - 1
 
     index += 1
     next_post = course.posts[index]
