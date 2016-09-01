@@ -27,6 +27,12 @@ Rails.application.routes.draw do
         end
       end
 
+      resources :users do
+        member do
+          get :user_works
+        end
+      end
+
       resources :faqs # admin课程下的FAQ admin > course > faq
 
       member do

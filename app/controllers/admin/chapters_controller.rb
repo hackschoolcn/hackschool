@@ -12,9 +12,17 @@ class Admin::ChaptersController < AdminController
 
   def new
     @chapter = Chapter.new
+
+    drop_breadcrumb "Courses", admin_courses_path
+    drop_breadcrumb "章节列表", admin_course_chapters_path(@course)
+    drop_breadcrumb "新增 Chapter"
   end
 
   def edit
+
+    drop_breadcrumb "Courses", admin_courses_path
+    drop_breadcrumb "章节列表", admin_course_chapters_path(@course)
+    drop_breadcrumb @chapter.chapter
   end
 
   def show

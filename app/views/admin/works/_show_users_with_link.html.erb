@@ -1,0 +1,5 @@
+<% users_havent_submitted.each do |user| %>
+  <%= link_to(user.email, user_works_admin_course_user_path(@course, user)) %>
+  &nbsp
+  &nbsp
+<% end %>
