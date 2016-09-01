@@ -1,43 +1,42 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <%= render_page_title_tag %>
-        <%= csrf_meta_tags %>
+  <head>
+    <%= render_page_title_tag %>
+    <%= csrf_meta_tags %>
 
-        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-        <%= stylesheet_link_tag    'simplemde.min' %>
-        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-        <%= javascript_include_tag 'simplemde.min' %>
-    </head>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'simplemde.min' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'simplemde.min' %>
 
-    <body>
+  </head>
 
+  <body>
 
-            <%= render "common/navbar" %>
-            <div class="container">
-            <%= render "common/flashes" %>
-            <div class="row" style="padding-top:20px;">
-              <div class="col-md-2">
+    <%= render "common/navbar" %>
+    <div class="container">
+      <%= render "common/flashes" %>
+      <div class="row" style="padding-top:20px;">
+        <div class="col-md-2">
 
-                <ul class="nav nav-pills nav-stacked" style="max-width: 300px">
+          <ul class="nav nav-pills nav-stacked" style="max-width: 300px">
 
-                  <%= active_link_to("我的课程", account_courses_path , :active => :inclusive, :wrap_tag => :li ) %>
-                  <%= active_link_to("我的订单", account_orders_path , :active => :inclusive, :wrap_tag => :li ) %>
-                  <%= active_link_to("我的收藏", account_favorites_path, :active => :inclusive, :wrap_tag => :li ) %>
-                  <%= active_link_to("我的设置", account_settings_path , :active => :inclusive, :wrap_tag => :li ) %>
+            <%= active_link_to("我的课程", account_courses_path , :active => :inclusive, :wrap_tag => :li ) %>
+            <%= active_link_to("我的订单", account_orders_path , :active => :inclusive, :wrap_tag => :li ) %>
+            <%= active_link_to("我的收藏", account_favorites_path, :active => :inclusive, :wrap_tag => :li ) %>
+            <%= active_link_to("我的设置", account_settings_path , :active => :inclusive, :wrap_tag => :li ) %>
 
+          </ul>
 
-                </ul>
-
-              </div>
-
-              <div class="col-md-10">
-                <%= render_breadcrumb %>
-                <%= yield %>
-              </div>
         </div>
 
-        <%= render "common/footer" %>
+        <div class="col-md-10">
+          <%= render_breadcrumb %>
+          <%= yield %>
+        </div>
+      </div>
+
+      <%= render "common/footer" %>
 
     </body>
-</html>
+  </html>
