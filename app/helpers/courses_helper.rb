@@ -25,7 +25,7 @@ module CoursesHelper
     when :thumb
       image_tag(course.image.thumb)
     else
-      image_tag(course.image)
+      image_tag(course.image.front)
     end
   end
 

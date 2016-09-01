@@ -27,6 +27,12 @@ Rails.application.routes.draw do
         end
       end
 
+      resources :users do
+        member do
+          get :user_works
+        end
+      end
+
       resources :faqs # admin课程下的FAQ admin > course > faq
 
       member do
@@ -74,6 +80,12 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root "courses#index"
+
+  resources :notifications do #提醒栏
+    collection do
+      post :mark_as_read
+    end
+  end
 
   namespace :account do
     resources :settings do
@@ -134,5 +146,6 @@ Rails.application.routes.draw do
         post :cancel_order
       end
     end
+
   end
 end

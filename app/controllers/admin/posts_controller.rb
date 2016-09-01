@@ -1,6 +1,6 @@
 class Admin::PostsController < AdminController
-  before_action :find_chapter, only: %i(index new edit create update destroy)
-  before_action :find_post, only: %i(edit show update destroy publish hide higher_post lower_post)
+  before_action :find_chapter, only: %i(index show new edit create update destroy)
+  before_action :find_post, only: %i(edit show edit update destroy publish hide higher_post lower_post)
 
   def index
     @posts = @chapter.posts
@@ -8,12 +8,30 @@ class Admin::PostsController < AdminController
 
   def new
     @post = Post.new
+
+    drop_breadcrumb "Courses", admin_courses_path
+    drop_breadcrumb "章节列表", admin_course_chapters_path(@chapter.course)
+    drop_breadcrumb "新增 Post"
   end
 
   def edit
+    if params[:from_post_show]
+      session[:from_post_show] = true
+    end
+
+    course = @chapter.course
+
+    drop_breadcrumb "Courses", admin_courses_path
+    drop_breadcrumb "章节列表", admin_course_chapters_path(course)
+    drop_breadcrumb @post.title
   end
 
   def show
+    course = @chapter.course
+
+    drop_breadcrumb "Courses", admin_courses_path
+    drop_breadcrumb "章节列表", admin_course_chapters_path(course)
+    drop_breadcrumb @post.title
   end
 
   def create
@@ -30,10 +48,24 @@ class Admin::PostsController < AdminController
 
   def update
     @course = @chapter.course
-    if @post.update(post_params)
-      redirect_to admin_course_chapters_path(@course), notice: "更新成功"
+    
+    if session[:from_post_show] # 根据记录回到原来的页面
+      session[:from_post_show] = false
+
+      if @post.update(post_params)
+        redirect_to admin_chapter_post_path(@chapter, @post), notice: "更新成功"
+      else
+        render :edit
+      end
+
     else
-      render :edit
+
+      if @post.update(post_params)
+        redirect_to admin_course_chapters_path(@course), notice: "更新成功"
+      else
+        render :edit
+      end
+
     end
   end
 

@@ -8,10 +8,19 @@
       <ul class="nav navbar-nav navbar-right ">
 
         <% if current_user %>
+        <li class="nav-item btn-group" data-behavior="notifications" data-notifications='<%= render template: "notifications/index", formats: [:json] %>'>
+         <a class="dropdown-toggle nav-link" type="button" data-behavior="notifications-link" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           <%= fa_icon "bell" %> <span data-behavior="unread-count"></span>
+         </a>
+         <div class="dropdown-menu" aria-labelledby="dropdownMenu1" data-behavior="notification-items">
+
+         </div>
+       </li>
+
           <li class="dropdown">
             <a href="#" class="dropdown-toggle  " data-toggle="dropdown">
 
-                <%= render_user_avatar_from_upload(current_user, :tiny) %> 
+                <%= render_user_avatar_from_upload(current_user, :tiny) %>
                     <% if !current_user.username == false %>
                     Hi!, <%= current_user.username  %>
                     <% else %>
@@ -27,6 +36,8 @@
 
               <li> <%= link_to("我的课程", account_courses_path) %> </li>
               <li> <%= link_to("我的订单", account_orders_path ) %> </li>
+              <li> <%= link_to("我的收藏", account_favorites_path) %></li>
+
               <li> <%= link_to("个人设置", account_settings_path) %> </li>
 
               <li class="divider"></li>

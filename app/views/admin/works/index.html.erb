@@ -25,7 +25,7 @@
    <div class="panel panel-default">
      <!-- Default panel contents -->
          <div class="panel-heading">
-          <%= work.user.email %>
+          <%= link_to(work.user.email, user_works_admin_course_user_path(@course, work.user)) %>
          </div>
          <!-- List group -->
          <ul class="list-group">
