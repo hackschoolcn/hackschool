@@ -74,7 +74,7 @@ class CoursesController < ApplicationController
 
     if !current_user.is_member_of?(@course)
       current_user.favorite!(@course)
-      flash[:notice] = "加入收藏成功"
+      NotificationService.new(current_user, current_user,@course).send_notification!
     else
       flash[:warning] = "你已经加入收藏！"
     end

@@ -75,6 +75,12 @@ Rails.application.routes.draw do
 
   root "courses#index"
 
+  resources :notifications do #提醒栏
+    collection do
+      post :mark_as_read
+    end
+  end
+
   namespace :account do
     resources :settings do
       collection do
@@ -134,5 +140,6 @@ Rails.application.routes.draw do
         post :cancel_order
       end
     end
+
   end
 end
