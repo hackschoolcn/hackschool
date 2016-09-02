@@ -15,7 +15,7 @@ module CoursesHelper
     case size
     when :thumb
       image_tag("/course_place_holder_thumb.png")
-    when :front
+    when :medium
       image_tag("/course_place_holder.png")
     end
   end
@@ -25,7 +25,7 @@ module CoursesHelper
     when :thumb
       image_tag(course.image.thumb)
     else
-      image_tag(course.image.front)
+      image_tag(course.image.medium)
     end
   end
 
