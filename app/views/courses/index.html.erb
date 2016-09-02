@@ -1,9 +1,1 @@
-<% if current_user %>
-  <%= render "carousel" %>
-<% else %>
-    <%= render "nonmember_carousel" %>
-<% end %>
 
-<div class="container">
-  <%= render :partial => "courses/course_item", :collection => @courses, :as => :course %>
-</div>
