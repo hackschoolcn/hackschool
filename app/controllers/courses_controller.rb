@@ -1,7 +1,6 @@
 class CoursesController < ApplicationController
   before_action :authenticate_user!, only: [:member_confirm_enroll, :join_favorite]
   before_action :check_enrolled_status, only: %i(enroll member_confirm_enroll)
-  layout "course"
   layout "home-page", only:[:index]
 
   def index
@@ -17,6 +16,7 @@ class CoursesController < ApplicationController
       @course = course
       set_page_title @course.title
     end
+    render layout: "course"
   end
 
   def test

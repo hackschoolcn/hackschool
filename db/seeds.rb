@@ -14,7 +14,7 @@ puts "10 User accounts created."
 
 # Create Course
 
-Course.create([title: "Rails 基础环境建设", one_sentence_summary: "准备必要的工具和软件，配置 Rails 开发环境", teacher_name: "xdite", faq: "### 我没有基础可以上这个课吗？\r\n\r\n\r\n可以。本教材是由具备丰富的经验，辅导过许多无计算机背景的学生成为职业 Rails 全栈工程师编写。编程最重要的是耐心以及积极，本科计算机知识不是必须项。不过因为课程需要阅读大量英文文档，所以我们要求您要有一定的英语水准（大学英语四级及以上）。\r\n\r\n---\r\n\r\n### 遇到问题不会做怎么办？\r\n\r\n\r\n深呼吸～身为一个（未来的）职业程序员，遇到bug是很正常的事，仔细看看error的内容（其实就是英文），通常它会告诉你哪一步错了、少了什么，需要怎么做。真的无法解决，就拍照上slack询问吧。我们有线上助教会为您解答问题。\r\n\r\n---\r\n\r\n### 学到一半不想学了会退费吗？\r\n\r\n抱歉，线上课程一旦出售就不会退费哦。\r\n\r\n 在下单前请慎重思考三件事：\r\n \r\n* 我是否愿意牺牲其他时间来用于学习编程？\r\n \r\n* 我是否有强烈学会编程的欲望？\r\n \r\n* 我是否能为自己的选择负责？\r\n \r\n \r\n 以上答案均为是，那么请放心下单。\r\n \r\n ---\r\n \r\n ### 其他问题\r\n \r\n 请发送至邮箱xxx@xxx.com", is_hidden: false, price: 100])
+Course.create([title: "Rails 环境配置", one_sentence_summary: "准备必要的工具和软件，配置 Rails 开发环境", teacher_name: "xdite", faq: "### 我没有基础可以上这个课吗？\r\n\r\n\r\n可以。本教材是由具备丰富的经验，辅导过许多无计算机背景的学生成为职业 Rails 全栈工程师编写。编程最重要的是耐心以及积极，本科计算机知识不是必须项。不过因为课程需要阅读大量英文文档，所以我们要求您要有一定的英语水准（大学英语四级及以上）。\r\n\r\n---\r\n\r\n### 遇到问题不会做怎么办？\r\n\r\n\r\n深呼吸～身为一个（未来的）职业程序员，遇到bug是很正常的事，仔细看看error的内容（其实就是英文），通常它会告诉你哪一步错了、少了什么，需要怎么做。真的无法解决，就拍照上slack询问吧。我们有线上助教会为您解答问题。\r\n\r\n---\r\n\r\n### 学到一半不想学了会退费吗？\r\n\r\n抱歉，线上课程一旦出售就不会退费哦。\r\n\r\n 在下单前请慎重思考三件事：\r\n \r\n* 我是否愿意牺牲其他时间来用于学习编程？\r\n \r\n* 我是否有强烈学会编程的欲望？\r\n \r\n* 我是否能为自己的选择负责？\r\n \r\n \r\n 以上答案均为是，那么请放心下单。\r\n \r\n ---\r\n \r\n ### 其他问题\r\n \r\n 请发送至邮箱xxx@xxx.com", is_hidden: false, price: 100])
 puts "1st Course created."
 
 Course.create([title: "Rails 初级教程", one_sentence_summary: "在5小时搭建投票网站的过程中让你不知不觉地掌握 Rails 基础知识", teacher_name: "xdite", is_hidden: false, price: 1000])
