@@ -1,29 +1,5 @@
-<html>
-<head>
-	<title></title>
-</head>
-<body>
-<div>&nbsp;</div>
+<p>Welcome <%= @email %>!</p>
 
-<div>
-<h1 style="color: rgb(76, 76, 76); font-family: proxima-nova, &quot;helvetica neue&quot;, helvetica, arial, geneva, sans-serif; font-size: 15px; line-height: 22.5px; margin: 20px 0px; background-color: rgb(255, 255, 255);"><span style="font-size:26px;">Hack School</span></h1>
+<p>You can confirm your account email through the link below:</p>
 
-<p style="color: rgb(76, 76, 76); font-family: proxima-nova, &quot;helvetica neue&quot;, helvetica, arial, geneva, sans-serif; font-size: 15px; line-height: 22.5px; margin: 20px 0px; background-color: rgb(255, 255, 255);">您好！感谢您注册Hackschool账户。为激活您的账户，请单击下列链接：</p>
-
-<p style="color: rgb(76, 76, 76); font-family: proxima-nova, &quot;helvetica neue&quot;, helvetica, arial, geneva, sans-serif; font-size: 15px; line-height: 22.5px; margin: 20px 0px; background-color: rgb(255, 255, 255);"><%= link_to '确认账户', confirmation_url(@resource, confirmation_token: @token) %></p>
-
-<p style="color: rgb(76, 76, 76); font-family: proxima-nova, &quot;helvetica neue&quot;, helvetica, arial, geneva, sans-serif; font-size: 15px; line-height: 22.5px; margin: 20px 0px; background-color: rgb(255, 255, 255);">&nbsp;</p>
-
-<p style="color: rgb(76, 76, 76); font-family: proxima-nova, &quot;helvetica neue&quot;, helvetica, arial, geneva, sans-serif; font-size: 15px; line-height: 22.5px; margin: 20px 0px; background-color: rgb(255, 255, 255);">致敬！</p>
-
-<p style="color: rgb(76, 76, 76); font-family: proxima-nova, &quot;helvetica neue&quot;, helvetica, arial, geneva, sans-serif; font-size: 15px; line-height: 22.5px; margin: 20px 0px; background-color: rgb(255, 255, 255);"><span class="lG" style="outline: transparent dashed 1px;">HackSchool团队</span></p>
-
-<hr />
-<div>
-<p style="color: rgb(153, 153, 153); font-family: proxima-nova, &quot;helvetica neue&quot;, helvetica, arial, geneva, sans-serif; font-size: 12px; line-height: 22.5px; margin: 20px 0px; background-color: rgb(255, 255, 255);"><span class="lG" style="outline: transparent dashed 1px;">Hackschool是一个编程教育平台，主张从做中学，致力于用最快的速度</span><span class="lG" style="outline: transparent dashed 1px;">让你掌握全栈编程技能、迅速加入改变世界的行列。&nbsp;</span></p>
-
-<p style="color: rgb(153, 153, 153); font-family: proxima-nova, &quot;helvetica neue&quot;, helvetica, arial, geneva, sans-serif; font-size: 12px; line-height: 22.5px; margin: 20px 0px;">点击<a href="https://hackschool.herokuapp.com/">https://hackschool.herokuapp.com/</a>，了解更多关于Hackschool的信息。</p>
-</div>
-</div>
-</body>
-</html>
+<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
