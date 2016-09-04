@@ -9,7 +9,7 @@ module Account::PostsHelper
   def render_work_operate_buttons(task)
     works = task.works.where(user_id: current_user.id)
     if works.count.positive?
-      render partial: "account/works/homework_operation_buttons", locals: { task: task, work: works[0] }
+      render partial: "account/works/homework_operation_buttons", locals: { task: task, work: works.first }
     else
       link_to("提交作业", new_account_task_work_path(task), class: "btn btn-xs btn-success pull-right")
     end
@@ -19,7 +19,7 @@ module Account::PostsHelper
     works = task.works.where(user_id: current_user.id)
 
     if works.count.positive?
-      link_to("编辑作业", edit_account_task_work_path(task_id: task.id, id: works[0].id, course_id: course.id), class: "btn btn-xs btn-primary pull-right")
+      link_to("编辑作业", edit_account_task_work_path(task_id: task.id, id: works.first.id, course_id: course.id), class: "btn btn-xs btn-primary pull-right")
     else
       link_to("提交作业", new_account_task_work_path(task_id: task.id, course_id: course.id), class: "btn btn-xs btn-success pull-right")
     end
