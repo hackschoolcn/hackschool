@@ -6,7 +6,6 @@ class Account::ChaptersController < AccountController
 
   def index
     @course = Course.find(params[:course_id])
-
     if @course.hidden? || @course.dismissed?
       flash[:warning] = "此课程没有开课"
       redirect_to root_path
@@ -14,7 +13,8 @@ class Account::ChaptersController < AccountController
     end
 
     @chapters = @course.chapters.where(is_hidden: false)
-    set_breadcrumbs
+    drop_breadcrumb "我的课程", account_courses_path
+    drop_breadcrumb "Rails 环境配置"
     set_page_title "Rails 环境配置"
   end
 
@@ -39,11 +39,6 @@ class Account::ChaptersController < AccountController
       flash[:alert] = "您尚未报名此课程"
       redirect_to course_path(@course)
     end
-  end
-
-  def set_breadcrumbs
-    @course = Course.find(params[:course_id])
-    @breadcrumbs = [view_context.link_to(@course.title, account_course_chapters_path(@course))]
   end
 
   def drop_breadcrumb(title = nil, url = nil)
