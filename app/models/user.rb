@@ -25,9 +25,14 @@
 #  address                :string
 #  birthday               :string
 #  avatar                 :string
+#  confirmation_token     :string
+#  confirmed_at           :datetime
+#  confirmation_sent_at   :datetime
+#  unconfirmed_email      :string
 #
 # Indexes
 #
+#  index_users_on_confirmation_token    (confirmation_token) UNIQUE
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
@@ -66,7 +71,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
   has_one :setting
@@ -83,7 +88,7 @@ class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
 
   def admin?
-    is_admin || email == "manyi@123.com"
+    is_admin || email == "manyi@123.com" || email == "chpengwang@gmail.com"
   end
 
   def completed_works_in_percent(course)

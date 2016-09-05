@@ -1,16 +1,18 @@
 
 puts "这个seed会自动建立1个admin账号, 10个user账号, 7个 Chapters，和相应的小节 Posts, 10个admin创建的questions，10个user创建的questions，"
 
-# Create Admin Account
-User.create([username: "admin", email: "admin@gmail.com", password: "123456", password_confirmation: "123456", is_admin: "true"])
-puts "Admin account created."
+# Create Admin Account, Email Confirmed.
+User.create([username: "admin", email: "admin@gmail.com", password: "123456", password_confirmation: "123456", is_admin: "true", confirmed_at: Date.today])
+puts "Admin account created. Email Confirmed."
 
-# Create Account
-for i in 1..10 do
-  User.create([username: "user#{i}", email: "user#{i}@gmail.com", password: "123456", password_confirmation: "123456"])
+# Create Account, Email Confirmed.
+for i in 1..5 do
+  User.create([username: "user#{i}", email: "user#{i}@gmail.com", password: "123456", password_confirmation: "123456", confirmed_at: Date.today])
 
 end
-puts "10 User accounts created."
+puts "5 User accounts created. Email Confirmed."
+
+# Create Account, Email Unconfirmed.
 
 # Create Course
 
