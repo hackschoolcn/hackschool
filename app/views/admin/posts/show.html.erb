@@ -3,6 +3,7 @@
     <%= link_to("编辑", edit_admin_chapter_post_path(chapter_id: @chapter.id, post_id: @post.id, from_post_show: 1), :class => "btn btn-default") %>
   </div>
 </div>
+
 <div class="container-fluid">
   <div class="col-md-12">
     <%= render_post_video_html(@post) %>
