@@ -1,1 +1,153 @@
+     <!-- Carousel
+      ================================================== -->
+      <div id="myCarousel" class="carousel slide">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="item active ">
+            <div class="banner-image" style="background:url(images/slide1.jpg) center;">
+            </div>
+
+            
+              <div class="carousel-caption">
+                <h1>全栈开发</h1>
+                <p>8周密集训练前端、后端技能。</p>
+                <p>
+                <% unless current_user %>
+                  <%= link_to("加入训练营", new_user_registration_path, class: "btn btn-lg btn-primary") %>
+                <% end %>
+                </p>
+                <br><br><br><br><br><br>
+              </div>
+
+
+          </div>
+          <div class="item">
+            <div class="banner-image" style="background:url(images/slide2.jpg) center;">
+            </div>
+            <div class="container">
+              <div class="carousel-caption">
+                <h1>聪明的努力</h1>
+                <p>学习进度实时查看、迅速提升技能的挑战。</p>
+                <p>
+                <% unless current_user %>
+                  <%= link_to("加入训练营", new_user_registration_path, class: "btn btn-lg btn-primary") %>
+                <% end %>
+                </p>
+                <br><br><br><br><br><br>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="banner-image" style="background:url(images/slide3.jpg) center;">
+            </div>
+            <div class="container">
+              <div class="carousel-caption">
+                <h1>开启梦想之旅</h1>
+                <p>实现自己的创意。创业。</p>
+                <p>
+                <% unless current_user %>
+                  <%= link_to("加入训练营", new_user_registration_path, class: "btn btn-lg btn-primary") %>
+                <% end %>
+                </p>
+                <br><br><br><br><br><br>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+          <span class="icon-prev"></span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+          <span class="icon-next"></span>
+        </a>
+      </div>
+      <!-- /.carousel -->
+
+
+      <!-- Marketing messaging and featurettes
+      ================================================== -->
+      <!-- Wrap the rest of the page in another container to center all the content. -->
+
+<div class="container marketing">
+
+<!-- Three columns of text below the carousel -->
+<div class="row">
+  <div class="col-md-4 text-center">
+    <img class="img-circle" src="http://imageshack.com/a/img921/7214/Nozz65.png">
+    <h2>Ruby on Rails</h2>
+    <p>最快速高效地开发产品。</p>
+    <!-- <p><a class="btn btn-default" href="#">View details »</a></p> -->
+  </div>
+  <div class="col-md-4 text-center">
+    <img class="img-circle" src="http://imageshack.com/a/img921/7569/UBpHu7.jpg">
+    <h2>CSS</h2>
+    <p>精美样式布局，打磨拥有成就感的产品。</p>
+    <!-- <p><a class="btn btn-default" href="#">View details »</a></p> -->
+  </div>
+  <div class="col-md-4 text-center">
+    <img class="img-circle" src="http://imageshack.com/a/img923/5290/zBrAbG.png">
+    <h2>Sass</h2>
+    <p>从0到1做出属于自己的Sass产品。</p>
+    <!-- <p><a class="btn btn-default" href="#">View details »</a></p> -->
+  </div>
+</div><!-- /.row -->
+
+<!-- START THE FEATURETTES -->
+
+
+<hr class="featurette-divider">
+
+<div class="row featurette">
+
+  <div class="col-md-7">
+    <h2 class="featurette-heading">Rails 环境配置。<span class="text-muted">迅速开始。</span></h2>
+    <p class="lead">零基础快速搭建出开发环境，开始运用 Rails 创建应用，并成功发布到 Heroku。
+  </p>
+  </div>
+  <div class="col-md-5">
+    <%= link_to(course_path(@courses.first)) do %>
+      <img class="featurette-image img-responsive center-block" src="http://imageshack.com/a/img924/6451/igTlXJ.jpg" alt="Generic placeholder image">
+    <% end %>
+  </div>
+
+</div>
+
+<hr class="featurette-divider">
+
+<div class="row featurette">
+<div class="col-md-7 col-md-push-5">
+  <h2 class="featurette-heading">Rails 初级教程。<span class="text-muted">上手开发。</span></h2>
+  <p class="lead">用最短的时间，学会如何做出一个投票网站，迅速上手Ruby on Rails。体会迅速开发一个网站的成就感。</p>
+</div>
+<div class="col-md-5 col-md-pull-7">
+  <%= link_to(course_path(@courses.second)) do %>
+    <img class="featurette-image img-responsive center-block" src="http://imageshack.com/a/img923/9370/ta4i8n.jpg" alt="Generic placeholder image">
+  <% end %>
+</div>
+</div>
+
+<hr class="featurette-divider">
+
+<div class="row featurette">
+<div class="col-md-7">
+  <h2 class="featurette-heading">Rails 中级教程。<span class="text-muted">快速进阶。</span></h2>
+  <p class="lead">系统打磨技能，熟悉Rails的生态圈。快速成长为独挡一面的开发，拥有快速打造产品的能力。</p>
+</div>
+<div class="col-md-5">
+  <%= link_to(course_path(@courses.third)) do %>
+    <img class="featurette-image img-responsive center-block" src="http://imageshack.com/a/img923/1890/HBFNrA.jpg" alt="Generic placeholder image">
+  <% end %>
+</div>
+</div>
+
+<br><br><br>
+<!-- /END THE FEATURETTES -->
+
+</div><!-- /.container -->
 

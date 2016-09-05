@@ -55,7 +55,6 @@
                     <table class="table table-bordered">
                       <thead>
                         <tr>
-                          <!-- <td>#</td> -->
                           <td>用户</td>
                           <td>到期时间</td>
                         </tr>
@@ -63,7 +62,6 @@
                       <tbody>
                       <% @users.each do |user| %>
                         <tr>
-                          <!-- <td><%= user.id %></td> -->
                           <td>
                             <%= link_to(user.email, user_works_admin_course_user_path(@course, user)) %>
                           </td>

@@ -11,20 +11,14 @@
 
     </head>
     <body>
-      <div class="navbar-wrapper">
-        <div class="container">
-          <%= render "common/navbar" %>
-        </div>
+      <div class="container-fluid">
+        <%= render "common/navbar" %>
       </div>
 
-      <div class="container">
+      <div class="clearfix">
         <%= render "common/flashes" %>
-        <%= yield %>
-
       </div>
-
-
-
+      <%= yield %>
 
     <div class="container">
         <%= render "common/footer" %>
