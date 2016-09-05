@@ -11,6 +11,7 @@
 #  is_hidden  :boolean          default(TRUE)
 #  course_id  :integer
 #  position   :integer
+#  video      :string
 #
 
 class Post < ApplicationRecord
