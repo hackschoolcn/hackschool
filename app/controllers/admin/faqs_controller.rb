@@ -1,5 +1,6 @@
-class Admin::FaqsController < ApplicationController
+class Admin::FaqsController < AdminController
   before_action :find_course, only: %i(index new edit create update destroy)
+  before_action :find_faq, only: %i(show edit update destroy)
 
   def index
     @faqs = @course.faqs
@@ -10,39 +11,39 @@ class Admin::FaqsController < ApplicationController
   end
 
   def show
-    @faq = Faq.find(params[:id])
   end
 
   def edit
-    @faq = Faq.find(params[:id])
   end
 
   def create
     @faq = Faq.new(faq_params)
     @faq.course = @course
-  if @faq.save!
-    redirect_to  admin_course_faqs_path(@course), notice: "Created Success"
-  else
-    render :new
+    if @faq.save!
+      redirect_to admin_course_faqs_path(@course), notice: "Created Success"
+    else
+      render :new
+    end
   end
-end
 
   def update
-    @faq = Faq.find(params[:id])
-  if @faq.update(faq_params)
-    redirect_to  admin_course_faqs_path(@course), notice: "Updated Success"
-  else
-    render :edit
+    if @faq.update(faq_params)
+      redirect_to admin_course_faqs_path(@course), notice: "Updated Success"
+    else
+      render :edit
+    end
   end
-end
 
   def destroy
-    @faq = Faq.find(params[:id])
     @faq.destroy
     redirect_to admin_course_faqs_path(@course), alert: "Deleted"
   end
 
   private
+
+  def find_faq
+    @faq = Faq.find(params[:id])
+  end
 
   def find_course
     @course = Course.find(params[:course_id])

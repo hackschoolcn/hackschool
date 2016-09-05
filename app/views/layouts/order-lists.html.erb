@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>HackSchool</title>
+        <%= render_page_title_tag %>
         <%= csrf_meta_tags %>
 
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -10,7 +10,7 @@
         <%= javascript_include_tag 'simplemde.min' %>
     </head>
 
-    <body style="background-image: url(/crossword_background.png);">
+    <body>
 
 
             <%= render "common/navbar" %>

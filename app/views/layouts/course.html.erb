@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Hackschool</title>
+    <%= render_page_title_tag %>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
   <style>
   body {
     padding-top: 50px;
-    background-image: url(/crossword_background.png);
   }
   </style>
 
@@ -18,7 +18,6 @@
       <%= render "common/navbar" %>
       <%= render "common/flashes" %>
       <%= yield %>
-
   </body>
     <div class="container">
       <%= render "common/footer" %>

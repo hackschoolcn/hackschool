@@ -1,7 +1,12 @@
 class Admin::TasksController < AdminController
-  before_action :get_post, only: %i(new create edit update)
+  before_action :find_post, only: %i(new create edit update)
 
   def index
+    if params[:course_id]
+      @course = Course.find(params[:course_id])
+    end
+    @courses = Course.all
+    drop_breadcrumb "Tasks"
   end
 
   def new
@@ -42,7 +47,7 @@ class Admin::TasksController < AdminController
 
   private
 
-  def get_post
+  def find_post
     @post = Post.find(params[:post_id])
   end
 

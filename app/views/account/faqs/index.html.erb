@@ -1,11 +1,28 @@
-<div class="panel panel-default" style="margin-top:40px;">
-  <h1>FAQ</h1>
-  <ul class="list-group center">
+<!--........................................  FAQ     .......................................-->
+<!--.........................................................................................-->
+<%= render :partial => "account/courses/top_bar", :locals => { :course => @course } %>
 
-    <% @faqs.each do |faq| %>
-    <li class="list-group-item">
-      <%= link_to(faq.title,  account_course_faq_path(@course, faq)) %>
-    </li>
-    <% end %>
-  </ul>
+<div class="container col-md-12">
+    <div class="page-header ">
+        <h2 class="text-center">课程内容FAQ <br><small> 如果您对课程的内容有任何的疑问，欢迎来这里<a href="https://github.com/hackschoolcn/hackschool/issues" target=_new>提问</a></small></h2>
+          <!-- <div class="well well-sm entete"></div> -->
+    </div>
+<br><br>
+
+  <% @faqs.each do |faq| %>
+      <!-- <div class="panel-group" id="accordion"> -->
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+          <%= link_to("Q: #{faq.title}", account_course_faq_path(@course, faq)) %>
+<!-- Q：即时通讯工具 slack 需要翻墙才能用。如何翻墙？         -->
+       </a>
+      </h4>
+    </div>
+    <div class="panel-body">
+      <%= render_markdown_text(faq.description) %>
+    </div>
+  </div>
+  <% end %>
 </div>

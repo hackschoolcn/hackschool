@@ -81,7 +81,9 @@ class User < ApplicationRecord
   has_many :works
   has_many :enrollments
   has_many :enrolled_courses, through: :enrollments, source: :course
-
+  has_many :courses
+  has_many :course_relationships
+  has_many :favorite_courses, through: :course_relationships, source: :course
 
   mount_uploader :avatar, AvatarUploader
 
@@ -89,28 +91,22 @@ class User < ApplicationRecord
     is_admin || email == "manyi@123.com"
   end
 
-  # def turn_to_admin!
-  #   self.is_admin = true
-  #   self.save
-  # end
-
-  # def turn_to_user!
-  #   self.is_admin = false
-  #   self.save
-  # end
-
-  def is_valid_subscriber?
-    member_expire_date && member_expire_date > Time.now
-  end
-
-  def enroll_course!(course)
-    unless member_of?(course)
-      enrolled_courses << course
+  def completed_works_in_percent(course)
+    if member_of?(course)
+      (works.where(course_id: course.id).count.to_f / course.tasks.count.to_f * 100).round(1)
+    else
+      0
     end
   end
 
-  def drop_course!(course)
-    enrolled_courses.delete(course)
+  def valid_subscriber?
+    member_expire_date && member_expire_date > Time.zone.now
+  end
+
+  def enroll_course!(course)
+    unless member_of?(course) || course.dismissed?
+      enrolled_courses << course
+    end
   end
 
   def member_of?(course)
@@ -126,5 +122,17 @@ class User < ApplicationRecord
       end
     self.member_expire_date = begin_date + amount.month
     save
+  end
+
+  def is_member_of?(course)
+    favorite_courses.include?(course)
+  end
+
+  def favorite!(course)
+    favorite_courses << course
+  end
+
+  def favorite_cancel!(course)
+    favorite_courses.delete(course)
   end
 end

@@ -8,6 +8,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Choose what kind of storage to use for this uploader:
   storage :file
   # storage :fog
+  # storage :aws
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
@@ -21,7 +22,7 @@ class ImageUploader < CarrierWave::Uploader::Base
     process resize_to_fill: [200, 150]
   end
 
-  version :front do
+  version :medium do
     process resize_to_fill: [400, 300]
   end
 

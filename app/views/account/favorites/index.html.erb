@@ -1,0 +1,27 @@
+
+<table class="table table-bordered">
+<thead>
+    <tr>
+        <!-- <td>#</td> -->
+        <td>课程名</td>
+        <td>教师</td>
+
+
+    </tr>
+</thead>
+<tbody>
+    <% @courses.each do |course| %>
+    <tr>
+        <!-- <td><%= course.id %></td> -->
+        <td>
+            <%= render_course_status(course) %>
+            <%= link_to(course.title, course_path(course)) %>
+
+        </td>
+        <td>
+            <%= course.teacher_name %>
+        </td>
+    </tr>
+    <% end %>
+</tbody>
+</table>

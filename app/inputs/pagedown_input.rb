@@ -1,4 +1,6 @@
 class PagedownInput < SimpleForm::Inputs::TextInput
+  # FIXME : too ugly and unsafe
+
   def input
     out = "<div id=\"wmd-button-bar-#{attribute_name}\"></div>#{wmd_input}"
 
@@ -15,7 +17,7 @@ class PagedownInput < SimpleForm::Inputs::TextInput
     @builder.text_area(
       attribute_name,
       input_html_options.merge(
-        class: 'wmd-input form-control', id: "wmd-input-#{attribute_name}"
+        class: "wmd-input form-control", id: "wmd-input-#{attribute_name}"
       )
     )
   end

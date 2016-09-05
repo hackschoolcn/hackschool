@@ -14,8 +14,8 @@ module CoursesHelper
   def render_fake_course_image(_course, size = :thumb)
     case size
     when :thumb
-      image_tag("/course_place_holder.png")
-    when :front
+      image_tag("/course_place_holder_thumb.png")
+    when :medium
       image_tag("/course_place_holder.png")
     end
   end
@@ -25,12 +25,12 @@ module CoursesHelper
     when :thumb
       image_tag(course.image.thumb)
     else
-      image_tag(course.image)
+      image_tag(course.image.medium)
     end
   end
 
   def render_course_price(course)
-    "$ #{course.price} RMB "
+    "¥ #{course.price} RMB "
   end
 
   def render_course_one_sentence_summary(course)

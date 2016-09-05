@@ -37,6 +37,7 @@ gem "font-awesome-rails"
 gem "carrierwave"
 gem "mini_magick"
 gem "gravatarify"
+gem "seo_helper"
 
 # add by chpwang
 gem "font-awesome-sass"
@@ -45,6 +46,7 @@ gem "carrierwave-aws"
 gem "figaro"
 gem "aasm"
 gem "redcarpet"
+gem "acts_as_list"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -52,6 +54,7 @@ group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem "sqlite3"
   gem "pry"
+  gem "pry-nav"
 end
 
 group :production do
@@ -73,4 +76,3 @@ end
 gem "tzinfo-data", platforms: %i(mingw mswin x64_mingw jruby)
 gem "will_paginate"
 gem "ransack"
-gem "seo_helper"

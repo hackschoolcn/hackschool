@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>HACKSCHOOL
-        </title>
+        <%= render_page_title_tag %>
         <%= csrf_meta_tags %>
 
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -11,7 +10,7 @@
         <%= javascript_include_tag 'simplemde.min' %>
     </head>
 
-    <body style="background-image: url(/crossword_background.png);">
+    <body>
 
         <%= render "common/navbar" %>
         <div class="container">
@@ -20,13 +19,11 @@
                 <div class="col-md-2">
                     <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
 
-
                     <li><%= active_link_to("课程", admin_courses_path , :active => :inclusive, :wrap_tag => :li ) %></li>
+                    <li><%= active_link_to("作业情况", admin_tasks_path , :active => :inclusive, :wrap_tag => :li ) %></li>
                     <li><%= active_link_to("使用者", admin_users_path , :active => :inclusive, :wrap_tag => :li ) %></li>
-                 </ul>
-
-
                     </ul>
+
                 </div>
 
                 <div class="col-md-10">

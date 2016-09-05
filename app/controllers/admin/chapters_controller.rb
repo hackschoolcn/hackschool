@@ -1,24 +1,31 @@
 class Admin::ChaptersController < AdminController
-  before_action :find_course, only: %i(index new edit create update destroy)
+  before_action :find_course, only: %i(index new edit create update destroy search)
+  before_action :find_chapter, only: %i(edit show update destroy publish hide higher_chapter lower_chapter)
   before_action :validate_search_key, only: [:search]
 
   def index
     @chapters = @course.chapters
 
     drop_breadcrumb "Courses", admin_courses_path
-    drop_breadcrumb @course.title, admin_course_chapters_path(@course)
+    drop_breadcrumb @course.title
   end
 
   def new
     @chapter = Chapter.new
+
+    drop_breadcrumb "Courses", admin_courses_path
+    drop_breadcrumb "章节列表", admin_course_chapters_path(@course)
+    drop_breadcrumb "新增 Chapter"
   end
 
   def edit
-    @chapter = Chapter.find(params[:id])
+
+    drop_breadcrumb "Courses", admin_courses_path
+    drop_breadcrumb "章节列表", admin_course_chapters_path(@course)
+    drop_breadcrumb @chapter.chapter
   end
 
   def show
-    @chapter = Chapter.find(params[:id])
   end
 
   def create
@@ -32,7 +39,6 @@ class Admin::ChaptersController < AdminController
   end
 
   def update
-    @chapter = Chapter.find(params[:id])
     if @chapter.update(chapter_params)
       redirect_to admin_course_chapters_path(@course), notice: "更新成功"
     else
@@ -41,25 +47,32 @@ class Admin::ChaptersController < AdminController
   end
 
   def destroy
-    @chapter = Chapter.find(params[:id])
     @chapter.destroy
-    redirect_to  admin_course_chapters_path(@course), alert: "Deleted"
+    redirect_to admin_course_chapters_path(@course), alert: "Deleted"
   end
 
   def publish
-    @chapter = Chapter.find(params[:id])
     @chapter.publish!
     redirect_to :back
   end
 
   def hide
-    @chapter = Chapter.find(params[:id])
     @chapter.hide!
     redirect_to :back
   end
 
+  def higher_chapter
+    @chapter.move_higher
+    redirect_to :back
+  end
+
+  def lower_chapter
+    @chapter.move_lower
+    redirect_to :back
+  end
+
+
   def search
-    @course = Course.find(params[:course_id])
     if @query_string.present?
       search_result = Post.where(course_id: params[:course_id]).ransack(@search_criteria).result(distinct: true)
       @posts = search_result.paginate(page: params[:page], per_page: 20)
@@ -80,6 +93,10 @@ class Admin::ChaptersController < AdminController
   end
 
   private
+
+  def find_chapter
+    @chapter = Chapter.find(params[:id])
+  end
 
   def find_course
     @course = Course.find(params[:course_id])

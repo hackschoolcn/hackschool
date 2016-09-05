@@ -1,51 +1,54 @@
-<div class="col-md-12">
-    <div class="container course-tab">
-        <div>
-            <!-- Nav tabs -->
-            <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active">
-                    <a href="#home" aria-controls="home" role="tab" data-toggle="tab">Course Description</a>
-                </li>
-                <li role="presentation">
-                    <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Curriculum</a>
-                </li>
-                <li role="presentation">
-                    <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">About Instructor</a>
-                </li>
-                <li role="presentation">
-                    <a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">FAQ</a>
-                </li>
-            </ul>
-
-            <!-- Tab panes -->
-            <div class="tab-content">
-                <div role="tabpanel" class="tab-pane active" id="home">
-                    <%= render_markdown_text(@course.description) %>
-                </div>
-
-                <div role="tabpanel" class="tab-pane" id="profile">
-                   <%= render :partial => "course_curriculum_for_preview" %>
-                </div>
-
-                <div role="tabpanel" class="tab-pane" id="messages">
-                  <div class="row">
-
-                    <div class="col-md-2 col-md-offset-2">
-                  <%= image_tag(@course.teacher_image, class: "img-circle") %>
-                </div>
-                    <div class="col-md-6">
-                  <%= render_markdown_text(@course.about_teacher) %>
-                </div>
-
-              </div>
-            </div>
-                <div role="tabpanel" class="tab-pane" id="settings">
-                  <div class="col-md-8 col-md-offset-2">
-                  <%= render "collapse" %>
-                </div>
-                </div>
-            </div>
-        </div>
+<div class="col-md-10 col-md-offset-1">
+    <!-- Nav tabs -->
+    <div>
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active">
+                <a href="#home" aria-controls="home" role="tab" data-toggle="tab">课程详情页</a>
+            </li>
+            <li role="presentation">
+                <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">课程目录页</a>
+            </li>
+        </ul>
     </div>
 
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="home">
+            <div>
+                <%= render :partial => "courses/block_2" %>
+            </div>
+            <br>
+            <hr>
+
+            <div>
+                <%= render :partial => "courses/block_1" %>
+            </div>
+            <br>
+            <hr>
+
+            <%= render :partial => "courses/block_4" %>
+            <br>
+            <hr>
+
+            <div>
+                <%= render :partial => "courses/block_5" %>
+            </div>
+            <br>
+            <hr>
+
+            <div>
+                <%= render :partial => "courses/block_6" %>
+            </div>
+            <br>
+
+        </div>
+
+        <div role="tabpanel" class="tab-pane" id="profile">
+            <div class="col-md-10">
+              <br>
+              <%= render :partial => "course_curriculum_for_preview" %>
+            </div>
+        </div>
+
+    </div>
 </div>

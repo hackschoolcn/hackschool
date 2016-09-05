@@ -1,5 +1,6 @@
 class Admin::PostsController < AdminController
-  before_action :get_chapter_params, only: %i(index new edit create update destroy)
+  before_action :find_chapter, only: %i(index show new edit create update destroy)
+  before_action :find_post, only: %i(edit show edit update destroy publish hide higher_post lower_post)
 
   def index
     @posts = @chapter.posts
@@ -7,14 +8,30 @@ class Admin::PostsController < AdminController
 
   def new
     @post = Post.new
+
+    drop_breadcrumb "Courses", admin_courses_path
+    drop_breadcrumb "章节列表", admin_course_chapters_path(@chapter.course)
+    drop_breadcrumb "新增 Post"
   end
 
   def edit
-    @post = Post.find(params[:id])
+    if params[:from_post_show]
+      session[:from_post_show] = true
+    end
+
+    course = @chapter.course
+
+    drop_breadcrumb "Courses", admin_courses_path
+    drop_breadcrumb "章节列表", admin_course_chapters_path(course)
+    drop_breadcrumb @post.title
   end
 
   def show
-    @post = Post.find(params[:id])
+    course = @chapter.course
+
+    drop_breadcrumb "Courses", admin_courses_path
+    drop_breadcrumb "章节列表", admin_course_chapters_path(course)
+    drop_breadcrumb @post.title
   end
 
   def create
@@ -31,36 +48,61 @@ class Admin::PostsController < AdminController
 
   def update
     @course = @chapter.course
-    @post = Post.find(params[:id])
-    if @post.update(post_params)
-      redirect_to admin_course_chapters_path(@course), notice: "更新成功"
+    
+    if session[:from_post_show] # 根据记录回到原来的页面
+      session[:from_post_show] = false
+
+      if @post.update(post_params)
+        redirect_to admin_chapter_post_path(@chapter, @post), notice: "更新成功"
+      else
+        render :edit
+      end
+
     else
-      render :edit
+
+      if @post.update(post_params)
+        redirect_to admin_course_chapters_path(@course), notice: "更新成功"
+      else
+        render :edit
+      end
+
     end
   end
 
   def destroy
-    @post = Post.find(params[:id])
     @course = @chapter.course
     @post.destroy
     redirect_to admin_course_chapters_path(@course), alert: "Deleted"
   end
 
   def publish
-    @post = Post.find(params[:id])
     @post.publish!
     redirect_to :back
   end
 
   def hide
-    @post = Post.find(params[:id])
     @post.hide!
     redirect_to :back
   end
 
+  def higher_post
+    @post.move_higher
+    redirect_to :back
+  end
+
+  def lower_post
+    @post.move_lower
+    redirect_to :back
+  end
+
+
   private
 
-  def get_chapter_params
+  def find_post
+    @post = Post.find(params[:id])
+  end
+
+  def find_chapter
     @chapter = Chapter.find(params[:chapter_id])
   end
 

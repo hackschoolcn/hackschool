@@ -1,0 +1,39 @@
+
+<h3><%= @user.email %> 已提交的作业： <%= @submitted_works.count %></h3>
+<hr>
+<br>
+  <% @submitted_works.each do |work| %>
+   <div class="panel panel-default">
+     <!-- Default panel contents -->
+         <div class="panel-heading">
+          <%= render_markdown_text(work.task.description) %>
+         </div>
+         <!-- List group -->
+         <ul class="list-group">
+            <li class="list-group-item">
+              <%= render_markdown_text(work.content) %>
+            </li>
+         </ul>
+   </div>
+  <% end %>
+
+
+<h3> 还未完成的任务： <%= @unsolved_tasks.count %> </h3>
+<hr>
+<br><br>
+  <% @unsolved_tasks.each do |task| %>
+   <div class="panel panel-default">
+     <!-- Default panel contents -->
+         <div class="panel-heading">
+          任务章节：
+          <%= link_to(task.post.title, account_chapter_post_path(task.post.chapter, task.post)) %>
+         </div>
+         <!-- List group -->
+         <ul class="list-group">
+            <li class="list-group-item">
+              <%= render_markdown_text(task.description) %>
+            </li>
+         </ul>
+   </div>
+  <% end %>
+<br>

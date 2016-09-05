@@ -3,6 +3,6 @@ module Admin::PostsHelper
     submitted_works = task.works
     all_enrolled_users = task.course.enrolled_users
 
-    "【已有 #{submitted_works.count} 人提交作业（共 #{all_enrolled_users.count} 人）】"
+    "【已有 #{submitted_works.count} 人提交（共 #{all_enrolled_users.count} 人）】"
   end
 end
