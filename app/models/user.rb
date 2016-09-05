@@ -88,7 +88,7 @@ class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
 
   def admin?
-    is_admin || email == "manyi@123.com"
+    is_admin || email == "manyi@123.com" || email == "chpengwang@gmail.com"
   end
 
   def completed_works_in_percent(course)

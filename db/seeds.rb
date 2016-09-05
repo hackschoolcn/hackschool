@@ -13,11 +13,6 @@ end
 puts "5 User accounts created. Email Confirmed."
 
 # Create Account, Email Unconfirmed.
-for i in 6..10 do
-  User.create([username: "user#{i}", email: "user#{i}@gmail.com", password: "123456", password_confirmation: "123456"])
-
-end
-puts "5 User accounts created. Email Unconfirmed."
 
 # Create Course
 
