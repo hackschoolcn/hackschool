@@ -2,8 +2,11 @@
 <!DOCTYPE html>
 <html>
     <head>
+      <link rel="shortcut icon" href="/images/ruby.png" />
+
         <%= render_page_title_tag %>
         <%= csrf_meta_tags %>
+        <link rel="shortcut icon" href="course_place_holder.png">
 
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
         <%= stylesheet_link_tag    'simplemde.min' %>
@@ -204,7 +207,20 @@
       </div><!-- /.container -->
 
 
-
+      <script type='text/javascript'>
+          (function(m, ei, q, i, a, j, s) {
+              m[i] = m[i] || function() {
+                  (m[i].a = m[i].a || []).push(arguments)
+              };
+              j = ei.createElement(q),
+                  s = ei.getElementsByTagName(q)[0];
+              j.async = true;
+              j.charset = 'UTF-8';
+              j.src = '//static.meiqia.com/dist/meiqia.js';
+              s.parentNode.insertBefore(j, s);
+          })(window, document, 'script', '_MEIQIA');
+          _MEIQIA('entId', 30782);
+      </script>
 </body>
 </html>
 <!-- Bootstrap core JavaScript

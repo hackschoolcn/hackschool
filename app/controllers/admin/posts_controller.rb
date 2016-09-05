@@ -48,7 +48,7 @@ class Admin::PostsController < AdminController
 
   def update
     @course = @chapter.course
-    
+
     if session[:from_post_show] # 根据记录回到原来的页面
       session[:from_post_show] = false
 
@@ -107,6 +107,6 @@ class Admin::PostsController < AdminController
   end
 
   def post_params
-    params.require(:post).permit(:title, :article)
+    params.require(:post).permit(:title, :article, :video)
   end
 end
