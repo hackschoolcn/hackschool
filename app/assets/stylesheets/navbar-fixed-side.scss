@@ -1,10 +1,10 @@
 @import 'bootstrap/variables';
 
 .navbar-fixed-side {
-  @media (max-width: $grid-float-breakpoint) {
-    margin-left: -15px;
-    margin-right: -15px;
-  }
+  // @media (max-width: $grid-float-breakpoint) {
+  //   margin-left: -15px;
+  //   margin-right: -15px;
+  // }
 
   @media (min-width: $grid-float-breakpoint) {
     $navbar-default-link-hover-bg: darken($navbar-default-bg, 3%);
