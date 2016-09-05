@@ -20,14 +20,14 @@ puts "1st Course created."
 Course.create([title: "Rails 初级教程", one_sentence_summary: "在5小时搭建投票网站的过程中让你不知不觉地掌握 Rails 基础知识", teacher_name: "xdite", is_hidden: false, price: 1000])
 puts "2nd Course created."
 
-Course.create([title: "出发前的热身，重复重复再重复", one_sentence_summary: "速度和压力练习，训练你在10小时之内做出 KnewOne 剁手网站", teacher_name: "xdite", is_hidden: false, price: 1000])
-puts "3rd Course created."
+# Course.create([title: "出发前的热身，重复重复再重复", one_sentence_summary: "速度和压力练习，训练你在10小时之内做出 KnewOne 剁手网站", teacher_name: "xdite", is_hidden: false, price: 1000])
+# puts "3rd Course created."
 
-Course.create([title: "游戏，但这不是游戏", one_sentence_summary: "完整的网页端多人合作游戏开发 - 没热身的请绕道", teacher_name: "xdite", is_hidden: false, price: 2000])
-puts "4th Course created."
+# Course.create([title: "游戏，但这不是游戏", one_sentence_summary: "完整的网页端多人合作游戏开发 - 没热身的请绕道", teacher_name: "xdite", is_hidden: false, price: 2000])
+# puts "4th Course created."
 
-Course.create([title: "速度的极限和极限的速度", one_sentence_summary: "搭建直播平台，训练解决复杂网络环境下网速问题的能力", teacher_name: "xdite", is_hidden: false, price: 2000])
-puts "5th Course created."
+# Course.create([title: "速度的极限和极限的速度", one_sentence_summary: "搭建直播平台，训练解决复杂网络环境下网速问题的能力", teacher_name: "xdite", is_hidden: false, price: 2000])
+# puts "5th Course created."
 
 # Create 1st Course Contents
 # Create Chapter
@@ -263,8 +263,3 @@ puts "4th Faq in 1st Course created."
 
 
 # Create Questions
-
-for i in 1..10 do
-  Question.create!([course_id: 1, title: "Admin Question no.#{i}", description: "这是用seed建立的第 #{i} 个问题", user_id: 1])
-end
-puts "10 Questions created by admin."
