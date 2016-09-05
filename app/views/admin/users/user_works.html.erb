@@ -5,15 +5,17 @@
   <% @submitted_works.each do |work| %>
    <div class="panel panel-default">
      <!-- Default panel contents -->
-         <div class="panel-heading">
-          <%= render_markdown_text(work.task.description) %>
-         </div>
-         <!-- List group -->
-         <ul class="list-group">
-            <li class="list-group-item">
-              <%= render_markdown_text(work.content) %>
-            </li>
-         </ul>
+       <div class="panel-heading">
+        <%= link_to(work.task.post.title, admin_chapter_post_path(work.task.post.chapter, work.task.post), class: "pull-right") %>
+        <span class="pull-right">任务章节：</span>
+        <%= render_markdown_text(work.task.description) %>
+       </div>
+       <!-- List group -->
+       <ul class="list-group">
+          <li class="list-group-item">
+            <%= render_markdown_text(work.content) %>
+          </li>
+       </ul>
    </div>
   <% end %>
 
@@ -26,7 +28,7 @@
      <!-- Default panel contents -->
          <div class="panel-heading">
           任务章节：
-          <%= link_to(task.post.title, account_chapter_post_path(task.post.chapter, task.post)) %>
+          <%= link_to(task.post.title, admin_chapter_post_path(task.post.chapter, task.post)) %>
          </div>
          <!-- List group -->
          <ul class="list-group">
