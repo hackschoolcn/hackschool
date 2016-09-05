@@ -1,0 +1,212 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <%= render_page_title_tag %>
+        <%= csrf_meta_tags %>
+
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= stylesheet_link_tag    'simplemde.min' %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_include_tag 'simplemde.min' %>
+
+    </head>
+    <body style="padding-top :0px;">
+      <div class="navbar-wrapper">
+        <div class="container">
+          <nav class="navbar navbar-inverse navbar-static-top">
+
+              <div class="navbar-header" style="padding-left: 1%;">
+                <%= link_to("HackSchool",courses_path, id: "logo") %>
+              </div>
+
+              <div class="collapse navbar-collapse" style="padding-right: 1%;">
+                <ul class="nav navbar-nav navbar-right">
+                  <% if !current_user %>
+                  <li class="active"><a href="/users/sign_in">登陆</a></li>
+                  <li><a href="/users/sign_up">注册</a></li>
+                  <% else %>
+                      <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <%= render_user_avatar_from_upload(current_user, :tiny) %>
+                                    <% if !current_user.username == false %>
+                                    Hi!, <%= current_user.username  %>
+                                    <% else %>
+                                    Hi!, <%= current_user.email %>
+                                    <% end %>
+                              <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+
+                              <% if current_user.admin? %>
+                                  <li><%= link_to("管理员控制台", admin_courses_path) %> </li>
+                              <% end %>
+
+                              <li> <%= link_to("我的课程", account_courses_path) %> </li>
+                              <li> <%= link_to("我的订单", account_orders_path ) %> </li>
+                              <li> <%= link_to("个人设置", account_settings_path) %> </li>
+
+                              <li class="divider"></li>
+                              <li><%= link_to("登出", destroy_user_session_path, method: :delete) %></li>
+                            </ul>
+                          </li>
+                    <% end %>
+                </ul>
+              </div>
+
+          </nav>
+
+        </div><!-- /container -->
+      </div><!-- /navbar wrapper -->
+
+
+      <!-- Carousel
+      ================================================== -->
+      <div id="myCarousel" class="carousel slide">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="item active ">
+            <div class="banner-image" style="background:url(images/slide1.jpg) center;">
+            </div>
+
+            <div class="container">
+              <div class="carousel-caption">
+                <h1>全栈开发</h1>
+                <p>8周密集训练前端、后端技能。</p>
+                <p><a class="btn btn-lg btn-primary" href="/users/sign_up">加入我们</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="banner-image" style="background:url(images/slide2.jpg) center;">
+            </div>
+            <div class="container">
+              <div class="carousel-caption">
+                <h1>聪明的努力</h1>
+                <p>学习进度实时查看、迅速提升技能的挑战。</p>
+                <p><a class="btn btn-lg btn-primary" href="/users/sign_up">加入我们</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="banner-image" style="background:url(images/slide3.jpg) center;">
+            </div>
+            <div class="container">
+              <div class="carousel-caption">
+                <h1>开启梦想之旅</h1>
+                <p>实现自己的创意。创业。</p>
+                <p><a class="btn btn-lg btn-primary" href="/users/sign_up">加入我们</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+          <span class="icon-prev"></span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+          <span class="icon-next"></span>
+        </a>
+      </div>
+      <!-- /.carousel -->
+
+
+      <!-- Marketing messaging and featurettes
+      ================================================== -->
+      <!-- Wrap the rest of the page in another container to center all the content. -->
+
+      <div class="container marketing">
+
+        <!-- Three columns of text below the carousel -->
+        <div class="row">
+          <div class="col-md-4 text-center">
+            <img class="img-circle" src="http://imageshack.com/a/img921/7214/Nozz65.png">
+            <h2>Ruby on Rails</h2>
+            <p>最快速高效地开发产品。</p>
+            <!-- <p><a class="btn btn-default" href="#">View details »</a></p> -->
+          </div>
+          <div class="col-md-4 text-center">
+            <img class="img-circle" src="http://imageshack.com/a/img921/7569/UBpHu7.jpg">
+            <h2>CSS</h2>
+            <p>精美样式布局，打磨拥有成就感的产品。</p>
+            <!-- <p><a class="btn btn-default" href="#">View details »</a></p> -->
+          </div>
+          <div class="col-md-4 text-center">
+            <img class="img-circle" src="http://imageshack.com/a/img923/5290/zBrAbG.png">
+            <h2>Sass</h2>
+            <p>从0到1做出属于自己的Sass产品。</p>
+            <!-- <p><a class="btn btn-default" href="#">View details »</a></p> -->
+          </div>
+        </div><!-- /.row -->
+
+        <!-- START THE FEATURETTES -->
+
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">Rails 环境配置。<span class="text-muted">迅速开始。</span></h2>
+          <p class="lead">零基础快速搭建出开发环境，开始运用 Rails 创建应用，并成功发布到 Heroku。
+</p>
+        </div>
+        <div class="col-md-5">
+          <a href="/courses/1">
+            <img class="featurette-image img-responsive center-block" src="http://imageshack.com/a/img924/6451/igTlXJ.jpg" alt="Generic placeholder image">
+          </a>
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7 col-md-push-5">
+          <h2 class="featurette-heading">Rails 初级教程。<span class="text-muted">上手开发。</span></h2>
+          <p class="lead">用最短的时间，学会如何做出一个投票网站，迅速上手Ruby on Rails。体会迅速开发一个网站的成就感。</p>
+        </div>
+        <div class="col-md-5 col-md-pull-7">
+          <a href="/courses/2">
+            <img class="featurette-image img-responsive center-block" src="http://imageshack.com/a/img923/9370/ta4i8n.jpg" alt="Generic placeholder image">
+          </a>
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">Rails 中级教程。<span class="text-muted">快速进阶。</span></h2>
+          <p class="lead">系统打磨技能，熟悉Rails的生态圈。快速成长为独挡一面的开发，拥有快速打造产品的能力。
+</p>
+        </div>
+        <div class="col-md-5">
+          <a href="/courses/3">
+            <img class="featurette-image img-responsive center-block" src="http://imageshack.com/a/img923/1890/HBFNrA.jpg" alt="Generic placeholder image">
+          </a>
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <!-- /END THE FEATURETTES -->
+
+      <!-- FOOTER -->
+        <footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2016  HackSchool</p>
+        <!-- <p>&copy; 2016  HackSchool &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p> -->
+      </footer>
+      </div><!-- /.container -->
+
+
+
+</body>
+</html>
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->

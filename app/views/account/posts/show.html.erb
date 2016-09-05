@@ -23,7 +23,7 @@
       <li class="list-group-item"><%= render_markdown_text(task.description) %></li>
       <% if task.works.where(user_id: current_user.id).count > 0 %>
         <li class="list-group-item">
-          <%= render_markdown_text(task.works.where(user_id: current_user.id)[0].content) %>
+          <%= render_markdown_text(task.works.where(user_id: current_user.id).first.content) %>
         </li>
       <% end %>
     </ul>

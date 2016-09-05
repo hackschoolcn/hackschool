@@ -15,7 +15,7 @@ class Account::ChaptersController < AccountController
 
     @chapters = @course.chapters.where(is_hidden: false)
     set_breadcrumbs
-    set_page_title "Rails 基础环境建设"
+    set_page_title "Rails 环境配置"
   end
 
   def search

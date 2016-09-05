@@ -29,21 +29,76 @@
 
 .course-hero-image {
     text-align: center;
-    padding: 40px 0;
+    padding: 130px 0;
 }
 .course-title-bg {
     padding: 20px;
-    background: rgba(0,0,0,0.3);
     margin-bottom: 10px;
 
     .course-title {
         text-align: center;
-        text-shadow: 0 1px 1px #000;
+        text-shadow: 0 10px 10px #000;
         color: #fff;
     }
 }
 
-.course-price{}
+.course-hero-image-bottom {
+    text-align: center;
+    padding: 90px 0;
+}
+.course-title-bg {
+    padding: 20px;
+    margin-bottom: 10px;
+
+    .course-title {
+        text-align: center;
+        text-shadow: 0 10px 10px #000;
+        color: #fff;
+    }
+}
+
+.banner-image{
+  position: absolute;
+  top: 0;
+  z-index: 1 ;
+  width: 100%;
+  height: 500px;
+}
+
+.banner{
+  position: relative;;
+  overflow: hidden;
+  width: 100%;
+  height: 500px;
+  z-index: 2;
+  top: 0;
+  background: rgba(4,28,58,0.5);
+}
+
+.banner-bottom {
+  position: relative;;
+  overflow: hidden;
+  width: 100%;
+  height: 350px;
+  z-index: 2;
+  top: 0;
+  background: rgba(4,28,58,0.5);
+}
+
+.banner-font{
+  position: absolute;
+  right: 0;
+  top: 100px;
+  bottom: 0;
+  left: 0;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.course-price{
+  color: #fff;
+  text-shadow: 0 3px 3px #000;
+}
 .courseContent {
     height: 200px;
     margin-top: 10px;

@@ -1,7 +1,7 @@
 class CoursesController < ApplicationController
   before_action :authenticate_user!, only: [:member_confirm_enroll, :join_favorite]
   before_action :check_enrolled_status, only: %i(enroll member_confirm_enroll)
-  layout "course"
+  layout "home-page", only:[:index]
 
   def index
     @courses = Course.all.where(is_hidden: false).order("created_at ASC")
@@ -16,6 +16,7 @@ class CoursesController < ApplicationController
       @course = course
       set_page_title @course.title
     end
+    render layout: "course"
   end
 
   def test
@@ -54,7 +55,7 @@ class CoursesController < ApplicationController
       redirect_to root_path
       return
     end
-    
+
     if current_user.valid_subscriber?
       current_user.enroll_course!(@course)
       flash[:notice] = "报名成功"

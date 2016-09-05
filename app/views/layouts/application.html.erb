@@ -11,16 +11,23 @@
 
     </head>
     <body>
-        <%= render "common/navbar" %>
+      <div class="navbar-wrapper">
         <div class="container">
-            <%= render "common/flashes" %>
-            <%= yield %>
-
+          <%= render "common/navbar" %>
         </div>
+      </div>
 
-    </body>
+      <div class="container">
+        <%= render "common/flashes" %>
+        <%= yield %>
+
+      </div>
+
+
+
+
     <div class="container">
         <%= render "common/footer" %>
     </div>
-
+  </body>
 </html>
