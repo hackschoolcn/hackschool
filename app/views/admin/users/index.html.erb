@@ -31,6 +31,7 @@
 	    		<% end %>
             <% else %>
 			<%= link_to("设为管理员", turn_to_admin_admin_user_url(user), :method => :post, :class => "btn btn-xs btn-default") %>
+      <%= link_to("删除用户", admin_user_path(user), class: "btn btn-xs btn-danger", method: :delete, data: {confirm: "你确认要删除此用户吗?"}) %>
 			<% end %>
        </td>
      </tr>
