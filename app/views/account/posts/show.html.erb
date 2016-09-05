@@ -2,18 +2,13 @@
   <%= render partial: "account/courses/top_bar", locals: { :course => @course } %>
 
 
-
 <div class="test-bg">
   <div class="container-fluid">
     <%= render_post_video_html(@post) %>
     <%= render_markdown_text(@post.article) %>
   </div>
 
-
-
-  <div class="clearfix">
-    <br><br>
-  </div>
+  <br><br><br>
 
   <% @post.tasks.each_with_index do |task, index| %>
    <div class="panel panel-default">

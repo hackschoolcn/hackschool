@@ -27,9 +27,7 @@ module Account::PostsHelper
 
   def render_post_video_html(post)
      if post.video
-     post.video.html_safe
-     else
-       
+      post.video.html_safe
      end
   end
 end
