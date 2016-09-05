@@ -1,2 +1,16 @@
+<%= render :partial => "account/courses/top_bar", :locals => { :course => @course } %>
 <h1> 提交作业 </h1>
+<div class="panel panel-default">
+   <!-- Default panel contents -->
+       <div class="panel-heading">
+        任务 - 对应章节：
+        <%= link_to(@task.post.title, account_chapter_post_path(@task.post.chapter, @task.post)) %>
+       </div>
+       <!-- List group -->
+       <ul class="list-group">
+          <li class="list-group-item">
+            <%= render_markdown_text(@task.description) %>
+          </li>
+       </ul>
+ </div>
 <%= render "form" %>

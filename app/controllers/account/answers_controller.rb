@@ -1,5 +1,5 @@
-class Account::AnswersController < ApplicationController
-  before_action :authenticate_user!, only: %i(new create)
+class Account::AnswersController < AccountController
+
 
   def new
     @question = Question.find(params[:question_id])

@@ -1,5 +1,4 @@
-class Account::WorksController < ApplicationController
-  before_action :authenticate_user!
+class Account::WorksController < AccountController
   before_action :find_task, only: %i(new create edit update)
   before_action :find_work, only: %i(show edit update destroy)
 
@@ -8,8 +7,11 @@ class Account::WorksController < ApplicationController
   end
 
   def new
+    @course = @task.course
     @work = Work.new
-    session[:course_id] = params[:course_id] # 记录来自哪个页面
+    session[:course_id] = params[:course_id] # 记录来自哪个页面\
+    drop_breadcrumb "课程作业", account_course_assignments_path(@course)
+    drop_breadcrumb "提交作业 - #{@task.post.title}"
   end
 
   def create
