@@ -8,7 +8,6 @@ class Account::OrdersController < AccountController
     drop_breadcrumb "我的订单", account_orders_path
 
     set_page_title "我的订单"
-    render layout: "user"
   end
 
   def show

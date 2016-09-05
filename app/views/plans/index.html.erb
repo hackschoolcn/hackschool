@@ -1,10 +1,170 @@
-<div class="col-md-6">
-  2000 RMB
-  <br>
-  <%= link_to("季费", quarterly_subscription_account_orders_path, method: :post, :class => "btn btn-success btn-block") %>
+<section>
+    <div class="banner-image-annual"></div>
+
+  <div class="banner">
+    <div class="banner-font">
+    <div class="course-title-bg">
+      <h1>年费会员</h1>
+      <h3>一键实现工程师之梦，让梦想不再是梦</h3>
+    </div>
+        <%= link_to("支付年费", yearly_subscription_account_orders_path, method: :post, class: "btn btn-lg btn-success") %>
+  </div>
 </div>
-<div class="col-md-6">
-  6000 RMB
-  <br>
-  <%= link_to("年费", yearly_subscription_account_orders_path, method: :post, :class => "btn btn-primary btn-block") %>
 </div>
+</section>
+
+<section>
+<br><br><br>
+<h2 class="text-center">什么是年费会员</h2>
+<br><br>
+<div class="row course-benefit course-content-block col-md-11 col-md-offset-2">
+
+    <div class="col-sm-3 text-center">
+        <div>
+            <img src="http://imageshack.com/a/img923/5290/zBrAbG.png" alt="" class="img-circle">
+        </div>
+
+        <h3>优惠特权</h3>
+    </div>
+
+    <div class="col-sm-3 text-center">
+        <div>
+            <img src="/images/member.jpg" class="img-circle";>
+        </div>
+        <h3 >社区特权</h3>
+    </div>
+
+    <div class="col-sm-3 text-center">
+        <div>
+            <img src="http://imageshack.com/a/img921/7569/UBpHu7.jpg" alt="" class="img-circle">
+        </div>
+
+        <h3>身份特权</h3>
+    </div>
+
+</div>
+</section>
+<br><br>
+
+<section style="background: rgb(247,247,247)">
+  <br><br><br>
+  <div class="row course-benefit course-content-block col-md-11 col-md-offset-2">
+    <div class="col-sm-3 text-center">
+      <div>
+        <img src="/images/icon.jpg" class="img-rounded";>
+        <p>全年免费参加HackSchool所有课程</p>
+      </div>
+    </div>
+
+    <div class="col-sm-3 text-center">
+      <div>
+        <img src="/images/icon.jpg" class="img-rounded";>
+        <p>可加入全栈工程师社群，有机会参与各种线上线下活动</p>
+      </div>
+    </div>
+
+    <div class="col-sm-3 text-center">
+      <div>
+        <img src="/images/icon.jpg" class="img-rounded";>
+        <p>在个人首页就可以看到年费会员的标志</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row course-benefit course-content-block col-md-11 col-md-offset-2">
+    <div class="col-sm-3 text-center">
+      <div>
+        <img src="/images/icon.jpg" class="img-rounded";>
+        <p>第一年加入年费会员后，第二年再加入时可优惠10%</p>
+      </div>
+    </div>
+
+    <div class="col-sm-3 text-center">
+      <div>
+        <img src="/images/icon.jpg" class="img-rounded";>
+        <p>加入社群后，不定期会有各种干货分享</p>
+      </div>
+    </div>
+
+    <div class="col-sm-3 text-center">
+      <div>
+        <img src="/images/icon.jpg" class="img-rounded";>
+        <p>有比普通会员更高的优先权</p>
+      </div>
+    </div>
+  </div>
+
+<br>
+  <h4 class="text-center">更多特权敬请期待</h4>
+<br><br>
+</section>
+
+<section>
+  <div class="container col-md-8 col-md-offset-2">
+    <div><h3>常见问题</h3></div>
+    <br>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+            Q: 如何才能加入年费会员？
+         </a>
+        </h4>
+      </div>
+      <div class="panel-body">只要点击绿色按钮“开通年费会员”，即可进入付款页面。付款成功后，您会收到一封邮件，这样您就成为年费会员。</div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+            Q: 年费会员与普通会员有什么区别？
+         </a>
+        </h4>
+      </div>
+      <div class="panel-body">年费会员除了能享受普通会员的一些特权之外，还可以享受的特权有很多。比如：<br>只要您是年费会员，在这一年中Hackschool开通的课程您都可以免费上；更优惠的是您可以加入“全栈工程师社群”，这个社群是收费的，但是对于年费会员是免费的。<br>关于社群里的干货，以及不定期的线上线下活动，相信会让您收获更多。</div>
+    </div>
+
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+            Q: 年费会员如何续费？
+         </a>
+        </h4>
+      </div>
+      <div class="panel-body">经过一年的体验后，您感觉我们的服务很到位、干货很多、成长很快，想继续续费成为下一年的年费会员。只需要点击<%=link_to("续费")%>，即可继续缴费成为年费会员，而且有优惠哦。</div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+            Q: 还有其它问题？
+         </a>
+        </h4>
+      </div>
+      <div class="panel-body">请联系我们的客服人员，我们会第一时间回复您。</div>
+    </div>
+
+  </div>
+</section>
+<br><br>
+
+<section class="banner-bottom">
+  <div class="banner-image-annual">
+  </div>
+
+  <div class="banner-bottom">
+    <div class="banner-font">
+    <div class="course-title-bg">
+      <h1>年费会员</h1>
+      <h3>一键实现工程师之梦，让梦想不再是梦</h3>
+    </div>
+        <%= link_to("支付年费", account_orders_path, class: "btn btn-lg btn-success") %>
+  </div>
+</div>
+</div>
+</section>
