@@ -41,13 +41,12 @@ gem "seo_helper"
 
 # add by chpwang
 gem "font-awesome-sass"
-gem "fog"
 gem "carrierwave-aws"
 gem "figaro"
 gem "aasm"
 gem "redcarpet"
 gem "acts_as_list"
-gem "auto_html"
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
