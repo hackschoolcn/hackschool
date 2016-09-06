@@ -42,7 +42,6 @@ gem "seo_helper"
 
 # add by chpwang
 gem "font-awesome-sass"
-gem "fog"
 gem "carrierwave-aws"
 gem "figaro"
 gem "aasm"

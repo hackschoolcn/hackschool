@@ -24,4 +24,10 @@ module Account::PostsHelper
       link_to("提交作业", new_account_task_work_path(task_id: task.id, course_id: course.id), class: "btn btn-xs btn-success pull-right")
     end
   end
+
+  def render_post_video_html(post)
+     if post.video
+      post.video.html_safe
+     end
+  end
 end

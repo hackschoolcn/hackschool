@@ -27,6 +27,8 @@
 </div>
 </div>
 </section>
+<%= render "share" %>
+<%= render "favorite" %>
 
 <br><br>
 <div class="clearfix">
@@ -37,7 +39,7 @@
 
 <section class="banner-bottom">
   <div class="banner-bottom banner-image">
-    <div class="course-hero-image-bottom banner-image" style="background: url(<%= @course.hero_image %>); background-size:cover;" ></div>
+    <div class="course-hero-image-bottom banner-image" style="background: url(<%= @course.hero_image %>); background-size:cover; " ></div>
   </div>
 
   <div class="banner-bottom">
@@ -48,7 +50,20 @@
         <h4 class="course-price"><%= render_course_price(@course) %>
         </h4>
     </div>
-        <%= link_to("现在立刻报名", enroll_course_path(@course), class: "btn btn-lg btn-success") %>
+
+        <% if @course.dismissed? %>
+        <%= link_to("本期课程已结束，请期待下一期", "#", class:"btn btn-default btn-lg disabled")%>
+        <% elsif current_user && current_user.enrolled_courses.include?(@course) %>
+          <%= link_to("立刻学习", account_course_chapters_path(@course), class:"btn btn-lg btn-success pull-center")%>
+        <% else  %>
+
+          <% if current_user && current_user.valid_subscriber? %>
+            <%= link_to("年费会员免费参加", enroll_course_path(@course), class:"btn btn-lg btn-primary pull-center")%>
+          <% else  %>
+            <%= link_to("立刻报名", enroll_course_path(@course), class:"btn btn-lg btn-danger pull-center")%>
+          <% end %>
+        <% end %>
+
   </div>
 </div>
 </div>

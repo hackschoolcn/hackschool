@@ -6,7 +6,6 @@
 <table class="table table-bordered">
 <thead>
     <tr>
-        <td>#</td>
         <td>课程名</td>
         <td>教师</td>
         <td>选项</td>
@@ -17,8 +16,7 @@
 <tbody>
     <% @courses.each do |course| %>
     <tr>
-        <td><%= course.id %></td>
-        <td>
+        <td class="col-md-5 col-sm-4 col-xs-2">
           <%= render_course_status(course) %>
           <%= link_to(course.title, admin_course_path(course)) %>
           <% if course.dismissed? %>

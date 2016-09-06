@@ -3,15 +3,17 @@
     <%= link_to("编辑", edit_admin_chapter_post_path(chapter_id: @chapter.id, post_id: @post.id, from_post_show: 1), :class => "btn btn-default") %>
   </div>
 </div>
-<div class="col-md-12">
-  <div class="container-fluid">
+
+<div class="container-fluid">
+  <div class="col-md-12">
+    <%= render_post_video_html(@post) %>
     <%= render_markdown_text(@post.article) %>
   </div>
 </div>
 
-<div class="clearfix">
-  <br><br>
-</div>
+
+<br><br><br>
+
 
 <% @post.tasks.each_with_index do |task, index| %>
  <div class="panel panel-default">

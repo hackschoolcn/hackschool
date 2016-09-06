@@ -1,10 +1,11 @@
 class CoursesController < ApplicationController
   before_action :authenticate_user!, only: [:member_confirm_enroll, :join_favorite]
   before_action :check_enrolled_status, only: %i(enroll member_confirm_enroll)
-  layout "home-page", only:[:index]
+
 
   def index
-    @courses = Course.all.where(is_hidden: false).order("created_at ASC")
+    @courses = Course.all.where(is_hidden: false)
+    render layout: "home-page"
   end
 
   def show
