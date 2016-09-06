@@ -124,7 +124,8 @@ img.scale {
 }
 
 /* Thin out the marketing headings */
-.course-heading {
+.enroll-heading {
+  font-size: 28px;
   font-weight: 250;
   line-height: 1;
   letter-spacing: -1px;
