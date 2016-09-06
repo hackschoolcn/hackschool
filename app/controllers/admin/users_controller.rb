@@ -41,19 +41,6 @@ class Admin::UsersController < AdminController
     drop_breadcrumb "#{@user.email} 课程作业 - #{@course.title}"
   end
 
-  # def turn_to_admin
-  #   @user = User.find(params[:id])
-  #   @user.admin!
-
-  #   redirect_to :back
-  # end
-
-  # def turn_to_user
-  #   @user = User.find(params[:id])
-  #   @user.user!
-
-  #   redirect_to :back
-  # end
 
   def turn_to_admin
     @user.is_admin = true
@@ -64,6 +51,14 @@ class Admin::UsersController < AdminController
   def turn_to_user
     @user.is_admin = false
     @user.save
+    redirect_to :back
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+
+    flash[:alert] = "用户 #{@user.email} 已被删除"
     redirect_to :back
   end
 

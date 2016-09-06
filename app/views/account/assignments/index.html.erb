@@ -3,7 +3,14 @@
 <%= render :partial => "account/courses/top_bar", :locals => { :course => @course } %>
 
 <h3><%= @course.title %></h3>
-
+<div>
+  <% if @course.tasks.count.positive? %>
+    <%= render_my_course_task_status(@course) %>
+    <%= render_progress_bar(current_user.completed_works_in_percent(@course)) %>
+  <% else %>
+    <%= link_to("此课程还没有布置任务【点击进入讨论区】", "https://github.com/hackschoolcn/class-1", target: "_blank") %>
+  <% end %>
+</div>
 <br>
 <% @course.tasks.each_with_index do |task, index| %>
  <div class="panel panel-default">
@@ -20,7 +27,7 @@
           </li>
           <% if task.works.where(user_id: current_user.id).count > 0 %>
           <li class="list-group-item">
-            <%= render_markdown_text(task.works.where(user_id: current_user.id)[0].content) %>
+            <%= render_markdown_text(task.works.where(user_id: current_user.id).first.content) %>
           </li>
           <% end %>
        </ul>
