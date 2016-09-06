@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
 <html>
+
   <head>
     <link rel="shortcut icon" href="/images/ruby.png" />
 
@@ -14,8 +15,8 @@
       <%= javascript_include_tag 'simplemde.min' %>
 
   </head>
-  <body style="padding-top :0px;">
-    
+  <body style="padding-top :0px; margin-bottom: -30px;">
+
     <%= render "common/navbar_home_page" %>
 
     <!-- Carousel
@@ -23,12 +24,9 @@
     <%= yield %>
 
     <!-- /END THE FEATURETTES -->
+<div class="margin-bottom: 0px;">
 
-    <!-- FOOTER -->
-    <div class="container">
-    <%= render "common/footer" %>
-    </div>
-
+</div>
 
     <script type='text/javascript'>
         (function(m, ei, q, i, a, j, s) {
@@ -44,6 +42,11 @@
         })(window, document, 'script', '_MEIQIA');
         _MEIQIA('entId', 30782);
     </script>
+
+    <!-- FOOTER -->
+    <%= render "common/home_page_footer" %>
+
+
 </body>
 </html>
 <!-- Bootstrap core JavaScript
