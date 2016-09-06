@@ -1,31 +1,55 @@
-<% if !current_user %>
-  <%= link_to("注册", new_user_registration_path, class:"btn btn-lg btn-primary") %>
-  <%= link_to("登陆", new_user_session_path, class:"btn btn-lg btn-default") %>
+<div class="navbar-wrapper">
+  <div class="container">
+    <nav class="navbar navbar-inverse navbar-static-top">
 
-<% else %>
-    <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+      <div class="navbar-header" style="padding-left: 1%;">
+        <%= link_to("HackSchool",courses_path, id: "logo") %>
+      </div>
 
-              <%= render_user_avatar_from_upload(current_user, :tiny) %>
-                  <% if !current_user.username == false %>
-                  Hi!, <%= current_user.username  %>
-                  <% else %>
-                  Hi!, <%= current_user.email %>
-                  <% end %>
-            <b class="caret"></b>
-          </a>
-          <ul class="dropdown-menu" style="background-color: black; color: #FFFFFF;">
+      <div class="collapse navbar-collapse" style="padding-right: 1%;">
+        <ul class="nav navbar-nav navbar-right">
+          <% if current_user %>
+          <li class="nav-item btn-group" data-behavior="notifications" data-notifications='<%= render template: "notifications/index", formats: [:json] %>'>
+           <a class="dropdown-toggle nav-link" type="button" data-behavior="notifications-link" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             <%= fa_icon "bell" %> <span data-behavior="unread-count"></span>
+           </a>
+          </li>
 
-            <% if current_user.admin? %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <%= render_user_avatar_from_upload(current_user, :tiny) %>
+                    <% if !current_user.username == false %>
+                    Hi!, <%= current_user.username  %>
+                    <% else %>
+                    Hi!, <%= current_user.email %>
+                    <% end %>
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+
+              <% if current_user.admin? %>
                 <li><%= link_to("管理员控制台", admin_courses_path) %> </li>
-            <% end %>
+              <% end %>
 
-            <li> <%= link_to("我的课程", account_courses_path) %> </li>
-            <li> <%= link_to("我的订单", account_orders_path ) %> </li>
-            <li> <%= link_to("个人设置", account_settings_path) %> </li>
+              <li> <%= link_to("我的课程", account_courses_path) %> </li>
+              <li> <%= link_to("我的订单", account_orders_path ) %> </li>
+              <li> <%= link_to("个人设置", account_settings_path) %> </li>
 
-            <li class="divider"></li>
-            <li><%= link_to("登出", destroy_user_session_path, method: :delete) %></li>
-          </ul>
-        </li>
-  <% end %>
+              <li class="divider"></li>
+              <li><%= link_to("登出", destroy_user_session_path, method: :delete) %></li>
+            </ul>
+          </li>
+
+          <% else %>
+
+            <li class="active"><a href="/users/sign_in">登陆</a></li>
+            <li><a href="/users/sign_up">注册</a></li>
+            
+          <% end %>
+        </ul>
+      </div>
+
+    </nav>
+
+  </div><!-- /container -->
+</div><!-- /navbar wrapper -->
