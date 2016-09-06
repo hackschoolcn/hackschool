@@ -1,17 +1,34 @@
-<div class="course-upper-bar well">
+<!-- <div class="course-upper-bar well">
   <div class="group container">
     <div class="row">
       <div class="col-md-1">
       </div>
-      <div class="col-md-3">
-          <%= render_course_image(@course) %>
-      </div>
+      <div class="col-md-3"> -->
+          <%#= render_course_image(@course) %>
+      <!-- </div> -->
 
-      <div class="col-md-8">
+      <!-- <div class="col-md-8">
         <h2> <%= @course.title %> </h2>
 
         <span class="price">¥ <%= render_course_price(@course) %></span>
       </div>
     </div>
+  </div>
+</div> -->
+
+<!-- <hr class="featurette-divider"> -->
+<hr class="course-divider">
+
+<div class="row featurette">
+  <div class="col-md-9 col-md-push-3">
+    <h2 class="course-heading"><%= @course.title %>
+    </h2>
+    <p class="lead"><%= @course.description %></p>
+  </div>
+  <%# end %>
+  <div class="col-md-3 col-md-pull-9">
+
+    <!-- <img class="featurette-image img-responsive center-block" src="http://imageshack.com/a/img923/9370/ta4i8n.jpg" alt="Generic placeholder image"> -->
+     <%= render_course_image(@course, :medium) %>
   </div>
 </div>
