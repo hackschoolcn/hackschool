@@ -8,7 +8,7 @@
     <div class="course-title-bg">
       <h1 class="course-title"><%= @course.hero_title%></h1>
       <br>
-      <h4 class="course-price"><%= render_course_price(@course) %></h4>
+      <h4 class="course-price">¥ <%= render_course_price(@course) %></h4>
   </div>
 
     <% if @course.dismissed? %>
@@ -47,7 +47,7 @@
     <div class="course-title-bg">
         <h1 class="course-title"><%= @course.hero_title%></h1>
         <br>
-        <h4 class="course-price"><%= render_course_price(@course) %>
+        <h4 class="course-price">¥ <%= render_course_price(@course) %>
         </h4>
     </div>
 

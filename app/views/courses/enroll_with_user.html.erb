@@ -1,55 +1,105 @@
 <%= render :partial => "upper_bar" %>
-<%= render :partial => "courses/steps/hint_2" %>
 
-<div class="container">
+<section class="layer plans">
+    <section>
 
-    <div class="col-md-6">
-        <div class="panel panel-success">
-            <div class="panel-heading">
-                <h3 class="panel-title">单节课程购买</h3>
-            </div>
-            <div class="panel-body">
+        <section class="third lift plan-tier" onclick="location.href='#';">
 
-                <h2 class="text-center"> <%= render_course_price(@course) %> </h2>
+            <h4>单个课程</h4>
+            <h5>
+                <sup class="superscript">¥</sup>
+                <span class="plan-price"><%= render_course_price(@course) %></span>
+                <sub>
+                    /次</sub>
+            </h5>
 
-                <ul>
-                  <h3><li>手把手教你如何从0基础做出自己想做的网站</li></h3>
-                  <h3><li>专业FAQ数据库支撑，解答学习疑惑</li></h3>
-                  <h3><li>线上班级制度，让你在线上也能享受线下的学习氛围，线上班级老师定期分享课程精华知识，让你成长犹如坐火箭。</li></h3>
-                  <h3><li>GITHUB作为问答区域，你提出的问题将被同学或老师第一时间解答及时更新教材，使用软件最新版本，强大的后台维护团队</li></h3>
-
-                </ul>
-
-                <%= link_to("单次购买", single_purchase_account_orders_path(:course_id => @course.id) , method: :post, :class => "btn btn-success btn-block") %>
-
-
-
-            </div>
-        </div>
-
-    </div>
-
-    <div class="col-md-6">
-
-      <div class="panel panel-info">
-          <div class="panel-heading">
-              <h3 class="panel-title">年费</h3>
-          </div>
-          <div class="panel-body">
-            <h2 class="text-center"> ¥6000 </h2>
 
             <ul>
-              <h3><li>除了左侧所有的好处</li></h3>
-              <h3><li>全年免费参加HackSchool所有课程</li></h3>
-              <h3><li>加入全栈工程师社群，这里有牛逼的世界级程序员和上进的学员们</li></h3>
+                <li>
+                    <strong>1</strong>
+                    个课程</li>
+                <li>
+                    <strong>开课期</strong>
+                    有效</li>
+                <li>7 天
+                    <strong>免费试用</strong>
+                </li>
+                <li><br></li>
+                <li><br></li>
+                <li><%= link_to("单次购买", single_purchase_account_orders_path(:course_id => @course.id) , method: :post, :class => "btn btn-default btn-lg") %></li>
+
             </ul>
 
-            <%= link_to("年费", yearly_subscription_from_course_view_account_orders_path(course_id: @course.id), method: :post, :class => "btn btn-primary btn-block") %>
+        </section>
 
-          </div>
-      </div>
+        <section class="third lift plan-tier callout" onclick="location.href='#';">
 
-    </div>
+            <h6>最受欢迎</h6>
+            <h4>年费会员</h4>
+            <h5>
+                <sup class="superscript">¥</sup>
+                <span class="plan-price">500</span>
+                <sub>
+                    /月</sub>
+            </h5>
 
 
-</div>
+            <total>¥6000/年</total>
+
+            <ul>
+                <li>
+                    <strong>所有</strong>
+                    课程</li>
+                <li>
+                    <strong>整年</strong>
+                    有效</li>
+                <li>7 天
+                    <strong>免费试用</strong>
+                </li>
+                <li>
+                    加入 <strong>社群</strong>
+                    </li>
+                <li><br></li>
+                <li><%= link_to("年费会员", yearly_subscription_from_course_view_account_orders_path(course_id: @course.id), method: :post, :class => "btn btn-lg btn-pay") %></li>
+
+            </ul>
+
+        </section>
+
+        <section class="third lift plan-tier" onclick="location.href='#';">
+
+            <h4>特别会员</h4>
+            <h5>
+                <sup class="superscript">¥</sup>
+                <span class="plan-price">750</span>
+                <sub>
+                    /月</sub>
+            </h5>
+
+
+            <total>¥9000/年</total>
+
+            <ul>
+                <li>
+                    <strong>所有</strong>
+                    课程</li>
+                <li>
+                    <strong>整年</strong>
+                    有效</li>
+                <li>7 天
+                    <strong>免费试用</strong>
+                </li>
+                <li>
+                    加入 <strong>社群</strong>
+                    </li>
+                <li>
+                    <strong>Xdite</strong>
+                    每月指导</li>
+                <li><%= link_to("特别会员", "/" , method: :post, :class => "btn btn-default btn-lg") %></li>
+            </ul>
+
+        </section>
+
+        <div style="clear: both"></div>
+    </section>
+</section>
