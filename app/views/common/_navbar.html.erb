@@ -24,7 +24,13 @@
                 <% else %>       
               <%= render_user_avatar_from_upload(current_user, :tiny) %>
                 <% end %>
-                
+
+                <% if !current_user.username == false %>
+                    Hi!, <%= current_user.username  %>
+                    <% else %>
+                    Hi!, <%= current_user.email %>
+                    <% end %>
+
               <b class="caret"></b>
                 </a>
 
