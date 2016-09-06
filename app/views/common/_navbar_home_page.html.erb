@@ -17,7 +17,15 @@
 
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <%= render_user_avatar_from_upload(current_user, :tiny) %>
+
+                 <% if current_user.valid_subscriber? %> 
+                <%= render_user_avatar_from_upload(current_user, :tiny) %>                     
+            <img class="watermark" src="/images/fallback/letter-146016.png"></img>
+                <% else %>       
+              <%= render_user_avatar_from_upload(current_user, :tiny) %>
+                <% end %>
+                
+
                     <% if !current_user.username == false %>
                     Hi!, <%= current_user.username  %>
                     <% else %>
@@ -33,6 +41,7 @@
 
               <li> <%= link_to("我的课程", account_courses_path) %> </li>
               <li> <%= link_to("我的订单", account_orders_path ) %> </li>
+              <li> <%= link_to("我的收藏", account_favorites_path) %></li>
               <li> <%= link_to("个人设置", account_settings_path) %> </li>
 
               <li class="divider"></li>
