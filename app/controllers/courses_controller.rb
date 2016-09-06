@@ -5,6 +5,7 @@ class CoursesController < ApplicationController
 
   def index
     @courses = Course.all.where(is_hidden: false)
+    render layout: "home-page"
   end
 
   def show

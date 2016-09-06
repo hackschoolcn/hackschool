@@ -65,11 +65,21 @@
   height: 500px;
 }
 
+.banner-image-annual{
+  position: absolute;
+  top: 0;
+  background-size: cover;
+  z-index: 1 ;
+  width: 100%;
+  height: 500px;
+  background: url(/images/VIP.jpg) center;
+}
+
 .banner{
   position: relative;;
   overflow: hidden;
   width: 100%;
-  height: 500px;
+  height: 450px;
   z-index: 2;
   top: 0;
   background: rgba(4,28,58,0.5);
@@ -93,6 +103,8 @@
   left: 0;
   margin: 0 auto;
   text-align: center;
+  color: #fff;
+  text-shadow: 2px 2px 2px #000000;
 }
 
 .course-price{

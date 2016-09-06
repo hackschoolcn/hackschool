@@ -8,13 +8,28 @@
   <div class="panel-body">
         <ul class="media-list">
             <li class="media">
+              <% if @order.course %>
                 <div class="media-left">
                   <%= render_course_image(@order.course, :thumb) %>
                 </div>
                 <div class="media-body">
                   <p class="media-heading lead"><strong><%= @order.course.title %></strong></p>
-                  <p><%= @order.course.description %></p>
+                  <p><%= render_markdown_text(@order.course.description) %></p>
                 </div>
+              <% else %>
+                <div class="media-left">
+                  <%= image_tag("/course_place_holder.png") %>
+                </div>
+                <div class="media-body">
+                  <p class="media-heading lead"><strong>年费会员</strong></p>
+                  <p>
+                    <ul>
+                      <li>全年免费参加 HackSchool 所有课程</li>
+                      <li>加入社群后，不定期会有各种干货分享</li>
+                      <li>可加入全栈工程师社群，有机会参与各种线上线下活动</li>
+                    </ul>
+                  </p>
+              <% end %>
               </li>
         </ul>
     <br>
