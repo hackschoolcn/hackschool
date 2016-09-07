@@ -13,14 +13,16 @@
 <% @orders.each do |order| %>
   <tbody>
     <tr>
-      <td> <%= order.token[0..12] %> </td>
+      <td> <%= link_to(order.token[0..12], account_order_path(order.token)) %> </td>
       <td> <%= render_order_description(order) %></td>
       <td> ¥ <%= order.price %> </td>
       <td>
-        <% if order.paid? %>
-            已支付
+        <% if order.unpaid? %>
+          未支付
+        <% elsif order.paid? %>
+          已支付
         <% else %>
-            未支付
+          订单已取消
         <% end %>
       </td>
       <td>
