@@ -38,7 +38,47 @@ class Post < ApplicationRecord
     is_hidden
   end
 
-  def prev_post
+
+  def may_prev?
+    post = self
+    prev_post = post.get_prev_post
+
+    while prev_post && (prev_post.hidden? || prev_post.chapter.hidden?)
+      post = prev_post
+      prev_post = post.get_prev_post
+    end
+
+    if prev_post && !(prev_post.hidden? || prev_post.chapter.hidden?) # 检查是否找到最后都没找到已发布的
+      return prev_post
+    else
+      return false
+    end
+  end
+
+
+  def may_next?
+    post = self
+    next_post = post.get_next_post
+
+
+    while next_post && (next_post.chapter.hidden? || next_post.hidden?)
+      post = next_post
+      next_post = post.get_next_post
+    end
+
+    if next_post && !(next_post.hidden? || next_post.chapter.hidden?) # 检查是否找到最后都没找到已发布的
+      return next_post
+    else
+      return false
+    end
+  end
+
+
+  protected
+
+  def get_prev_post
+    post = self
+    chapter = post.chapter
 
     if post.first?
       if chapter.first?
@@ -50,44 +90,23 @@ class Post < ApplicationRecord
     else
       return  post.higher_item
     end
-
   end
 
 
-  def may_prev?
-    chapter = self.chapter
+  def get_next_post
     post = self
+    chapter = post.chapter
 
-    while post.prev_post && (prev_post.chapter.hidden? || prev_post.hidden?)
-
-      prev_post = prev_post.higher_item
-
-    end
-
-    if prev_post.first? && (prev_post.chapter.hidden? || prev_post.hidden?) # 检查是否找到最后都没找到已发布的
-      return false
+    if post.last?
+      if chapter.last?
+        return false
+      else
+        chapter = chapter.lower_item
+        return chapter.posts.first
+      end
     else
-      return prev_post
+      return  post.lower_item
     end
   end
 
-
-  def may_next?
-
-    if self.last?
-     return false
-    end 
-
-    next_post = self.lower_item
-
-    while (next_post.chapter.hidden? || next_post.hidden?) && !next_post.last?
-      next_post = next_post.lower_item
-    end
-
-    if index > course.posts.length - 2 && (next_post.chapter.hidden? || next_post.hidden?) # 检查是否找到最后都没找到已发布的
-      return false
-    else
-      return next_post
-    end
-  end
 end
