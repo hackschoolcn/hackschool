@@ -75,7 +75,7 @@ puts "生成作业 - 第二章第 4 节"
 Post.create([course_id: 1, chapter_id: 2, title: "在 Homebrew 安装 git", article: "## 在 Homebrew 安装 git\r\n\r\n#### Git 简介\r\n\r\n***\r\n\r\nGit 是目前最流行的原始码控制软件。你可以把 Git 想象成是程式码的时光备份机器。\r\n\r\n\r\n\r\n#### 安装 Git\r\n\r\n***\r\n\r\n使用 Homebrew 安装 Git\r\n\r\n在 Terminal 窗口中输入：\r\n\r\n`brew install git`\r\n\r\n", is_hidden: false])
 puts "生成第二章第 5 节"
 
-Task.create([course_id: 1, post_id: 7, due_time: Time.zone.now + 1.month, description: "\r\n请输入\r\n\r\ngit —version\r\n\r\n贴出你的 git 版本号"])
+Task.create([course_id: 1, post_id: 7, due_time: Time.zone.now + 1.month, description: "\r\n请输入\r\n\r\n`git --version`\r\n\r\n贴出你的 git 版本号"])
 puts "生成作业 - 第二章第 5 节"
 
 Post.create([course_id: 1, chapter_id: 2, title: "安装 ImageMagick", article: "## 安装 ImageMagick\r\n\r\n#### ImageMagick 简介\r\n\r\n***\r\n\r\nImageMagick 是专门处理图片的函式库。以后我们在用 Ruby 的时候会常常需要使用 ImageMagick 相关的功能，所以通常在初期配置环境时，我们也会安装ImageMagick。\r\n\r\n\r\n\r\n#### 安装 ImageMagick\r\n\r\n***\r\n\r\n`brew install imagemagick`\r\n\r\n", is_hidden: false])
