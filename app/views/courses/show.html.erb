@@ -1,62 +1,64 @@
 <!--读取图片并赋予背景  background: rgb(78,94,92);-->
-<section class="banner">
-    <div class=" banner-image" ></div>
+<div class="content-footer-height180"> 
+  <section class="banner">
+      <div class=" banner-image" ></div>
 
-  <div class="banner">
-   <div class="banner-font">
-    <div class="course-title-bg">
-      <h1 class="course-title"><%= @course.hero_title%></h1>
-      <br>
-      <h4 class="course-price">¥ <%= render_course_price(@course) %></h4>
-  </div>
-
-    <% if @course.dismissed? %>
-        <%= link_to("本期课程已结束，请期待下一期", "#", class:"btn btn-default btn-lg disabled")%>
-    <% elsif current_user && current_user.enrolled_courses.include?(@course) %>
-      <%= link_to("立刻学习", account_course_chapters_path(@course), class:"btn btn-lg btn-success pull-center")%>
-    <% else  %>
-
-      <% if current_user && current_user.valid_subscriber? %>
-        <%= link_to("年费会员免费参加", enroll_course_path(@course), class:"btn btn-lg btn-primary pull-center")%>
-      <% else  %>
-        <%= link_to("立刻报名", enroll_course_path(@course), class:"btn btn-lg btn-danger pull-center")%>
-      <% end %>
-    <% end %>
-  </div>
- </div>
-</section>
-<%= render "share" %>
-<%= render "favorite" %>
-
-<br><br>
-<div class="clearfix">
-  <div class="col-md-12">
-    <%= render "courses/course_detail" %>
-  </div>
-</div>
-
-
-<section class="banner-image-back">
-  <div class="banner-bottom">
-    <div class="banner-font">
+    <div class="banner">
+     <div class="banner-font">
+      <div class="course-title-bg">
         <h1 class="course-title"><%= @course.hero_title%></h1>
         <br>
-        <h4 class="course-price">¥ <%= render_course_price(@course) %>
-        </h4>
+        <h4 class="course-price">¥ <%= render_course_price(@course) %></h4>
+    </div>
 
-        <% if @course.dismissed? %>
-        <%= link_to("本期课程已结束，请期待下一期", "#", class:"btn btn-default btn-lg disabled")%>
-        <% elsif current_user && current_user.enrolled_courses.include?(@course) %>
-          <%= link_to("立刻学习", account_course_chapters_path(@course), class:"btn btn-lg btn-success pull-center")%>
+      <% if @course.dismissed? %>
+          <%= link_to("本期课程已结束，请期待下一期", "#", class:"btn btn-default btn-lg disabled")%>
+      <% elsif current_user && current_user.enrolled_courses.include?(@course) %>
+        <%= link_to("立刻学习", account_course_chapters_path(@course), class:"btn btn-lg btn-success pull-center")%>
+      <% else  %>
+
+        <% if current_user && current_user.valid_subscriber? %>
+          <%= link_to("年费会员免费参加", enroll_course_path(@course), class:"btn btn-lg btn-primary pull-center")%>
         <% else  %>
-
-          <% if current_user && current_user.valid_subscriber? %>
-            <%= link_to("年费会员免费参加", enroll_course_path(@course), class:"btn btn-lg btn-primary pull-center")%>
-          <% else  %>
-            <%= link_to("立刻报名", enroll_course_path(@course), class:"btn btn-lg btn-danger pull-center")%>
-          <% end %>
+          <%= link_to("立刻报名", enroll_course_path(@course), class:"btn btn-lg btn-danger pull-center")%>
         <% end %>
-
+      <% end %>
+    </div>
    </div>
+  </section>
+  <%= render "share" %>
+  <%= render "favorite" %>
+
+  <br><br>
+  <div class="clearfix">
+    <div class="col-md-12">
+      <%= render "courses/course_detail" %>
+    </div>
   </div>
-</section>
+
+
+  <section class="banner-image-back">
+    <div class="banner-bottom">
+      <div class="banner-font">
+          <h1 class="course-title"><%= @course.hero_title%></h1>
+          <br>
+          <h4 class="course-price">¥ <%= render_course_price(@course) %>
+          </h4>
+
+          <% if @course.dismissed? %>
+          <%= link_to("本期课程已结束，请期待下一期", "#", class:"btn btn-default btn-lg disabled")%>
+          <% elsif current_user && current_user.enrolled_courses.include?(@course) %>
+            <%= link_to("立刻学习", account_course_chapters_path(@course), class:"btn btn-lg btn-success pull-center")%>
+          <% else  %>
+
+            <% if current_user && current_user.valid_subscriber? %>
+              <%= link_to("年费会员免费参加", enroll_course_path(@course), class:"btn btn-lg btn-primary pull-center")%>
+            <% else  %>
+              <%= link_to("立刻报名", enroll_course_path(@course), class:"btn btn-lg btn-danger pull-center")%>
+            <% end %>
+          <% end %>
+
+     </div>
+    </div>
+  </section>
+</div>
