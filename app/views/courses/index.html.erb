@@ -16,7 +16,7 @@
         <p>一站式实现全栈工程师之梦，开启梦想之旅。</p>
         <p>
           <% unless current_user && current_user.valid_subscriber? %>
-            <%= link_to("加入年费会员", plans_path, class: "btn btn-lg btn-primary") %>
+          <%= link_to("加入年费会员", plans_path, class: "btn btn-lg btn-primary") %>
           <% end %>
         </p>
         <br><br><br><br><br>
@@ -31,7 +31,7 @@
           <p>学习进度实时查看、迅速提升技能的挑战。</p>
           <p>
             <% unless current_user && current_user.valid_subscriber? %>
-              <%= link_to("加入年费会员", plans_path, class: "btn btn-lg btn-primary") %>
+            <%= link_to("加入年费会员", plans_path, class: "btn btn-lg btn-primary") %>
             <% end %>
           </p>
           <br><br><br><br><br>

@@ -7,6 +7,8 @@
     width: 360px;
     height: 390px;
     overflow: hidden;
+    display: block;
+    // margin: auto;
 }
 
 .course-info {
@@ -139,7 +141,8 @@
 /* course-show-page */
 
 .course-upper-bar{
-  height: 180px;
+  height: 240px;
+  margin-top: 30px;
   h2{
     color: black;
     margin-bottom: 30px;

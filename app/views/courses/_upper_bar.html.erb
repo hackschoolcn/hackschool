@@ -1,17 +1,13 @@
-<div class="course-upper-bar well">
-  <div class="group container">
-    <div class="row">
-      <div class="col-md-1">
-      </div>
-      <div class="col-md-3">
-          <%= render_course_image(@course) %>
-      </div>
 
-      <div class="col-md-8">
-        <h2> <%= @course.title %> </h2>
+<hr class="course-divider">
+    <div class="thumbnail course-item">
+        <%= render_course_image(@course, :medium) %>
 
-        <span class="price"><%= render_course_price(@course) %></span>
-      </div>
+        <div class="course-info">
+            <h3 class="course-title"><%= @course.title %></h3>
+            <div class="course-author"> by <%= @course.teacher_name %> </div>
+            <div class="course-description group">
+              <%= render_course_one_sentence_summary(@course) %>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
