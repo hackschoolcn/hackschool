@@ -12,8 +12,8 @@
       <div class="banner-image" style="background:url(images/slide1.jpg) center;"></div>
 
       <div class="carousel-caption">
-        <h1>全栈开发</h1>
-        <p>8周密集训练前端、后端技能。</p>
+        <h1>全栈工程师计划</h1>
+        <p>一站式实现全栈工程师之梦，开启梦想之旅。</p>
         <p>
           <% unless current_user && current_user.valid_subscriber? %>
             <%= link_to("加入年费会员", plans_path, class: "btn btn-lg btn-primary") %>
@@ -74,20 +74,20 @@
   <div class="row">
     <div class="col-md-4 text-center">
       <img class="img-circle" src="http://imageshack.com/a/img921/7214/Nozz65.png">
-      <h2>Ruby on Rails</h2>
-      <p>最快速高效地开发产品。</p>
-      <!-- <p><a class="btn btn-default" href="#">View details »</a></p> -->
-    </div>
-    <div class="col-md-4 text-center">
-      <img class="img-circle" src="http://imageshack.com/a/img921/7569/UBpHu7.jpg">
-      <h2>CSS</h2>
-      <p>精美样式布局，打磨拥有成就感的产品。</p>
+      <h2>Rails</h2>
+      <p>最高效的WEB编程语言</p>
       <!-- <p><a class="btn btn-default" href="#">View details »</a></p> -->
     </div>
     <div class="col-md-4 text-center">
       <img class="img-circle" src="http://imageshack.com/a/img923/5290/zBrAbG.png">
       <h2>Sass</h2>
-      <p>从0到1做出属于自己的Sass产品。</p>
+      <p>最完美的网页布局语言</p>
+      <!-- <p><a class="btn btn-default" href="#">View details »</a></p> -->
+    </div>
+    <div class="col-md-4 text-center">
+      <img class="img-circle" src="http://imageshack.com/a/img923/5290/zBrAbG.png">
+      <h2>Saas</h2>
+      <p>最专业的软件即是服务</p>
       <!-- <p><a class="btn btn-default" href="#">View details »</a></p> -->
     </div>
   </div>
@@ -96,56 +96,59 @@
   <!-- START THE FEATURETTES -->
 
   <hr class="featurette-divider">
-
+<%= link_to(course_path(@courses.first)) do %>
   <div class="row featurette">
-    <%= link_to(course_path(@courses.first)) do %>
+
     <div class="col-md-7">
-      <h2 class="featurette-heading">Rails 环境配置。<span class="text-muted">迅速开始。</span>
+      <h2 class="featurette-heading">Rails 环境配置 <span class="text-muted">即刻开始</span>
       </h2>
-      <p class="lead">零基础快速搭建出开发环境，开始运用 Rails 创建应用，并成功发布到 Heroku。
+      <p class="lead text-muted">零基础快速搭建 Mac 开发环境，尝试运用 Rails 创建应用程式，并发布成为一个真实的网站。
       </p>
     </div>
-    <% end %>
+
     <div class="col-md-5">
 
       <img class="featurette-image img-responsive center-block" src="http://imageshack.com/a/img924/6451/igTlXJ.jpg" alt="Generic placeholder image">
 
     </div>
+    <% end %>
 
   </div>
 
   <hr class="featurette-divider">
-
+<%= link_to(course_path(@courses.second)) do %>
   <div class="row featurette">
-    <%= link_to(course_path(@courses.second)) do %>
+
     <div class="col-md-7 col-md-push-5">
-      <h2 class="featurette-heading">Rails 初级教程。<span class="text-muted">上手开发。</span>
+      <h2 class="featurette-heading">Rails 初级教程 <span class="text-muted">马上开发 </span>
       </h2>
-      <p class="lead">用最短的时间，学会如何做出一个投票网站，迅速上手Ruby on Rails。体会迅速开发一个网站的成就感。</p>
+      <p class="lead text-muted">用最短的时间，实际开发出一个投票网站，体悟实作网站的成就感。迅速上手 Ruby on Rails。</p>
     </div>
-    <% end %>
+
     <div class="col-md-5 col-md-pull-7">
 
       <img class="featurette-image img-responsive center-block" src="http://imageshack.com/a/img923/9370/ta4i8n.jpg" alt="Generic placeholder image">
 
     </div>
+      <% end %>
   </div>
 
   <hr class="featurette-divider">
-
+<%= link_to(course_path(@courses.third)) do %>
   <div class="row featurette">
-    <%= link_to(course_path(@courses.third)) do %>
+
     <div class="col-md-7">
-      <h2 class="featurette-heading">Rails 中级教程。<span class="text-muted">快速进阶。</span>
+      <h2 class="featurette-heading">Rails 中级教程 <span class="text-muted">快速进阶 </span>
       </h2>
-      <p class="lead">系统打磨技能，熟悉Rails的生态圈。快速成长为独挡一面的开发，拥有快速打造产品的能力。</p>
+      <p class="lead text-muted">系统打磨技能，熟悉 Rails 生态圈。快速成长为独挡一面、拥有快速打造产品能力的开发者。</p>
     </div>
-    <% end %>
+
     <div class="col-md-5">
 
       <img class="featurette-image img-responsive center-block" src="http://imageshack.com/a/img923/1890/HBFNrA.jpg" alt="Generic placeholder image">
 
     </div>
+    <% end %>
   </div>
 
   <%= render "service" %>
