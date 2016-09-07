@@ -38,46 +38,75 @@ class Post < ApplicationRecord
     is_hidden
   end
 
-  def current_index
-    course.posts.find_index(self)
-  end
 
   def may_prev?
-    index = current_index
+    post = self
+    prev_post = post.get_prev_post
 
-    return false unless index.positive?
-
-    index -= 1
-    prev_post = course.posts[index]
-
-    while (prev_post.chapter.hidden? || prev_post.hidden?) && index.positive?
-      index -= 1
-      prev_post = course.posts[index]
+    while prev_post && (prev_post.hidden? || prev_post.chapter.hidden?)
+      post = prev_post
+      prev_post = post.get_prev_post
     end
 
-    if index < 1 && (prev_post.chapter.hidden? || prev_post.hidden?) # 检查是否找到最后都没找到已发布的
-      false
+    if prev_post && !(prev_post.hidden? || prev_post.chapter.hidden?) # 检查是否找到最后都没找到已发布的
+      return prev_post
     else
-      prev_post
+      return false
     end
   end
+
 
   def may_next?
-    index = current_index
+    post = self
+    next_post = post.get_next_post
 
-    return false unless index < course.posts.length - 1
 
-    index += 1
-    next_post = course.posts[index]
-    while (next_post.chapter.hidden? || next_post.hidden?) && index < course.posts.length - 1
-      index += 1
-      next_post = course.posts[index]
+    while next_post && (next_post.chapter.hidden? || next_post.hidden?)
+      post = next_post
+      next_post = post.get_next_post
     end
 
-    if index > course.posts.length - 2 && (next_post.chapter.hidden? || next_post.hidden?) # 检查是否找到最后都没找到已发布的
-      false
+    if next_post && !(next_post.hidden? || next_post.chapter.hidden?) # 检查是否找到最后都没找到已发布的
+      return next_post
     else
-      next_post
+      return false
     end
   end
+
+
+  protected
+
+  def get_prev_post
+    post = self
+    chapter = post.chapter
+
+    if post.first?
+      if chapter.first?
+        return false
+      else
+        chapter = chapter.higher_item
+        return chapter.posts.last
+      end
+    else
+      return  post.higher_item
+    end
+  end
+
+
+  def get_next_post
+    post = self
+    chapter = post.chapter
+
+    if post.last?
+      if chapter.last?
+        return false
+      else
+        chapter = chapter.lower_item
+        return chapter.posts.first
+      end
+    else
+      return  post.lower_item
+    end
+  end
+
 end
