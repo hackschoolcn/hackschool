@@ -97,6 +97,9 @@ class CoursesController < ApplicationController
     redirect_to :back
   end
 
+  def annual_page
+  end
+
   protected
 
   def check_enrolled_status
