@@ -38,46 +38,56 @@ class Post < ApplicationRecord
     is_hidden
   end
 
-  def current_index
-    course.posts.find_index(self)
+  def prev_post
+
+    if post.first?
+      if chapter.first?
+        return false
+      else
+        chapter = chapter.higher_item
+        return chapter.posts.last
+      end
+    else
+      return  post.higher_item
+    end
+
   end
+
 
   def may_prev?
-    index = current_index
+    chapter = self.chapter
+    post = self
 
-    return false unless index.positive?
+    while post.prev_post && (prev_post.chapter.hidden? || prev_post.hidden?)
 
-    index -= 1
-    prev_post = course.posts[index]
+      prev_post = prev_post.higher_item
 
-    while (prev_post.chapter.hidden? || prev_post.hidden?) && index.positive?
-      index -= 1
-      prev_post = course.posts[index]
     end
 
-    if index < 1 && (prev_post.chapter.hidden? || prev_post.hidden?) # 检查是否找到最后都没找到已发布的
-      false
+    if prev_post.first? && (prev_post.chapter.hidden? || prev_post.hidden?) # 检查是否找到最后都没找到已发布的
+      return false
     else
-      prev_post
+      return prev_post
     end
   end
 
+
   def may_next?
-    index = current_index
 
-    return false unless index < course.posts.length - 1
+    if self.last?
+     return false
+    end 
 
-    index += 1
-    next_post = course.posts[index]
-    while (next_post.chapter.hidden? || next_post.hidden?) && index < course.posts.length - 1
-      index += 1
-      next_post = course.posts[index]
+    next_post = self.lower_item
+
+    while (next_post.chapter.hidden? || next_post.hidden?) && !next_post.last?
+      next_post = next_post.lower_item
     end
 
     if index > course.posts.length - 2 && (next_post.chapter.hidden? || next_post.hidden?) # 检查是否找到最后都没找到已发布的
-      false
+      return false
     else
-      next_post
+      return next_post
     end
   end
 end
