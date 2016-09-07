@@ -117,7 +117,29 @@ img.scale {
   letter-spacing: -1px;
 }
 
+/* Cources Entroll
+-----------------------*/
+.course-divider {
+  margin: 30px 0; /* Space out the Bootstrap <hr> more */
+}
 
+/* Thin out the marketing headings */
+.enroll-heading {
+  font-size: 28px;
+  font-weight: 250;
+  line-height: 1;
+  letter-spacing: -1px;
+  text-align: left;
+  margin-top: -5px;
+}
+
+.course-heading .course-price-font {
+  /*font-size: 28px;*/
+  font-weight: 250;
+  line-height: 1;
+  letter-spacing: -1px;
+  text-align: center;
+}
 /* RESPONSIVE CSS
 -------------------------------------------------- */
 

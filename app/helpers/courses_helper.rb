@@ -30,8 +30,9 @@ module CoursesHelper
   end
 
   def render_course_price(course)
-    "¥ #{course.price} RMB "
+    "#{course.price}"
   end
+
 
   def render_course_one_sentence_summary(course)
     course.one_sentence_summary
