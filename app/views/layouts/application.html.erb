@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
   <head>
       <%= render_page_title_tag %>
       <%= csrf_meta_tags %>
@@ -15,16 +16,19 @@
       <%= render "common/navbar" %>
     </div>
 
+
     <div class="clearfix">
       <%= render "common/flashes" %>
     </div>
+
 
     <div class="container">
     <%= yield %>
     </div>
 
-    <div class="container">
-      <%= render "common/footer" %>
-    </div>
+
+  <%= render "common/footer" %>
+
   </body>
+
 </html>

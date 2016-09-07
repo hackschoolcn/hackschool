@@ -19,14 +19,24 @@
 @import "font-awesome";
 @import "home-page-carousel";
 @import "home-page-bootstrap.min";
+@import "home-page-footer";
 // body { background-image: url("body.jpg"); }
-
+html {
+ min-height: 100%;
+ position: relative;
+}
 
 /* universal */
 body {
     padding-top: 50px;
     background-image: url(/crossword_background.png);
+    margin-bottom: 180px;
 }
+
+.container {
+margin-bottom: 180px;
+}
+
 section {
     overflow: auto;
 }
@@ -88,8 +98,7 @@ p {
 
 /* footer */
 footer {
-    margin-top: 45px;
-    padding-top: 5px;
+    z-index: 10;
     border-top: 1px solid #eaeaea;
     color: #777;
     a {
@@ -110,6 +119,25 @@ footer {
         }
     }
 }
+#home-page-footer { //Home-page-footer
+   left:0px;
+   right: 0;
+   bottom:0px;
+   width:100%;
+  
+}
+
+// .wrap { min-height: 100%; }
+#footer {            //Common-footer
+	width:100%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+  right: 0;
+  height: 180px;
+
+}
+
 
 /* navbar */
 #logo {

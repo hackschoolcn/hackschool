@@ -106,6 +106,7 @@
   z-index: 2;
   top: 0;
   background: rgba(4,28,58,0.5);
+  margin-bottom: -40px;
 }
 
 .banner-font{
@@ -209,3 +210,14 @@
 .courseContent p {
     display: block;
 }
+
+.watermark {  
+  position: relative;
+  top: 10px; 
+  right: 10px; 
+  width: 16px; 
+  height: 16px;  
+
+}
+
+

@@ -1,7 +1,7 @@
 module BreadcrumbHelper
   def render_breadcrumb
     return "" if @breadcrumbs.size <= 0
-    content_tag(:ul, class: "breadcrumb menu clearfix") do
+    content_tag(:ul, class: "breadcrumb menu") do
       @breadcrumbs.each_with_index do |c, i|
         breadcrumb_class = []
         breadcrumb_class << "first" if i.zero?
