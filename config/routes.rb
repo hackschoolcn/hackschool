@@ -9,6 +9,9 @@ Rails.application.routes.draw do
       post :join_favorite
       post :cancel_favorite
     end
+    collection do
+      get :annual_page
+    end
   end
 
   resources :plans, only: [:index]
