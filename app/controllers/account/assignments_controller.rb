@@ -2,6 +2,8 @@ class Account::AssignmentsController < AccountController
   def index
     @course = Course.find(params[:course_id])
     drop_breadcrumb "课程作业"
+    set_page_title "课程作业"
+    set_page_description "完成你的作业"
   end
 
   protected

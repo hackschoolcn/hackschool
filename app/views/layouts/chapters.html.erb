@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Hackschool</title>
+      <%= render_page_title_tag %>
+      <%= render_page_description_meta_tag %>
         <%= csrf_meta_tags %>
         <link rel="shortcut icon" href="/images/ruby.png">
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
         <%= stylesheet_link_tag    'simplemde.min' %>
-        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-        <%= javascript_include_tag 'simplemde.min' %>
 
 
     </head>
@@ -57,6 +56,12 @@
             <%= yield %>
             <br><br><br><br>
           </div>
+
+          <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+          <%= javascript_include_tag 'simplemde.min' %>
+
+          <%= yield :application_javacript %>
 
     </body>
 

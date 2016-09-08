@@ -1,9 +1,14 @@
-<%= simple_form_for [:account, @task, @work] do |f| %>
-  <%= f.input :content %>
-  <%= f.submit "Submit" %>
-<% end %>
-
+<%= content_for :application_javacript do %>
 <script>
 var simplemde = new SimpleMDE({ element: document.getElementById("work_content"), spellChecker: false });
 simplemde.value();
 </script>
+<% end %>
+
+
+
+
+<%= simple_form_for [:account, @task, @work] do |f| %>
+  <%= f.input :content %>
+  <%= f.submit "Submit" %>
+<% end %>

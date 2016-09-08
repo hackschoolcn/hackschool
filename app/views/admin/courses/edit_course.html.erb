@@ -1,3 +1,16 @@
+<%= content_for :application_javacript do %>
+<script>
+var simplemde_1 = new SimpleMDE({ element: document.getElementById("course_description"), spellChecker: false });
+var simplemde_2 = new SimpleMDE({ element: document.getElementById("course_faq"), spellChecker: false });
+var simplemde_3 = new SimpleMDE({ element: document.getElementById("course_about_teacher"), spellChecker: false });
+simplemde_1.value();
+simplemde_2.value();
+simplemde_3.value();
+</script>
+<% end %>
+
+
+
 <%= simple_form_for [:admin, @course] do |f| %>
 <%= f.input :hero_title, label: "课程标题"%>
 <%= f.input :description, label: "课程详情描述" %>
@@ -8,12 +21,3 @@
 <%= f.input :teacher_image, label: "教师头像" %>
 <%= f.submit %>
 <% end %>
-
-<script>
-var simplemde_1 = new SimpleMDE({ element: document.getElementById("course_description"), spellChecker: false });
-var simplemde_2 = new SimpleMDE({ element: document.getElementById("course_faq"), spellChecker: false });
-var simplemde_3 = new SimpleMDE({ element: document.getElementById("course_about_teacher"), spellChecker: false });
-simplemde_1.value();
-simplemde_2.value();
-simplemde_3.value();
-</script>

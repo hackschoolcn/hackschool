@@ -4,6 +4,8 @@ class Account::FaqsController < AccountController
   def index
     @faqs = @course.faqs
     drop_breadcrumb "课程 FAQ"
+    set_page_title "FAQ"
+    set_page_description "知道你想要的问题"
   end
 
   def show

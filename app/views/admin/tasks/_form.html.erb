@@ -1,10 +1,15 @@
+<%= content_for :application_javacript do %>
+<script>
+var simplemde = new SimpleMDE({ element: document.getElementById("task_description"), spellChecker: false });
+simplemde.value();
+</script>
+<% end %>
+
+
+
+
 <%= simple_form_for [:admin, @post, @task] do |f| %>
   <%= f.input :description %>
   <%= f.input :due_time %>
   <%= f.submit "Submit" %>
 <% end %>
-
-<script>
-var simplemde = new SimpleMDE({ element: document.getElementById("task_description"), spellChecker: false });
-simplemde.value();
-</script>

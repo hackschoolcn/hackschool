@@ -2,11 +2,12 @@
 <html>
   <head>
     <%= render_page_title_tag %>
+    <%= render_page_description_meta_tag %>
     <%= csrf_meta_tags %>
     <link rel="shortcut icon" href="/images/ruby.png">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
 
   </head>
   <style>
@@ -19,6 +20,10 @@
       <%= render "common/navbar" %>
       <%= render "common/flashes" %>
       <%= yield %>
+
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+      <%= yield :app_javascript %>
   </body>
     <div class="container">
       <%= render "common/footer" %>
