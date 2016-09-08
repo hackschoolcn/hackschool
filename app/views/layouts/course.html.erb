@@ -18,9 +18,10 @@
   <body>
       <%= render "common/navbar" %>
       <%= render "common/flashes" %>
-      <%= yield %>
-  </body>
-    <div class="container">
+      <div class="page-wrap">
+        <%= yield %>
+      </div>
       <%= render "common/footer" %>
-    </div>
+  </body>
+
 </html>
