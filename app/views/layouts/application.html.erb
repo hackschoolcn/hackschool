@@ -22,9 +22,11 @@
     </div>
 
 
-    <div class="container">
+    <div class="container page-wrap">
     <%= yield %>
+    <br><br>
     </div>
+
 
 
   <%= render "common/footer" %>
@@ -33,6 +35,7 @@
   <%= javascript_include_tag 'simplemde.min' %>
 
   <%= yield :application_javacript %>
+
 
   </body>
 

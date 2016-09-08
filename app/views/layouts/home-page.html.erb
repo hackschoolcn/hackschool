@@ -23,37 +23,30 @@
     <%= yield %>
 
     <!-- /END THE FEATURETTES -->
-<div class="margin-bottom: 0px;">
-
-</div>
 
 
-
-    <!-- FOOTER -->
-    <%= render "common/home_page_footer" %>
-
-
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
-    <%= javascript_include_tag 'simplemde.min' %>
-
-    <%= yield :application_javacript %>
-
-    <script type='text/javascript'>
-        (function(m, ei, q, i, a, j, s) {
-            m[i] = m[i] || function() {
-                (m[i].a = m[i].a || []).push(arguments)
-            };
-            j = ei.createElement(q),
-                s = ei.getElementsByTagName(q)[0];
-            j.async = true;
-            j.charset = 'UTF-8';
-            j.src = '//static.meiqia.com/dist/meiqia.js';
-            s.parentNode.insertBefore(j, s);
-        })(window, document, 'script', '_MEIQIA');
-        _MEIQIA('entId', 30782);
+  <!-- FOOTER -->
+  <%= render "common/home_page_footer" %>
+  <script type='text/javascript'>
+      (function(m, ei, q, i, a, j, s) {
+          m[i] = m[i] || function() {
+              (m[i].a = m[i].a || []).push(arguments)
+          };
+          j = ei.createElement(q),
+              s = ei.getElementsByTagName(q)[0];
+          j.async = true;
+          j.charset = 'UTF-8';
+          j.src = '//static.meiqia.com/dist/meiqia.js';
+          s.parentNode.insertBefore(j, s);
+      })(window, document, 'script', '_MEIQIA');
+      _MEIQIA('entId', 31157);
     </script>
 
+<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+<%= javascript_include_tag 'simplemde.min' %>
+
+<%= yield :application_javacript %>
 </body>
 </html>
 <!-- Bootstrap core JavaScript
