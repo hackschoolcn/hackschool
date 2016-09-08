@@ -14,33 +14,14 @@
     <!-- Tab panes -->
     <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="home">
-            <div>
-                <%= render :partial => "courses/block_2" %>
-            </div>
-            <br>
-            <hr>
-
-            <div>
-                <%= render :partial => "courses/block_1" %>
-            </div>
-            <br>
-            <hr>
-
-            <%= render :partial => "courses/block_4" %>
-            <br>
-            <hr>
-
-            <div>
-                <%= render :partial => "courses/block_5" %>
-            </div>
-            <br>
-            <hr>
-
-            <div>
-                <%= render :partial => "courses/block_6" %>
-            </div>
-            <br>
-
+          <% case @course.title %>
+          <% when "Rails 环境配置" then %>
+            <%= render "courses/course1/course_detail" %>
+          <% when "Rails 初级教程" then  %>
+            <%= render "courses/course2/course_detail" %>
+          <% when "Rails 中级教程" then  %>
+            <%= render "courses/course3/course_detail" %>
+          <% end %>
         </div>
 
         <div role="tabpanel" class="tab-pane" id="profile">
