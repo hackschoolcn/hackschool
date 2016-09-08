@@ -38,6 +38,7 @@ gem "carrierwave"
 gem "mini_magick"
 gem "gravatarify"
 gem "seo_helper"
+gem "rack-mini-profiler"
 
 # add by chpwang
 gem "font-awesome-sass"

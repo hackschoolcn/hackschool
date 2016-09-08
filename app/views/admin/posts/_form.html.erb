@@ -1,11 +1,14 @@
+<%= content_for :application_javacript do %>
+<script>
+var simplemde = new SimpleMDE({ element: document.getElementById("post_article"), spellChecker: false });
+simplemde.value();
+</script>
+<% end %>
+
+
 <%= simple_form_for [:admin, @chapter, @post] do |f| %>
   <%= f.input :title %>
   <%= f.input :video %>
   <%= f.input :article %>
   <%= f.submit "Submit" %>
 <% end %>
-
-<script>
-var simplemde = new SimpleMDE({ element: document.getElementById("post_article"), spellChecker: false });
-simplemde.value();
-</script>

@@ -4,7 +4,9 @@ class Account::SettingsController < AccountController
   def index
     @user = current_user
     drop_breadcrumb "用户设置"
-    set_page_title "用户设置"
+    set_page_title "我的设置"
+    set_page_description "个人设置"
+
   end
 
   def edit_profile
